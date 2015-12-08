@@ -84,4 +84,4 @@ respective owners:
 * js/jquery.min.js - [jquery](https://jquery.com)
 * images/cc_by_88x31.png - [creative commons](https://creativecommons.org)
 
-More info at: [about page](/about)
+More info at: [about page]({{ site.url }}/about)

@@ -4,7 +4,7 @@ name: 吴兴章的博客
 description: 大树，笔名来风，生于1993，嵌入式工程师，无人机爱好者。
 
 # url is currently only used only for the RSS feed in feed.xml
-url: 
+url: www.nephen.com
 
 # baseurl will often be '', but for a project page on gh-pages, it needs to
 # be the project name.
