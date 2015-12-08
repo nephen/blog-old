@@ -25,7 +25,10 @@ disqus: 'true'
 comments: true
 
 permalink: /:year/:month/:title
-paginate: 3
+paginate: 5
+
+# 引言
+excerpt_separator: <!--more-->
 
 highlighter: pygments
 markdown: redcarpet
