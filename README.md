@@ -83,3 +83,5 @@ respective owners:
 * css/bootstrap.min.css - [bootstrap](http://getbootstrap.com)
 * js/jquery.min.js - [jquery](https://jquery.com)
 * images/cc_by_88x31.png - [creative commons](https://creativecommons.org)
+
+More info at: [about page](/about)
