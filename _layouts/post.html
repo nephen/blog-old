@@ -17,24 +17,24 @@
             </div>
             {% if page.comments %}
             <div id="disqus_thread">
-                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by 多说.</a></noscript>
+                <a href="http://duoshuo.com" class="dsq-brlink">comments powered by <span class="logo-disqus">多说</span></a>
             </div>
             {% endif %}
             </div>
           </div>
           <div class="pagination">
               {% if page.next %}
-                <a class="btn btn-default" href="{{ site.baseurl}}{{ page.next.url }}" class="next">Newer Post</a>
+                <a class="btn btn-default" href="{{ site.baseurl}}{{ page.next.url }}" class="next">下一篇：{{ page.next.title }}</a>
               {% endif %}
               {% if page.previous %}
-                <a class="btn btn-default" href="{{ site.baseurl}}{{ page.previous.url }}" class="previous">Older Post</a>
+                <a class="btn btn-default" href="{{ site.baseurl}}{{ page.previous.url }}" class="previous">上一篇：{{ page.previous.title }}</a>
               {% endif %}
 </div>
-
+{% include duoshuo_share.html %}
+{% include duoshuo_disqus.html %}
         </div>
     </div>
 </div>
 
-{% include disqus-comments.html %}
 {% include footer.html %}
