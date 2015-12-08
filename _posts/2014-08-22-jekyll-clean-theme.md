@@ -14,6 +14,7 @@ Welcome to the sample post for the Jekyll Clean theme.
 A simple and clean Jekyll theme using [bootstrap](http://getbootstrap.com)
 (not to be confused with jekyll-bootstrap) that's easy to modify and very
 modular in component and element reuse.
+
 <!--more-->
 It uses Disqus for comments and includes Google Analytics support. Both of
 these features are disabled by default and can be enabled via \_config.yml. You

@@ -12,7 +12,7 @@ layout: default
         <div class="content">
             <p>{{ post.excerpt | remove: '<p>' | remove: '</p>' }}</p>
         </div><br>
-         <h6><a href="{{ site.baseurl}}{{ post.url }}">Read more...</a></h6>
+          <p class="reader"><a href="{{ site.baseurl}}{{ post.url }}">Read more...</a></p>
     </div>
 </div>
 {% endfor %}

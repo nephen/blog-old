@@ -7,6 +7,7 @@ tags: 工作生活
 comments: true
 ---
 个人简介：吴兴章，长沙理工大学计算机与通信工程学院12级网络专业本科生，嵌入式实验室成员，无人机爱好者，2015年10月成功签约`汇顶科技`。
+
 <!--more-->
 
 ![My helpful screenshot](/assets/screenshot.png)
