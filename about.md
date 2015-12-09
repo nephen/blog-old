@@ -2,7 +2,7 @@
 layout: default
 title: About
 ---
-## Blog flatform
+## Blog platform
 This is my blog based Jekyll theme,the more personal information please look up the [contact](/contact) page
 
 You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/) or [jekyllcn.com](http://jekyllcn.com/)
