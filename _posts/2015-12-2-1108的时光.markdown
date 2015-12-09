@@ -2,6 +2,7 @@
 layout: post
 title:  "1108的时光"
 categories: thinking lifes
+comments: true
 author: nephne
 ---
 日子一天一天的流走了，总想抓住点什么，因为时光毕竟是美好的。
