@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "汇顶科技吴兴章——坚定目标，做自己感兴趣的事 !"
+title:  "汇顶科技求职感悟"
 categories: "drons_lifes"
 author: nephne
 tags: 工作生活

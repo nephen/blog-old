@@ -5,7 +5,7 @@ title: Message
 <div role="main" class="main-content main-post-content full-width">
 <div class="well">
     
-{% assign response = '/thank-you' | prepend: site.url %}
+{% assign response = '/thank-you' %}
 
 <form action="http://formspree.io/kingchadwu@gmail.com" method="POST">
 
