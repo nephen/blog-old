@@ -1,5 +1,5 @@
 {% if page.comments %}
-<div class="ds-share" data-thread-key="{{ page.id }}" data-title="{{ page.title }}" data-images="" data-content="{{ page.excerpt }}" data-url="{{ page.url | prepend: site.baseurl | prepend: site.url }}">
+<div class="ds-share" data-thread-key="{{ page.id }}" data-title="{{ page.title }}" data-images="" data-content="{{ post.excerpt | remove: '<p>' | remove: '</p>' }}" data-url="{{ page.url | prepend: site.baseurl | prepend: site.url }}">
     <div class="ds-share-inline">
       <ul  class="ds-share-icons-16">
       	
