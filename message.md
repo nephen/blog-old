@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Message
-site-url: "http://localhost:4000"
+site-url: "http://nephen.com"
 ---
 <div role="main" class="main-content main-post-content full-width">
 <div class="well">
