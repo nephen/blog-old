@@ -11,7 +11,8 @@ layout: default
         {% endif %}
         <div class="content">
             {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
-        </div>
+        </div></br>
+        <a class="readmore" href="{{ site.baseurl}}{{ post.url }}">Read More +</a>
     </div>
 </div>
 {% endfor %}
