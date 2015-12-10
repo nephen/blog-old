@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "我的大二上学期"
-categories: thinking lifes
+categories: thinking_lifes
 author: nephne
 comments: true
 ---

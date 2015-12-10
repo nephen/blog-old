@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "疯狂后的冬天"
-categories: thinking lifes
+categories: thinking_lifes
 author: nephne
 comments: true
 ---

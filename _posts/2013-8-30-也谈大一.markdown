@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "也谈大一"
-categories: thinking lifes
+categories: "thinking_lifes"
 author: nephne
 comments: true
 ---
