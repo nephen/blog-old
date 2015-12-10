@@ -8,10 +8,6 @@
         <div class="col-md-9">
           <div class="article">
             <div class="well">
-            <!--目录路径未完成-->
-            {% for cat in page.categories %}
-            <a class="word-keep pull-right" href=""><span class="octicon octicon-cat" align="right"></span>&nbsp;{{ cat }}</a>
-            {% endfor %}
                 <h1><a href="{{ site.baseurl}}{{ page.url }}">{{ page.date | date: "%b %-d, %Y" }} - {{ page.title }}</a></h1>
             {% if site.comments == true and page.comments == true and site.disqus != '' %}
                 <p class="author"><a href="#disqus_thread">Comments</a></p>

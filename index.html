@@ -5,10 +5,6 @@ layout: default
 {% for post in paginator.posts %}
 <div class="article">
     <div class="well">
-        <!--goto:目录路径未完成-->
-        {% for cat in post.categories %}
-            <a class="word-keep pull-right" href=""><span class="octicon octicon-cat" align="right"></span>&nbsp;{{ cat }}</a>
-        {% endfor %}
         <h1><a href="{{ site.baseurl}}{{ post.url }}">{{ post.date | date: "%b %-d, %Y" }} - {{ post.title }}</a></h1>
         {% if site.comments == true and post.comments == true and site.disqus != '' %}
           <p class="author"><a href="{{ site.baseurl }}{{ post.url }}/#disqus_thread">Comments</a></p>
