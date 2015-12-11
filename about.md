@@ -2,6 +2,7 @@
 layout: default
 title: About
 ---
+
 ## Blog platform
 This is my blog based Jekyll theme,handsome theme like [[jekyllthemes]](http://jekyllthemes.org/)[[hexo.io/themes]](https://hexo.io/themes/)
 
