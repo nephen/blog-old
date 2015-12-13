@@ -3,6 +3,10 @@ layout: default
 title: Debris
 ---
 <div class="well">
+
+ <p><center> <iframe name="iframe_canvas" src="http://douban.fm/partner/baidu/doubanradio" scrolling="no" frameborder="0" width="420" height="190"></iframe> </center></p>
+
+<hr style="height:10px;border:none;border-top:10px groove skyblue;" />
 <ul>
 <li><p>2015.12.13</p></li>
 <p>
@@ -18,6 +22,6 @@ title: Debris
 <p>
 建站很高兴，可是有点头痛。
 </p>
-<p><iframe name="iframe_canvas" src="http://douban.fm/partner/baidu/doubanradio" height="200" width="500" frameborder="0" scrolling="no"></iframe></p>
+
 </ul>
 </div>
