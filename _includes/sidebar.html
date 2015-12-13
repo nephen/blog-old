@@ -3,6 +3,15 @@
 </div>
 
 <div class="sidebar well">
+<h1>Recent Plans</h1>
+<ul>
+<li>{{ site.plan1 }}</li>
+<li>{{ site.plan2 }}</li>
+<li>{{ site.plan3 }}</li>
+</ul>
+</div>
+
+<div class="sidebar well">
     <h1>Recent Posts</h1>
     <ul>
         {% for post in site.posts limit:5 %}
@@ -13,4 +22,8 @@
 
 <div class="sidebar well">
 {% include links-list.html %}
+</div>
+
+<div class="sidebar well">
+本站所有作品均采用署名-非商业性使用-相同方式共享（CC BY-NC-SA）3.0 中国大陆许可协议进行许可。
 </div>

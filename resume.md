@@ -28,4 +28,21 @@ title: Debris
 	<li>2015.07-2015.08   2015年全国大学生电子设计竞赛，多旋翼自主飞行器</li>
 	<li>2015.11-至今   PX4开源无人机开发</li>
 </ul>
+<hr style="height:5px;border:none;border-top:5px ridge green;" />
+<h4 id="Work">工作经历</h4>
+<ul>
+	<li>深圳市汇顶科技股份有限公司      现场应用工程师      2016.7-
+		<dl>
+		            <dt>工作职责：</dt>
+		            <dd>1. 为电容触控芯片、指纹识别芯片的应用提供技术支持，指导客户完成产品设计及应用；</dd>
+		             <dd>2. 分析产品应用中遇到的各类问题并提出解决方案；</dd>
+		             <dd>3. 基于Android平台的应用软件及底层驱动调试与维护；</dd>
+		             <dd>4. 协助营销部门开展产品推广以及客户培训。</dd>
+		</dl>
+	</li>
+</ul>
+<hr style="height:5px;border:none;border-top:5px ridge green;" />
+<h4 id="Work">论文发表</h4>
+<ul>
+</ul>
 </div>

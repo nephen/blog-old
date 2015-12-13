@@ -31,6 +31,11 @@
                 <a class="btn btn-default" href="{{ site.baseurl}}{{ page.previous.url }}" class="previous">上一篇：{{ page.previous.title }}</a>
               {% endif %}
           </div>
+
+        {% if site.donate == true and page.donate == true %}
+        </p><h4>您的鼓励是作者写作最大的动力</h4><p>如果您认为本文章质量不错，读后觉得收获很大，预期工资涨幅能超过30%，不妨小额赞助我一下，让我有动力继续写出高质量的文章：</p><p><a href="{{ site.baseurl}}/about.html/#donate" class="uk-button uk-button-primary"><i class="uk-icon-cny"></i> 我要小额赞助</a></p>
+        {% endif %}
+
         {% include duoshuo_share.html %}
         {% include duoshuo_disqus.html %}
         </div>
