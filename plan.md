@@ -24,14 +24,23 @@ title: Plan
 <h5>物理</h5>
 <a href="http://open.163.com/special/opencourse/aircraftsystem.html">飞行器构造工程</a>
 <hr>
+
 <h4>电子书</h4>
 <h5><a href="http://e.dangdang.com/shelf/index.do;jsessionid">当当网</a></h5>
-<a href="http://e.dangdang.com/html/reader.html?productId=1900274361&bookUid=bb.135115758900710583">永不放弃：马云写给创业者的24堂人生课</a>
+<a href="http://e.dangdang.com/html/reader.html?productId=1900274361&bookUid=bb.135115758900710583">永不放弃：马云写给创业者的24堂人生课>>>看到第11页</a>
 <a href="http://e.dangdang.com/html/reader.html?productId=1900079766&bookUid=bb.132826620429858476">自卑与超越</a>
+<hr>
 
-
-
-
-
+<h4>Awesome</h4>
+<h5>Fleye</h5>
+<a href="https://www.youtube.com/watch?v=pomyipA18M8">Demonstrating Fleye safety and stability</a>
+<a href="https://www.kickstarter.com/projects/gofleye/fleye-your-personal-flying-robot">Fleye - Your Personal Flying Robot</a>
+<h5>Website</h5>
+<a href="https://www.hackster.io/">hackster</a>
+<a href="http://gazebosim.org/">Gazebo</a>
+<a href="https://bitbucket.org/">bitbucket</a>
+<a href="https://gitter.im/PX4/Firmware?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">Gitter</a>
+<a href="https://groups.google.com/forum/#!forum/px4users">PX4 Users Forum</a>
+<a href="https://plus.google.com/+PX4AutopilotProject/posts">Google+</a>
 
 </div>
