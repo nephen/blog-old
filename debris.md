@@ -8,7 +8,14 @@ title: Debris
  <p><center> <iframe name="iframe_canvas" src="http://douban.fm/partner/baidu/doubanradio" scrolling="no" frameborder="0" width="420" height="190"></iframe> </center></p>
 
 <hr style="height:10px;border:none;border-top:10px groove skyblue;" />
+
 <ul>
+
+<li><p>2015.12.18</p></li>
+<p>
+我宁愿沉浸在自己的世界里，不可自拔，与世无争。
+</p>
+
 <li><p>2015.12.14</p></li>
 <p>
 时间悄悄的溜走了一大半，认认真真做点事，希望回过头来对得起曾经的自己。
