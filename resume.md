@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Debris
+title: resume
 ---
 <div class="well">
 <h4 id="Skill">个人特长</h4>

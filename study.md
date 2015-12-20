@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Plan
+comments: true
 ---
 <div class="well">
 
@@ -27,8 +28,11 @@ title: Plan
 
 <h4>电子书</h4>
 <h5><a href="http://e.dangdang.com/shelf/index.do;jsessionid">当当网</a></h5>
-<a href="http://e.dangdang.com/html/reader.html?productId=1900274361&bookUid=bb.135115758900710583">永不放弃：马云写给创业者的24堂人生课>>>看到第11页</a>
+<a href="http://e.dangdang.com/html/reader.html?productId=1900274361&bookUid=bb.135115758900710583">永不放弃：马云写给创业者的24堂人生课</a>
 <a href="http://e.dangdang.com/html/reader.html?productId=1900079766&bookUid=bb.132826620429858476">自卑与超越</a>
+<a href="http://e.dangdang.com/html/reader.html?productId=1900429516&bookUid=bb.143100065393229193">曾文正公全集</a>
+<a href="http://e.dangdang.com/html/reader.html?productId=1900302532&bookUid=bb.138001130838687987">鲁迅文集</a>
+
 <hr>
 
 <h4>Awesome</h4>
@@ -42,5 +46,17 @@ title: Plan
 <a href="https://gitter.im/PX4/Firmware?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">Gitter</a>
 <a href="https://groups.google.com/forum/#!forum/px4users">PX4 Users Forum</a>
 <a href="https://plus.google.com/+PX4AutopilotProject/posts">Google+</a>
+<a href="http://www.pthxx.com/">pthxx</a>
+<a href="http://www.hjenglish.com/">沪江英语</a>
+<a href="http://www.pthxx.com/c_video/01_pthxx/001.html">平翘舌音</a>
+<a href="http://www.pthxx.com/c_video/01_pthxx/003.html">边鼻音</a>
 
+<hr>
+
+<h4>绕口令</h4>
+门前有四辆大马车，你爱拉哪两辆就拉哪两辆。
+
+<hr>
+        {% include duoshuo_share.html %}
+        {% include duoshuo_disqus.html %}
 </div>

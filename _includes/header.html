@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico"/>
+    {% if page.title == 'debris' %}
+    <title>心语星乐</title>
+    {% else %}
     <title>{{ site.name }}</title>
+    {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="{{ site.baseurl }}/js/jquery.min.js"></script>
     <script src="{{ site.baseurl }}/js/bootstrap.min.js"></script>
@@ -33,7 +37,7 @@
                     <li class="active"><a target="blank_" href="{{ site.baseurl }}/debris.html">碎语</a></li>
                     <li class="active"><a href="{{ site.baseurl }}/resume.html">简历</a></li>
                     <li class="active visible-xs-block"><a href="{{ site.baseurl }}/links.html">链接</a></li>
-                    <li class="active"><a href="{{ site.baseurl }}/plan.html">计划</a></li>
+                    <li class="active"><a href="{{ site.baseurl }}/study.html">学习</a></li>
                     <li class="active"><a href="{{ site.baseurl }}/reprint.html">转载</a></li>
                     <li class="active"><a href="{{ site.baseurl }}/about">关于</a></li>
                     <li class="active"><a href="{{ site.baseurl }}/message.html">留言</a></li>
