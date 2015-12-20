@@ -1,6 +1,5 @@
 ---
 layout: default
-title: Message
 ---
 <div role="main" class="main-content main-post-content full-width">
 <div class="well">

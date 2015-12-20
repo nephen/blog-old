@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico"/>
-    {% if page.title == 'debris' %}
-    <title>心语星乐</title>
+    {% if page.title !=   %}
+    <title>{{ page.title }}-{{ site.name }}</title>
     {% else %}
     <title>{{ site.name }}</title>
     {% endif %}
