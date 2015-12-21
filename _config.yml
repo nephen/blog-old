@@ -41,4 +41,4 @@ redcarpet:
 
 exclude: ['README.md', 'LICENSE']
 
-timezone: China/Bei_Jing
+timezone: Etc/GMT-8
