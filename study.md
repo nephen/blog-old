@@ -50,6 +50,7 @@ comments: true
 <a href="http://www.pthxx.com/c_video/01_pthxx/001.html">平翘舌音</a>
 <a href="http://www.pthxx.com/c_video/01_pthxx/003.html">边鼻音</a>
 <a href="http://www.webmasterhome.cn/seo/addurl.asp">引擎登录入口</a>
+<a href="http://ocw.mit.edu/index.htm">MIT</a>
 
 <hr>
 

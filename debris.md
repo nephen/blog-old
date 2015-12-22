@@ -10,7 +10,7 @@ comments: true
 
 <hr style="height:10px;border:none;border-top:10px groove skyblue;" />
 
-<ul>
+<ul class="square">
 
 <li><p>2015.12.19</p></li>
 <p>

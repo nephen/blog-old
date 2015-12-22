@@ -1,3 +1,7 @@
+---
+scripts: [toc.js,post.js]
+styles: post.css
+---
 {% include header.html %}
 
 <div class="container container-left">
@@ -11,7 +15,7 @@
                 <h1><a href="{{ site.baseurl}}{{ page.url }}">{{ page.date | date: "%b %-d, %Y" }} - {{ page.title }}</a></h1>
 
             {% if site.comments == true and page.comments == true and site.disqus != '' %}
-                <p class="author">                
+                <h5 class="author">                
                     <span class="ds-thread-count" data-thread-key="{{ page.id }}" data-count-type="comments"></span>
                         <!-- 多说js(文章评论数)加载开始，一个页面只需要加载一次 -->
                         <script type="text/javascript">
@@ -25,12 +29,13 @@
                         })();
                         </script>
                         <!-- 多说js加载结束，一个页面只需要加载一次 -->
-            <a href="#disqus_thread">Comments</a></p>
+            <a href="#disqus_thread">Comments</a></h5>
             {% endif %}
 
             <div class="post-content">
             {{ content }}
             </div>
+
             {% if page.comments %}
             <div id="disqus_thread">
                 <noscript>Please enable JavaScript to view the <a href="http://duoshuo.com/?ref_noscript">comments powered by 多说.</a></noscript>
@@ -58,6 +63,20 @@
         {% include duoshuo_disqus.html %}
         </div>
     </div>
+
+    <div class="content-navigation col-lg-3">
+    <div id="post__toc-trigger">
+      <div class="shadow-bottom-center">
+        <div class="content-navigation-toc">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;目录
+            </div>
+            <div class="content-navigation-list toc"></div>
+        </div>
+      </div>
+    </div>
+    </div>
+
 </div>
 
 <!--百度推送-->

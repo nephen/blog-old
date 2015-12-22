@@ -1,14 +1,16 @@
 ---
 layout: default
+styles: [article-list.css]
 ---
 
 {% for post in paginator.posts %}
 <div class="article">
+   <article>
     <div class="well">
         <h1><a href="{{ site.baseurl}}{{ post.url }}">{{ post.date | date: "%b %-d, %Y" }} - {{ post.title }}</a></h1>
 
         {% if site.comments == true and post.comments == true and site.disqus != '' %}
-          <p class="author">
+          <h5 class="author">
             <span class="ds-thread-count" data-thread-key="{{ post.id }}" data-count-type="comments"></span>
                       <!-- 多说js(文章评论数)加载开始，一个页面只需要加载一次 -->
                       <script type="text/javascript">
@@ -22,7 +24,7 @@ layout: default
                       })();
                       </script>
                       <!-- 多说js加载结束，一个页面只需要加载一次 -->
-            <a href="{{ site.baseurl }}{{ post.url }}/#disqus_thread">Comments</a></p>
+            <a href="{{ site.baseurl }}{{ post.url }}/#disqus_thread">Comments</a></h5>
         {% endif %}
 
         <div class="content">
@@ -45,4 +47,5 @@ layout: default
   {% if paginator.next_page %}
     <a class="btn btn-default" href="{{ site.baseurl}}/page{{ paginator.next_page }}" class="next">Older</a>
   {% endif %}
+  </article>
 </div>

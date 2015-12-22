@@ -12,8 +12,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="{{ site.baseurl }}/js/jquery.min.js"></script>
     <script src="{{ site.baseurl }}/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{'/js/script.js' | prepend:site.baseurl}}"></script>
+    {% for script in page.scripts %}
+    <script type="text/javascript" src="{{ '/js/' | append: script | prepend:site.baseurl }}"></script>
+    {% endfor %}
+    <link rel="stylesheet" type="text/css" href="{{ '/octicons/octicons.css' | prepend: site.baseurl }}" />
     <link href="{{ site.baseurl }}/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ site.baseurl }}/css/theme.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/highlight.css">
+    {% for style in page.styles %}
+    <link rel="stylesheet" type="text/css" href="{{ '/css/' | append: style | prepend: site.baseurl}}" />
+    {%endfor%}
 </head>
 
 <body>
