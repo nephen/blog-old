@@ -1,5 +1,4 @@
 body {
-    background-image: url({{ "/images/bg.jpg" | prepend: site.baseurl | prepend: site.url }});
     height: 100%;
     padding-top: 60px;
     padding-bottom: 60px;

@@ -195,3 +195,10 @@ transform: translateX(0); }
 @media screen and (max-device-width: 1280px) {
 #post__toc-trigger {
   display: none; } }
+
+.anchor{
+  display: block;
+  height: 115px; /*same height as header*/
+  margin-top: -115px; /*same height as header*/
+  visibility: hidden;
+}
