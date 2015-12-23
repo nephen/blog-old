@@ -51,6 +51,12 @@ $ bundler exec jekyll server
 The more info about [Blogging with Jekyll](https://help.github.com/articles/using-jekyll-with-pages/)
 
 <hr>
+##TODO
+
+- 文章导航条地址不能定位准确，需要下移一点。
+- 归档应该增加分类功能。
+
+<hr>
 ##Notices
 `您可以自由地：`
 

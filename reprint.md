@@ -7,4 +7,5 @@ layout: default
 </a>
 <a href="http://www.cnblogs.com/xdp-gacl/p/3718879.html">目录导航</a>
 <a href="http://www.cnblogs.com/kissdodog/p/3929903.html">Bootstrap</a>
+<a href="segmentfault.com/q/1010000000594211">导航条定位问题</a>
 </div>

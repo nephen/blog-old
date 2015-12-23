@@ -84,4 +84,43 @@ respective owners:
 * js/jquery.min.js - [jquery](https://jquery.com)
 * images/cc_by_88x31.png - [creative commons](https://creativecommons.org)
 
-More info at: [about page]({{ site.url }}/about)
+My Simple Tutorial Based On Jekyll Clean!!!
+=======
+
+This is a tutorial on my blog which based on Jekyll Clean, I've added some new features to this foundation, and welcome to continue to improve on this basis, You can find more information about me on the my web site of about.
+
+* Get it from [github](https://github.com/nephen/nephen.github.io).
+* See the [live demo](https://www.nephen.com).
+
+```bash
+# => Use Git and public article in folder _post
+$ git clone git@github.com:nephen/nephen.github.io
+```
+
+```bash
+apt (Debian or Ubuntu)
+# => Set up Jekyll
+$ sudo apt-get install ruby-full
+$ gem sources --add https://ruby.taobao.org/ --remove https://rubygems.org/
+$ gem sources -l
+*** CURRENT SOURCES ***
+
+https://ruby.taobao.org
+# 请确保只有 ruby.taobao.org , please see <https://ruby.taobao.org>
+```
+
+```bash
+$ sudo gem install bundler
+```
+
+```bash
+$ sudo gem install jekyll
+$ cd nephen.github.io
+$ touch Gemfile
+$ echo source 'https://ruby.taobao.org' > Gemfile
+$ echo gem 'github-pages' >> Gemfile
+$ bundle install
+$ bundler exec jekyll server
+# => Now browse to http://localhost:4000
+```
+The more info about [Blogging with Jekyll](https://help.github.com/articles/using-jekyll-with-pages/)

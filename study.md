@@ -51,6 +51,7 @@ comments: true
 <a href="http://www.pthxx.com/c_video/01_pthxx/003.html">边鼻音</a>
 <a href="http://www.webmasterhome.cn/seo/addurl.asp">引擎登录入口</a>
 <a href="http://ocw.mit.edu/index.htm">MIT</a>
+<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">Git</a>
 
 <hr>
 
