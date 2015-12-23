@@ -33,13 +33,7 @@ function backToTop() {
     });
 
     //点击回到顶部
-    st.click(function() {
-        $("body").animate({
-            scrollTop: "0"
-        }, 500);
-    });
-
-
+    st.click(function(){$('html,body').animate({scrollTop: '0px'}, 800);});
 }
 
 function search(){
