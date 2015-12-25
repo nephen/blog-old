@@ -226,4 +226,31 @@ ul.katakana-iroha {list-style-type: katakana-iroha}
     width:149px;
     z-index:11;
 }
+
+.Q_pic1,.Q_sign1{background:url(http://demo.lanrenzhijia.com/2014/service1103/images/lanrenzhijia.png) no-repeat;}
+.sign,.signa,.signb,.signc,.signd,.signe,.signf,.signg,.signh,.signi,.signj,.signq{background:url(http://demo.lanrenzhijia.com/2014/service1103/images/lanrenzhijia.png) no-repeat;display:block;}
+.signi{background-position:-203px -484px;width: 10px;height: 30px;float:right;margin: 3px 10px 0 3px;}
+.signj{background-position:-233px -478px;width: 10px;height: 30px;float:right;margin:0 5px 0 3px;}
+.QQ_S{width:90px;height: 172px;position:fixed;right: 10px;top: 40%; z-index:99999;}
+.Q_top{width:100%;background:#E6E6E6;height:30px;line-height:30px;text-align: right;cursor:pointer;}
+.Q_botm{width: 84px;border: 3px solid #E6E6E6;}
+.Q_pic,.Q_anser,.Q_sign{width:100%;height: 45px;border-bottom:2px solid #E6E6E6;background: url(http://demo.lanrenzhijia.com/2014/service1103/images/lanrenzhijia.png) no-repeat;position:relative;overflow:hidden;color: white;text-align:center;cursor:pointer;background-color:white;}
+.Q_pic{background-position:20px -458px;}
+.Q_anser{background-position:-242px -384px;}
+.Q_sign{background-position:-241px -434px;} 
+.Q_anser_hide,.Q_pic_hide,.Q_sign_hide{width:100%;height:100%;position:absolute;background:#FE9B1D;left: -84px;-webkit-transition:left ease-in-out .3s;-moz-transition:left ease-in-out .3s;transition:left ease-in-out .3s;} 
+.hide_pic,.hide_pic1,.hide_pic2{width:100%;height: 26px;background: url(http://demo.lanrenzhijia.com/2014/service1103/images/lanrenzhijia.png) no-repeat;display:block;}
+.hide_pic{background-position:-242px -348px;}
+.hide_pic1{background-position:-100px -467px;}
+.hide_pic2{background-position:-243px -479px;}
+.Q_pic:hover .Q_pic_hide,.Q_anser:hover .Q_anser_hide,.Q_sign:hover .Q_sign_hide,.Q_pic1:hover .Q_pic1_hide,.Q_sign1:hover .Q_sign1_hide{left:0px;}
+.Q_pic a, .Q_anser a,.Q_sign a,.Q_pic a:hover,.Q_anser a:hover,.Q_sign a:hover,.Q_pic1 a,.Q_pic1 a:hover,.Q_sign1 a,.Q_sign1 a:hover{color:white;}
+a.blank{width:100%;height:100%;display:block;}
+.QQ_S1{width:60px;height: 110px;position:fixed;right:10px;bottom:0;display:none;}
+.Q_top1{width:100%;height:30px;background:#E6E6E6;line-height:30px;text-align:right;cursor:pointer;}
+.Q_botm1{width:56px;border:2px solid #E6E6E6;height: 70px;}
+.Q_pic1{border-bottom:2px solid #E6E6E6;width:100%;height:33px;background-position:-55px -465px;position:relative;overflow:hidden;color: white;text-align:center;line-height:33px;cursor:pointer;background-color:white;}
+.Q_sign1{width:100%;height:33px;width:100%;line-height:33px; height: 35px;background-position:-255px -437px;position:relative;overflow:hidden;color: white;text-align:center;cursor:pointer;background-color:white;}
+.Q_pic1_hide,.Q_sign1_hide{width:100%;height:100%;position:absolute;background:#FE9B1D;left: -56px;-webkit-transition:left ease-in-out .3s;-moz-transition:left ease-in-out .3s;transition:left ease-in-out .3s;cursor:pointer;}
+.Q_sign1_hide a{font-size:12px;}
 }
