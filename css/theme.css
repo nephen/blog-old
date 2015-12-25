@@ -188,6 +188,7 @@ ul.katakana-iroha {list-style-type: katakana-iroha}
 /**
  * back to top
  */
+@media screen and (min-width: 1200px){
 #rocket-to-top div {
     left:0;
     margin:0;
@@ -224,4 +225,5 @@ ul.katakana-iroha {list-style-type: katakana-iroha}
     top:80%;
     width:149px;
     z-index:11;
+}
 }
