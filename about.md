@@ -51,6 +51,14 @@ $ bundler exec jekyll server
 The more info about [Blogging with Jekyll](https://help.github.com/articles/using-jekyll-with-pages/)
 
 <hr>
+##Contributing
+1. Fork it (http://www.github.com/nephen/nephen.github.io)
+2. Create your feature branch (git checkout -b my-new-feature)
+3. Commit your changes (git commit -am 'Add some feature')
+4. Push to the branch (git push origin my-new-feature)
+5. Create new Pull Request
+
+<hr>
 ##TODO
 
 - 文章导航条地址不能定位准确，需要下移一点。
