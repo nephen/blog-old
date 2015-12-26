@@ -31,16 +31,12 @@ styles: [post.css]
             <a href="#disqus_thread" >Comments</a></h5>
             {% endif %}
 
+            <hr>
+
             <div class="post-content">
             {{ content }}
             </div>
 
-            {% if page.comments %}
-            <div id="disqus_thread">
-                <noscript>Please enable JavaScript to view the <a href="http://duoshuo.com/?ref_noscript">comments powered by 多说.</a></noscript>
-                <a href="http://duoshuo.com" class="dsq-brlink">comments powered by <span class="logo-disqus">多说</span></a>
-            </div>
-            {% endif %}
             </div>
           </div>
           <div class="pagination">
@@ -52,14 +48,17 @@ styles: [post.css]
               {% endif %}
           </div>
 
+        <div id="disqus_thread" class="target">
         {% if site.donate == true and page.donate == true %}
         <h4>您的鼓励是作者写作最大的动力</h4>
         <p>如果您认为本文章质量不错，读后觉得收获很大，预期工资涨幅能超过30%，不妨小额赞助我一下，让我有动力继续写出高质量的文章：</p>
-        <p><a href="{{ site.baseurl }}/about/#donate" class="uk-button uk-button-primary " >￥我要小额赞助</a></p>
+        <p><a href="{{ site.baseurl }}/about#donate" class="uk-button uk-button-primary">￥我要小额赞助</a></p>
         {% endif %}
+        </div>
 
         {% include duoshuo_share.html %}
         {% include duoshuo_disqus.html %}
+
         </div>
     </div>
 

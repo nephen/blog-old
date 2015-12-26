@@ -85,7 +85,7 @@ The more info about [Blogging with Jekyll](https://help.github.com/articles/usin
 详情请见[署名-非商业性使用-相同方式共享（CC BY-NC-SA）3.0 ](http://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh)
 
 <hr>
-<div id="donate">
+<div id="donate" class="target">
 ##Donate
 
 如果您认为本网站的文章质量不错，读后觉得收获很大，预期工资涨幅能超过30%，不妨小额赞助我一下，让我有动力继续写出高质量的文章。

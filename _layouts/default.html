@@ -8,6 +8,18 @@
         <div class="col-md-9">
             {{ content }}
         </div>
+    </div>
+</div>
+
+<!--百度推送-->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
 
 <!-- 代码部分begin -->
 <div class="QQ_S">
@@ -37,18 +49,5 @@
 </div>
 <script src="{{ site.baseurl }}/js/lanrenzhijia.js"></script>
 <!-- 代码部分end -->
-
-    </div>
-</div>
-
-<!--百度推送-->
-<script>
-(function(){
-    var bp = document.createElement('script');
-    bp.src = '//push.zhanzhang.baidu.com/push.js';
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
 
 {% include footer.html %}
