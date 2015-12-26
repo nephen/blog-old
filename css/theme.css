@@ -253,4 +253,19 @@ a.blank{width:100%;height:100%;display:block;}
 .Q_sign1{width:100%;height:33px;width:100%;line-height:33px; height: 35px;background-position:-255px -437px;position:relative;overflow:hidden;color: white;text-align:center;cursor:pointer;background-color:white;}
 .Q_pic1_hide,.Q_sign1_hide{width:100%;height:100%;position:absolute;background:#FE9B1D;left: -56px;-webkit-transition:left ease-in-out .3s;-moz-transition:left ease-in-out .3s;transition:left ease-in-out .3s;cursor:pointer;}
 .Q_sign1_hide a{font-size:12px;}
+
+#sideBar{
+    text-align:center;
+    position:fixed;/*将div的位置固定到距离top:50px，right:0px的位置，这样div就会处在最右边的位置，距离顶部50px*/
+    top:63px;
+    right:0px;
+}
+#sideBarTab{
+    float:left;
+    width:30px; 
+    border:2px solid #e5e5e5;
+    border-right:none;
+    text-align:center;
+    background:#ffffff;
+}
 }
