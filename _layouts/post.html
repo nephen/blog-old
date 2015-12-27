@@ -11,10 +11,20 @@ styles: [post.css]
         <div class="col-md-9">
           <div class="article">
             <div class="well">
-                <h1><a href="{{ site.baseurl}}{{ page.url }}">{{ page.date | date: "%b %-d, %Y" }} - {{ page.title }}</a></h1>
+            <center><big><h1 class="post-title" itemprop="name headline"><a href="{{ site.baseurl}}{{ page.url }}">{{ page.title }}</a></h1></big></center>
 
-            {% if site.comments == true and page.comments == true and site.disqus != '' %}
-                <h5 class="author">                
+            <center>
+                <small><p class="post-lavender">
+                    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                        {{ page.date | date: "%b %-d, %Y" }}
+                    </time>
+                    {% if page.author %} • 
+                    <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                        <span itemprop="name">{{ page.author }}
+                        </span>
+                    </span>
+
+                    • {% if site.comments == true and page.comments == true and site.disqus != '' %}              
                     <span class="ds-thread-count" data-thread-key="{{ page.id }}" data-count-type="comments"></span>
                         <!-- 多说js(文章评论数)加载开始，一个页面只需要加载一次 -->
                         <script type="text/javascript">
@@ -28,24 +38,19 @@ styles: [post.css]
                         })();
                         </script>
                         <!-- 多说js加载结束，一个页面只需要加载一次 -->
-            <a href="#disqus_thread" >Comments</a></h5>
-            {% endif %}
+                    <a href="#disqus_thread" >Comments</a>
+                    {% endif %}
+
+                    {% endif %}
+
+                </p></small>
+            </center>
 
             <hr>
-
             <div class="post-content">
             {{ content }}
             </div>
-
             </div>
-          </div>
-          <div class="pagination">
-              {% if page.next %}
-                <a class="btn btn-default" href="{{ site.baseurl}}{{ page.next.url }}" class="next">下一篇：{{ page.next.title }}</a>
-              {% endif %}
-              {% if page.previous %}
-                <a class="btn btn-default" href="{{ site.baseurl}}{{ page.previous.url }}" class="previous">上一篇：{{ page.previous.title }}</a>
-              {% endif %}
           </div>
 
         <div id="disqus_thread" class="target">
@@ -55,6 +60,15 @@ styles: [post.css]
         <p><a href="{{ site.baseurl }}/about#donate" class="uk-button uk-button-primary">￥我要小额赞助</a></p>
         {% endif %}
         </div>
+
+          <div class="pagination">
+              {% if page.next %}
+                <a class="btn btn-default" href="{{ site.baseurl}}{{ page.next.url }}" class="next">下一篇：{{ page.next.title }}</a>
+              {% endif %}
+              {% if page.previous %}
+                <a class="btn btn-default" href="{{ site.baseurl}}{{ page.previous.url }}" class="previous">上一篇：{{ page.previous.title }}</a>
+              {% endif %}
+          </div>
 
         {% include duoshuo_share.html %}
         {% include duoshuo_disqus.html %}

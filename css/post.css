@@ -34,6 +34,9 @@
 .post header p.post-meta{
     color: #817c7c;
 }
+.post-lavender{
+    color: #BC8F8F ;
+}
 
 .post header p.post-tag a{
     display: inline-block;
