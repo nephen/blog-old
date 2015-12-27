@@ -56,6 +56,7 @@ comments: true
 <a href="http://www.jikexueyuan.com/">极客学院</a>
 <a href="http://www.w3school.com.cn">w3school</a>
 <a href="http://www.mitaole.com">米淘乐</a>
+<a href="http://www.chinacaipu.com/">中华菜谱</a>
 
 <hr>
 

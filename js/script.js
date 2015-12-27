@@ -86,7 +86,8 @@ function search(){
     _st('install','{{site.swiftype_searchId}}','2.0.0');
 }
 
-
-
-
-
+//返回顶部
+function backToTop2(){
+    $("html,body").animate({ scrollTop: 0 },100,function(){
+    });
+}
