@@ -57,6 +57,8 @@ comments: true
 <a href="http://www.w3school.com.cn">w3school</a>
 <a href="http://www.mitaole.com">米淘乐</a>
 <a href="http://www.chinacaipu.com/">中华菜谱</a>
+<a href="en.savefrom.net">youtube下载</a>
+<a href="http://www.exuav.com">exuav</a>
 
 <hr>
 
