@@ -61,7 +61,6 @@ The more info about [Blogging with Jekyll](https://help.github.com/articles/usin
 <hr>
 ##TODO
 
-- 锚定位与脚本产生冲突。
 - 归档应该增加分类功能。
 
 <hr>
