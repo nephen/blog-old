@@ -18,4 +18,5 @@ layout: default
 <a href="http://www.chinacaipu.com/menu/tangbaozhoushipu/79115.html">八宝桂圆年糕汤</a>
 <a href="http://www.chinacaipu.com/menu/rouleishipu/90400.html">肉末蒸茄子</a>
 <a href="http://www.chinacaipu.com/menu/rouleishipu/117675.html">肉末烧豆腐</a>
+<a href="http://www.guokr.com/post/452422/">四轴飞行器基础篇</a>
 </div>
