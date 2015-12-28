@@ -59,6 +59,7 @@ comments: true
 <a href="http://www.chinacaipu.com/">中华菜谱</a>
 <a href="en.savefrom.net">youtube下载</a>
 <a href="http://www.exuav.com">exuav</a>
+<a href="http://www.moz8.com/forum.php?mod=forumdisplay&fid=324&filter=typeid&typeid=92">模友之吧pix</a>
 
 <hr>
 

@@ -101,6 +101,10 @@
     .post pre code{
         font-size: 85%;
     }
+
+    .fix{
+  display: none;
+    }
 }
 
 @media screen and (max-width: 991px){
