@@ -61,6 +61,12 @@ comments: true
 <a href="http://www.exuav.com">exuav</a>
 <a href="http://www.moz8.com/forum.php?mod=forumdisplay&fid=324&filter=typeid&typeid=92">模友之吧pix</a>
 <a href="http://www.guokr.com">果壳网</a>
+<a href="http://planner.ardupilot.com/">ardupilot planner</a>
+<a href="http://dev.ardupilot.com">ardupilot dev</a>
+<a href="http://ardupilot.com/forum/">ardupilot forum</a>
+<a href="coursera.org">全世界最好的学习网站</a>
+<a href="http://www.htmliseasy.com/">学习html</a>
+<a href="http://www.nephen.com/md5.html">md5加密</a>
 
 <hr>
 

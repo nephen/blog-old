@@ -1,13 +1,45 @@
 ---
-scripts: [toc.js,post.js]
+scripts: [toc.js,post.js,md5.js]
 styles: [post.css]
 ---
 {% include header.html %}
+
 <div class="container container-left">
     <div class="row">
         <div class="col-md-3 hidden-xs">
             {% include sidebar.html %}
         </div>
+     
+        {% if page.passwd ==   true %}
+        <script>
+        function password() {
+        var testV = 1;
+
+        var forMd5 = prompt('请输入该文章的访问密码:','');
+
+        while (testV < 3) {
+        if (forMd5 == null) 
+        history.go(-1);
+       
+        var pass1 = hex_md5(forMd5);
+        if (pass1 == "30ba2a747566acbae8090c05ee5bd1fa") {
+        alert('密码正确,点击回车进入...');
+        break;
+        }
+
+        testV+=1;
+        var pass1 = prompt('密码错误!请重新输入:');
+        }
+
+        if (pass1!="password" & testV ==3)
+        history.go(-1);
+
+        return "";
+        }
+        document.write(password());
+        </script>
+        {% endif %}
+
         <div class="col-md-9">
           <div class="article">
             <div class="well">
