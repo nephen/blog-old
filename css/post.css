@@ -215,3 +215,24 @@ transform: translateX(0); }
   margin-top: -115px; /*same height as header*/
   visibility: hidden;
 }
+
+.well h4{
+  position: relative;
+  padding-top: 53px;
+  margin-top: -53px;
+  color: #090;
+  text-shadow: 2px 2px 2px #E6E6E6;
+  clear: both;
+  border-bottom: 1px solid #CCC;
+}
+
+/*锚点跳转位置下移问题*/
+.well h5,h6{
+  position: relative;
+  padding-top: 53px;
+  margin-top: -53px;
+  color: #069;
+  text-shadow: 2px 2px 2px #E6E6E6;
+  clear: both;
+  border-bottom: 1px solid #CCC;
+}
