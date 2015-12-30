@@ -91,3 +91,12 @@ function backToTop2(){
     $("html,body").animate({ scrollTop: 0 },100,function(){
     });
 }
+
+function showme(){
+var div = document.getElementById('showpic');
+if (div.style.display == "block") {
+div.style.display = "none";
+} else if (div.style.display == "none") {
+div.style.display = "block"
+}
+}

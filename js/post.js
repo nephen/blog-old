@@ -17,6 +17,6 @@ function generateContent() {
     var $toc;
     $mt.each(function(i,o){
         $toc = $(o);
-        $toc.toc({ listType: 'ul', headers: 'h3, h4, h5' });
+        $toc.toc({ listType: 'ul', headers: 'h4, h5, h6' });
     });
 }
