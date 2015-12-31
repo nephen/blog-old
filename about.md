@@ -62,6 +62,7 @@ The more info about [Blogging with Jekyll](https://help.github.com/articles/usin
 ##TODO
 
 - 归档应该增加分类功能。
+- 段落边框覆盖了文中链接。
 
 <hr>
 ##Notices

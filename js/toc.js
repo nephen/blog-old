@@ -48,12 +48,15 @@
         var level = get_level(headers[0]),
             this_level,
             html = settings.title + " <"+settings.listType+">";
+        /*标题点击是否跳转*/
         headers.on('click', function() {
             if (!settings.noBackToTopLinks) {
                 window.location.hash = this.id;
             }
         })
+            /*标题是否可点击*/
             .addClass('clickable-header')
+            /*目录栏*/
             .each(function(_, header) {
                 this_level = get_level(header);
                 if (!settings.noBackToTopLinks && this_level === highest_level) {

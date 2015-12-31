@@ -84,6 +84,7 @@ ul.katakana-iroha {list-style-type: katakana-iroha}
 }
 
 .well h4{
+  line-height: 33px;
   color: #090;
   text-shadow: 2px 2px 2px #E6E6E6;
   clear: both;
@@ -91,6 +92,7 @@ ul.katakana-iroha {list-style-type: katakana-iroha}
 }
 
 .well h5,h6{
+  line-height: 33px;
   color: #069;
   text-shadow: 2px 2px 2px #E6E6E6;
   clear: both;

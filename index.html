@@ -10,7 +10,7 @@ styles: [article-list.css]
         <h1><a href="{{ site.baseurl}}{{ post.url }}">{{ post.date | date: "%b %-d, %Y" }} - {{ post.title }}</a></h1>
 
         {% if site.comments == true and post.comments == true and site.disqus != '' %}
-          <h5 class="author">
+          <div class="author">
             <span class="ds-thread-count" data-thread-key="{{ post.id }}" data-count-type="comments"></span>
                       <!-- 多说js(文章评论数)加载开始，一个页面只需要加载一次 -->
                       <script type="text/javascript">
@@ -24,8 +24,9 @@ styles: [article-list.css]
                       })();
                       </script>
                       <!-- 多说js加载结束，一个页面只需要加载一次 -->
-            <a href="{{ site.baseurl }}{{ post.url }}/#disqus_thread">Comments</a></h5>
+            <a href="{{ site.baseurl }}{{ post.url }}/#disqus_thread">Comments</a></div>
         {% endif %}
+        <br>
 
         <div class="content">
             {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
