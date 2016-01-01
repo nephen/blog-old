@@ -219,12 +219,14 @@ transform: translateX(0); }
 /*锚点跳转位置下移问题*/
 .well h4{
   position: relative;
+  cursor: pointer;
   padding-top: 53px;
   margin-top: -53px;
 }
 
 .well h5,h6{
   position: relative;
+  cursor: pointer;
   padding-top: 53px;
   margin-top: -53px;
 }

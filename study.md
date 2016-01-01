@@ -68,6 +68,7 @@ comments: true
 <a href="http://www.htmliseasy.com/">学习html</a>
 <a href="http://www.nephen.com/md5.html">md5加密</a>
 <a href="http://www.cnblogs.com/mofish/archive/2012/02/25/2367858.html">js加密</a>
+<a href="https://github.com/ghiculescu/jekyll-table-of-contents">我的TOC</a>
 
 <hr>
 
