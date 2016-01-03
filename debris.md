@@ -6,11 +6,16 @@ comments: true
 <div class="well">
 
 <!--音乐台-->
- <p><center> <iframe name="iframe_canvas" src="http://douban.fm/partner/baidu/doubanradio" scrolling="no" frameborder="0" width="420" height="190"></iframe> </center></p>
+ <p><center><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="http://music.163.com/outchain/player?type=0&id=146921027&auto=1&height=430"></iframe></center></p>
 
 <hr style="height:10px;border:none;border-top:10px groove skyblue;" />
 
 <ul class="square">
+<li><p>2016.1.2</p></li>
+<p>
+你为什么不让我对着你的鼻子吹气？
+</p>
+
 <li><p>2015.12.30</p></li>
 <p>
 待家里久了，渐渐的听出了窗外什么时候会有什么声音，那是城里人按规律性生活发出的信号，我也知晓时间就在这一天一天的信号节奏中流失了。又到了一年的末尾，还依稀想起去年的这个时候，忍不住也会去打量一下这一年以来的行程，心情变得平静，并带有一点沉重，未来好远，又感觉近在眼前，得好好总结一下了，生命有限，且行且珍惜。

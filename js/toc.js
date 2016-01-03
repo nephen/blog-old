@@ -2,7 +2,7 @@
 (function($){
     $.fn.toc = function(options) {
         var defaults = {
-                noBackToTopLinks: false,
+                noBackToTopLinks: true,
                 title: '<i>Jump to...</i>',
                 minimumHeaders: 1,
                 headers: 'h1, h2, h3, h4, h5, h6',
