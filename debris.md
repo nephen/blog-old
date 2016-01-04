@@ -11,6 +11,10 @@ comments: true
 <hr style="height:10px;border:none;border-top:10px groove skyblue;" />
 
 <ul class="square">
+<li><p>2016.1.4</p></li>
+<p>
+红薯发霉了？！
+</p>
 <li><p>2016.1.2</p></li>
 <p>
 你为什么不让我对着你的鼻子吹气？
