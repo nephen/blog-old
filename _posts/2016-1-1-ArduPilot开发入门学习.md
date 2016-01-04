@@ -115,6 +115,111 @@ Ubuntu用户可以参考[链接](http://dev.ardupilot.com/wiki/building-the-code
 		mount -t binfs /dev/null /bin
 		ls /bin
 		perf
+	这些的源代码在[PX4Firmware/src/drivers](https://github.com/diydrones/PX4Firmware/tree/master/src/drivers)里，如果你看了mpu6000驱动，你会看到这么一行：
+
+		hrt_call_every(&_call, 1000, _call_interval, (hrt_callout)&MPU6000::measure_trampoline, this);
+	它跟AP_HAL里的hal.scheduler->register_timer_process()是等效的，用在操作迅速的常规事件里，如SPI设备驱动。或者你还可以看到hmc5883驱动里的
+
+		work_queue(HPWORK, &_work, (worker_t)&HMC5883::cycle_trampoline, this, 1);
+	而这个适用于速度慢一点的设备，比如IIC。
+- [AP_Scheduler系统](http://dev.ardupilot.com/wiki/learning-ardupilot-threading/#the_ap_scheduler_system)：AP_Scheduler 库的作用是在主线程里面划分时间片；可以通过例子[ AP_Scheduler/examples/Scheduler_test.cpp](https://github.com/diydrones/ardupilot/blob/master/libraries/AP_Scheduler/examples/Scheduler_test/Scheduler_test.cpp)学习，这个文件里边有一个表单：
+
+	```c
+	static const AP_Scheduler::Task scheduler_tasks[] PROGMEM = {
+	 { ins_update, 1, 1000 },
+	 { one_hz_print, 50, 1000 },
+	 { five_second_call, 250, 1800 },
+	};
+	```
+	函数后面的第一个数字是调用频率，它的单位由ins.init()调用控制，这个例子使用的是RATE_50HZ，即20ms，所以ins_update()调用是20ms一次，one_hz_print()调用是1s一次，five_second_call为5s一次。第三个数字是函数预计花费的最长时间。另一个关键点是 ins.wait_for_sample()函数的调用，它是ArduPilot驱动调度的节拍器，它阻塞主函数的执行直到一个新的IMU采集的到来，而阻塞的时间是由ins.init()控制的。 AP_Scheduler tables必须有如下的属性：
+	- 它们不能被阻塞，除非ins.update()被调用；
+	- 在飞行中不能执行睡眠函数；
+	- 它们应该有可预测的最坏情况时间；   
+	
+	现在可以在Scheduler_test例子里做练习了。 比如做如下的事情：
+	
+		read the barometer
+		read the compass
+		read the GPS
+		update the AHRS and print the roll/pitch
+
+- [信号量](http://dev.ardupilot.com/wiki/learning-ardupilot-threading/#semaphores)：为了防止多个线程访问一个共享的数据结构而产生冲突，这里有三种原理方法：semaphores, lockless data structures and the PX4 ORB；查看libraries/AP_Compass/AP_Compass_HMC5883.cpp里的_i2c_sem变量，自己探索它的工作原理。
+
+- [无锁的数据结构](http://dev.ardupilot.com/wiki/learning-ardupilot-threading/#lockless_data_structures)：ArduPilot两个无锁的数据结构的例子：
+ - the _shared_data structure in libraries/AP_InertialSensor/AP_InertialSensor_MPU9250.cpp
+ - the ring buffers used in numerous places. A good example is libraries/DataFlash/DataFlash_File.cpp
+
+ 	DataFlash_File中可以查看 _writebuf_head 和 _writebuf_tail两个变量。
+
+- [PX4 ORB](http://dev.ardupilot.com/wiki/learning-ardupilot-threading/#the_px4_orb)：ORB是一种从系统的一部分到系统的另一部分提供数据的方式，它在一个多线程的环境中使用了发布/订阅模型。所有的定义都在[PX4Firmware/src/modules/uORB/topics](https://github.com/diydrones/PX4Firmware/tree/master/src/modules/uORB/topics)；例子有AP_HAL_PX4/RCOutput.cpp里的_publish_actuators()，你将看到它订阅了一个“actuator_direct”主题，它包含了每个电调的设定速度。    
+另外的两种与px4驱动通信的机制为：
+ - ioctl calls (see the examples in AP_HAL_PX4/RCOutput.cpp)
+ - /dev/xxx read/write calls (see _timer_tick in AP_HAL_PX4/RCOutput.cpp)
+
+5、[uart和控制台](http://dev.ardupilot.com/wiki/learning-ardupilot-uarts-and-the-console/)：ArduPilot HAL目前有5UARTs：
+
+- uartA – the console (usually USB, runs MAVLink telemetry)
+- uartB – the first GPS
+- uartC – primary telemetry (telem1 on Pixhawk, 2nd radio on APM2)
+- uartD – secondary telemetry (telem2 on Pixhawk)
+- uartE – 2nd GPS
+
+你可以任意使用，但最好是按它原来的方式，因为有现成的代码。有些UARTs有着双重角色，如SERIAL2_PROTOCOL参数使uartD用于MAVLink变为用于Frsky telemetry。可以参看这个例子 [libraries/AP_HAL/examples/UART_test](https://github.com/diydrones/ardupilot/blob/master/libraries/AP_HAL/examples/UART_test/UART_test.cpp)做练习。    
+每个UART有一些基本的IO函数：
+
+- printf – formatted print
+- printf_P – formatted print with progmem string (saves memory on AVR boards)
+- println – print and line feed
+- write – write a bunch of bytes
+- read – read some bytes
+- available – check if any bytes are waiting
+- txspace – check how much outgoing buffer space is available
+- get_flow_control – check if the UART has flow control capabilities
+
+6、[RC输入与输出](http://dev.ardupilot.com/wiki/learning-ardupilot-rc-input-output/)：ArduPilot根据板类支持几种不同类型的RC输入：
+
+- PPMSum – on PX4, Pixhawk, Linux and APM2
+- SBUS – on PX4, Pixhawk and Linux
+- Spektrum/DSM – on PX4, Pixhawk and Linux
+- PWM – on APM1 and APM2
+- RC Override (MAVLink) – all boards
+
+	其中SBUS 和 Spektrum/DSM都是串口协议。
+
+RC输出是ArduPilot控制伺服系统和电机，RC输出默认为50 hz PWM值，但是可以更高，通常在400hz。
+
+- [AP_HAL RCInput对象](http://dev.ardupilot.com/wiki/learning-ardupilot-rc-input-output/#ap_hal_rcinput_object)(hal.rcin)
+
+	它提供目前板上收到的低级的访问通道值。例子为[libraries/AP_HAL/examples/RCInput/RCInput.cpp](https://github.com/diydrones/ardupilot/blob/master/libraries/AP_HAL/examples/RCInput/RCInput.cpp)。
+- [AP_HAL RCOutput](http://dev.ardupilot.com/wiki/learning-ardupilot-rc-input-output/#ap_hal_rcoutput_object)(hal.rcout)
+
+	hal.rcin 和 hal.rcout 对象都是低级函数，所有用户配置都是通过RC_Channel，例子在 [libraries/RC_Channel/examples/RC_Channel/RC_Channel.cpp](https://github.com/diydrones/ardupilot/blob/master/libraries/RC_Channel/examples/RC_Channel/RC_Channel.cpp)。
+- [RC_Channel_aux](http://dev.ardupilot.com/wiki/learning-ardupilot-rc-input-output/#the_rc_channel_aux_object)
+
+	位于libraries/RC_Channel，是RC_Channel的子类，可以由用户指定附加属性。
+
+7、[存储和eeprom管理](http://dev.ardupilot.com/wiki/learning-ardupilot-storage-and-eeprom-management/)
+
+- [AP_HAL::Storage](http://dev.ardupilot.com/wiki/learning-ardupilot-storage-and-eeprom-management/#the_ap_halstorage_library)：hal.storage API有三个主要的函数：
+ - init() to start up the storage subsystem
+ - read_block() to read a block of bytes
+ - write_block() to write a block of bytes
+
+	提倡使用API，只有在使用新板子或debug的时候才用hal.storage。可用存储的大小 [AP_HAL/AP_HAL_Boards.h](https://github.com/diydrones/ardupilot/blob/master/libraries/AP_HAL/AP_HAL_Boards.h)里的宏HAL_STORAGE_SIZE定义。所以如果你想使用动态存储只能使用Posix IO。
+
+- [StorageManager库](http://dev.ardupilot.com/wiki/learning-ardupilot-storage-and-eeprom-management/#the_storagemanager_library)
+
+	详情见[libraries/StorageManager/StorageManager.cpp](https://github.com/diydrones/ardupilot/blob/master/libraries/StorageManager/StorageManager.cpp)，在板子上做测试的时候注意备份好配置文件。
+
+- [DataFlash库](http://dev.ardupilot.com/wiki/learning-ardupilot-storage-and-eeprom-management/#the_dataflash_library)
+
+	用于板载logs；也提供API从log文件里边取回数据；例子 [libraries/DataFlash/examples/DataFlash_test/DataFlash_test.cpp](https://github.com/diydrones/ardupilot/blob/master/libraries/DataFlash/examples/DataFlash_test/DataFlash_test.cpp)，或者在loop()里可以看到：
+
+		DataFlash.get_log_boundaries(log_num, start, end);
+
+- [Posix IO](http://dev.ardupilot.com/wiki/learning-ardupilot-storage-and-eeprom-management/#posix_io)
+
+	一个很好的例子是AP_Terrain库,其中包含地形数据；是否支持可以从 [AP_HAL_Boards.h](https://github.com/diydrones/ardupilot/blob/master/libraries/AP_HAL/AP_HAL_Boards.h)查看HAVE_OS_POSIX_IO macro，还可以定义数据的存储位置；这个操作比较耗时，特别在飞行过程中不宜使用；可以看这个例子 [libraries/AP_Terrain/TerrainIO.cpp](https://github.com/diydrones/ardupilot/blob/master/libraries/AP_Terrain/TerrainIO.cpp)学会怎么使用Posix IO。
 
 <hr>
 ####参考文章

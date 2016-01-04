@@ -63,12 +63,15 @@ comments: true
 <a href="http://www.guokr.com">果壳网</a>
 <a href="http://planner.ardupilot.com/">ardupilot planner</a>
 <a href="http://dev.ardupilot.com">ardupilot dev</a>
+<a href="http://copter.ardupilot.com/">ardupilot copter</a>
 <a href="http://ardupilot.com/forum/">ardupilot forum</a>
 <a href="coursera.org">全世界最好的学习网站</a>
 <a href="http://www.htmliseasy.com/">学习html</a>
 <a href="http://www.nephen.com/md5.html">md5加密</a>
 <a href="http://www.cnblogs.com/mofish/archive/2012/02/25/2367858.html">js加密</a>
 <a href="https://github.com/ghiculescu/jekyll-table-of-contents">我的TOC</a>
+<a href="https://pixhawk.ethz.ch/">pixhawk.ethz.ch</a>
+<a href="http://px4.io/">px4.io</a>
 
 <hr>
 
