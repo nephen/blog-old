@@ -72,6 +72,8 @@ comments: true
 <a href="https://github.com/ghiculescu/jekyll-table-of-contents">我的TOC</a>
 <a href="https://pixhawk.ethz.ch/">pixhawk.ethz.ch</a>
 <a href="http://px4.io/">px4.io</a>
+<a href="http://www.fenqile.com">分期乐</a>
+<a href="https://www.dnspod.cn/Login#nephen.com">dnspot</a>
 
 <hr>
 
