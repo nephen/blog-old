@@ -74,6 +74,7 @@ comments: true
 <a href="http://px4.io/">px4.io</a>
 <a href="http://www.fenqile.com">分期乐</a>
 <a href="https://www.dnspod.cn/Login#nephen.com">dnspot</a>
+<a href="http://www.waveshare.net/forum/forum-62-1.html">微雪论坛</a>
 
 <hr>
 

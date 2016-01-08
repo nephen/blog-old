@@ -93,7 +93,7 @@ The more info about [Blogging with Jekyll](https://help.github.com/articles/usin
 支付宝：18682441907(at)163.com [记得将(at)改回@哦]
 
 如果你有手机支付宝，请打开支付宝App，使用“扫一扫”付款。</p>
-<center><img src="/assets/alipay.png"/></center>
+<center><img src="/images/alipay2.jpg"/></center>
 </div>
 
 <hr>
