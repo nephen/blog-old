@@ -11,6 +11,10 @@ comments: true
 <hr style="height:10px;border:none;border-top:10px groove skyblue;" />
 
 <ul class="square">
+<li><p>2016.1.10</p></li>
+<p>
+我要发邮件，可是不知道怎么发了，于是做了这些东西，1）sudo apt-get install sendmail 2）sudo apt-get install sharutils 3）uuencode /home/nephne/下载/fireble/APP/Android/FireBLE_Passthrough.apk apk|mail -s mailtest 995168694@qq.com
+</p>
 <li><p>2016.1.4</p></li>
 <p>
 红薯发霉了？！
