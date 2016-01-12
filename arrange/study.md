@@ -1,6 +1,7 @@
 ---
 layout: default
 comments: true
+permalink: /study/
 ---
 <div class="well">
 
@@ -67,7 +68,7 @@ comments: true
 <a href="http://ardupilot.com/forum/">ardupilot forum</a>
 <a href="coursera.org">全世界最好的学习网站</a>
 <a href="http://www.htmliseasy.com/">学习html</a>
-<a href="http://www.nephen.com/md5.html">md5加密</a>
+<a href="http://www.nephen.com/arrange/md5.html">md5加密</a>
 <a href="http://www.cnblogs.com/mofish/archive/2012/02/25/2367858.html">js加密</a>
 <a href="https://github.com/ghiculescu/jekyll-table-of-contents">我的TOC</a>
 <a href="https://pixhawk.ethz.ch/">pixhawk.ethz.ch</a>
@@ -78,7 +79,8 @@ comments: true
 <a href="http://www.rationmcu.com">瑞生网</a>
 <a href="http://www.csustemb.cn/emb/topics">实验室论坛</a>
 <a href="ftp://192.168.0.102:3721/">USBless</a>
-<a href=photo>我的时间记忆空间站</a>
+<a href=../photo>我的时间记忆空间站</a>
+<a href=../page1>page1</a>
 
 <hr>
 
