@@ -11,7 +11,12 @@ permalink: /photo/
 <li><p>2016.1.12</p></li>
 <p>
 今天去剪头发了，换个文章的寸头，既然是猴年就做个清爽的程序猿吧。<br>
-<center><img src="/images/bef.jpg"><img src="/images/afe.jpg"></center>
+<center><img src="/images/faxing.png"></center>
+<hr>
+<li><p>2016.1.13</p></li>
+<p>
+fotowall折腾半天，看看可爱的小公举～<br>
+<center><img src="/images/jing.png"></center>
 
 </p>
 </ul>
