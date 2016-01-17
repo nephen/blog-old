@@ -23,4 +23,7 @@ layout: default
 <a href="http://www.thomaszhao.cn/">成功目录导航例子</a>
 <a href="http://halfelf.org/2015/jekyll-table-contents/">jekyll自带导航</a>
 <a href="http://electronics.stackexchange.com/questions/12404/how-can-i-use-a-build-server-with-keil-uvision4-mdk-arm-script-a-build-use-a">make keil</a>
+<a href="http://www.open-electronics.org/top-5-wireless-ways-to-communicate-with-your-controller/">无线控制器</a>
+<a href="http://www.seeedstudio.com/wiki/WiFi_Serial_Transceiver_Module">wifi wiki</a>
+<a href="https://item.taobao.com/item.htm?spm=a230r.1.14.65.A8zlVu&id=38116104998&ns=1&abbucket=15#detail">cc2540淘宝</a>
 </div>

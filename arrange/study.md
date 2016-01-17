@@ -81,6 +81,9 @@ permalink: /study/
 <a href="ftp://192.168.0.102:3721/">USBless</a>
 <a href=../photo>我的时间记忆空间站</a>
 <a href=../page1>page1</a>
+<a href="http://my.csust.edu.cn/index.portal">mycsust</a>
+<a href="http://www.open-electronics.org/">开源硬件</a>
+<a href="http://www.maiziedu.com">麦子学院</a>
 
 <hr>
 
