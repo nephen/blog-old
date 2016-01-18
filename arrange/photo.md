@@ -17,6 +17,11 @@ permalink: /photo/
 <p>
 fotowall折腾半天，看看可爱的小公举～<br>
 <center><img src="/images/jing.png"></center>
+<hr>
+<li><p>2016.1.18</p></li>
+<p>
+丫头飞飞机去啦<br>
+<center><img src="/images/yaf.png"></center>
 
 </p>
 </ul>
