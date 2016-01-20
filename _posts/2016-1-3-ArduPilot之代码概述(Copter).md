@@ -9,11 +9,13 @@ comments: true
 ---
 总体的代码结果图如下：
 <img src="/images/AC_CodeOverview_AutoFlightModes.png">
+具体可参考[APM飞控浅析](http://www.360doc.com/content/15/0505/11/22888854_468188999.shtml#)
 
 <br>
 ####ArduPilot编程库
 这些[库](https://github.com/diydrones/ardupilot/tree/master/libraries)是和Copter, Plane and Rover共享的，具体的库及功能见[原文](http://dev.ardupilot.com/wiki/apmcopter-programming-libraries/)。
 
+<!--more-->
 <br>
 ####姿态控制
 代码结构如图所示
@@ -21,7 +23,6 @@ comments: true
 更新周期：400hz on Pixhawk, 100hz on APM2.x    
 详情见[原文](http://dev.ardupilot.com/wiki/apmcopter-programming-attitude-control-2/)
 
-<!--more-->
 <br>
 ####添加新的参数
 
@@ -55,4 +56,4 @@ comments: true
 地面站之间传递数据和命令使用的是[MAVLink协议](http://en.wikipedia.org/wiki/MAVLink)，参考已有的[MAVLink messages](https://pixhawk.ethz.ch/mavlink/).。
 
 <hr>
-参看文章：http://dev.ardupilot.com/wiki/apmcopter-code-overview/
+参看文章：[官网](http://dev.ardupilot.com/wiki/apmcopter-code-overview/)/[串级pid](http://bbs.loveuav.com/thread-229-1-1.html)

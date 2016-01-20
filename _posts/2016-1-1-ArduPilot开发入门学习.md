@@ -12,7 +12,7 @@ comments: true
 <br>
 ####编译
 
-Ubuntu用户可以参考[链接](http://dev.ardupilot.com/wiki/building-the-code-onlinux/)进行操作，可以从`Advanced`标签开始，注意安装`sudo apt-get install gawk make git arduino-core g++`，然后在相应的文件夹下(如：ArduCopter，参看[APM2.x](http://dev.ardupilot.com/wiki/supported-autopilot-controller-boards/#apm2x)，Copter 3.3或更新固件不再支持APM板)make即可(主目录下默认make所有)。同时还可以编译成在[pixhawk](http://dev.ardupilot.com/wiki/supported-autopilot-controller-boards/#pixhawk)上运行的目标文件，参看这篇[文章](http://dev.ardupilot.com/wiki/building-px4-for-linux-with-make/)，编译`make px4-v2`，上传`make px4-v2-upload`，git更新后清除`make px4-clean`。有几个地方需要注意的:
+Ubuntu用户可以参考[链接](http://dev.ardupilot.com/wiki/building-the-code-onlinux/#advanced)进行操作，可以从`Advanced`标签开始，注意安装`sudo apt-get install gawk make git arduino-core g++`，然后在相应的文件夹下(如：ArduCopter，参看[APM2.x](http://dev.ardupilot.com/wiki/supported-autopilot-controller-boards/#apm2x)，Copter 3.3或更新固件不再支持APM板)make即可(主目录下默认make所有)。同时还可以编译成在[pixhawk](http://dev.ardupilot.com/wiki/supported-autopilot-controller-boards/#pixhawk)上运行的目标文件，参看这篇[文章](http://dev.ardupilot.com/wiki/building-px4-for-linux-with-make/)，编译`make px4-v2`，上传`make px4-v2-upload`，git更新后清除`make px4-clean`。有几个地方需要注意的:
 
 <!--more-->
 - 需要特定的[编译器](http://firmware.diydrones.com/Tools/PX4-tools/)，下载后解压`tar -xjvf gcc-arm-none-eabi-4_6-2012q2-20120614.tar.bz2`，然后编辑$HOME/.bashrc文件，加入`export PATH=$PATH:/home/your_username/bin/gcc-arm-none-eabi-4_6-2012q2/bin`，或者参考我之前写的[文章](http://www.nephen.com/2015/12/%E5%88%9D%E5%AD%A6PX4%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/#%E4%BB%A3%E7%A0%81%E7%BC%96%E8%AF%91)。
