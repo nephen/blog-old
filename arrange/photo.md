@@ -22,6 +22,16 @@ fotowall折腾半天，看看可爱的小公举～<br>
 <p>
 丫头飞飞机去啦<br>
 <center><img src="/images/yaf.png"></center>
+<hr>
+<li><p>2016.1.21</p></li>
+<p>
+我们回家了<br>
+<center><img src="/images/home.jpg"></center>
+<hr>
+<li><p>2016.1.22</p></li>
+<p>
+我的小妇女哈哈<br>
+<center><img src="/images/funv.jpg"></center>
 
 </p>
 </ul>

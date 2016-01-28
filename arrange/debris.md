@@ -6,19 +6,21 @@ comments: true
 <div class="well">
 
 <!--音乐台-->
- <p><center><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="http://music.163.com/outchain/player?type=0&id=146921027&auto=1&height=430"></iframe></center></p>
+ <p><center><iframe name="iframe_canvas" src="http://douban.fm/partner/baidu/doubanradio" scrolling="no" frameborder="0" width="420" height="190"></iframe></center></p>
 
 <hr style="height:10px;border:none;border-top:10px groove skyblue;" />
 
 <ul class="square">
-<li><p>2016.1.10</p></li>
+<li><p>2016.1.27</p></li>
 <p>
-我要发邮件，可是不知道怎么发了，于是做了这些东西，1）sudo apt-get install sendmail 2）sudo apt-get install sharutils 3）uuencode /home/nephne/下载/fireble/APP/Android/FireBLE_Passthrough.apk apk|mail -s mailtest 995168694@qq.com
+1) 其实每一次的进步，都会经过一些弯路，不要急于求成，许多事情自然会水到渠成。2) 我在认认真真做一些有价值的事情，这样它才会值钱，我也会过得很实在。
 </p>
+
 <li><p>2016.1.4</p></li>
 <p>
 红薯发霉了？！
 </p>
+
 <li><p>2016.1.2</p></li>
 <p>
 你为什么不让我对着你的鼻子吹气？
