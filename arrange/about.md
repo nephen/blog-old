@@ -62,7 +62,7 @@ $ cd existing_git_repo
 $ git remote add origin 'git@gitcafe.com:nephen/nephen.git'
 $ git push -u origin master
 ```
-The more info about [Blogging with Jekyll](https://help.github.com/articles/using-jekyll-with-pages/)
+The more info about [Blogging with Jekyll](https://help.github.com/articles/using-jekyll-with-pages/)/[GitCafe 官方帮助文档](https://gitcafe.com/GitCafe/Help/wiki/Pages-%E7%9B%B8%E5%85%B3%E5%B8%AE%E5%8A%A9#wiki)
 
 <hr>
 ##Contributing
