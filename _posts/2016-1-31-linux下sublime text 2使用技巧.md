@@ -200,7 +200,7 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 32. MarkDown Editing插件     
 	支持Markdown语法高亮；支持Github Favored Markdown语法；自带3个主题。
 
-	<img src="http://upload-images.jianshu.io/upload_images/26219-acb1458822ef63e8.png?imageView2/2/w/1240/q/100">
+	<img src="/images/markdownedit.png">
 4. Git插件       
 	该插件基本上实现了git的所有功能。设置git推送
 
@@ -230,7 +230,7 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 11. Alignment插件    
 	选中并按ctrl+alt+a就可以使其按照等号对齐
 
-	<img src="http://upload-images.jianshu.io/upload_images/26219-b4dcc90c37386703.gif?imageView2/2/w/1240/q/100">
+	<img src="/images/align.gif">
 12.  C Improved插件      
 	更加人性化的C语言着色方案。
 	设置如下：
@@ -238,22 +238,22 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 	<img src="http://upload-images.jianshu.io/upload_images/26219-9c1425440dcbf67f.png?imageView2/2/w/1240/q/100">
 	对比效果：
 
-	<img src="http://upload-images.jianshu.io/upload_images/26219-1f7df1e499c496ff.png?imageView2/2/w/1240/q/100">
+	<img src="/images/cimprove.png">
 13.  CoolFormat插件     
 	简单好用的代码格式化工具，相当于简化版的Astyle，默认ctrl+alt+shift+q格式化当前文件，ctrl+alt+shift+s格式化当前选中。
 
-	<img src="http://upload-images.jianshu.io/upload_images/26219-84e77c9279cea776.gif?imageView2/2/w/1240/q/100">
+	<img src="/images/cool.gif">
 
 	格式设置
 
-	<img src="http://upload-images.jianshu.io/upload_images/26219-608f1e8315a138a4.png?imageView2/2/w/1240/q/100">
+	<img src="/images/coolset.png">
 14. SublimeAStyleFormatter插件     
 	国人做的Astyle Sublime版，蛮不错的。
 	安装完成之后，下面这个配置一定要打开，即保存自动格式化，这个相比于CoolFormat要简单很多。
 
 	配置
 
-	<img src="http://upload-images.jianshu.io/upload_images/26219-4823e065b8152fbd.png?imageView2/2/w/1240/q/100">
+	<img src="/images/formate.png">
 
 	<img src="http://upload-images.jianshu.io/upload_images/26219-1a1003423f2138c1.gif?imageView2/2/w/1240/q/100">
 15. All Autocomplete插件      
@@ -263,17 +263,19 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 16. Markdown Extended + Monokai Extended插件     
 	不错的Markdown主题，支持对多种语言的高亮
 
-	<img src="http://upload-images.jianshu.io/upload_images/26219-1c131c4be3d76855.png?imageView2/2/w/1240/q/100">
+	<img src="/images/mono.png">
 18. HexViewer插件     
-	玩单片机的玩家都懂这个是很重要     
+	玩单片机的玩家都懂这个是很重要
+
 	<img src="http://upload-images.jianshu.io/upload_images/26219-b2fbcfbc300d0f6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240/format/jpg">
+	
 	Markdown中的表格书写体验真心不咋样，所有有人为这个开发了一个插件，具有较好的自适应性，会自动对齐，强迫症患者喜欢。
 
-	<img src="http://upload-images.jianshu.io/upload_images/26219-256230846b591b50.gif?imageView2/2/w/1240/q/100">
+	<img src="/images/bg.gif">
 23. TrailingSpaces插件      
 	强迫症患者必备
 
-	<img src="http://upload-images.jianshu.io/upload_images/26219-bfaae3798e010b6f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240/format/jpg" alt="">
+	<img src="/images/space.jpg" alt="">
 23. sublimelinter插件    
 	sublimelinter是sublime的代码校验插件，它可以帮你找出错误或编写不规范的代码，支持 C/C++、CoffeeScript、CSS、Git Commit Messages、Haml、HTML、Java、JavaScript、Lua、Objective-J、Perl、PHP、Puppet、Python、Ruby 和 XML 语言。当需要对相应的语言进行代码校验的时候，就要下载相应的校验程序，例如：    
 	- C/C++ - lint via `cppcheck`

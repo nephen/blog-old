@@ -13,6 +13,11 @@ You can find the source code for the Jekyll new theme at [jekyll-new](https://gi
 More personal information please look up the [contact](/contact) page
 
 <hr>
+##动态
+- 2016.2.2    
+    由于部分原因，本网站暂时有github迁移至gitcafe。
+
+<hr>
 ## Simple development tutorial
 
 ```bash
