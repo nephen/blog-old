@@ -10,8 +10,6 @@ You can find out more info about customizing your Jekyll theme, as well as basic
 
 You can find the source code for the Jekyll new theme at [jekyll-new](https://github.com/jglovier/jekyll-new),the source code for Jekyll at [jekyll](https://github.com/jekyll/jekyll)
 
-You can find the source code for this blog theme if you like it at [nephen.github.io](http://www.github.com/nephen/nephen.github.io)
-
 More personal information please look up the [contact](/contact) page
 
 <hr>
@@ -19,7 +17,7 @@ More personal information please look up the [contact](/contact) page
 
 ```bash
 # => Use Git and public article in folder _post
-$ git clone git@github.com:nephen/nephen.github.io
+$ git clone git@gitcafe.com:nephen/nephen.git
 ```
 
 ```bash
@@ -47,6 +45,22 @@ $ echo gem 'github-pages' >> Gemfile
 $ bundle install
 $ bundler exec jekyll server
 # => Now browse to http://localhost:4000
+# => 设置GIT
+$ git config --global user.name 'nephen'
+$ git config --global user.email '18682441907@163.com'
+# => 您可以在本地创建新的 Git 仓库
+$ mkdir nephen
+$ cd nephen
+$ git init
+$ touch README.md
+$ git add README.md
+$ git commit -m 'first commit'
+$ git remote add origin 'git@gitcafe.com:nephen/nephen.git'
+$ git push -u origin master
+# => 或者提交在本地已有 Git 仓库
+$ cd existing_git_repo
+$ git remote add origin 'git@gitcafe.com:nephen/nephen.git'
+$ git push -u origin master
 ```
 The more info about [Blogging with Jekyll](https://help.github.com/articles/using-jekyll-with-pages/)
 
@@ -65,6 +79,7 @@ The more info about [Blogging with Jekyll](https://help.github.com/articles/usin
 
 - 归档应该增加分类功能。
 - 段落边框覆盖了文中链接。
+- Kramdown被设为默认的Markdown 处理器。
 
 <hr>
 ##Notices
