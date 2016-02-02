@@ -206,6 +206,8 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 
 	```sh
 	git config --global push.default simple
+	#=> 先进行绑定
+	git push -u origin master
 	```
 
 	<img src="http://www.xuanfengge.com/wp-content/uploads/2013/12/git.png">
@@ -235,7 +237,7 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 	更加人性化的C语言着色方案。
 	设置如下：
 
-	<img src="http://upload-images.jianshu.io/upload_images/26219-9c1425440dcbf67f.png?imageView2/2/w/1240/q/100">
+	<img src="/images/cset.png">
 	对比效果：
 
 	<img src="/images/cimprove.png">
@@ -255,7 +257,7 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 
 	<img src="/images/formate.png">
 
-	<img src="http://upload-images.jianshu.io/upload_images/26219-1a1003423f2138c1.gif?imageView2/2/w/1240/q/100">
+	<img src="/images/astyle.gif">
 15. All Autocomplete插件      
 	Sublime自带的可以对当前文件中的变量和函数名进行自动提示，但是AllAutocomplete可以对打开的所有文件的变量名进行提示，增强版的代码自动提示符。
 
@@ -267,7 +269,7 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 18. HexViewer插件     
 	玩单片机的玩家都懂这个是很重要
 
-	<img src="http://upload-images.jianshu.io/upload_images/26219-b2fbcfbc300d0f6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240/format/jpg">
+	<img src="/images/hex.jpeg">
 	
 	Markdown中的表格书写体验真心不咋样，所有有人为这个开发了一个插件，具有较好的自适应性，会自动对齐，强迫症患者喜欢。
 
