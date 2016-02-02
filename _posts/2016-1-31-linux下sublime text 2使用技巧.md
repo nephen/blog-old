@@ -267,7 +267,6 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 18. HexViewer插件     
 	玩单片机的玩家都懂这个是很重要     
 	<img src="http://upload-images.jianshu.io/upload_images/26219-b2fbcfbc300d0f6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240/format/jpg">
-12. TableEditor插件      
 	Markdown中的表格书写体验真心不咋样，所有有人为这个开发了一个插件，具有较好的自适应性，会自动对齐，强迫症患者喜欢。
 
 	<img src="http://upload-images.jianshu.io/upload_images/26219-256230846b591b50.gif?imageView2/2/w/1240/q/100">
