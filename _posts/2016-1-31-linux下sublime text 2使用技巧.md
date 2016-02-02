@@ -61,14 +61,34 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 
 <br>
 ####查看代码
-#####sublime快捷键
-多行编辑： ctrl+左键 , Ctrl+Shift+L    
-文件切换： ctrl+p     
-替换 ： ctrl+shift+f    
-函数查找 ctrl+p 然后输入@    
-跳到指定行 ctrl+p 然后输入:    
-跳到某个类某个方法 ctrl+p 输入 类名@函数名     
-调出命令面板 ctrl+shift+p
+#####sublime快捷键    
+参考文章：[木木木](https://immmmm.com/all-about-sublime-text-2.html)
+
+- 多行编辑： ctrl+左键 , Ctrl+Shift+L
+- 文件切换： ctrl+p 搜索项目中的文件，支持模糊匹配
+- ctrl+r：列出当前文件中的所有函数，同ctrl+p后按一个@符号一样，其实可以把ctrl+r理解成ctrl+p的快捷键
+- 替换 ： ctrl+shift+f
+- 函数查找 ctrl+p 然后输入@，加上# 和 @ 分别为变量和函数，其实搜变量也能搜到函数
+- 跳到指定行 ctrl+p 然后输入':'
+- ctrl+f：当前文件中查找关键字
+- 跳到某个类某个方法 ctrl+p 输入 类名@函数名
+- 调出命令面板 ctrl+shift+p
+- F11：全屏
+- shift+F11：全屏免打扰模式，只编辑当前文件
+- Ctrl+M 光标移动至括号内开始或结束的位置
+- Ctrl+Shift+M 选择括号内的内容（按住-继续选择父括号）
+- Ctrl+D 选中光标所占的文本，继续操作则会选中下一个相同的文本
+- Alt+F3 选中文本按下快捷键，即可一次性选择全部的相同文本进行同时编辑。举个栗子：快速选中并更改所有相同的变量名、函数名等
+- Alt+Shift+2 窗口两列显示
+- Alt+Shift+8 窗口两行显示
+- Ctrl+Enter 光标所在行后插入行
+- Ctrl+Shift+Enter 光标所在行前插入行
+- Ctrl+Shift+↑ 与上行互换
+- Ctrl+Shift+↓ 与下行互换
+- Ctrl+Shift+K 删除整行
+- Ctrl+Shift+D 复制整行
+- Ctrl+D 选中光标所在字符串 （按住继续选择下个相同字符串）
+- Alt+F3 选中与光标处相同的全部词
 
 #####ctags与cscope
 下面就想通过sublime实现类似SI的功能，毕竟这个编辑器是比较强大的。具体方案为采用ctags和cscope插件。    
@@ -108,6 +128,23 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 	show_symbols (suffix)        |   ctrl+alt+shift+s
 
 	也可以自定义热键。
+
+	<img src="/images/ctags.png" alt="">
+
+	输入如下：
+
+	```
+	[
+	    {
+	        "command": "navigate_to_definition",
+	        "keys": ["ctrl+shift+period"]
+	    },
+	    {
+	        "command": "jump_prev",
+	        "keys": ["ctrl+shift+comma"]
+	    }
+	]
+	```
 4. ctags用官方的解释就是产生标记文件，帮助在文件中定位对象。其实就是你可以找到一个对象的定义处。更多请查看[Sublime之Ctags](http://ju.outofmemory.cn/entry/36068)
 5. 搜索下载cscope插件。这里参考了[使用Sublime Text3+Ctags+Cscope替代Source Insight](https://www.zybuluo.com/lanxinyuchs/note/33551)。    
 下载cscope
@@ -120,10 +157,28 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 	```sh
 	#=> R 表示把所有子目录里的文件也建立索引
 	#=> b 表示cscope不启动自带的用户界面，而仅仅建立符号数据库
-	#=> q生成cscope.in.out和cscope.po.out文件，加快cscope的索引速度
-	#=> k在生成索引文件时，不搜索/usr/include目录
+	#=> q 生成cscope.in.out和cscope.po.out文件，加快cscope的索引速度
+	#=> k 在生成索引文件时，不搜索/usr/include目录
 	$ cscope -Rbkq
 	```
+或者如下    
+安装好Ctags和Cscope工具之后，可以在想要导入的工程的根路径下，通过下面命令建立Cscope索引数据库和.tags文件。
+
+	```sh
+	find . -name "*.h" -o -name "*.c" -o -name "*.cc" -o -name "*.S" -o -name "*.ch" -o -name "*.cpp" > cscope.files
+	cscope -bkq -i cscope.files
+	ctags -R -f .tags
+	```
+	热键：
+	+ `Ctrl/Super + \`                 - Show Cscope options
+	+ `Ctrl/Super + L``Ctrl/Super + S` - Look up symbol under cursor
+	+ `Ctrl/Super + L``Ctrl/Super + D` - Look up definition under cursor
+	+ `Ctrl/Super + L``Ctrl/Super + E` - Look up functions called by the function under the cursor
+	+ `Ctrl/Super + L``Ctrl/Super + R` - Look up functions calling the function under the cursor
+	+ `Ctrl/Super + Shift + [`         - Jump back
+	+ `Ctrl/Super + Shift + ]`         - Jump forward
+
+	进入cscope查找结果后，按回车即可进入结果相应页面。
 
 #####sublime部分插件
 下面安装的这些插件可有可无，但是安装他们并熟练运用将成为你得力的助手。      
@@ -210,8 +265,7 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 
 	<img src="http://upload-images.jianshu.io/upload_images/26219-1c131c4be3d76855.png?imageView2/2/w/1240/q/100">
 18. HexViewer插件     
-	玩单片机的玩家都懂这个是很重要
-
+	玩单片机的玩家都懂这个是很重要     
 	<img src="http://upload-images.jianshu.io/upload_images/26219-b2fbcfbc300d0f6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240/format/jpg">
 12. TableEditor插件      
 	Markdown中的表格书写体验真心不咋样，所有有人为这个开发了一个插件，具有较好的自适应性，会自动对齐，强迫症患者喜欢。
@@ -221,3 +275,21 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 	强迫症患者必备
 
 	<img src="http://upload-images.jianshu.io/upload_images/26219-bfaae3798e010b6f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240/format/jpg" alt="">
+23. sublimelinter插件    
+	sublimelinter是sublime的代码校验插件，它可以帮你找出错误或编写不规范的代码，支持 C/C++、CoffeeScript、CSS、Git Commit Messages、Haml、HTML、Java、JavaScript、Lua、Objective-J、Perl、PHP、Puppet、Python、Ruby 和 XML 语言。当需要对相应的语言进行代码校验的时候，就要下载相应的校验程序，例如：    
+	- C/C++ - lint via `cppcheck`
+  	- CoffeeScript - lint via `coffee -s -l`
+  	- CSS - lint via built-in [csslint](http://csslint.net)
+  	- Git Commit Messages - lint via built-in module based on [A Note About Git Commit Messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
+  	- Haml - syntax check via `haml -c`
+  	- HTML - lint via `tidy` (actually [tidy for HTML5](http://w3c.github.com/tidy-html5/))
+  	- Java - lint via `javac -Xlint`
+  	- JavaScript - lint via built in [jshint](http://jshint.org), [jslint](http://jslint.com), or the [closure linter (gjslint)](https://developers.google.com/closure/utilities/docs/linter_howto) (if installed)
+  	- Lua - syntax check via `luac`
+  	- Objective-J - lint via built-in [capp_lint](https://github.com/aparajita/capp_lint)
+  	- Perl - lint via [Perl:Critic](http://perlcritic.com/) or syntax+deprecation check via `perl -c`
+  	- PHP - syntax check via `php -l`
+  	- Puppet - syntax check via `puppet parser validate`
+  	- Python - native, moderately-complete lint
+  	- Ruby - syntax check via `ruby -wc`
+  	- XML - lint via `xmllint`
