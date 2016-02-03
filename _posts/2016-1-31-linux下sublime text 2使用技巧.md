@@ -89,6 +89,12 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 - Ctrl+Shift+D 复制整行
 - Ctrl+D 选中光标所在字符串 （按住继续选择下个相同字符串）
 - Alt+F3 选中与光标处相同的全部词
+- 重新打开关闭的标签：和Chrome浏览器一样，如果你不小心关闭了一个页面，你只要按下Shift+Cmd+T（Windows下按住Shift+Ctrl+T）就可以重新打开该页面。如果你连续按这样的组合键，你就可以按照关闭的顺序重新打开它们。
+
+#####高亮设置
+Sublime Text对于一些常见的扩展名的文件都能够识别并选择Sublime Text内置对应的高亮语法，但是对于一些使用频率比较少的扩展名文件就无法识别，Sublime Text打开此类文件后默认显示成普通文本，没有语法高亮。
+
+- 打开文件后点击右下角的Plain Text，在出现的文件格式中选择open all with current extension as…  ->"需要显示的语法类型"。这样以后打开这个类型的文件就会自动进行语法高亮了。
 
 #####ctags与cscope
 下面就想通过sublime实现类似SI的功能，毕竟这个编辑器是比较强大的。具体方案为采用ctags和cscope插件。    
@@ -188,7 +194,7 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 
 1. Terminal插件    
 	Terminal插件可以允许在Sublime Text2中打开cmd命令窗口，很实用的一个插件，安装好该插件好，打开cmd命令窗口的快捷键是
-	Ctrl+Shift+T。可在Preferences -> Package Setting找到README。
+	Ctrl+Alt+T。可在Preferences -> Package Setting找到README。
 2. DocBlockr插件    
 	用来生成注释块的插件，安装好之后直接输入"/*"，然后再按回车键，即可生成代码注释块。它会解析函数，变量，和参数，根据它们自动生成文档范式，你的工作就是去填充对应的说明。
 
