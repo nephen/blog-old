@@ -67,7 +67,7 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 - 多行编辑： ctrl+左键 , Ctrl+Shift+L
 - 文件切换： ctrl+p 搜索项目中的文件，支持模糊匹配
 - ctrl+r：列出当前文件中的所有函数，同ctrl+p后按一个@符号一样，其实可以把ctrl+r理解成ctrl+p的快捷键
-- 替换 ： ctrl+shift+f
+- 全局替换搜索 ： ctrl+shift+f
 - 函数查找 ctrl+p 然后输入@，加上# 和 @ 分别为变量和函数，其实搜变量也能搜到函数
 - 跳到指定行 ctrl+p 然后输入':'
 - ctrl+f：当前文件中查找关键字
@@ -302,3 +302,7 @@ Sublime Text对于一些常见的扩展名的文件都能够识别并选择Subli
   	- Python - native, moderately-complete lint
   	- Ruby - syntax check via `ruby -wc`
   	- XML - lint via `xmllint`
+243. Search in Project插件     
+	由于不是c文件的文件不能被ctags和cscope搜索到，所以建议安装这个插件。比较一下速度，选用了[pt](https://github.com/leonid-shevtsov/SearchInProject_SublimeText#installing-search-engines)引擎，需下载安装。快捷键为`Ctrl+Alt+Shift+F`，这种方法相对sublime 自身的全局搜索`Ctrl+Shift+F`要快一些。
+
+	<img src="https://raw.githubusercontent.com/leonid-shevtsov/SearchInProject_SublimeText/screencast/screencast.gif" alt="">
