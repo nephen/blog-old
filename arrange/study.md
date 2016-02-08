@@ -84,6 +84,7 @@ permalink: /study/
 <a href="http://my.csust.edu.cn/index.portal">mycsust</a>
 <a href="http://www.open-electronics.org/">开源硬件</a>
 <a href="http://www.maiziedu.com">麦子学院</a>
+<a href="http://www.beijing-time.org/riqi.htm">日期计算</a>
 
 <hr>
 

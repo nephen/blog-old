@@ -10,12 +10,16 @@ Shutter是一款功能丰富的截图软件。你可以对特定区域、窗口�
 Scrot是一个命令行下使用的截图工具，支持全屏、窗口、选取、多设备、缩略图、延时，甚至可以截图完毕之后指定某程序打开截好的图片。如scrot -cd 20  ~/abc.png
 
 <p>邮件收发</p>
-我要发邮件，可是不知道怎么发了，于是做了这些东西    
+我要发邮件，可是不知道怎么发了，于是做了这些东西
+
 1. sudo apt-get install sendmail     
 2. sudo apt-get install sharutils     
 3. uuencode /home/nephne/下载/fireble/APP/Android/FireBLE_Passthrough.apk apk|mail -s mailtest 995168694@qq.com
 
 <p>财务</p>
 1.5w + 6500
+
+<p>命令使用</p>
+1. 查看文件夹大小 du -sh
 
 </del>

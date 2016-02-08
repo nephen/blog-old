@@ -90,6 +90,16 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 - Ctrl+D 选中光标所在字符串 （按住继续选择下个相同字符串）
 - Alt+F3 选中与光标处相同的全部词
 - 重新打开关闭的标签：和Chrome浏览器一样，如果你不小心关闭了一个页面，你只要按下Shift+Cmd+T（Windows下按住Shift+Ctrl+T）就可以重新打开该页面。如果你连续按这样的组合键，你就可以按照关闭的顺序重新打开它们。
+- 上下移动设置。快捷键为`ctrl + up\ctrl + down`。如默认为设置，需手动进行用户设置
+
+	```sh
+	{ "keys": ["ctrl+up"], "command": "scroll_lines", "args": {"amount": 1.0 } },
+	{ "keys": ["ctrl+down"], "command": "scroll_lines", "args": {"amount": -1.0 } }
+	```
+- 标签页移动。ctrl + PgUp/PgDn
+- 行首/尾。Home/End
+- 复制至行首/尾。shift + Home/End
+- 文章的首部/尾部。ctrl + Home/End
 
 #####高亮设置
 Sublime Text对于一些常见的扩展名的文件都能够识别并选择Sublime Text内置对应的高亮语法，但是对于一些使用频率比较少的扩展名文件就无法识别，Sublime Text打开此类文件后默认显示成普通文本，没有语法高亮。
@@ -194,7 +204,7 @@ Sublime Text对于一些常见的扩展名的文件都能够识别并选择Subli
 
 1. Terminal插件    
 	Terminal插件可以允许在Sublime Text2中打开cmd命令窗口，很实用的一个插件，安装好该插件好，打开cmd命令窗口的快捷键是
-	Ctrl+Alt+T。可在Preferences -> Package Setting找到README。
+	Ctrl+Shift+T。可在Preferences -> Package Setting找到README。
 2. DocBlockr插件    
 	用来生成注释块的插件，安装好之后直接输入"/*"，然后再按回车键，即可生成代码注释块。它会解析函数，变量，和参数，根据它们自动生成文档范式，你的工作就是去填充对应的说明。
 
@@ -276,7 +286,7 @@ Sublime Text对于一些常见的扩展名的文件都能够识别并选择Subli
 	玩单片机的玩家都懂这个是很重要
 
 	<img src="/images/hex.jpeg">
-	
+23. TableeEitor插件     
 	Markdown中的表格书写体验真心不咋样，所有有人为这个开发了一个插件，具有较好的自适应性，会自动对齐，强迫症患者喜欢。
 
 	<img src="/images/bg.gif">
@@ -304,5 +314,12 @@ Sublime Text对于一些常见的扩展名的文件都能够识别并选择Subli
   	- XML - lint via `xmllint`
 243. Search in Project插件     
 	由于不是c文件的文件不能被ctags和cscope搜索到，所以建议安装这个插件。比较一下速度，选用了[pt](https://github.com/leonid-shevtsov/SearchInProject_SublimeText#installing-search-engines)引擎，需下载安装。快捷键为`Ctrl+Alt+Shift+F`，这种方法相对sublime 自身的全局搜索`Ctrl+Shift+F`要快一些。
+
+	用户设置为
+
+	```sh
+	"search_in_project_engine": "the_platinum_searcher"
+	```
+	效果如下
 
 	<img src="https://raw.githubusercontent.com/leonid-shevtsov/SearchInProject_SublimeText/screencast/screencast.gif" alt="">

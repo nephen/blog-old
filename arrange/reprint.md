@@ -28,4 +28,8 @@ layout: default
 <a href="https://item.taobao.com/item.htm?spm=a230r.1.14.65.A8zlVu&id=38116104998&ns=1&abbucket=15#detail">cc2540淘宝</a>
 <a href="http://www.moz8.com/forum.php?mod=viewthread&tid=62578&extra=page%3D2%26filter%3Dtypeid%26typeid%3D92">pix diy</a>
 <a href="http://diydrones.com/profiles/blogs/simulate-erle-copter-in-gazebo">gazebo仿真</a>
+<a href="http://cidian.youdao.com/index-linux.html">有道词典linux版</a>
+<a href="http://www.linuxidc.com/Linux/2015-11/125153.htm">CentOS x64上Matlab R2015b的镜像安装方法与卸载</a>
+<a href="http://blog.csdn.net/lanbing510/article/details/41698285">Linux下安装Matlab2014及破解 </a>
+<a href="http://blog.csdn.net/shanshanpt/article/details/19897897">ioctl()函数详解 </a>
 </div>
