@@ -4,7 +4,7 @@ permalink: /photo/
 ---
 <div class="well">
 
-<center><h3>时光记忆站<i><small>---创建于2016.1.12</small></i></h3></center>
+<center><h3>时光记忆站<i><small>---这是我们恋爱<span id=result2></span>天纪念日</small></i></h3></center>
 
 <hr>
 <ul class="square">
