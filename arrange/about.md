@@ -123,3 +123,19 @@ The more info about [Blogging with Jekyll](https://help.github.com/articles/usin
 My lab's WeChat Subscription, welcome attention~
 
 <center><img src="/assets/wechat.png"/></center>
+
+<hr>
+##Visitor
+<ul class="ds-recent-visitors"></ul>
+<!--多说js(最近访客)加载开始，一个页面只需要加载一次 -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"nephen"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!--多说js加载结束，一个页面只需要加载一次 -->
