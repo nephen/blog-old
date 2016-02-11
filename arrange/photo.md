@@ -20,14 +20,19 @@ fotowall折腾半天，看看可爱的小公举～
 - 2016.1.18   
 丫头飞飞机去啦
 
-	<center><img src="/images/yaf.png">
+	<img src="/images/yaf.png">
 
 - 2016.1.21   
 我们回家了
 
-	<center><img src="/images/home.jpg">
+	<img src="/images/home.jpg">
 
 - 2016.1.22   
 我的小妇女哈哈
 
-	<center><img src="/images/funv.jpg">
+	<img src="/images/funv.jpg">
+
+- 2016.2.3   
+你是如果你变成这样，我会怎么样？
+
+	<img src="/images/eye.jpg">
