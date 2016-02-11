@@ -10,24 +10,24 @@ permalink: /photo/
 - 2016.1.12   
 今天去剪头发了，换个文章的寸头，既然是猴年就做个清爽的程序猿吧。
 
-<center><img src="/images/faxing.png"></center>
+	<img src="/images/faxing.png">
 
 - 2016.1.13   
 fotowall折腾半天，看看可爱的小公举～
 
-<center><img src="/images/jing.png"></center>
+	<img src="/images/jing.png">
 
 - 2016.1.18   
 丫头飞飞机去啦
 
-<center><img src="/images/yaf.png"></center>
+	<center><img src="/images/yaf.png">
 
 - 2016.1.21   
 我们回家了
 
-<center><img src="/images/home.jpg"></center>
+	<center><img src="/images/home.jpg">
 
 - 2016.1.22   
 我的小妇女哈哈
 
-<center><img src="/images/funv.jpg"></center>
+	<center><img src="/images/funv.jpg">
