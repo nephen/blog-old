@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-<div class="well">
 <h4 id="Skill">个人特长</h4>
 <ul>
 	<li>熟悉C编程语言开发，具有良好的数字电路、模拟电路等专业理论基础知识；</li>
@@ -44,4 +43,3 @@ layout: default
 <h4 id="Work">论文发表</h4>
 <ul>
 </ul>
-</div>

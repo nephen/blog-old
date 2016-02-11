@@ -3,7 +3,6 @@ layout: default
 comments: true
 permalink: /study/
 ---
-<div class="well">
 
 <h4><a href="http://open.163.com/ocw/">网易公开课</a></h4>
 <h5>数学</h5>
@@ -92,6 +91,5 @@ permalink: /study/
 门前有四辆大马车，你爱拉哪两辆就拉哪两辆。
 
 <hr>
-        {% include duoshuo_share.html %}
-        {% include duoshuo_disqus.html %}
-</div>
+{% include duoshuo_share.html %}
+{% include duoshuo_disqus.html %}

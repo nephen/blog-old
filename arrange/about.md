@@ -4,7 +4,7 @@ permalink: /about/
 ---
 
 ## Blog platform
-This is my website <a href="http://indexed.webmasterhome.cn/?domain=www.nephen.com" target="_blank"><img src="http://images.webmasterhome.cn/images/indexed_cn.gif" width="80" height="15" border="0" align="absmiddle" alt="收录查询"></a> based Jekyll theme,handsome theme like [[jekyllthemes]](http://jekyllthemes.org/)[[hexo.io/themes]](https://hexo.io/themes/)
+This is my website <a href="http://indexed.webmasterhome.cn/?domain=www.nephen.com" target="_blank"><img src="http://images.webmasterhome.cn/images/indexed_cn.gif" width="80" height="15" border="0" align="absmiddle" alt="收录查询"></a>/[站长之家](http://zhanzhang.baidu.com/linksubmit/index?site=http://www.nephen.com/) based Jekyll theme,handsome theme like [[jekyllthemes]](http://jekyllthemes.org/)[[hexo.io/themes]](https://hexo.io/themes/)
 
 You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/) or [jekyllcn.com](http://jekyllcn.com/)
 

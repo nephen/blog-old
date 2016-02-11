@@ -2,7 +2,6 @@
 layout: default
 ---
 <div role="main" class="main-content main-post-content full-width">
-<div class="well">
     
 {% assign response = '/thank-you' %}
 
@@ -36,5 +35,4 @@ layout: default
   <input type="hidden" name="_next" value="{{ response }}" />
 
 </form> 
-</div>
 </div>
