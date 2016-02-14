@@ -8,6 +8,8 @@ comments: true
  <p><center><iframe name="iframe_canvas" src="http://douban.fm/partner/baidu/doubanradio" scrolling="no" frameborder="0" width="420" height="190"></iframe></center></p>
 
 <hr style="height:10px;border:none;border-top:10px groove skyblue;" />
+- 2016.2.14
+我不断有学习新语言的动力，因为发现新的东西对我有新的影响力、新的思想。
 
 - 2016.2.14   
 慢慢明白了，戴三百块的表和三百万的表，时间是一样的；   
