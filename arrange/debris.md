@@ -8,7 +8,11 @@ comments: true
  <p><center><iframe name="iframe_canvas" src="http://douban.fm/partner/baidu/doubanradio" scrolling="no" frameborder="0" width="420" height="190"></iframe></center></p>
 
 <hr style="height:10px;border:none;border-top:10px groove skyblue;" />
-- 2016.2.14
+
+- 2016.2.15   
+关于爱一个怎样的人，这段话说得很好：”不能一直踮着脚尖爱一个人，重心会不稳，撑不了多久，身疲心累。其实，我们只是想找一个谈得来、和脾气，在一起舒坦、分开就了有点想念，安静久了想闹腾一下，吵架了又立马会后悔认输的人。“
+
+- 2016.2.14   
 我不断有学习新语言的动力，因为发现新的东西对我有新的影响力、新的思想。
 
 - 2016.2.14   

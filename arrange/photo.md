@@ -6,8 +6,8 @@ permalink: /photo/
 <center><h3>时光记忆站<i><small>---这是我们恋爱<span id=result2></span>天纪念日</small></i></h3></center>
 
 >`温馨提示`：   
->距离实习日志提交3.18还有<span id=result4></span>天~   
->距离毕业论文答辩5.21还有<span id=result5></span>天~   
+>距离实习日志、实习日志、实习鉴定表、英文翻译、开题报告提交3.25（2.22～3.18）还有<span id=result4></span>天~   
+>距离毕业论文答辩5.21（3.21～6.17）还有<span id=result5></span>天~   
 >今天还是我们正式比赛的第<span id=result3></span>天哟！   
 
 我们梦想着：   
