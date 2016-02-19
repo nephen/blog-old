@@ -31,3 +31,4 @@ layout: default
 <a href="http://www.linuxidc.com/Linux/2015-11/125153.htm">CentOS x64上Matlab R2015b的镜像安装方法与卸载</a>
 <a href="http://blog.csdn.net/lanbing510/article/details/41698285">Linux下安装Matlab2014及破解 </a>
 <a href="http://blog.csdn.net/shanshanpt/article/details/19897897">ioctl()函数详解 </a>
+<a href="http://www.zhihu.com/question/38874663">如何用开源飞控PIXHAWK进行二次开发？</a>
