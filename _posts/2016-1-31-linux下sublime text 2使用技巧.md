@@ -100,6 +100,11 @@ LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
 - 行首/尾。Home/End
 - 复制至行首/尾。shift + Home/End
 - 文章的首部/尾部。ctrl + Home/End
+- 工程切换：ctrl + alt + o
+
+	```sh
+	{ "keys": ["ctrl+alt+o"], "command": "prompt_select_project" }
+	```
 
 #####高亮设置
 Sublime Text对于一些常见的扩展名的文件都能够识别并选择Sublime Text内置对应的高亮语法，但是对于一些使用频率比较少的扩展名文件就无法识别，Sublime Text打开此类文件后默认显示成普通文本，没有语法高亮。
