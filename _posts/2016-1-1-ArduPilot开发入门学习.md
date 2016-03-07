@@ -222,6 +222,32 @@ RC输出是ArduPilot控制伺服系统和电机，RC输出默认为50 hz PWM值�
 	一个很好的例子是AP_Terrain库,其中包含地形数据；是否支持可以从 [AP_HAL_Boards.h](https://github.com/diydrones/ardupilot/blob/master/libraries/AP_HAL/AP_HAL_Boards.h)查看HAVE_OS_POSIX_IO macro，还可以定义数据的存储位置；这个操作比较耗时，特别在飞行过程中不宜使用；可以看这个例子 [libraries/AP_Terrain/TerrainIO.cpp](https://github.com/diydrones/ardupilot/blob/master/libraries/AP_Terrain/TerrainIO.cpp)学会怎么使用Posix IO。
 
 <hr>
+####上位机安装
+由于我使用的是Ubuntu, 所以我会想办法使Mission Planner上位机能在linux平台上运行。
+
+参考[Install Mono on Linux](http://www.mono-project.com/docs/getting-started/install/linux/)安装mono
+
+```sh
+~ $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+~ $ echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
+~ $ echo "deb http://download.mono-project.com/repo/debian wheezy-apache24-compat main" | sudo tee -a /etc/apt/sources.list.d/mono-xamarin.list
+~ $ sudo apt-get update
+~ $ sudo apt-get install mono-runtime
+~ $ sudo apt-get install mono-complete
+# => The package mono-devel should be installed to compile code.
+# => The package mono-complete should be installed to install everything - this should cover most cases of “assembly not found” errors.
+# => The package referenceassemblies-pcl should be installed for PCL compilation support - this will resolve most cases of “Framework not installed: .NETPortable” errors during software compilation.
+# => The package ca-certificates-mono should be installed to get SSL certificates for HTTPS connections. Install this package if you run into trouble making HTTPS connections.
+```
+
+对于apm_planner2可以选择安装[linux版](http://ardupilot.com/downloads/?did=111)
+
+```sh
+~ $ wget http://firmware.diydrones.com/Tools/APMPlanner/apm_planner2_latest_ubuntu_trusty64.deb
+~ $ sudo dpkg -i apm_planner2_latest_ubuntu_trusty64.deb
+```
+
+<hr>
 ####参考文章
 User Manual: http://copter.ardupilot.com/    
 Developer Manual: http://dev.ardupilot.com/

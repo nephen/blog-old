@@ -35,3 +35,4 @@ layout: default
 <a href="http://shixi.yjbys.com/shixiriji/123983.html">实习</a>
 <a href="http://blog.csdn.net/qq_21842557/article/details/50799636">pixhawk交流</a>
 <a href="http://www.yjbys.com/bbs/646787.html">毕业了,档案迁回原籍,报到证的用处</a>
+<a href="http://blog.csdn.net/qq_21842557/article/details/50815000">Pixhawk之UAV控制理论、ardupilot源码框架介绍 </a>
