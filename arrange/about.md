@@ -77,7 +77,8 @@ The more info about [Blogging with Jekyll](https://help.github.com/articles/usin
 4. Push to the branch (git push origin my-new-feature)
 5. Create new Pull Request
 
-更多请参考[参与贡献](/2016/01/ArduPilot开发入门学习/#参与贡献)
+对于开源项目更多请参考[参与贡献](/2016/01/ArduPilot开发入门学习/#参与贡献)    
+如果你对GIT不太熟悉，请参考[Git教程-廖雪峰的官方网站](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)/[git BOOK](https://git-scm.com/book/zh/v2)
 
 <hr>
 ##TODO

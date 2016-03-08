@@ -226,6 +226,7 @@ Sublime Text对于一些常见的扩展名的文件都能够识别并选择Subli
 	该插件基本上实现了git的所有功能。设置git推送
 
 	```sh
+	git push --set-upstream origin master
 	git config --global push.default simple
 	#=> 先进行绑定
 	git push -u origin master
@@ -327,4 +328,72 @@ Sublime Text对于一些常见的扩展名的文件都能够识别并选择Subli
 	```
 	效果如下
 
-	<img src="https://raw.githubusercontent.com/leonid-shevtsov/SearchInProject_SublimeText/screencast/screencast.gif" alt="">
+	<img src="/images/screencast.gif" alt="">
+
+<br>
+####工程设置
+建议参考[译:Sublime Text 2 项目设置](http://blog.jenux.me/?p=49)
+
+```
+{
+	"folders":
+	[
+		{ // theme
+			"path": "/C/wamp/www/wordpress/wp-content/themes/twentyeleven",
+			"name": "Twenty Eleven Theme",
+			"file_exclude_patterns":[
+			"._*",
+			"*.ico",
+			"*.swf"
+			],
+			"folder_exclude_patterns": [
+			"images"
+			]
+		},
+		{ // plugins folder
+			"path": "/C/wamp/www/wordpress/wp-content/plugins",
+			"name": "Plugins Folder",
+			"file_exclude_patterns":[
+			"._*", // you need to specify this *again*
+			"*.bak",
+			"*.sample",
+			"*.tar",
+			"*.tgz",
+			"*.zip"
+			],
+			"folder_exclude_patterns": [
+			"akismet"//,
+			// add any other plugins you wish to exclude
+			]
+		}
+	],
+	"settings":
+	{
+		"tab_size": 4
+	}
+	"build_systems":
+	[
+		{
+			"name": "PX4: make all",
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+			"cmd": ["make"],
+			"shell": true
+		},
+		{
+			"name": "PX4: make and upload",
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+			"cmd": ["make upload px4fmu-v2_default -j8"],
+			"shell": true
+		},
+		{
+			"name": "PX4: make posix",
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+			"cmd": ["make posix"],
+			"shell": true
+		}
+	]
+}
+```

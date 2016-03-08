@@ -24,10 +24,7 @@
 	"buffers":
 	[
 		{
-			"contents": "---\nlayout: post\ntitle:  \"学习C++有感\"\ncategories: \"work_lifes\"\nauthor: 吴兴章\ntags: 工作生活\ndonate: true\ncomments: true\n---\n>`资源`：http://www.cplusplus.com\n\n<hr>\n####阅读笔记\n- C语言是面向过程的语言，支持模块化、结构化的方法。C++融合了OOP、通用编程和传统的过程性方法，这表明C++强调的是实用价值，而不是意识形态方法，这也是该语言获得成功的原因之一。\n- 才发现CC为标准UNIX C++编译器，而cc为标准UNIX C编译器。g++为GNU C++编译器，而GNU C++编译器的MS-DOS版本名为gpp。comeau编译器最为严格、标准。都是先生成.o文件，在生成.out文件。\n- 在C中，main函数括号为空表示对是否接受参数保持沉默，而在C++中为空与跟void一样。C++中main函数默认返回0。\n- C++预处理器对添加的头文件去掉了.h格式，当然也兼容以前的C格式。\n- 如果省略using编译指令，必须这样编码std::cout，如果单独使用这个函数，可以这样：using std::cout，using指令可以根据应用的范围放在合适的位置。\n- 标记与空白的概念。\n- C++允许使用连续赋值。\n- cout是可扩展的，允许自行开发新的数据类型。\n\n<!--more-->\n- C++允许在函数的任何地方声明新变量。\n- 在C中，有返回值的函数称为函数，没有返回值的函数称为过程。C++中，这两种变体都是函数。\n- 类是用户定义的数据类型规范。面向对象编程(OPP)的本质是设计并扩展自己的数据类型。内置的C++内型分为基本类型和复合类型。\n- 在C++中，以两个下划线或下划线和大写字母大头的名称被保留给实现使用，以一个下划线开头的名称被保留实现，用作全局标识符，但他们都是有效的。\n- short至少16位；int至少和short一样长；long至少32位，且至少与int一样长。\n- sizeof对类型名使用时，必须加上括号。\n- C++使用前一(两)位来标识数字常量的基数。如果第一位是1～9，则基数为10；如果第一位为0，第二位为1～7，则基数为8；如果前两位为0x或0X，则基数为16。\n- 数据后缀标识存储的类型，如2344L，默认情况下为int型，除非太大，int装不下。\n- 转义序列和通用字符(以\\u和\\U打头)。\n- char在默认情况下既不是有符号，也不是没符号。在符号很重要的情况下，一定要特别声明。\n- 存在一种wchar_t的宽字符类型。\n- C++中存在bool类型，任何非零值都被转换为true，任何零被转换为false。\n- 关键字const叫做限定符。\n- E表示法适合于非常大和非常小的浮点数。如：+3.45E+6指的是3.45与1000000相乘的结果，E后为负数代表除以10的乘方。\n- cout.setf(ios_base::fixed, ios_base::floatfield);，这样可以显示浮点数多余的零。\n- 操作符重载：int除法、float除法和double除法。\n- 赋值计算在类型转换时，较大的数转换为较小的数时，原来的值可能超过目标类型的取值范围，这种情况结果将是不可确定的。将浮点型转换为整形时，C++采取截取(丢弃小数部分)，而不是四舍五入。\n- true被转换为1，false被转换为0，这些转换称为整形提升(int 类型计算速度更快)。\n- 传统C语言总是将float提升为double，即使两个操作数都是float。\n- 强制类型转换的格式为：(typeName)value/typeName(value)，第一种来自C语言，第二种来自C++语言。\n- 用引号括起的字符串隐式的包括了结尾的空字符。如“S”表示两个字符，而‘S’单表示一个字符，更糟糕的是，“S”表示的是一个内存的地址。\n- strlen函数返回的是存储在数组中字符串的长度，而不是数组本身的长度。另外strlen不会计算空字符。\n- 为了能够输入多个单词，可以使用cin.getline()函数和cin.get()函数，getline丢弃了换行符，存储时用空字符替换，而get保留在了输入序列中，所以在使用这种方法时，需要不带任何参数的cin.get()调用读取下一个字符，也可以连续调用，如cin.get(name,ArSize).get()。\n- string在C++中是作为类出现。string类具有自动调整大小的功能。输入字符串的方法为getline(cin,str)。\n\n	```c\n	for (int i = 0; i < SIZE; i++)\n	{\n		cout << i + 1 << \": \";\n		getline(cin, list[i]);\n	}\n	```\n- C++允许在结构声明中省略关键字struct，结构体成员中也能进行赋值操作。\n- 结构中的位字段：字段的类型应该为整形或枚举型，接下来是冒号，冒号后面是一个数字，它指定了使用的位数。通常用在低级编程中。\n- 匿名共用体：将共用体用于结构体中，它们的地址相同，所以不需要中间标识符。\n- 枚举、枚举量：默认情况，第一个枚举量为0。另外枚举变量只定义了赋值运算，没有定义算术运算。可自动转换为int型。如果只打算使用常量，而不创建枚举类型的变量，则可以省略枚举类型的名称。可以创建多个值相同的枚举量。可以将在取值范围内的任意整数赋给枚举量。\n- 面向对象编程和传统的过程性编程的区别在于，OOP强调的是在运行阶段(而不是编译阶段)进行决策。动态联编/静态联编。\n- 指针声明必须指定指针指向的数据类型。创建指针时，只会分配存储地址的内存，如int一般是一个4个字节的值,64位系统为8。创建指针时返回值为0表示空置指针。\n- 如果内存泄漏严重，则程序将由于不断寻找更多内存而终止。\n- <img src=\"/images/cpoiter.png\">\n\n	`警告`：delete对空指针使用是安全的。不能释放同一个内存块两次。\n- 对于数组的创建与删除：int* psome = new int[10]/delete [] psome。指针加减一表示向前后移动一个元素。C++将数组名解释为数组第一个元素的地址。\n- 数组与指针的一些区别：数组名是常量，而指针值是可以修改的。sizeof取数组为数组的长度，这种情况不会把数组名解释为地址。\n- 指针运算：两个指针的差将得到一个整数。\n- “flower”传递的是字符串第一个字符的地址。\n- 如果给cout提供一个地址，如果指针的类型为char *，则cout将显示字符串，如果要显示字符串的地址，应该使用int *。\n- 如果结构标识符是结构名，则使用句点操作符；如果标识符是指向结构的指针，则使用箭头操作符。\n\n	`注意`：ps->volume与(*ps).volume等价。\n- 管理数据内存的方式：自动存储、静态存储、动态存储。\n- 内存泄漏：如果没有调用delete，包含指针的内存由于作用域规则和对象生命周期的原因而被释放，在自由存储空间上动态分配的变量或结构也将继续存在，但由于无法继续访问，因为指向这些内存的指针无效，这将导致内存泄漏。\n- C++常在for和括号之间加上一个空格，而省略函数名与括号之间的空格。\n\n	<img src=\"/images/forc.png\">\n\n	在设计循环时，请记住下面几条知道原则：   \n	- 确定循环终止的条件\n	- 在首次测试之前初始化条件\n	- 在条件再次测试之前更新条件\n\n- cout.setf(ios::boolalpha)函数调用设置了一个标记，该标记命令cout显示true和false，而不是1和0。\n- 顺序点是程序执行过程中的一个点，进入下一步之前确保对所有的副作用都进行评估。赋值操作符、递增操作符和递减操作符执行的所有修改是在顺序点完成。应避免这样的语句：y = (4 + x++) + (6 + x++);\n- 后缀递增版本首先需要复制一个版本，再将其加1，然后将复制的拷贝返回，因此前缀版本的效率比后缀版本高。\n- C++规定，逗号表达式的值是第二部分的值。如cats = (17,24)为24。\n- C-风格字符串是通过结尾的空值字符定义的，而不是由其所在数组的长度定义的。这意味着两个字符串即使被存储在长度不同的数组中，也可能是相同的。\n- for循环里可以重新定义变量，这个变量可能只能在这个循环体里有效，但是循环体里定义的变量只能在循环体里使用。\n- C-风格字符串大小比较需要使用strcmp()函数，而C++风格可直接进行比较。\n- cin将忽略空格和换行，如需读取，请使用cin.get(ch)，其返回的是cin对象，在需要bool值的地方可以自动转换。相当于C规则的getchar(ch)\n- ctrl + D/Z相当于EOF，可以使用cin.eof()/cin.fail()返回的boo值进行检测，输入错误和EOF都将导致cin返回false，可以用cin.clear()进行清除然后重新输入。\n	<img src=\"/images/getch.png\">\n- 从存储空间的角度来讲，指针数组比char数组的数组更为经济。\n- C++规定，||等逻辑操作符是一个顺序点。另外，冒号和逗号操作符也是顺序点。\n- if(17 < age < 35)的含义为if((17 < age) < 35)，所以一直为真。\n- &&的优先级高于||。\n- <img src=\"/images/cctype.png\">\n- C++的switch语句中，default标签是可选的，如果被省略，又没有匹配的标签，则程序将跳到switch语句后面的语句执行。\n- 文本文件：对于输入，将执行相反的转换。即整数将被转换为数字字符序列，浮点数转换为数字字符和其他字符组成的字符序列，字符数据不需要做任何转换。\n- iostream 提供了一个预先定义好的名为cout的ostream对象，而我们必须声明自己的ofstream对象。如：\n\n	```c\n	ofstream outFile;\n	outFile.open(\"fish.txt\");\n\n	ofstream fout;\n	cin >> filename;\n	fout.open(filename);\n\n	double wt = 125.9;\n	outFile << wt;\n	```\n	总之，使用文件输出的主要步骤如下：   \n	1. 包含头文件fstream。\n	2. 创建一个ofstream对象。\n	3. 将该ofstream对象同一个文件关联起来。\n	4. 就像使用cout那样使用ofstream对象。\n\n- inFile.good()在输入没有发生错误的时候返回true。表达式inFile>>value的结果为inFile，而在需要一个bool值的情况下，inFile的结果为inFile.good()，即true或false。\n\n	<img src=\"/images/filegood.png\">\n- 在C++原型中，不指定参数列表时应使用省略号:\n\n	```c\n	void say_bye(...);\n	```\n	通常，仅当与接受可变参数的C函数(如printf())交互时才需要这样做。\n- 函数原型的检查称为静态类型检查。\n- cin >> total >> choices，如果输入4 2，那么total为4，choice为2。\n- 在C++中，当且仅当用于函数头或函数原型中，int *arr 和int arr[]的含义才相同。\n- 循环输入数组，显示数组\n\n	```c\n	int fill_array(double ar[], int limit)\n	{\n		using namespace std;\n		double temp;\n		int i;\n		for (i = 0; i < limit; i++)\n		{\n			cout << \"Enter value #\" << (i + 1) << \": \";\n			cin >> temp;\n			if (!cin)\n			{\n				cin.clear();\n				while (cin.get() != '\\n')\n					continue;\n				cout << \"Bad input : input process terminated.\\n\";\n				break;\n			}\n			else if (temp < 0)\n				break;\n			ar[i] = temp;\n		}\n		return i;\n	}\n	void show_array(const double ar[], int limit);\n	```\n- 关于const的两种情况：\n\n	```c\n	const float g_earth = 9.80;\n	const float * pe = &g_earth;	//VALID\n\n	const float g_moon = 1.63;\n	float * pm = &g_moon;		//INVALID\n	```\n	只能将非const数据的地址赋给非const指针，如不能将const数组名作为参数传递给非常量形参的函数。所以加上const，能够处理const和非const实参。\n- 二维数组函数定义：\n\n	```c\n	int sum(int ar2[][4], int size)\n	{\n		int total = 0;\n		for (int r = 0; r < size; r++)\n			for(int c = 0; c < 4; c++)\n				total += ar2[r][c];\n		return total;\n	}\n	```\n- 当结构较小时，按值传递最合理。较大时使用按址传递。\n- 递归案例：[ruler.cpp](https://github.com/nephen/cPrimerPlus/tree/master/chapter7/ruler.cpp)\n- 函数指针基础知识\n - 函数名即为函数地址。\n - 函数指针声明。\n\n 		<img src=\"/images/funstr.png\">\n\n 		例如 void estimate(int lines, double (*pf) (int));\n - 使用指针来调用函数，见[例子](https://github.com/nephen/cPrimerPlus/tree/master/chapter7/fun_ptr.cpp)。\n\n		 ```c\n		 double pam(int);\n		 double (*pf) (int);\n		 pf = pam;\n		 double x = pam(4);\n		 double y = (*pf)(4);\n		 double z = pf(4);\n		 ```\n- 内联函数不能递归。与C语言的宏类似。只需在定义和声明前加上inline即可。\n- 必须在声明引用时将其初始化。`注意`：在C++中，使用const，当形参的类型不对或不是左值时，将会自动创建临时变量，这样将不能修改作为参数传递的变量。\n\n	<img src=\"/images/yy.png\">\n\n	引用可以用来交换数据。    \n	void swapr(int &a, int &b);\n- 结构引用：const sysop & use(sysop & sysopref);，请见[例程](https://github.com/nephen/cPrimerPlus/tree/master/chapter8/strtref.cpp)/[类对象](https://github.com/nephen/cPrimerPlus/tree/master/chapter8/strquote.cpp)，应避免返回函数终止时不再存在的内存单元引用。通过传递引用而不是整个数据对象，可以提供程序的运行速度。\n\n	<img src=\"/images/ref.png\">\n\n	注意在返回值加上const，意味着不能使用返回的引用直接修改它指向的引用。参数类型为ostream &的函数可以接受ostream对象或声明的ofstream对象作为参数，见[文件类](https://github.com/nephen/cPrimerPlus/tree/master/chapter8/filefunc.cpp)。设置类如下\n\n	<img src=\"/images/setf.png\">\n\n	指导原则：\n\n	<img src=\"/images/guide.png\">\n- 默认参数指的是当函数调用中省略了实参时，自动使用的一个值。方法只是将值赋给原型中的参数。如\n\n	```c\n	char * left(const char * str, int n = 1);\n	```\n	对于带参数列表的函数，必须从右向左添加默认值。实参按从左到右的顺序依次被赋给相应的形参，而不能跳过任何参数。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter8/left.cpp)\n- 函数重载的关键是函数的参数列表---也称为函数特征标。注意，类型引用和类型本身视为同一个特征标。匹配函数时，并不区分const和非const变量。对于函数重载，C++内部进行了名称修饰，也称为C++语言链接。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter8/leftover.cpp)\n- C++函数模板允许以任意类型的方式来定义函数。例如，建立一个交换模板。这样使生成的函数定义更简单、可靠。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter8/funtemp.cpp)\n\n	```c\n	template <class Any>\n	void Swap(Any &a, Any &b)\n	{\n		Any temp;\n		temp = a;\n		a = b;\n		b = temp;\n	}\n	# => 或使用typename代替class\n	```\n	另外，模板也能进行重载。如void Swap(Any [], Any [], int)，并非所有的模板参数都必须为模板参数类型。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter8/twotemps.cpp)\n- 显示具体化的原型和定义应以template<>打头，并通过名称来指出类型，这样可以只交换结构体中的一部分成员。不要使用Swap()模板来生成函数定义，而应使用独立的、专门的函数显式的为job类型生成函数定义，如`template <> void Swap<job>(job&, job&);`，其中`Swap<job>`中的`<job>`是可选的。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter8/twoswap.cpp)\n- 编译器使用模板为特地类型生成函数定义时，得到的是模板实例，有隐式实例化和显式实例化。显式实例化如template void Swap<int>(int, int);，它与显式具体化不同，template后面没有<>。而隐式实例化指的是一般的模板调用。`警告`：试图在同一编程单元中使用同一类型的显式实例和显式具体化将出错。\n- 隐式实例化、显式实例化和显式具体化统称为具体化，它们都使用具体类型的函数调用，而不是通用描述。\n- 在重载解析中，哪一种执行的转换最少，将被优先得到执行。如果出现多个匹配或没有，都将出现错误。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter8/temptempover.cpp)\n- 头文件常包含的内容：\n - 函数原型\n - 使用#define或const定义的符号常量\n - 结构声明\n - 类声明\n - 模板声明\n - 内联函数\n- 多个库的链接由于编译器名称修饰问题可能无法正确的连接。\n- 变量的一些特性：存储持续性、作用域和链接性。寄存器变量也是auto变量，只是它是用寄存器而不是堆栈来处理变量。链接分为：外链接、内链接和无链接。[包含字符串输入的static例子](https://github.com/nephen/cPrimerPlus/tree/master/chapter9/static.cpp)\n\n	<img src=\"/images/static.png\">\n\n	::为作用域解析操作符。\n- mutable可以指出，即使结构或类为const，其某个成员也可以被修改。\n- 在C++看来，全局const定义就像使用了static说明符一样。如果链接为外部的，extern const int states = 50;\n- 布局new操作符、常规new操作符。布局操作符如：p1 = new (placement) int;，或pd2 = new (buffer + N*sizeof(double)) double[N];。布局操作符不需delete。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter9/newplace.cpp)\n- 声明区域\n\n	<img src=\"/images/smqy.png\">\n\n	作用域\n\n	<img src=\"/images/zyy.png\">\n- 名称空间：namespace，其链接性是外部的，可以将名称空间声明进行嵌套。\n\n	```c++\n	namespace myth\n	{\n		using Jill::fetch;\n		using namespace elements;\n		using std::cout;\n		using std::cin;\n	}\n	```\n\n	使用using编译指令和using声明。\n\n	<img src=\"/images/namespace.png\">\n\n	可以给名称空间创建别名：namespace mvft = my_very_favorite_things {...};   \n	简化：namespace MEF = myth::elements::fire;	using MEF::flame;   \n	可以使用未命名的名称空间来代替C++文件静态变量。\n- OOP特性：抽象、封装和数据隐藏、多态、继承、代码的可重用性。在C++中，用户定义类型指的是实现抽象接口的类设计。\n- 类规范由两部分组成：类声明、类方法定义。类声明提供了类的蓝图，而方法定义则提供了细节。在类中，成员函数可以就地定义，也可以声明原型。由于隐藏数据是OOP主要目标之一，因此数据项通常放在私有部分，将数据封装到私有部分可以保护数据的完整性，这被称为数据隐藏，私有部分也可以包含私有成员函数，组成类接口的成员函数放在公有部分。不必在类声明中使用关键字private，因为这是类对象的默认访问控制。结构的默认访问类型是public，因此结构限制为没有私有部分的类。\n- 类成员函数特征：定义成员函数时，使用作用域解析操作符(::)来标识函数所属的类。类方法可以访问类的private组件。\n- 在UNIX系统中，可以分别对cout和cerr进行重定向，命令行操作符>用于对cout进行重定向，操作符2>对cerr进行重定向。\n- 定义位于类声明中的函数都被自动称为内联函数。当然在类声明之外，只需加上inline即可。\n- 对象、数据和成员函数[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter10/stocks.cpp)\n\n	<img src=\"/images/show.png\">\n- OOP程序员常依照客户/服务器模型来讨论程序设计。\n- 类不能像初始化结构一样初始化类，因为数据部分的访问状态是私有的，必须使用类构造函数，构造函数没有声明类型，位于类声明的公有部分。构造函数在完成其工作之前，对象并不存在。`注意`：构造函数的参数表示的不是类成员，而是赋给类成员的值，因此参数名不能与类成员相同，一般在数据成员中使用m_前缀。\n- C++提供了两种使用构造函数来初始化对象的方式。第一种为显式调用：Stock food = Stock(\"World Cabbage\", 250, 1.25)，第二种为隐式调用：Stock garment(\"Furry Masson\", 50, 2.5)。`注意`：无法使用对象来像调用成员函数一样调用构造函数，因为在构造函数构造出对象之前，对象是不存在的。\n- 定义默认构造函数的方式有两种，一种是给已有构造函数的所有参数提供默认值：Stock (const char * co = \"Error\", int n = 0, double pr = 0.0);，当类中含义指针类型时，必须显式的定义默认构造函数。另一种是通过重载来定义另外一个构造函数——一个没有参数的构造函数：Stock();。构造函数还能实现重载，构造函数没有声明类型。`记住`：接收一个参数的构造函数允许使用赋值句法来将对象初始化为一个值，也可以看作为强制类型转换，可以使用explicit 关闭隐式转换，但仍然可以进行显式转换：myCat = Stonewt(19.6);，当然19.6也可以是int型，会自动转换为double型。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter11/stone.cpp)\n- 如何将类类型转换为其它内置类型？使用特殊的C++操作符函数——转换函数。如：Stonewt::operator int() const;，其返回类型可以是被声明为目标类型的类成员函数：Star::Star double();。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter11/stonewt.h#L19) 注意一下几点：\n - 转换函数必须是类方法。\n - 转换函数不能指定返回类型，但也能返回所需的值。\n - 转换函数不能有参数。\n\n 	如果不想被隐式的转换，可以换成int Stonewt::Stone_to_Int();，然后作为方法调用即可。\n- 与构造函数不同的是，析构函数没有参数。如果采用构造函数创建一个临时对象，则会临时调用析构函数。[<复合例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter10/usestock1.cpp)\n- 类是用户定义的类型，对象是类的实例。\n- const成员函数：void Stock::show()const，不会修改对象的值，这里的const表示const Stock *this，this指向调用的对象。\n- 所有的类方法都将this指针设置为调用它的对象的地址。\n\n	<img src=\"/images/this.png\">\n\n	例如\n\n	```c++\n	const Stock & Stock::topval(const Stock & s)const\n	{\n		if (s.total_val > total_val)\n			return s;\n		else\n			return *this;\n	}\n	//这里的返回值必须为const\n	```\n- 对象数组初始化像普通的数组一样。要创建对象数组，则这个类必须有默认的构造函数，但只能有一个默认构造函数，用来设定特定的值，因为如下花括号中的构造函数只是创建临时对象。\n\n	```c++\n	const int STKS = 10;\n	Stock stocks[STKS] = {\n		Stock(\"NanoSmart\", 12.5, 20),\n		Stock(),\n		Stock(\"Monolithic Obelisks\", 130, 3.25),\n	}\n	```\n- <img src=\"/images/consthis.png\">\n- 类作用域：可以在不同类中使用相同的类成员名而不会引起冲突。\n- 类只是描述了对象的形式，并没有真正创建对象，因此，在被对象创建之前，并没有用于存储值的空间。可以在类声明中声明枚举为整形常量，并且不需要提供枚举名。也可以采用关键字static，如static const int LEN = 30，但这个不能存储double常量;，如果不是const，则应在定义方法时进行初始化，并且应该加上类限定符。\n- 类很适合描述ADT，使用栈作为类是一个很好的[例子](https://github.com/nephen/cPrimerPlus/tree/master/chapter10/stacker.cpp)。\n- 操作符函数的格式：operator op (argument-list)。其中op为将要重载的操作符。如   \ndistrict2 = sid + sara，操作数是类对象，可以替换为district2 = sid.operator + (sara)。重载操作符也是重载函数，所以可以多次重载同一个操作符。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter11/mytime0.cpp)\n- 操作符重载限制：重载后的操作符必须至少有一个操作数是用户定义的类型。不能违反操作符原来的句法。不能修改操作符优先级。不能定义新的操作符。\n- <img src=\"/images/cz.png\">\n- 友元有三种：友元函数、友元类和友元成员函数。\n- 有一类特殊的非成员函数可以访问类的私有成员，它们被称为友元函数。非成员函数可以解决的问题：A = operator(2.75, B);，因为这个时候的第一个操作数即调用者不为自身对象，只能使用非成员函数。另外还有一种方法是，将2.75强制转换为对象。`注意`：虽然友元函数是在类声明中声明的，但它不是成员函数，因此不能使用成员操作符调用。它不是成员函数，但与成员函数访问权限相同。不要在定义中使用关键字friend，除非定义也是原型。类声明可以控制哪些函数可以访问私有数据，类方法和友元只是表达类接口的两种不同机制。\n- 打印出Time类trip，重载操作符<<\n\n	```c++\n	void operator <<(ostream & os, const Time & t)\n	{\n		os << t.hours << \" hours. \" << t.minutes << \" minutes\";\n	}\n	```\n	即可使用cout << trip    \n	如果要实现拼接，如cout << \"Trip Time: \" << trip << \" (Tuesday)\\n\";    \n	可返回os的引用，如下\n\n	```c++\n	ostream & operator <<(ostream & os, const Time & t)\n	{\n		os << t.hours << \" hours. \" << t.minutes << \" minutes\";\n		return os;\n	}\n	```\n	由于类继承属性让ostream引用能够指向ostream对象和ofsream对象，所以还可以将其写入文件中。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter11/mytime0.cpp)\n- 加法操作符需要两个操作数。对于成员函数版本来说，一个操作数通过this指针隐式的传递，另一个操作数作为函数参数显式传递；对于友元函数来说，两个操作数都作为参数来传递。\n- 如果方法通过计算得到一个新的类对象，则应考虑是否可以使用类构造函数来完成这种工作，这样新的对象规则都是一样的，不会出错。\n- 定义VECTOR命名空间，使Vector类可用。using VECTOR::Vector;[<醉鬼走路例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter11/randwalk.cpp)\n- <img src=\"/images/randt.png\">\n- <img src=\"/images/strbad.png\">\n- 当构造与析构的次数不一样时，考虑自动定义的隐式成员函数，如复制构造函数：   \n假设sailor和sports都为StringBad对象，则StringBad sailor = sports;等效于StringBad sailor = StringBad(sports);，而其原型为StringBad(const StringBad &);，这里可以采用一个显式的复制构造函数来解决一个问题。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter12/vegnews.cpp)\n- 隐式成员函数包括：默认构造函数、复制构造函数、赋值操作符、默认析构函数和地址操作符。\n- 复制构造函数：新建一个对象并将其初始化为同类现有对象时，复制构造函数都将会调用。即每当程序生成对象副本时，编译器都将使用复制构造函数。如：函数按值传递对象时，因此因该按引用传递对象，这样可以节省调用构造函数的时间以及存储新对象的空间。默认的复制构造函数逐个复制非静态成员，这里是按值进行复制的。所以[例子](https://github.com/nephen/cPrimerPlus/tree/master/chapter12/vegnews.cpp)析构中释放了字符串的地址，而这个地址是由对象复制过来的，再次析构释放时就出现了错误。所以这里应该采用深度复制，而不仅仅复制字符串的地址。\n\n	<img src=\"/images/cpy.png\">\n\n	<img src=\"/images/depcp.png\">\n- 赋值操作符：将一个已有的对象赋给另一个对象时，将使用重载的赋值操作符，来实现成员的逐个复制。解决的办法也是进行深复制。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter12/strngbad.cpp#L42)需要注意几点：\n - 由于目标对象可能引用了以前分配的对象，所以应使用delete []释放。\n - 应该避免将对象赋给自己。\n - 返回一个指向调用对象的引用。\n- new对应于delete，delete []与new []初始化的指针和空指针都兼容。如：str = new char[1]比str = new char要好。如果有多个构造函数，则必须以相同的方式使用new，要么都带中括号，要么都不带，因为只有一个析构函数。\n- 静态类成员函数特征：函数声明中必须包含关键字static(定义处除外)，不能通过对象调用静态成员函数，可以通过类名和作用域解析符调用它，静态成员函数只能访问静态数据成员。[<String类例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter12/vegnews.cpp#L33)\n- 返回对象将调用复制构造函数，而返回引用不会。返回对象将调用复制构造函数和析构函数，有时候会浪费内存和时间。如：返回类型必须是ostream &，不能使用ostream，因为ostream没有公用的复制构造函数。如果被返回的对象是被调用函数中的局部变量，则应按对象方式返回，通过调用构造函数生成，这样的例子如重载加减运算符。\n- 将加法重载操作符的返回值设为const，这样force1 + force2 = net;这样的语句将称为非法语句。\n- 使用指向对象的指针。如果对象是由new创建的，仅当显式使用delete删除对象时，析构函数才会被调用。也就是说，类指针可以指向已有类，也可以指向新建类。[<例子>](https://github.com/nephen/cPrimerPlus/blob/master/chapter12/vegnews.cpp#L73)\n\n	<img src=\"/images/objectpoint.png\">\n	<img src=\"/images/newpoint.png\">\n\n- 使用布局new操作符为对象分配内存时，防止出现内存重叠，可以这样：pc1 = new (buffer) JustTesting; pc3 = new (buffer + sizeof(JustTesting)) JustTesting;，释放内存应该这样：delete [] buffer;，并显式的调用析构函数pc3->~JustTesting();pc1->~JustTesting();。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter12/placenew1.cpp)\n- 在类中声明的结构、类或枚举被称为是嵌套在类中，其作用域为整个类。如果是在公有部分声明，也可以在类为通过作用域解析符调用。\n- 引用和const一样，只能在对象创建时进行初始化。对于简单数据成员，使用成员初始化列表和在函数体中进行赋值并没有什么区别，不过效率更高。成员初始化列表只能用于构造函数。数据成员列表被初始化的顺序与它们在类声明中的顺序相同，与初始化列表的排列顺序无关。这使得初始化内置类型就像初始化类对象一样。\n- <img src=\"/images/1210.png\">\n	<img src=\"/images/enqueue.png\">\n	<img src=\"/images/1211.png\">\n	<img src=\"/images/outqueue.png\">\n- 为了防止对象未定义深度复制构造函数而造成程序崩溃，可以在私有部分定义空的复制构造函数和重载空的赋值操作符。\n\n	```c++\n	class Queue\n	{\n	private:\n		Queue(const Queue & q) : qsize(0) {}\n		Queue & operator =(const Queue & q) { return *this; }\n	//...\n	};\n	```\n- 队列的实现。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter12/bank.cpp)\n- 原始类称为基类，继承类称为派生类。\n- 公有派生：派生类对象存储了基类的数据成员。派生类对象可以使用基类的方法。派生类需要自己的构造函数。派生类可以根据需要添加额外的数据成员和成员函数。\n\n	<img src=\"/images/jl.png\">\n- 构造函数必须给新成员（如果有的话）和继承的成员提供数据。由于派生类不能直接访问基类的私有成员，所以，派生类构造函数必须使用基类构造函数。创建派生类对象时，程序首先创建基类对象，使用成员初始化列表。\n\n	<img src=\"/images/ps.png\">\n\n	除非要使用默认构造函数，否则应显式调用正确的基类构造函数。\n	如果没有使用动态内存分配，在派生类构造函数里使用基类的隐式复制构造函数是可以的。\n	释放对象的顺序与创建对象的顺序相反，即首先执行派生类的析构函数，然后自动调用基类的析构函数。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter13/usett0.cpp)\n- 基类与派生类的关系：\n - 派生类对象可以使用基类的方法，条件是方法不是私有的。\n - 基类指针可以在不进行显示类型转换的情况下指向派生类对象。\n - 基类引用可以在不进行显示类型转换的情况下引用派生类对象。\n- C++有三种继承关系：公有继承、保护继承和私有继承。\n - 公有继承是最常用的方式，它建立一种`is-a`关系，即派生类对象也是一个基类对象，可以对基类对象执行任何操作，也可以对派生类对象执行。注意：is-a关系通常是不可逆的，也就是说，水果不是香蕉。公有继承不能建立`has-a`、`is-like-a`、`is-implemented-as-a`、`uses-a`关系。\n - 多态公有继承：在派生类中重新定义基类方法。使用虚方法`virtual`，该关键字只出现在方法原型中。    \n 对于虚函数，程序将根据对象类型来确定使用哪个版本。对于两个对象中行为相同的方法，只在基类中声明。如果没有使用关键字virtual，程序将根据引用类型或指针类型选择方法；如果使用了virtual，程序将根据引用或指针指向的对象的类型来选择方法。    \n 方法在基类中声明为虚拟的后，它在派生类中将自动成为虚方法，一般也都在派生类中指出。为基类声明一个虚拟析构函数也是一种惯例，可以确保正确的析构函数被调用。一般先调用派生类的析构函数，再调用基类的析构函数。    \n\n 		<img src=\"/images/jxg.png\">\n 		<img src=\"/images/xxg.png\">\n\n 		友元不能是虚函数，只有成员才能是虚函数，但可以让友元函数使用虚拟成员函数。\n 在派生类成员函数定义时，如果调用虚方法，必须加上类限定符，否则会自己调用自己，产生递归。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter13/usebrass1.cpp)    \n 可以使用数组来表示多种类型的对象，这就是多态性。\n - 访问控制protected：关键字protected与private相似，在类外只能用公有类成员来访问protected部分中的类成员。protected与private的区别只有在基类派生的类中才能表现出来。派生类的成员可以直接访问基类的保护成员，但不能访问基类的私有成员。\n\n		```c++\n		class TheOnlyInstance\n		{\n		public:\n			static TheOnlyInstance * GetTheOnlyInstance();\n		protected:\n			TheOnlyInstance() {}\n		}\n\n		TheOnlyInstance* TheOnlyInstance::GetTheOnlyInstance()\n		{\n			static TheOnlyInstance objTheOnlyInstance;\n			return &objTheOnlyInstance;\n		}\n\n		int main()\n		{\n			TheOnlyInstance noCanDo;	//not allowed\n			TheOnlyInstance * pTheOnlyInstance = TheOnlyInstance::GetTheOnlyInstance();	//以后调用，将返回同一个静态地址\n		}\n		```\n - 使用私有继承，基类的公有成员和保护成员都将成为派生类的私有成员。这意味着基类方法将不会成为派生类公有接口的一部分，但可以在派生类的成员函数中使用它们。这种不完全继承是has-a关系的一部分，其特性与包含相同。     \n 包含版本提供了两个被显式命名的对象成员，而私有继承提供了两个无名称的子对象成员，这是两种方法的主要区别。      \n 成员初始化列表使用std::string(str)，而不是name(str)。这是包含和私有继承之间的第二个主要区别。    \n 使用作用域解析操作符可以访问基类方法，但如果要使用基类对象本身，可以使用强制类型转换：\n\n		 ```c++\n		 const string & Student::Name() const\n		 {\n		 	return (const string &) *this;\n		 }\n		 ```\n 用类名显示地限定函数名不适合于友元函数，这是因为友元不属于类。不过可以显式的转换为基类来调用正确的函数。另一方面，如果不使用类型转换，由于使用的多重继承，编译器将无法确定转换成哪个基类。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter14/studenti.cpp)\n \n		 ```c++\n		 ostream & operator(ostream & os, const Student & stu)\n		 {\n		 	os << \"Scores for \" << (const string &) stu << \":\\n\";\n		 	...\n		 }\n		 ```\n 私有继承所提供的特性比包含多，但会引发许多问题。   \n 私有继承可以重新定义虚函数，但也只能在类中使用。\n - 保护继承是私有继承的变体。基类的公有成员和保护成员都将成为派生类的保护成员，与私有不同，第三代的派生类能使用保护成员。\n \n 		<img src=\"/images/dif.png\">\n\n- 如果使用指向对象的引用或指针来调用虚方法，程序将使用为对象类型定义的方法，而不使用为引用或指针类型定义的方法。这称为动态联编或晚期联编。    \n在C++中，动态联编与指针和引用调用的方法相关，从某中程度上说，这是由继承控制的。编译器对非虚函数采用静态编联。也就是说，当我们通过一个具有普通类型（非引用非指针）的表达式调用虚函数时，在编译时就会将调用的版本确定下来。    \n派生类的虚函数的返回类型形参类型必须与基类函数匹配，否则会隐藏同名的基类方法。只有一个例外，当类的虚函数的返回类型是类本身的指针或引用时，这称为返回类型协变。    \n如果基类声明被重载了，则应在派生类中重新定义所有的基类版本，否则其他的版本都将被隐藏。    \n将派生类引用或指针转换为基类引用或指针被称为向上强制转换，这使公有继承不需要进行显式类型转换，这种转换是可以传递的。    \n仅将那些预期将被重新定义的方法声明为虚拟的。构造函数不能是虚函数，析构函数应当是虚函数。\n- 编译器处理虚函数的方法：给每个对象添加一个隐藏成员，隐藏成员中保存了一个指向函数地址数组的指针，这种数组称为虚函数表。\n\n	<img src=\"/images/xu.png\">\n- 抽象基类：当类声明中包含纯虚函数时，则不能创建该类的对象。要真正的成为ABC，则至少应包含一个纯虚函数。原型中的=0使虚函数成为纯虚函数。C++允许纯虚函数有定义，也可以不定义。纯虚方法是定义派生类的通用接口。   \n抽象基类的派生类称为具体类，具体类可以创建对象。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter13/useacctabc.cpp)\n- 如果基类派生类都使用动态内存分配，则必须为派生类定义显式析构函数、复制构造函数和赋值操作符，也就是说，必须使用相应的基类方法处理基类元素。\n\n	```c++\n	class hasDMA : public baseDMA\n	{\n	private:\n		char * style;\n	public:\n	...\n	};\n\n	hasDMA & hasDMA::operator =(const hasDMA & hs)\n	{\n		if (this == &hs)\n			return *this;\n		baseDMA::operator =(hs);\n		style = new char[std::strlen(hs.style) + 1];\n		std::strcpy(style, hs.style);\n		return *this;\n	}\n	```\n- 派生类对象的友元函数可以通过基类的友元函数访问基类的成员，由于友元不是成员函数，友元函数不能继承，不能使用作用预解析符，所以可以相应类强制类型转换选择正确的函数。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter13/usedma.cpp)\n\n	```c++\n	std::ostream & operator <<(std::ostream & os, const hasDMA & hs)\n	{\n		os << (const baseDMA &)hs;\n		//也可以：os << dynamic_cast<const baseDMA &> (hs)\n		os << \"Style: \" << hs.style << std::endl;\n		return os;\n	}\n	```\n- <img src=\"/images/table.png\">\n- 通常，包含、私有继承和保护继承用于实现has-a关系，即新的类将包含另一个类的对象。\n- 包含对象成员的类：使用公有继承时，类可以继承接口，可能还有实现。获得接口是is-a关系的组成部分，而使用组合，类可以获得实现，但不能获得接口。不继承接口是has-a关系的组成部分。\n\n	<img src=\"/images/contain.png\">\n\n	对比私有继承：\n\n	<img src=\"/images/private.png\">\n\n	对于has-a关系来说，类对象不能自动获得被包含对象的接口是一件好事。例如，string类将+操作符重载为将两个字符串连接起来；但从概念上说，将两个Student对象串接起来是没有意义的。    \n	被包含对象的接口不是公有的，但可以在类方法中使用它。[<例子>](https://github.com/nephen/cPrimerPlus/tree/master/chapter14/studentc.cpp)     \n\n	```C++\n	double Student::Average() const\n	{\n		if (scores.size() > 0)\n			return scores.sum() / scores.size();\n		else\n			return 0;\n	}\n	```\n\n	私有辅助方法：\n\n	```c++\n	#=> 位于private\n	ostream & Student::arr_out(ostream & os) const\n	{\n		int i;\n		int lim = scores.size();\n		if (lim > 0)\n		{\n			for (i = 0; i < lim; i++)\n			{\n				os << scores[i] << \" \";\n				if (i % 5 != 0)\n					os << endl;\n			}\n		}\n		else\n			os << \" empty array \";\n		return os;\n	}\n	```\n- 使用using重新定义访问权限：\n - 方法一是定义一个使用该基类方法的派生类方法。\n\n		 ```c++\n		 double Student::sum() const\n		 {\n		 	return std::valarray<double>::sum();\n		 }\n		 ```\n\n - 另一种方法是，将函数调用包装在另一个函数调用中，即使用一个using声明(将像名称空间那样)来指出派生类可以使用的特定的基类成员，即使使用的是私有派生。`注意`：using 声明只使用成员名——没有圆括号、函数特征标和返回类型。using声明只适合继承，而不适用于包含。\n \n		 ```c++\n		 class Student : private std::string, private std::valarray<double>\n		 {\n		 ...\n		 public:\n		 	using std::valarray<double>::min;\n		 	using std::valarray<double>::max;\n		 ...\n		 }\n		 ```\n- 虚基类：虚基类使得从多个类（它们的基类相同）派生出的对象只继承一个基类对象。例如：通过在类声明中使用关键字virtual, 可以使Worker被用作Singer和Waiter的虚基类\n\n	```c++\n	class Singer : virtual public Worker { ... };\n	class Waiter : public virtual Worker { ... };\n	```\n	可以将SingingWaiter类定义为\n\n	```c++\n	class SingingWaiter : pulic Singer, public Waiter { ... };\n	```\n	这样，SingingWaiter对象将只包含",
 			"file": "_posts/2016-2-4-学习C++有感.md",
-			"file_size": 42104,
-			"file_write_time": 1457253819000000,
 			"settings":
 			{
 				"buffer_size": 22248,
@@ -39,6 +36,46 @@
 			"settings":
 			{
 				"buffer_size": 2767,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_posts/2016-1-1-ArduPilot开发入门学习.md",
+			"settings":
+			{
+				"buffer_size": 15038,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_posts/2016-1-31-linux下sublime text 2使用技巧.md",
+			"settings":
+			{
+				"buffer_size": 12105,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_posts/2016-1-3-ArduPilot之代码概述(Copter).md",
+			"settings":
+			{
+				"buffer_size": 5732,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_posts/2015-12-14-初学PX4之环境搭建.md",
+			"settings":
+			{
+				"buffer_size": 13718,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "arrange/about.md",
+			"settings":
+			{
+				"buffer_size": 4612,
 				"line_ending": "Unix"
 			}
 		}
@@ -54,15 +91,19 @@
 				"Git: Push"
 			],
 			[
+				"com",
+				"Git: Commit"
+			],
+			[
+				"add",
+				"Git: Add All"
+			],
+			[
 				"co",
 				"Git: Commit"
 			],
 			[
 				"a",
-				"Git: Add All"
-			],
-			[
-				"add",
 				"Git: Add All"
 			],
 			[
@@ -80,10 +121,6 @@
 			[
 				"push",
 				"Git: Push"
-			],
-			[
-				"com",
-				"Git: Commit"
 			],
 			[
 				"c",
@@ -247,6 +284,8 @@
 	},
 	"file_history":
 	[
+		"/home/nephne/jekyll-clean/arrange/about.md",
+		"/home/nephne/jekyll-clean/post.sublime-project",
 		"/home/nephne/jekyll-clean/arrange/page1.md",
 		"/home/nephne/jekyll-clean/_posts/2016-1-9-BLE核心模块FS-QN9021模块开发.md",
 		"/home/nephne/jekyll-clean/arrange/reprint.md",
@@ -256,7 +295,6 @@
 		"/home/nephne/jekyll-clean/arrange/debris.md",
 		"/home/nephne/jekyll-clean/_posts/2016-2-19-EKF设计与实现.md",
 		"/home/nephne/jekyll-clean/_posts/2016-1-31-linux下sublime text 2使用技巧.md",
-		"/home/nephne/jekyll-clean/post.sublime-project",
 		"/home/nephne/jekyll-clean/_includes/header.html",
 		"/home/nephne/jekyll-clean/index.html",
 		"/home/nephne/jekyll-clean/_includes/links-list.html",
@@ -264,7 +302,6 @@
 		"/home/nephne/jekyll-clean/css/zoomimage.css",
 		"/home/nephne/jekyll-clean/css/custom.css",
 		"/home/nephne/jekyll-clean/_layouts/default_index.html",
-		"/home/nephne/jekyll-clean/arrange/about.md",
 		"/home/nephne/jekyll-clean/js/post.js",
 		"/home/nephne/jekyll-clean/arrange/message.md",
 		"/home/nephne/jekyll-clean/arrange/study.md",
@@ -382,7 +419,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 108.0,
 		"where_history":
 		[
 		]
@@ -392,6 +429,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"multicopter和传统的直升机马达混合",
+			"mono",
 			"min",
 			"私有继承",
 			"usedma",
@@ -494,7 +533,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -658,7 +697,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 17937.0,
+						"translation.y": 17721.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -826,6 +865,834 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "_posts/2016-1-1-ArduPilot开发入门学习.md",
+					"settings":
+					{
+						"buffer_size": 15038,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14692,
+								14692
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4041.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "_posts/2016-1-31-linux下sublime text 2使用技巧.md",
+					"settings":
+					{
+						"buffer_size": 12105,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7172,
+								7172
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2969.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "_posts/2016-1-3-ArduPilot之代码概述(Copter).md",
+					"settings":
+					{
+						"buffer_size": 5732,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								702,
+								702
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "_posts/2015-12-14-初学PX4之环境搭建.md",
+					"settings":
+					{
+						"buffer_size": 13718,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2241,
+								2241
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1233.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "arrange/about.md",
+					"settings":
+					{
+						"buffer_size": 4612,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2749,
+								2749
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1584.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
 				}
 			]
 		}
@@ -861,6 +1728,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 154.0
+	},
 	"output.git":
 	{
 		"height": 154.0
@@ -875,6 +1746,14 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"ab",
+				"arrange/about.md"
+			],
+			[
+				"subl",
+				"_posts/2016-1-31-linux下sublime text 2使用技巧.md"
+			],
 			[
 				"rep",
 				"arrange/reprint.md"
@@ -926,10 +1805,6 @@
 			[
 				"in",
 				"index.html"
-			],
-			[
-				"ab",
-				"arrange/about.md"
 			],
 			[
 				".js",
@@ -1009,7 +1884,7 @@
 		[
 			[
 				"",
-				"/home/nephne/cPrimerPlus/plus.sublime-project"
+				"/home/nephne/src/ardupilot-Su/ardupilot.sublime-project"
 			]
 		],
 		"width": 380.0

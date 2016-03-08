@@ -16,6 +16,8 @@ Ubuntu用户可以参考[链接](http://dev.ardupilot.com/wiki/building-the-code
 
 <!--more-->
 - 需要特定的[编译器](http://firmware.diydrones.com/Tools/PX4-tools/)，下载后解压`tar -xjvf gcc-arm-none-eabi-4_6-2012q2-20120614.tar.bz2`，然后编辑$HOME/.bashrc文件，加入`export PATH=$PATH:/home/your_username/bin/gcc-arm-none-eabi-4_6-2012q2/bin`，或者参考我之前写的[文章](http://www.nephen.com/2015/12/%E5%88%9D%E5%AD%A6PX4%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/#%E4%BB%A3%E7%A0%81%E7%BC%96%E8%AF%91)。
+> `Tip`：如果以前编译正确，更新后出现问题，考虑更新子模块和重新编译。
+
 - 权限：`sudo usermod -a -G dialout $USER`。
 - 安装ccache加快编译速度。    
 
@@ -33,7 +35,13 @@ Ubuntu用户可以参考[链接](http://dev.ardupilot.com/wiki/building-the-code
 知识点：  
 
 1. [创建分支并改变一些代码](http://dev.ardupilot.com/wiki/where-to-get-the-code/#making_a_branch_and_changing_some_code)：fork源仓库，克隆到本地，更改后推送到fork仓库。
-2. [保持代码更新](http://dev.ardupilot.com/wiki/where-to-get-the-code/#rebase-based_workflow_keeping_your_code_up_to_date)：添加upstream远程官方库；更新`git fetch upstream`；重置当前的分支`git rebase upstream/master`，这里可能有冲突需要解决；推送的fork库`git push origin master`
+2. [保持代码更新](http://dev.ardupilot.com/wiki/where-to-get-the-code/#rebase-based_workflow_keeping_your_code_up_to_date)：添加upstream远程官方库；更新`git fetch upstream`；重置当前的分支`git rebase upstream/master`，这里可能有冲突需要解决；更新子模块；
+
+	```sh
+	~ $ git submodule init
+	~ $ git submodule update --recursive
+	```
+推送的fork库`git push origin master`
 3. [提交分支到master](http://dev.ardupilot.com/wiki/submitting-patches-back-to-master/)：确保每次提交只是做了一件事情；简洁易懂的注释；[清理本地提交历史](http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html)；推送到本地分支`git push -f origin master`；[创建上拉请求](https://help.github.com/articles/using-pull-requests)；在`Pull Request`页面选择`New pull request`按钮；选择需要提交的分支然后点击`Click to create pull request for this comparison`（base branch 是远程官方分支, head branch 是自己要提交的分支，这样做可以在任意时间段进行提交）；每个参与者都会收到新请求消息；管理`pull requests`；查看`proposed changes`；`Pull request`谈论；一段时间后可以查看` long-running pull requests`    
 
 补充知识点：   
@@ -76,7 +84,7 @@ Ubuntu用户可以参考[链接](http://dev.ardupilot.com/wiki/building-the-code
  + hal.gpio->pinMode(), hal.gpio->read() and hal.gpio->write() for accessing GPIO pins
  + I2C access via hal.i2c
  + SPI access via hal.spi
-- setup()函数在板子启动的时候被调用一次，它实际的调用来在每块板子的HAL，所有main函数是在HAL里的，其后就是loop()函数的调用，sketch的主要工作体现在loop()函数里，注意这两个函数只是冰山一角；
+- setup()函数在板子启动的时候被调用一次，它实际的调用来自每块板子的HAL，所有main函数是在HAL里的，其后就是loop()函数的调用，sketch的主要工作体现在loop()函数里，注意这两个函数只是冰山一角；
 - `AP_HAL_MAIN()`是一个HAL宏，用来产生必要的代码声明C++主要函数，以及一些板级的初始化代码，位于`AP_HAL_XXX_Main.h`。
 
 4、[理解ArduPilot线程](http://dev.ardupilot.com/wiki/learning-ardupilot-threading/#understanding_ardupilot_threading)：APM1 and APM2不支持线程，所以要做一个简单的定时器和回调；有很多您需要了解的ArduPilot线程相关的关键概念：
@@ -239,6 +247,24 @@ RC输出是ArduPilot控制伺服系统和电机，RC输出默认为50 hz PWM值�
 # => The package referenceassemblies-pcl should be installed for PCL compilation support - this will resolve most cases of “Framework not installed: .NETPortable” errors during software compilation.
 # => The package ca-certificates-mono should be installed to get SSL certificates for HTTPS connections. Install this package if you run into trouble making HTTPS connections.
 ```
+
+If the .NET program does run well under Mono then running it with Mono would be a better choice. You can extract the executables from the MSI using something like 7zip.
+
+It's like this:
+
+Program -> Mono (Framework) -> System
+
+Versus
+
+Program -> .NET (Framework) -> WINE -> System
+
+然后下载Mission Planner的[ZIP版本](http://ardupilot.com/downloads/?did=83)，解压运行即可。
+
+```sh
+~ $ wget http://ardupilot.com/wp-content/plugins/download-monitor/download.php?id=83
+```
+
+
 
 对于apm_planner2可以选择安装[linux版](http://ardupilot.com/downloads/?did=111)
 
