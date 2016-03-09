@@ -59,7 +59,7 @@
 			"file": "_posts/2016-1-3-ArduPilot之代码概述(Copter).md",
 			"settings":
 			{
-				"buffer_size": 5732,
+				"buffer_size": 12948,
 				"line_ending": "Unix"
 			}
 		},
@@ -83,15 +83,19 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 81.0,
 		"selected_items":
 		[
 			[
-				"pu",
-				"Git: Push"
+				"git log",
+				"Git: Log All"
 			],
 			[
-				"com",
+				"git lo",
+				"Git: Log Current File"
+			],
+			[
+				"co",
 				"Git: Commit"
 			],
 			[
@@ -99,7 +103,15 @@
 				"Git: Add All"
 			],
 			[
-				"co",
+				"ad",
+				"Git: Add All"
+			],
+			[
+				"pu",
+				"Git: Push"
+			],
+			[
+				"com",
 				"Git: Commit"
 			],
 			[
@@ -113,10 +125,6 @@
 			[
 				"p",
 				"Git: Push"
-			],
-			[
-				"ad",
-				"Git: Add All"
 			],
 			[
 				"push",
@@ -133,10 +141,6 @@
 			[
 				"comm",
 				"Git: Commit"
-			],
-			[
-				"git lo",
-				"Git: Log All"
 			],
 			[
 				"tra",
@@ -267,7 +271,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 536.0
+		"width": 528.0
 	},
 	"console":
 	{
@@ -419,7 +423,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 108.0,
+		"height": 0.0,
 		"where_history":
 		[
 		]
@@ -429,6 +433,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"function。",
+			"\\",
 			"multicopter和传统的直升机马达混合",
 			"mono",
 			"min",
@@ -533,7 +539,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -878,8 +884,8 @@
 						"selection":
 						[
 							[
-								14692,
-								14692
+								4357,
+								4370
 							]
 						],
 						"settings":
@@ -1027,7 +1033,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4041.0,
+						"translation.y": 2322.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1203,15 +1209,15 @@
 					"file": "_posts/2016-1-3-ArduPilot之代码概述(Copter).md",
 					"settings":
 					{
-						"buffer_size": 5732,
+						"buffer_size": 12948,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								702,
-								702
+								9970,
+								9970
 							]
 						],
 						"settings":
@@ -1355,10 +1361,11 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.tmLanguage"
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 6345.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1524,7 +1531,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1233.0,
+						"translation.y": 465.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
