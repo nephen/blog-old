@@ -75,7 +75,7 @@
 			"file": "arrange/about.md",
 			"settings":
 			{
-				"buffer_size": 4612,
+				"buffer_size": 4737,
 				"line_ending": "Unix"
 			}
 		}
@@ -83,17 +83,9 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 81.0,
+		"height": 392.0,
 		"selected_items":
 		[
-			[
-				"git log",
-				"Git: Log All"
-			],
-			[
-				"git lo",
-				"Git: Log Current File"
-			],
 			[
 				"co",
 				"Git: Commit"
@@ -101,6 +93,18 @@
 			[
 				"add",
 				"Git: Add All"
+			],
+			[
+				"c",
+				"Git: Commit"
+			],
+			[
+				"git log",
+				"Git: Log All"
+			],
+			[
+				"git lo",
+				"Git: Log Current File"
 			],
 			[
 				"ad",
@@ -129,10 +133,6 @@
 			[
 				"push",
 				"Git: Push"
-			],
-			[
-				"c",
-				"Git: Commit"
 			],
 			[
 				"giall",
@@ -271,7 +271,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 528.0
+		"width": 536.0
 	},
 	"console":
 	{
@@ -539,7 +539,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -884,8 +884,8 @@
 						"selection":
 						[
 							[
-								4357,
-								4370
+								4025,
+								4025
 							]
 						],
 						"settings":
@@ -1033,7 +1033,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2322.0,
+						"translation.y": 2418.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1541,15 +1541,15 @@
 					"file": "arrange/about.md",
 					"settings":
 					{
-						"buffer_size": 4612,
+						"buffer_size": 4737,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2749,
-								2749
+								2315,
+								2315
 							]
 						],
 						"settings":
@@ -1696,7 +1696,7 @@
 							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1584.0,
+						"translation.y": 1630.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
