@@ -66,6 +66,11 @@ $ git push -u origin master
 $ cd existing_git_repo
 $ git remote add origin 'git@gitcafe.com:nephen/nephen.git'
 $ git push -u origin master
+
+# => 你可以使用 git tag 命令来添加新标签
+$ git tag -a v1.0 -m 'version 1.0'
+# => 可以使用 git push 命令来将标签推送到远程仓库
+$ git push origin v1.0:v1.0
 ```
 The more info about [Blogging with Jekyll](https://help.github.com/articles/using-jekyll-with-pages/)/[GitCafe 官方帮助文档](https://gitcafe.com/GitCafe/Help/wiki/Pages-%E7%9B%B8%E5%85%B3%E5%B8%AE%E5%8A%A9#wiki)
 
