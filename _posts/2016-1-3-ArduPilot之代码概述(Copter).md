@@ -469,7 +469,34 @@ int __EXPORT ArduPilot_main(int argc, char* const argv[]) {
         return 0;
     }
 ```
-因此实际上这个工程的main函数就是ArduCopter.cpp里的ArduPilot_main函数。
+因此实际上这个工程的main函数就是ArduCopter.cpp里的ArduPilot_main函数。    
+那么这里可能又牵扯到了一个问题，ArduPilot_main函数又是怎么调用的呢？   
+如果像以前我们经常使用的单片机裸机系统，入口函数就是程序中函数名为main的函数，但是这个工程里边名字不叫main，而是ArduPilot_main，所以这个也不像裸机系统那样去运行`ArduPilot_main`那么简单。区别在于这是跑的Nuttx操作系统，这是一个类Unix的操作系统，它的初始化过程是由`脚本`去完成的。    
+注意一个重要的词——`脚本`，如果你对Nuttx的启动过程不是很熟悉，可以查看我先前写的一些[文章](/2015/12/初学PX4之操作系统/#系统启动)。而在这里需要注意两个脚本，一个是ardupilot/mk/PX4/ROMFS/init.d里的rcS，另一个是rc.APM，这个脚本在rcS里得到了调用，也就是说，rcS就是为Nuttx的启动文件。    
+那么到底调用ArduPilot_main的地方在哪里呢？   
+查看rc.APM的最低端：
+
+```sh
+echo Starting ArduPilot $deviceA $deviceC $deviceD
+if ArduPilot -d $deviceA -d2 $deviceC -d3 $deviceD start
+then
+    echo ArduPilot started OK
+else
+    sh /etc/init.d/rc.error
+fi
+```
+其中ArduPilot是一个内嵌的应用程序，由编译生成的builtin_commands.c可知，这个应用程序的入口地址就是`ArduPilot_main`。
+
+```c++
+{"ArduPilot", SCHED_PRIORITY_DEFAULT, 4096, ArduPilot_main},
+{"px4flow", SCHED_PRIORITY_DEFAULT, CONFIG_PTHREAD_STACK_DEFAULT, px4flow_main},
+```
+这样的命令有很多，在rcS里就开始调用的比如rgbled就是的。至于这些内置的命令是怎么生成的，就要了解PX4原生的编译过程了，由上一节的介绍，查看px4.targes.mk。
+
+```sh
+PX4_MAKE = $(v)+ GIT_SUBMODULES_ARE_EVIL=1 ARDUPILOT_BUILD=1 $(MAKE) -C $(SKETCHBOOK) -f $(PX4_ROOT)/Makefile.make EXTRADEFINES="$(SKETCHFLAGS) $(WARNFLAGS) $(OPTFLAGS) "'$(EXTRAFLAGS)' APM_MODULE_DIR=$(SKETCHBOOK) SKETCHBOOK=$(SKETCHBOOK) CCACHE=$(CCACHE) PX4_ROOT=$(PX4_ROOT) NUTTX_SRC=$(NUTTX_SRC) MAXOPTIMIZATION="-Os" UAVCAN_DIR=$(UAVCAN_DIR)
+```
+其中-f $(PX4_ROOT)/Makefile.make显示了makefile使用了PX4项目根目录的Makefile.make文件，拜读这里即可查出真相。
 
 <hr>
 参看文章：[官网](http://dev.ardupilot.com/wiki/apmcopter-code-overview/)/[串级pid](http://bbs.loveuav.com/thread-229-1-1.html)
