@@ -430,7 +430,46 @@ SRCROOT			:=	$(realpath $(dir $(firstword $(MAKEFILE_LIST))))通过判断是否�
 
 <br>
 ####程序入口主函数
+我们看源代码的时候，特别喜欢从main函数开始，顺着思路开始往下理。下面我就以ArduCopter工程里的px4-v2为例子，一步一步剖析main函数。   
+总的来说，这里的main函数就是ArduCopter.cpp里的`AP_HAL_MAIN_CALLBACKS(&copter);`，它实际上是一个宏定义，传进来的参数为类对象的引用，通过在`AP_HAL_Main.h`里的定义可知原型为：
 
+```C++
+#define AP_HAL_MAIN_CALLBACKS(CALLBACKS) extern "C" { \
+    int AP_MAIN(int argc, char* const argv[]); \
+    int AP_MAIN(int argc, char* const argv[]) { \
+        hal.run(argc, argv, CALLBACKS); \
+        return 0; \
+    } \
+    }
+```
+而这里的AP_MAIN也是一个宏，如下：
+
+```C++
+#if CONFIG_HAL_BOARD == HAL_BOARD_PX4 || CONFIG_HAL_BOARD == HAL_BOARD_VRBRAIN
+#define AP_MAIN __EXPORT ArduPilot_main
+#endif
+```
+所以它实际上是这样的：
+
+```C++
+#define AP_HAL_MAIN_CALLBACKS(CALLBACKS) extern "C" { \
+    int __EXPORT ArduPilot_main(int argc, char* const argv[]); \
+    int __EXPORT ArduPilot_main(int argc, char* const argv[]) { \
+        hal.run(argc, argv, CALLBACKS); \
+        return 0; \
+    } \
+    }
+```
+将这个宏替换到ArduCopter.cpp里的`AP_HAL_MAIN_CALLBACKS(&copter);`它就变成了：
+
+```C++
+int __EXPORT ArduPilot_main(int argc, char* const argv[]);
+int __EXPORT ArduPilot_main(int argc, char* const argv[]) {
+        hal.run(argc, argv, &copter);
+        return 0;
+    }
+```
+因此实际上这个工程的main函数就是ArduCopter.cpp里的ArduPilot_main函数。
 
 <hr>
 参看文章：[官网](http://dev.ardupilot.com/wiki/apmcopter-code-overview/)/[串级pid](http://bbs.loveuav.com/thread-229-1-1.html)
