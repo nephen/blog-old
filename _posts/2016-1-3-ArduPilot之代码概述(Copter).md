@@ -309,7 +309,128 @@ comments: true
 <br>
 ####[添加一个新的MAVLink消息](http://dev.ardupilot.com/wiki/code-overview-adding-a-new-mavlink-message/)
 
-地面站之间传递数据和命令使用的是[MAVLink协议](http://en.wikipedia.org/wiki/MAVLink)，参考已有的[MAVLink messages](https://pixhawk.ethz.ch/mavlink/).。
+地面站之间传递数据和命令使用的是[MAVLink协议](http://en.wikipedia.org/wiki/MAVLink)，参考已有的[MAVLink messages](https://pixhawk.ethz.ch/mavlink/)。
+
+<br>
+####makefie分析
+对于make语法不是很熟悉的可以参考[make manual](http://www.gnu.org/software/make/manual/make.html)/[ 详解Makefile 函数的语法与使用](http://www.cnblogs.com/sky1991/archive/2012/11/15/2771348.html)。    
+>【make中命令行前面加上减号】   
+就是，忽略当前此行命令执行时候所遇到的错误。   
+而如果不忽略，make在执行命令的时候，如果遇到error，会退出执行的，加上减号的目的，是即便此行命令执行中出错，比如删除一个不存在的文件等，那么也不要管，继续执行make。   
+【make中命令行前面加上at符号@】    
+就是，在make执行时候，输出的信息中，不要显示此行命令。    
+而正常情况下，make执行过程中，都是会显示其所执行的任何的命令的。如果你不想要显示某行的命令，那么就在其前面加上@符号即可。   
+【FOO ?= bar】   
+只有当FOO变量未定义是，才可以赋值。   
+【=/: =/::=】   
+=为可递归等于，另外两种则不可以。    
+【+ =/！ = 】    
+附加在已有的变量上，后者可以执行命令并将结果赋给左边变量。    
+更多参考：http://blog.csdn.net/crylearner/article/details/17271195
+
+- 确定MK_DIR    
+进入ArduCopter里的Makefile文件可知，它直接调用了../mk/apk.mk文件。    
+在apk.mk文件里，第一行代码是返回系统的类型。   
+
+	```sh
+	# => The uname command with no parameters should tell you the operating system name. I'd use that, then make conditionals based on the return value.
+
+	# => Example
+
+	UNAME := $(shell uname)
+
+	ifeq ($(UNAME), Linux)
+	# do something Linux-y
+	endif
+	ifeq ($(UNAME), Solaris)
+	# do something Solaris-y
+	endif
+	```
+根据系统的类型确定不同的工作目录MK_DIR，findstring的用法如下：    
+
+	```sh
+	$(findstring find,in)
+	# => Searches in for an occurrence of find. If it occurs, the value is find; otherwise, the value is empty. You can use this function in a conditional to test for the presence of a specific substring in a given string. Thus, the two examples,
+
+	$(findstring a,a b c)
+	$(findstring a,b c)
+	# => produce the values ‘a’ and ‘’ (the empty string), respectively.
+	```
+其中的[cygpath](https://cygwin.com/cygwin-ug-net/cygpath.html)用于转换Unix和Windows的格式路径，选项信息如下：
+
+	```
+	-m, --mixed           like --windows, but with regular slashes (C:/WINNT)
+	-w, --windows         print Windows form of NAMEs (C:\WINNT)
+	```
+根据gnu make定义，gnu make 会自动将所有读取的makefile路径都会加入到[MAKEFILE_LIST](https://www.gnu.org/software/make/manual/html_node/Special-Variables.html)变量中，而且是按照读取的先后顺序添加。例如：
+
+	```sh
+	#If a makefile named Makefile has this content:
+
+	name1 := $(lastword $(MAKEFILE_LIST))
+
+	include inc.mk
+
+	name2 := $(lastword $(MAKEFILE_LIST))
+
+	all:
+	        @echo name1 = $(name1)
+	        @echo name2 = $(name2)
+	#then you would expect to see this output:
+
+	#name1 = Makefile
+	#name2 = inc.mk
+	```
+格式：$(patsubst <pattern>,<replacement>,<text>)    
+名称：模式字符串替换函数——[patsubst](https://www.gnu.org/software/make/manual/html_node/Text-Functions.html)   
+功能：查找<text>中的单词（单词以“空格”、“Tab”或“回车”“换行”分隔）是否符合模式<pattern>，如果匹配的话，则以<replacement>替换。这里，<pattern>可以包括通配符“%”，表示任意长度的字串。如果<replacement>中也包含“%”，那么，<replacement>中的这个“%”将是<pattern>中的那个“%”所代表的字串。（可以用“\”来转义，以“\%”来表示真实含义的“%”字符）   
+返回：函数返回被替换过后的字符串。    
+示例：    
+$(patsubst %.c,%.o,x.c.c bar.c)     
+把字串“x.c.c bar.c”符合模式[%.c]的单词替换成[%.o]，返回结果是“x.c.o bar.o”     
+而dir是提取路径   
+
+	```sh
+	$(dir src/foo.c hacks)
+	#produces the result ‘src/ ./’.
+	```
+所以$(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))返回了当前的mk路径，到这里也就得出了 `MK_DIR` 信息。    
+
+- 环境变量    
+添加环境变量environ.mk，进入分析变量。    
+GIT_VERSION := $(shell git rev-parse HEAD | cut -c1-8)为提取commit号的前八个字符作为版本号。   
+SRCROOT			:=	$(realpath $(dir $(firstword $(MAKEFILE_LIST))))通过判断是否有libraries来获取当前make的真实路径，不存在则返回为空。   
+查找SKETCHBOOK的位置：
+ - wildcard通配符，如：列出该目录下所有的C文件为$(wildcard *.c)。
+ - 此位置为该项目的根目录。
+ - 如果是在win平台，转换为win格式的路径。
+
+	`提示`：关于make的一些控制函数如[error和warning](http://blog.chinaunix.net/uid-23929712-id-2650467.html)。   
+根据源文件路径判断SKETCH名称：SKETCH:=$(lastword $(subst /, ,$(SRCROOT)))，其中subst是将源文件路径中所有的/替换为空格。   
+建立BUILDROOT目录：根据编译目标$(MAKECMDGOALS)建立相关目录，如果编译目标不匹配，建立临时目录。   
+根据编译参数确定HAL_BOARD类型。
+- 添加configure.mk   
+如果编译参数是configure，则添加。
+- help目标选项   
+直接显示help的相关信息。
+- 添加公共编译组件   
+ - target.mk：编译目标，默认default为help。[foreach](http://www.cnblogs.com/lengbingshy/p/3936116.html)语法及使用：USED_BOARDS := $(foreach board,$(BOARDS), $(findstring $(board), $(MAKECMDGOALS)))。使用foreach/eval/define/call更加快速的定义了目标。[.PHONY](http://www.cnblogs.com/chenyadong/archive/2011/11/19/2255279.html)伪目标etags。添加modules.mk/mavgen.mk。
+ - sketch_sources.mk：确定SRCSUFFIXES文件后缀；判断编译目录`MAKE_INC`是否为空；addprefix为添加前缀；SKETCHSRCS为编译目录的cpp文件；SKETCHCPP为编译目录的SKETCH.cpp文件；SKETCHOBJS为build目录里的cpp文件然后替换为.o文件；LIBRARIES的值赋给LIBTOKENS，匹配板子加入`AP_HAL_PX4`的库；更新包含sketchbook的各种库及文件，其中notdir为去掉目录仅留名字；使用’FORCE’和’.PHONY : clean’效果相同。使用’.PHONY’更加明确高效，担不是所有的’make’都支持；这样许多makefile中使用’FORCE’；生成build目录并建立make.flags文件；建立公共规则头文件，$@表示规则目标名字，dir为提取文件目录。
+- 编译选项判断   
+如果不为clean，则继续。
+- 单板配置    
+根据HAL_BOARD选择配置。
+- 配置PX4   
+如果上一步为PX4，则进行配置。
+ - 添加find_tools.mk：寻找编译工具，使用`FIND_TOOL` =$(firstword $(wildcard $(addsuffix /$(1),$(TOOLPATH))))快速查找；使用CCACHE如果安装了的话；查找awk。
+ - 添加px4_targets.mk：确定`PX4FIRMWARE_DIRECTORY`/`NUTTX_ROOT`/`NUTTX_SRC`/`PX4NUTTX_DIRECTORY`/`UAVCAN_DIRECTORY`等路径；获取`NUTTX_GIT_VERSION`及`PX4_GIT_VERSION`版本；添加EXTRAFLAGS；更新`PX4_V2_CONFIG_FILE`配置文件；定义SKETCHFLAGS/WARNFLAGS/OPTFLAGS，其中-D表示为define，-I为添加库；确定PYTHONPATH路径；定义`PX4_MAKE`及`PX4_MAKE_ARCHIVES`,有几个知识点，The ‘-n’, ‘-t’, and ‘-q’ options do not affect recipe lines that begin with ‘+’ characters or contain the strings ‘$(MAKE)’ or ‘${MAKE}’, it does not apply if the MAKE variable is referenced through expansion of another variable. In the latter case you must use the ‘+’ token to get these special effects.，这里包含了编译PX4原生代码的`$(PX4_ROOT)/Makefile.make`；添加`HASHADDER_FLAGS`；生成`module_mk`；最后建立px4的相关目标，如px4-v2；
+ - 上一步中涉及到了`config_px4fmu-v2_APM.mk`；在这里又调用了px4_common.mk，这是一个很重要的东西；如定义了`ROMFS_ROOT`，定义了`BUILTIN_COMMANDS`，其中strip为去除空格；
+- px4原生代码编译   
+想要了解更详细的px4原生代码编译，还的看看`$(PX4_ROOT)/Makefile.make`，这个makefile是由cmake产生的；
+
+<br>
+####程序入口主函数
+
 
 <hr>
 参看文章：[官网](http://dev.ardupilot.com/wiki/apmcopter-code-overview/)/[串级pid](http://bbs.loveuav.com/thread-229-1-1.html)

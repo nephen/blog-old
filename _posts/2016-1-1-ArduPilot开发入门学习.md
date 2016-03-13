@@ -231,21 +231,26 @@ RC输出是ArduPilot控制伺服系统和电机，RC输出默认为50 hz PWM值�
 
 <hr>
 ####上位机安装
-由于我使用的是Ubuntu, 所以我会想办法使Mission Planner上位机能在linux平台上运行。
+由于我使用的是Ubuntu, 所以我会想办法使Mission Planner上位机能在linux平台上运行，在pixhawk的官网上也发现了这样的[文章](https://pixhawk.org/users/ground_control_stations/start#apm_mission_planner)以及谷歌搜到的[文章](http://www.rcgroups.com/forums/showthread.php?t=2179591)。
 
-参考[Install Mono on Linux](http://www.mono-project.com/docs/getting-started/install/linux/)安装mono
+这里[mono](https://github.com/diydrones/MissionPlanner/blob/master/README.md)[版本](http://download.mono-project.com/sources/mono/)下载，参考[Install Mono on Linux](http://www.mono-project.com/docs/getting-started/install/linux/)安装mono
 
 ```sh
 ~ $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+# => If for some reason you want to pin an older version of Mono rather than updating to the latest, you can modify the Debian repository to “wheezy/snapshots/X.XX.X” instead of “wheezy”. For example, “wheezy/snapshots/3.10.0” will lock you to that version.
 ~ $ echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
 ~ $ echo "deb http://download.mono-project.com/repo/debian wheezy-apache24-compat main" | sudo tee -a /etc/apt/sources.list.d/mono-xamarin.list
 ~ $ sudo apt-get update
 ~ $ sudo apt-get install mono-runtime
-~ $ sudo apt-get install mono-complete
+~ $ sudo apt-get install mono-complete festival
 # => The package mono-devel should be installed to compile code.
 # => The package mono-complete should be installed to install everything - this should cover most cases of “assembly not found” errors.
 # => The package referenceassemblies-pcl should be installed for PCL compilation support - this will resolve most cases of “Framework not installed: .NETPortable” errors during software compilation.
 # => The package ca-certificates-mono should be installed to get SSL certificates for HTTPS connections. Install this package if you run into trouble making HTTPS connections.
+# => 或者单独安装，这样比较省硬盘
+# => festival 用于MP的语言输出
+~ $ sudo apt-get install mono-runtime libmono-system-windows-forms4.0-cil libmono-system-xml-linq4.0-cil libmono-system-management4.0-cil libmono-system-web4.0-cil libmono-corlib4.5-cil libmono-system-numerics4.0-cil festival
+~ $ mono MissionPlanner.exe
 ```
 
 If the .NET program does run well under Mono then running it with Mono would be a better choice. You can extract the executables from the MSI using something like 7zip.
