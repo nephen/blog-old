@@ -313,7 +313,7 @@ comments: true
 
 <br>
 ####makefie分析
-对于make语法不是很熟悉的可以参考[make manual](http://www.gnu.org/software/make/manual/make.html)/[ 详解Makefile 函数的语法与使用](http://www.cnblogs.com/sky1991/archive/2012/11/15/2771348.html)。    
+对于make语法不是很熟悉的可以参考[make manual](http://www.gnu.org/software/make/manual/make.html)/[ 详解Makefile 函数的语法与使用](http://www.cnblogs.com/sky1991/archive/2012/11/15/2771348.html)/[跟我一起写makefile](http://www.chinaunix.net/old_jh/23/408225.html)。    
 >【make中命令行前面加上减号】   
 就是，忽略当前此行命令执行时候所遇到的错误。   
 而如果不忽略，make在执行命令的时候，如果遇到error，会退出执行的，加上减号的目的，是即便此行命令执行中出错，比如删除一个不存在的文件等，那么也不要管，继续执行make。   
@@ -414,19 +414,112 @@ SRCROOT			:=	$(realpath $(dir $(firstword $(MAKEFILE_LIST))))通过判断是否�
 - help目标选项   
 直接显示help的相关信息。
 - 添加公共编译组件   
- - target.mk：编译目标，默认default为help。[foreach](http://www.cnblogs.com/lengbingshy/p/3936116.html)语法及使用：USED_BOARDS := $(foreach board,$(BOARDS), $(findstring $(board), $(MAKECMDGOALS)))。使用foreach/eval/define/call更加快速的定义了目标。[.PHONY](http://www.cnblogs.com/chenyadong/archive/2011/11/19/2255279.html)伪目标etags。添加modules.mk/mavgen.mk。
- - sketch_sources.mk：确定SRCSUFFIXES文件后缀；判断编译目录`MAKE_INC`是否为空；addprefix为添加前缀；SKETCHSRCS为编译目录的cpp文件；SKETCHCPP为编译目录的SKETCH.cpp文件；SKETCHOBJS为build目录里的cpp文件然后替换为.o文件；LIBRARIES的值赋给LIBTOKENS，匹配板子加入`AP_HAL_PX4`的库；更新包含sketchbook的各种库及文件，其中notdir为去掉目录仅留名字；使用’FORCE’和’.PHONY : clean’效果相同。使用’.PHONY’更加明确高效，担不是所有的’make’都支持；这样许多makefile中使用’FORCE’；生成build目录并建立make.flags文件；建立公共规则头文件，$@表示规则目标名字，dir为提取文件目录。
+ - target.mk：编译目标，默认default为help。[foreach](http://www.cnblogs.com/lengbingshy/p/3936116.html)语法及使用：USED_BOARDS := $(foreach board,$(BOARDS), $(findstring $(board), $(MAKECMDGOALS)))。使用foreach/eval/define/call更加快速的定义了目标。[.PHONY](http://www.cnblogs.com/chenyadong/archive/2011/11/19/2255279.html)伪目标etags。添加modules.mk（进行模块更新检查; cd $(dirname "$0")为进入执行命令的目录；shell里-d为目录，-f为文件，[更多](http://zhidao.baidu.com/link?url=KNNKz9I4gegfiwuM7XyaCDqDnvgzrWffqFyNMnrD5E89iJnxdz-OKDJCCI_wJs2_t4y99WPExEKA5PF8F0QVeq)；set -x是交互形式执行脚本，告诉你脚本做了些什么；）/mavgen.mk。
+ - sketch_sources.mk：确定SRCSUFFIXES文件后缀；判断编译目录`MAKE_INC`是否为空；addprefix为添加前缀；SKETCHSRCS为编译目录的cpp文件；SKETCHCPP为编译目录的SKETCH.cpp文件；SKETCHOBJS为build目录里的cpp文件然后替换为.o文件；LIBRARIES的值赋给LIBTOKENS，匹配板子加入`AP_HAL_PX4`的库；更新包含sketchbook的各种库及文件，其中notdir为去掉目录仅留名字；使用’FORCE’和’.PHONY : clean’效果相同。使用’.PHONY’更加明确高效，但不是所有的’make’都支持；这样许多makefile中使用’FORCE’；生成build目录并建立make.flags文件；建立公共规则头文件，$@表示规则目标名字，dir为提取文件目录。
 - 编译选项判断   
 如果不为clean，则继续。
 - 单板配置    
 根据HAL_BOARD选择配置。
 - 配置PX4   
 如果上一步为PX4，则进行配置。
- - 添加find_tools.mk：寻找编译工具，使用`FIND_TOOL` =$(firstword $(wildcard $(addsuffix /$(1),$(TOOLPATH))))快速查找；使用CCACHE如果安装了的话；查找awk。
- - 添加px4_targets.mk：确定`PX4FIRMWARE_DIRECTORY`/`NUTTX_ROOT`/`NUTTX_SRC`/`PX4NUTTX_DIRECTORY`/`UAVCAN_DIRECTORY`等路径；获取`NUTTX_GIT_VERSION`及`PX4_GIT_VERSION`版本；添加EXTRAFLAGS；更新`PX4_V2_CONFIG_FILE`配置文件；定义SKETCHFLAGS/WARNFLAGS/OPTFLAGS，其中-D表示为define，-I为添加库；确定PYTHONPATH路径；定义`PX4_MAKE`及`PX4_MAKE_ARCHIVES`,有几个知识点，The ‘-n’, ‘-t’, and ‘-q’ options do not affect recipe lines that begin with ‘+’ characters or contain the strings ‘$(MAKE)’ or ‘${MAKE}’, it does not apply if the MAKE variable is referenced through expansion of another variable. In the latter case you must use the ‘+’ token to get these special effects.，这里包含了编译PX4原生代码的`$(PX4_ROOT)/Makefile.make`；添加`HASHADDER_FLAGS`；生成`module_mk`；最后建立px4的相关目标，如px4-v2；
+ - 添加find_tools.mk：寻找编译工具，使用`FIND_TOOL` =$(firstword $(wildcard $(addsuffix /$(1),$(TOOLPATH))))快速查找；使用CCACHE如果安装了的话；查找awk。关于一些[预定义的变量](http://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html)：
+	<img src="http://img.blog.csdn.net/20130729161414015?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk3OTAzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+ - 添加px4_targets.mk：确定`PX4FIRMWARE_DIRECTORY`/`NUTTX_ROOT`/`NUTTX_SRC`/`PX4NUTTX_DIRECTORY`/`UAVCAN_DIRECTORY`等路径；获取`NUTTX_GIT_VERSION`及`PX4_GIT_VERSION`版本；添加EXTRAFLAGS；更新`PX4_V2_CONFIG_FILE`配置文件；定义SKETCHFLAGS/WARNFLAGS/OPTFLAGS，其中-D表示为define，-I为添加库；确定PYTHONPATH路径；定义`PX4_MAKE`及`PX4_MAKE_ARCHIVES`,有几个知识点，The ‘-n’, ‘-t’, and ‘-q’ options do not affect recipe lines that begin with ‘+’ characters or contain the strings ‘$(MAKE)’ or ‘${MAKE}’, it does not apply if the MAKE variable is referenced through expansion of another variable. In the latter case you must use the ‘+’ token to get these special effects.，这里包含了编译PX4原生代码的`$(PX4_ROOT)/Makefile.make`， $(MAKE) -C表示进入指定文件夹执行；添加`HASHADDER_FLAGS`；生成`module_mk`；最后建立px4的相关目标，如px4-v2，注意：px4-v2的依赖条件中包含了$(SKETCHCPP)，从这里调用该工程下的源文件；`.NOTPARALLEL`新语法：Makefile中，如果出现目标“.NOPARALLEL”，则所有命令按照串行方式执行，即使存在make的命令行参数“-j”。但在递归调用的字make进程中，命令可以并行执行。此目标不应该有依赖文件，所有出现的依赖文件将被忽略。
  - 上一步中涉及到了`config_px4fmu-v2_APM.mk`；在这里又调用了px4_common.mk，这是一个很重要的东西；如定义了`ROMFS_ROOT`，定义了`BUILTIN_COMMANDS`，其中strip为去除空格；
 - px4原生代码编译   
-想要了解更详细的px4原生代码编译，还的看看`$(PX4_ROOT)/Makefile.make`，这个makefile是由cmake产生的；
+想要了解更详细的px4原生代码编译，还的看看`$(PX4_ROOT)/Makefile.make`，这个makefile是由cmake产生的；     
+大概的框架可以查看根目录下makefiles文件夹里的README.txt文件。
+
+<br>
+####PX4原生代码CMAKE剖析
+>`参考文献：`[cmake.org](https://cmake.org/cmake/help/v3.0/index.html)
+
+知识点总结：
+
+- cmake_minimum_required(VERSION 2.8 FATAL_ERROR)为设置一个工程所需要的最低CMake版本。
+- CMAKE_BUILD_TYPE:：build 类型(Debug, Release, ...)，CMAKE_BUILD_TYPE=Debug。
+- 该cmake_policy命令用于设置策略来旧的或新的行为。
+
+	```sh
+	cmake_policy(SET CMP<NNNN> NEW)
+	cmake_policy(SET CMP<NNNN> OLD)
+	```
+- set 将一个CMAKE变量设置为给定值。
+
+	```sh
+	set(<variable> <value> [[CACHE <type> <docstring> [FORCE]] | PARENT_SCOPE])
+	```
+将变量\<variable\>的值设置为\<value\>。在\<variable\>被设置之前，\<value\>会被展开。如果有CACHE选项，那么\<variable\>就会添加到cache中；这时\<type\>和\<docstring\>是必需的。\<type\>被CMake GUI用来选择一个窗口，让用户设置值。\<type>可以是下述值中的一个：
+
+ - FILEPATH = 文件选择对话框。
+ - PATH     = 路径选择对话框。
+ - STRING   = 任意的字符串。
+ - BOOL     = 布尔值选择复选框。
+ - INTERNAL = 不需要GUI输入端。(适用于永久保存的变量)。
+- set_property  在给定的作用域内设置一个命名的属性。
+
+	```sh
+	 set_property(<GLOBAL                            |
+	                DIRECTORY [dir]                   |
+	                TARGET    [target1 [target2 ...]] |
+	                SOURCE    [src1 [src2 ...]]       |
+	                TEST      [test1 [test2 ...]]     |
+	                CACHE     [entry1 [entry2 ...]]>
+	               [APPEND]
+	               PROPERTY <name> [value1 [value2 ...]])
+	```
+为作用域里的0个或多个对象设置一种属性。第一个参数决定了属性可以影响到的作用域。他必须是下述值之一：GLOBAL，全局作用域，唯一，并且不接受名字。DIRECTORY，路径作用域，默认为当前路径，但是也可以用全路径或相对路径指定其他值。TARGET，目标作用域，可以命名0个或多个已有的目标。SOURCE，源作用域，可以命名0个或多个源文件。注意，源文件属性只对加到相同路径（CMakeLists.txt）中的目标是可见的。TEST 测试作用域可以命名0个或多个已有的测试。CACHE作用域必须指定0个或多个cache中已有的条目。    
+PROPERTY选项是必须的，并且要紧跟在待设置的属性的后面。剩余的参数用来组成属性值，该属性值是一个以分号分隔的list。如果指定了APPEND选项，该list将会附加在已有的属性值之后。
+- file(GLOB variable [RELATIVE path] [globbingexpressions]...)    
+GLOB 会产生一个由所有匹配globbing表达式的文件组成的列表，并将其保存到变量中。Globbing 表达式与正则表达式类似，但更简单。如果指定了RELATIVE 标记，返回的结果将是与指定的路径相对的路径构成的列表。 (通常不推荐使用GLOB命令来从源码树中收集源文件列表。原因是：如果CMakeLists.txt文件没有改变，即便在该源码树中添加或删除文件，产生的构建系统也不会知道何时该要求CMake重新产生构建文件。globbing 表达式包括：
+ - *.cxx     - match all files with extension cxx
+ - *.vt?      - match all files with extension vta,...,vtz
+ - f[3-5].txt - match files f3.txt,f4.txt, f5.txt
+
+	GLOB_RECURSE 与GLOB类似，区别在于它会遍历匹配目录的所有文件以及子目录下面的文件。对于属于符号链接的子目录，只有FOLLOW_SYMLINKS指定一或者cmake策略CMP0009没有设置为NEW时，才会遍历这些目录。
+- REPLACE : 将输入字符串内所有出现match_string的地方都用replace_string代替，然后将结果存储到输出变量中。
+
+	```sh
+	string(REPLACE <match_string> <replace_string> <output variable> <input> [<input>...])
+	```
+- LENGTH返回列表的长度，GET返回列表中指定下标的元素，APPEND添加新元素到列表中，INSERT 将新元素插入到列表中指定的位置，REMOVE_ITEM从列表中删除某个元素，REMOVE_AT从列表中删除指定下标的元素，REMOVE_DUPLICATES从列表中删除重复的元素，REVERSE 将列表的内容实地反转，改变的是列表本身，而不是其副本，SORT 将列表按字母顺序实地排序，改变的是列表本身，而不是其副本。
+
+	```sh
+	list(LENGTH <list><output variable>)
+	list(GET <list> <elementindex> [<element index> ...]
+	       <output variable>)
+	list(APPEND <list><element> [<element> ...])
+	list(FIND <list> <value><output variable>)
+	list(INSERT <list><element_index> <element> [<element> ...])
+	list(REMOVE_ITEM <list> <value>[<value> ...])
+	list(REMOVE_AT <list><index> [<index> ...])
+	list(REMOVE_DUPLICATES <list>)
+	list(REVERSE <list>)
+	list(SORT <list>)
+	```
+- message(SEND_ERROR|STATUS|FATAL_ERROR “message to display”)   
+SEND_ERROR，产生错误，生成过程被跳过。SATUS，输出前缀为 -- 的信息。FATAL_ERROR，立即终止所有 cmake 过程。
+- ExternalProject：创建自定义的目标，以建立外部树项目。
+- if(COMMAND command-name)   
+为真的前提是存在 command-name 命令、宏或函数且能够被调用。
+- IF (DEFINED var) 如果变量被定义，为真。
+- 设置一个名称，版本，并启用为整个项目的语言。
+
+	```sh
+	project(<PROJECT-NAME>
+	        [VERSION <major>[.<minor>[.<patch>[.<tweak>]]]]
+	        [LANGUAGES <language-name>...])
+	```
+- 外部加载项目设置。
+
+	```sh
+	find_package(<package> [version] [EXACT] [QUIET] [MODULE]
+	             [REQUIRED] [[COMPONENTS] [components...]]
+	             [OPTIONAL_COMPONENTS components...]
+	             [NO_POLICY_SCOPE])
+	```
+- enable_testing()——启用当前目录及其下的测试。
+- add_custom_target: 增加一个没有输出的目标，使得它总是被构建。该目标没有输出文件，总是被认为是过期的，即使是在试图用目标的名字创建一个文件。
 
 <br>
 ####程序入口主函数
@@ -472,7 +565,7 @@ int __EXPORT ArduPilot_main(int argc, char* const argv[]) {
 因此实际上这个工程的main函数就是ArduCopter.cpp里的ArduPilot_main函数。    
 那么这里可能又牵扯到了一个问题，ArduPilot_main函数又是怎么调用的呢？   
 如果像以前我们经常使用的单片机裸机系统，入口函数就是程序中函数名为main的函数，但是这个工程里边名字不叫main，而是ArduPilot_main，所以这个也不像裸机系统那样去运行`ArduPilot_main`那么简单。区别在于这是跑的Nuttx操作系统，这是一个类Unix的操作系统，它的初始化过程是由`脚本`去完成的。    
-注意一个重要的词——`脚本`，如果你对Nuttx的启动过程不是很熟悉，可以查看我先前写的一些[文章](/2015/12/初学PX4之操作系统/#系统启动)。而在这里需要注意两个脚本，一个是ardupilot/mk/PX4/ROMFS/init.d里的rcS，另一个是rc.APM，这个脚本在rcS里得到了调用，也就是说，rcS就是为Nuttx的启动文件。    
+注意一个重要的词——`脚本`，如果你对Nuttx的启动过程不是很熟悉，可以查看我先前写的一些[文章](/2015/12/初学PX4之操作系统#系统启动)。而在这里需要注意两个脚本，一个是ardupilot/mk/PX4/ROMFS/init.d里的rcS，另一个是rc.APM，这个脚本在rcS里得到了调用，也就是说，rcS就是为Nuttx的启动文件。    
 那么到底调用ArduPilot_main的地方在哪里呢？   
 查看rc.APM的最低端：
 
@@ -496,7 +589,7 @@ fi
 ```sh
 PX4_MAKE = $(v)+ GIT_SUBMODULES_ARE_EVIL=1 ARDUPILOT_BUILD=1 $(MAKE) -C $(SKETCHBOOK) -f $(PX4_ROOT)/Makefile.make EXTRADEFINES="$(SKETCHFLAGS) $(WARNFLAGS) $(OPTFLAGS) "'$(EXTRAFLAGS)' APM_MODULE_DIR=$(SKETCHBOOK) SKETCHBOOK=$(SKETCHBOOK) CCACHE=$(CCACHE) PX4_ROOT=$(PX4_ROOT) NUTTX_SRC=$(NUTTX_SRC) MAXOPTIMIZATION="-Os" UAVCAN_DIR=$(UAVCAN_DIR)
 ```
-其中-f $(PX4_ROOT)/Makefile.make显示了makefile使用了PX4项目根目录的Makefile.make文件，拜读这里即可查出真相。
+其中-f $(PX4_ROOT)/Makefile.make显示了makefile使用了PX4项目根目录的Makefile.make文件，拜读这里即可查出真相，真相在根目录下makefiles文件夹里的firmware.mk里。
 
 <hr>
 参看文章：[官网](http://dev.ardupilot.com/wiki/apmcopter-code-overview/)/[串级pid](http://bbs.loveuav.com/thread-229-1-1.html)

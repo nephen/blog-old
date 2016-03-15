@@ -15,7 +15,9 @@ More personal information please look up the [contact](/contact) page
 <hr>
 ##动态
 - 2016.2.2    
-    由于部分原因，本网站暂时由github迁移至gitcafe。
+	由于部分原因，本网站暂时由github迁移至gitcafe。
+- 2016.3.13    
+	gitcafe改名coding.me，重新迁回github。
 
 <hr>
 ## Simple development tutorial
