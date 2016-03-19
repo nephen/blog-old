@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 ---
-总体的代码结果图如下：
+代码调用关系可使用[doxygen](http://www.stack.nl/~dimitri/doxygen/manual/starting.html)工具，cmake中使用[doxygen](http://blog.csdn.net/shyanyang/article/details/42715297)，总体的代码结果图如下：
 <img src="/images/AC_CodeOverview_AutoFlightModes.png">
 具体可参考[APM飞控浅析](http://www.360doc.com/content/15/0505/11/22888854_468188999.shtml#)
 
@@ -329,8 +329,8 @@ comments: true
 更多参考：http://blog.csdn.net/crylearner/article/details/17271195
 
 - 确定MK_DIR    
-进入ArduCopter里的Makefile文件可知，它直接调用了../mk/apk.mk文件。    
-在apk.mk文件里，第一行代码是返回系统的类型。   
+进入ArduCopter里的[Makefile](https://github.com/diydrones/ardupilot/blob/master/ArduCopter/Makefile)文件可知，它直接调用了../mk/apk.mk文件。    
+在[apk.mk](https://github.com/diydrones/ardupilot/blob/master/mk/apm.mk)文件里，第一行代码是返回系统的类型。   
 
 	```sh
 	# => The uname command with no parameters should tell you the operating system name. I'd use that, then make conditionals based on the return value.
@@ -523,8 +523,8 @@ SEND_ERROR，产生错误，生成过程被跳过。SATUS，输出前缀为 -- �
 
 <br>
 ####程序入口主函数
-我们看源代码的时候，特别喜欢从main函数开始，顺着思路开始往下理。下面我就以ArduCopter工程里的px4-v2为例子，一步一步剖析main函数。   
-总的来说，这里的main函数就是ArduCopter.cpp里的`AP_HAL_MAIN_CALLBACKS(&copter);`，它实际上是一个宏定义，传进来的参数为类对象的引用，通过在`AP_HAL_Main.h`里的定义可知原型为：
+我们看源代码的时候，特别喜欢从main函数开始，顺着思路开始往下理。下面我就以ArduCopter工程里的px4-v2编译目标为例子，一步一步剖析main函数。   
+总的来说，这里的main函数就是[ArduCopter.cpp](https://github.com/diydrones/ardupilot/blob/master/ArduCopter/ArduCopter.cpp#L658)里的`AP_HAL_MAIN_CALLBACKS(&copter);`，它实际上是一个宏定义，传进来的参数为类对象的引用，通过在[AP_HAL_Main.h](https://github.com/diydrones/ardupilot/blob/master/libraries/AP_HAL/AP_HAL_Main.h#L49)里的定义可知原型为：
 
 ```C++
 #define AP_HAL_MAIN_CALLBACKS(CALLBACKS) extern "C" { \
@@ -535,7 +535,7 @@ SEND_ERROR，产生错误，生成过程被跳过。SATUS，输出前缀为 -- �
     } \
     }
 ```
-而这里的AP_MAIN也是一个宏，如下：
+而这里的[AP_MAIN](https://github.com/diydrones/ardupilot/blob/master/libraries/AP_HAL/AP_HAL_Main.h#L11)也是一个宏，如下：
 
 ```C++
 #if CONFIG_HAL_BOARD == HAL_BOARD_PX4 || CONFIG_HAL_BOARD == HAL_BOARD_VRBRAIN
@@ -562,12 +562,12 @@ int __EXPORT ArduPilot_main(int argc, char* const argv[]) {
         return 0;
     }
 ```
-因此实际上这个工程的main函数就是ArduCopter.cpp里的ArduPilot_main函数。    
+因此实际上这个工程的main函数就是ArduCopter.cpp里的ArduPilot_main函数。在这个main函数所在的CPP文件创建了不同的[线程](https://github.com/diydrones/ardupilot/blob/master/ArduCopter/ArduCopter.cpp#L96)以供调用。    
 那么这里可能又牵扯到了一个问题，ArduPilot_main函数又是怎么调用的呢？   
 如果像以前我们经常使用的单片机裸机系统，入口函数就是程序中函数名为main的函数，但是这个工程里边名字不叫main，而是ArduPilot_main，所以这个也不像裸机系统那样去运行`ArduPilot_main`那么简单。区别在于这是跑的Nuttx操作系统，这是一个类Unix的操作系统，它的初始化过程是由`脚本`去完成的。    
 注意一个重要的词——`脚本`，如果你对Nuttx的启动过程不是很熟悉，可以查看我先前写的一些[文章](/2015/12/初学PX4之操作系统#系统启动)。而在这里需要注意两个脚本，一个是ardupilot/mk/PX4/ROMFS/init.d里的rcS，另一个是rc.APM，这个脚本在rcS里得到了调用，也就是说，rcS就是为Nuttx的启动文件。    
 那么到底调用ArduPilot_main的地方在哪里呢？   
-查看rc.APM的最低端：
+查看[rc.APM](https://github.com/diydrones/ardupilot/blob/master/mk/PX4/ROMFS/init.d/rc.APM#L494)的最低端：
 
 ```sh
 echo Starting ArduPilot $deviceA $deviceC $deviceD
@@ -589,7 +589,13 @@ fi
 ```sh
 PX4_MAKE = $(v)+ GIT_SUBMODULES_ARE_EVIL=1 ARDUPILOT_BUILD=1 $(MAKE) -C $(SKETCHBOOK) -f $(PX4_ROOT)/Makefile.make EXTRADEFINES="$(SKETCHFLAGS) $(WARNFLAGS) $(OPTFLAGS) "'$(EXTRAFLAGS)' APM_MODULE_DIR=$(SKETCHBOOK) SKETCHBOOK=$(SKETCHBOOK) CCACHE=$(CCACHE) PX4_ROOT=$(PX4_ROOT) NUTTX_SRC=$(NUTTX_SRC) MAXOPTIMIZATION="-Os" UAVCAN_DIR=$(UAVCAN_DIR)
 ```
-其中-f $(PX4_ROOT)/Makefile.make显示了makefile使用了PX4项目根目录的Makefile.make文件，拜读这里即可查出真相，真相在根目录下makefiles文件夹里的firmware.mk里。
+其中-f $(PX4_ROOT)/Makefile.make显示了makefile使用了PX4项目根目录的Makefile.make文件，拜读这里即可查出真相，真相在根目录下makefiles文件夹里的[firmware.mk](https://github.com/diydrones/PX4Firmware/blob/5a52d3eec8eca7e72eb8dde7956140e111914c96/makefiles/firmware.mk#L383)里。    
+
+接着继续分析main函数里的一些特征及其所做的事情。    
+在这个工程里有一个重要的类叫Copter，大部分函数都是该类的方法，如`void Copter::arm_motors_check()`，以后用的一些全局变量基本上都属于这个类里面的。   
+
+下面看一下一些简单的应用，以电机解锁为例子，玩过飞行器的同胞就知道，油门拉杆按右下角几秒就可以解锁，一般都是这样设置的，看看代码都是怎么实现的：   
+首先解锁的函数为[arm_motors_check](https://github.com/diydrones/ardupilot/blob/master/ArduCopter/motors.cpp#L14)，调用次数为10hz。代码很简单，从中可以看出，2s后如果检查通过就可以解锁，当飞行器不属于手动控制模式时，拉杆打左下角2s即可上锁。
 
 <hr>
 参看文章：[官网](http://dev.ardupilot.com/wiki/apmcopter-code-overview/)/[串级pid](http://bbs.loveuav.com/thread-229-1-1.html)
