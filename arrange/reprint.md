@@ -38,3 +38,4 @@ layout: default
 <a href="http://blog.csdn.net/qq_21842557/article/details/50815000">Pixhawk之UAV控制理论、ardupilot源码框架介绍 </a>
 <a href="http://www.moz8.com/forum.php?mod=forumdisplay&fid=277&filter=typeid&typeid=30">泡泡实验室</a>
 <a href="http://www.7edown.com/edu/article/soft_57242_1.html">linux QQ</a>
+<a href="https://www.zhihu.com/question/24422335">hexo</a>
