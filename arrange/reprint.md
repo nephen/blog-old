@@ -39,3 +39,4 @@ layout: default
 <a href="http://www.moz8.com/forum.php?mod=forumdisplay&fid=277&filter=typeid&typeid=30">泡泡实验室</a>
 <a href="http://www.7edown.com/edu/article/soft_57242_1.html">linux QQ</a>
 <a href="https://www.zhihu.com/question/24422335">hexo</a>
+<a href="http://iori.sinaapp.com/17.html/comment-page-1?replytocom=2">mathjax</a>
