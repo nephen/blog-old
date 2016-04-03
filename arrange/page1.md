@@ -20,6 +20,10 @@ Scrot是一个命令行下使用的截图工具，支持全屏、窗口、选取
 
 <p>命令使用</p>
 1. 查看文件夹大小 du -sh
-2. 终端里ctrl+：可以选择粘贴；Shift+Ctrl+C:复制/Shift+Ctrl+V:粘贴；ctrl+a	移动到当前行首/ctrl+e	移动到当前行尾；ctrl+/清零；top时找到最耗时的程序按'K'然后再按9杀掉；
+2. 终端里ctrl+：可以选择粘贴；Shift+Ctrl+C:复制/Shift+Ctrl+V:粘贴；ctrl+a	移动到当前行首/ctrl+e	移动到当前行尾；ctrl+/清零；top时找到最耗时的程序按'K'然后再按9杀掉；按ctrl+shift+t可以在同一个窗口开启终端，w则关闭。
 3. dpkg-query -l 'xxx' 查找安装包
 4. shitf + ctrl + 箭头移动终端屏幕
+5. gedit中按ctrl + shift + L 保存所有并自动匹配语言类型，atl + 上下箭头移动一行，shift + home选中一行，ctrl + end至文章末尾，首选项里可以更改制表符大小
+
+<p>新发现</p>
+1. 两个手指触摸触摸板即可滑动屏幕！！！
