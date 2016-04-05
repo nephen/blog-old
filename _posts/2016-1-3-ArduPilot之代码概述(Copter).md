@@ -433,9 +433,20 @@ SRCROOT			:=	$(realpath $(dir $(firstword $(MAKEFILE_LIST))))通过判断是否�
 <br>
 ####PX4原生代码CMAKE剖析
 >`参考文献：`[cmake.org](https://cmake.org/cmake/help/v3.0/index.html)
+>`预定义变量：`http://blog.csdn.net/wzzfeitian/article/details/40963457/
+
+主目录下的CMakeList.txt：
+
+- 通用的函数都在px\_base.cmake里，板级和系统相关的函数在px\_impl\_${OS}.cmake or px4\_impl\_${OS}_${BOARD}.cmake。
+- 格式要求：
+ - 所有的函数或脚本参数都是大写。
+ - 局部变量都为小写。
+ - cmake函数都为小写。
 
 知识点总结：
 
+- set(CMAKE_INSTALL_PREFIX）：设置程序的安装目录，优先级比cmake命令参数设置高。
+- add_subdirectory(编译文件子目录)
 - cmake_minimum_required(VERSION 2.8 FATAL_ERROR)为设置一个工程所需要的最低CMake版本。
 - CMAKE_BUILD_TYPE:：build 类型(Debug, Release, ...)，CMAKE_BUILD_TYPE=Debug。
 - 该cmake_policy命令用于设置策略来旧的或新的行为。

@@ -9,6 +9,9 @@ comments: true
 
 <hr style="height:10px;border:none;border-top:10px groove skyblue;" />
 
+- 2016.4.4   
+生活反应了时代，时代造就了生活。——读《鲁迅文集》有感。
+
 - 2016.3.17   
 你走了，离开了这个地方，买了乐视会员，至少不会无聊吧，不够为什么要哭呢？
 

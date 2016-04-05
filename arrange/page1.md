@@ -24,6 +24,7 @@ Scrot是一个命令行下使用的截图工具，支持全屏、窗口、选取
 3. dpkg-query -l 'xxx' 查找安装包
 4. shitf + ctrl + 箭头移动终端屏幕
 5. gedit中按ctrl + shift + L 保存所有并自动匹配语言类型，atl + 上下箭头移动一行，shift + home选中一行，ctrl + end至文章末尾，首选项里可以更改制表符大小
+6. sudo apt-get install tree，使用tree .查看文件结构。
 
 <p>新发现</p>
 1. 两个手指触摸触摸板即可滑动屏幕！！！
