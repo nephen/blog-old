@@ -445,6 +445,8 @@ SRCROOT			:=	$(realpath $(dir $(firstword $(MAKEFILE_LIST))))通过判断是否�
 
 知识点总结：
 
+- sudo apt-get install cmake-curses-gui，ccmake .用于配置变量。
+- add_subdirectory(src/firmware/${OS})，用于编译文件子目录，这些子目录里嵌套有CMakefilelists.txt。
 - set(CMAKE_INSTALL_PREFIX）：设置程序的安装目录，优先级比cmake命令参数设置高。
 - add_subdirectory(编译文件子目录)
 - cmake_minimum_required(VERSION 2.8 FATAL_ERROR)为设置一个工程所需要的最低CMake版本。
@@ -595,12 +597,12 @@ fi
 {"ArduPilot", SCHED_PRIORITY_DEFAULT, 4096, ArduPilot_main},
 {"px4flow", SCHED_PRIORITY_DEFAULT, CONFIG_PTHREAD_STACK_DEFAULT, px4flow_main},
 ```
-这样的命令有很多，在rcS里就开始调用的比如rgbled就是的。至于这些内置的命令是怎么生成的，就要了解PX4原生的编译过程了，由上一节的介绍，查看px4.targes.mk。
+这样的命令有很多，在rcS里就开始调用的比如rgbled就是的。至于这些内置的命令是怎么生成的，就要了解PX4原生的编译过程了，由上一节的介绍，查看px4_targes.mk。
 
 ```sh
 PX4_MAKE = $(v)+ GIT_SUBMODULES_ARE_EVIL=1 ARDUPILOT_BUILD=1 $(MAKE) -C $(SKETCHBOOK) -f $(PX4_ROOT)/Makefile.make EXTRADEFINES="$(SKETCHFLAGS) $(WARNFLAGS) $(OPTFLAGS) "'$(EXTRAFLAGS)' APM_MODULE_DIR=$(SKETCHBOOK) SKETCHBOOK=$(SKETCHBOOK) CCACHE=$(CCACHE) PX4_ROOT=$(PX4_ROOT) NUTTX_SRC=$(NUTTX_SRC) MAXOPTIMIZATION="-Os" UAVCAN_DIR=$(UAVCAN_DIR)
 ```
-其中-f $(PX4_ROOT)/Makefile.make显示了makefile使用了PX4项目根目录的Makefile.make文件，拜读这里即可查出真相，真相在根目录下makefiles文件夹里的[firmware.mk](https://github.com/diydrones/PX4Firmware/blob/5a52d3eec8eca7e72eb8dde7956140e111914c96/makefiles/firmware.mk#L383)里。    
+其中-f $(PX4_ROOT)/Makefile.make显示了makefile使用了PX4项目根目录的Makefile.make文件，拜读这里即可查出真相，真相在根目录下makefiles文件夹里的[firmware.mk](https://github.com/diydrones/PX4Firmware/blob/5a52d3eec8eca7e72eb8dde7956140e111914c96/makefiles/firmware.mk#L383)里。其实px4的代码使用的是Cmake，所以通过查看根目录下的CMakeLists.txt可知，真正产生builtin_commands.c的是px4_impl_nuttx.cmake里的px4_nuttx_generate_builtin_commands函数。同理，nuttx操作系统的ROMFS是由px4_nuttx_add_romfs函数产生的。    
 
 接着继续分析main函数里的一些特征及其所做的事情。    
 在这个工程里有一个重要的类叫Copter，大部分函数都是该类的方法，如`void Copter::arm_motors_check()`，以后用的一些全局变量基本上都属于这个类里面的。   
