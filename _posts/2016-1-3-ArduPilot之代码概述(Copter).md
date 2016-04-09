@@ -432,7 +432,7 @@ SRCROOT			:=	$(realpath $(dir $(firstword $(MAKEFILE_LIST))))通过判断是否�
 
 <br>
 ####PX4原生代码CMAKE剖析
->`参考文献：`[cmake.org](https://cmake.org/cmake/help/v3.0/index.html)
+>`参考文献：`[cmake.org](https://cmake.org/cmake/help/v3.0/index.html)     
 >`预定义变量：`http://blog.csdn.net/wzzfeitian/article/details/40963457/
 
 主目录下的CMakeList.txt：
