@@ -209,7 +209,7 @@ transform: translateX(0); }
   margin-top: -53px;
 }
 
-.post h5,h6,h1,h2{
+.post h1,h2{
   line-height: 33px;
   color: #069;
   text-shadow: 2px 2px 2px #E6E6E6;
