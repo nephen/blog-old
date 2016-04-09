@@ -10,7 +10,7 @@ comments: true
 在学习px4的时候，了解到了ardupilot，如apm无操作系统，入门简单些，且看到它的资料比较多，易懂，故做如下学习记录，为px4打下基础。
 
 <br>
-####编译
+#编译
 
 Ubuntu用户可以参考[链接](http://dev.ardupilot.com/wiki/building-the-code-onlinux/#advanced)进行操作，可以从`Advanced`标签开始，注意安装`sudo apt-get install gawk make git arduino-core g++`，然后在相应的文件夹下(如：ArduCopter，参看[APM2.x](http://dev.ardupilot.com/wiki/supported-autopilot-controller-boards/#apm2x)，Copter 3.3或更新固件不再支持APM板)make即可(主目录下默认make所有)。同时还可以编译成在[pixhawk](http://dev.ardupilot.com/wiki/supported-autopilot-controller-boards/#pixhawk)上运行的目标文件，参看这篇[文章](http://dev.ardupilot.com/wiki/building-px4-for-linux-with-make/)，编译`make px4-v2`，上传`make px4-v2-upload`，git更新后清除`make px4-clean`。有几个地方需要注意的:
 
@@ -30,7 +30,7 @@ Ubuntu用户可以参考[链接](http://dev.ardupilot.com/wiki/building-the-code
 然后将`export PATH=/usr/lib/ccache:$PATH`加入到~/.profile中。
 
 <br>
-####参与贡献
+#参与贡献
 
 知识点：  
 
@@ -49,7 +49,7 @@ Ubuntu用户可以参考[链接](http://dev.ardupilot.com/wiki/building-the-code
 1. [Git在子模块](http://dev.ardupilot.com/wiki/git-submodules/)：所有的子模块都放在modules/目录；[常见错误](http://dev.ardupilot.com/wiki/git-submodules/#common_errors)；
 
 <br>
-####代码库
+#代码库
 
 原文参考[这里](http://dev.ardupilot.com/wiki/learning-the-ardupilot-codebase/)!!!   
 
@@ -230,7 +230,7 @@ RC输出是ArduPilot控制伺服系统和电机，RC输出默认为50 hz PWM值�
 	一个很好的例子是AP_Terrain库,其中包含地形数据；是否支持可以从 [AP_HAL_Boards.h](https://github.com/diydrones/ardupilot/blob/master/libraries/AP_HAL/AP_HAL_Boards.h)查看HAVE_OS_POSIX_IO macro，还可以定义数据的存储位置；这个操作比较耗时，特别在飞行过程中不宜使用；可以看这个例子 [libraries/AP_Terrain/TerrainIO.cpp](https://github.com/diydrones/ardupilot/blob/master/libraries/AP_Terrain/TerrainIO.cpp)学会怎么使用Posix IO。
 
 <hr>
-####上位机安装
+#上位机安装
 由于我使用的是Ubuntu, 所以我会想办法使Mission Planner上位机能在linux平台上运行，在pixhawk的官网上也发现了这样的[文章](https://pixhawk.org/users/ground_control_stations/start#apm_mission_planner)以及谷歌搜到的[文章](http://www.rcgroups.com/forums/showthread.php?t=2179591)。
 
 这里[mono](https://github.com/diydrones/MissionPlanner/blob/master/README.md)[版本](http://download.mono-project.com/sources/mono/)下载，参考[Install Mono on Linux](http://www.mono-project.com/docs/getting-started/install/linux/)安装mono
@@ -279,6 +279,6 @@ Program -> .NET (Framework) -> WINE -> System
 ```
 
 <hr>
-####参考文章
+#参考文章
 User Manual: http://copter.ardupilot.com/    
 Developer Manual: http://dev.ardupilot.com/

@@ -24,6 +24,26 @@
     {% for style in page.styles %}
     <link rel="stylesheet" type="text/css" href="{{ '/css/' | append: style | prepend: site.baseurl}}" />
     {%endfor%}
+
+    <style type="text/css">
+    #renderIn {
+      margin-left: 3em;
+    }
+    </style>
+    
+    <script type="text/javascript">
+    $(function() {
+      $('#main').toc({
+        minItemsToShowToc:0,
+        anchorPrefix:false,
+        renderIn:'#renderIn',
+        contentsText:"Contents",
+        hideText:'hide',
+        showText:'show',
+        showCollapsed:false
+      });
+    });
+    </script>
 </head>
 
 <body>

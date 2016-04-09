@@ -33,12 +33,15 @@
     padding-left: 25px;
     border-left: 5px solid #2ca6cb;
     line-height: 1.5;
-}
-.post header h2{
     color: #2ca6cb;
 }
+
 .post header p.post-meta{
     color: #817c7c;
+}
+
+.post h2{
+  font-size: 17px;
 }
 .post-lavender{
     color: #BC8F8F ;
@@ -72,15 +75,6 @@
 
 .post pre code{
     white-space: pre;
-}
-
-@media screen and (min-width: 1200px){
-    /**
-      * 文章目录相关
-      */
-    .post .toc {
-        display: none!important;
-    }
 }
 
 @media screen and (max-width: 1199px){
@@ -215,7 +209,7 @@ transform: translateX(0); }
   margin-top: -53px;
 }
 
-.post h5,h6{
+.post h5,h6,h1,h2{
   line-height: 33px;
   color: #069;
   text-shadow: 2px 2px 2px #E6E6E6;

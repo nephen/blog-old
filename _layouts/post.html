@@ -1,6 +1,6 @@
 ---
-scripts: [toc.js,post.js,md5.js]
-styles: [post.css]
+scripts: [post.js,jquery.toc.js,md5.js]
+styles: [post.css,toc.css]
 ---
 {% include header.html %}
 
@@ -77,10 +77,18 @@ styles: [post.css]
 
                 </p></small>
             </center>
-            <div class="info"></div>
+
             <br>
+
             <div class="post-content post">
-            {{ content }}
+                <section id="main">
+                    <div id="renderIn"></div>
+                        <div>
+                          <section>
+                            {{ content }}
+                          </section>
+                        </div>
+                </section>
             </div>
             </div>
           </div>
@@ -108,30 +116,10 @@ styles: [post.css]
         </div>
     </div>
 
-    <!--目录导航-->
-    <div class="content-navigation col-lg-3">
-    <div id="post__toc-trigger">
-      <div class="shadow-bottom-center">
-        <div class="content-navigation-toc">
-            <div class="content-navigation-header">
-                <span class="octicon octicon-list-unordered"></span>&nbsp;目录
-            </div>
-            <div class="content-navigation-list toc"></div>
-        </div>
-      </div>
-    </div>
-    </div>
-
-    <div id="sideBar" class="sideBar">
-    <div id="sideBarTab">
-        <h3 class="fix">目录导航</h3>
-    </div>
-    </div>
-
-<div style="display:none;" id="rocket-to-top">
+    <div style="display:none;" id="rocket-to-top">
     <div style="opacity:0;display:block;" class="level-2"></div>
     <div class="level-3"></div>
-</div>
+    </div>
 
 </div>
 

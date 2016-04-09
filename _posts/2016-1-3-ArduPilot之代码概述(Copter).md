@@ -12,7 +12,7 @@ comments: true
 具体可参考[APM飞控浅析](http://www.360doc.com/content/15/0505/11/22888854_468188999.shtml#)
 
 <br>
-####ArduPilot编程库
+#ArduPilot编程库
 这些[库](https://github.com/diydrones/ardupilot/tree/master/libraries)是和Copter, Plane and Rover共享的，具体的库及功能可见[原文](http://dev.ardupilot.com/wiki/apmcopter-programming-libraries/)。
 
 - 核心库
@@ -40,7 +40,7 @@ comments: true
 
 <!--more-->
 <br>
-####姿态控制
+#姿态控制
 代码结构如图所示
 <img src="/images/AC_CodeOverview_ManualFlightMode.png">
 更新周期：400hz on Pixhawk, 100hz on APM2.x    
@@ -70,7 +70,7 @@ comments: true
 -  AP\_HAL库(硬件抽象层)为所有的板子提供一致的接口。尤其是hal.rc\_out\_write()函数将使从AP_Motors类收到指定的PWM出现相应的板的PWM引脚上。
 
 <br>
-####添加新的参数
+#添加新的参数
 参数可以是主代码的一部分，也可以是库的一部分。
 
 - [将一个参数添加到主代码](http://dev.ardupilot.com/wiki/code-overview-adding-a-new-parameter/#adding_a_parameter_to_the_main_code)
@@ -105,7 +105,7 @@ comments: true
 		```
 
 <br>
-####添加一个新的飞行模式
+#添加一个新的飞行模式
 当自己想用新的机架时，或者创建新的飞行模式是，可以添加一个新的飞行模式，步骤可见[原文](http://dev.ardupilot.com/wiki/apmcopter-adding-a-new-flight-mode/)。
 
 - 在defines.h为新的飞行模式宏定义，并将NUM_MODES加1。
@@ -247,7 +247,7 @@ comments: true
 - 如果您希望在新的飞行模式出现在任务规划的HUD和飞行模式设置，可以在` Mission Planner’s Issue List`提出一个请求。
 
 <br>
-####[调度代码间歇运行](http://dev.ardupilot.com/wiki/code-overview-scheduling-your-new-code-to-run-intermittently/)
+#[调度代码间歇运行](http://dev.ardupilot.com/wiki/code-overview-scheduling-your-new-code-to-run-intermittently/)
 
 - [使用调度程序](http://dev.ardupilot.com/wiki/code-overview-scheduling-your-new-code-to-run-intermittently/#running_your_code_with_the_scheduler)：添加新函数到ArduCopter.cpp里的[scheduler_tasks](https://github.com/diydrones/ardupilot/blob/master/ArduCopter/ArduCopter.cpp#L96)数组。
 
@@ -307,12 +307,12 @@ comments: true
 	```
 
 <br>
-####[添加一个新的MAVLink消息](http://dev.ardupilot.com/wiki/code-overview-adding-a-new-mavlink-message/)
+#[添加一个新的MAVLink消息](http://dev.ardupilot.com/wiki/code-overview-adding-a-new-mavlink-message/)
 
 地面站之间传递数据和命令使用的是[MAVLink协议](http://en.wikipedia.org/wiki/MAVLink)，参考已有的[MAVLink messages](https://pixhawk.ethz.ch/mavlink/)。
 
 <br>
-####makefie分析
+#makefie分析
 对于make语法不是很熟悉的可以参考[make manual](http://www.gnu.org/software/make/manual/make.html)/[ 详解Makefile 函数的语法与使用](http://www.cnblogs.com/sky1991/archive/2012/11/15/2771348.html)/[跟我一起写makefile](http://www.chinaunix.net/old_jh/23/408225.html)。    
 >【make中命令行前面加上减号】   
 就是，忽略当前此行命令执行时候所遇到的错误。   
@@ -431,7 +431,7 @@ SRCROOT			:=	$(realpath $(dir $(firstword $(MAKEFILE_LIST))))通过判断是否�
 大概的框架可以查看根目录下makefiles文件夹里的README.txt文件。
 
 <br>
-####PX4原生代码CMAKE剖析
+#PX4原生代码CMAKE剖析
 >`参考文献：`[cmake.org](https://cmake.org/cmake/help/v3.0/index.html)     
 >`预定义变量：`http://blog.csdn.net/wzzfeitian/article/details/40963457/
 
@@ -535,7 +535,7 @@ SEND_ERROR，产生错误，生成过程被跳过。SATUS，输出前缀为 -- �
 - add_custom_target: 增加一个没有输出的目标，使得它总是被构建。该目标没有输出文件，总是被认为是过期的，即使是在试图用目标的名字创建一个文件。
 
 <br>
-####程序入口主函数
+#程序入口主函数
 我们看源代码的时候，特别喜欢从main函数开始，顺着思路开始往下理。下面我就以ArduCopter工程里的px4-v2编译目标为例子，一步一步剖析main函数。   
 总的来说，这里的main函数就是[ArduCopter.cpp](https://github.com/diydrones/ardupilot/blob/master/ArduCopter/ArduCopter.cpp#L658)里的`AP_HAL_MAIN_CALLBACKS(&copter);`，它实际上是一个宏定义，传进来的参数为类对象的引用，通过在[AP_HAL_Main.h](https://github.com/diydrones/ardupilot/blob/master/libraries/AP_HAL/AP_HAL_Main.h#L49)里的定义可知原型为：
 
