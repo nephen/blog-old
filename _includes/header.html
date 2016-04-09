@@ -14,16 +14,17 @@
     <script src="{{ site.baseurl }}/js/bootstrap.min.js"></script>
     <script src="{{ site.baseurl }}/js/script.js"></script>
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-    {% for script in page.scripts %}
-    <script type="text/javascript" src="{{ '/js/' | append: script | prepend:site.baseurl }}"></script>
-    {% endfor %}
     <link rel="stylesheet" type="text/css" href="{{ '/octicons/octicons.css' | prepend: site.baseurl }}" />
     <link href="{{ site.baseurl }}/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ site.baseurl }}/css/theme.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/highlight.css">
-    {% for style in page.styles %}
-    <link rel="stylesheet" type="text/css" href="{{ '/css/' | append: style | prepend: site.baseurl}}" />
-    {%endfor%}
+
+    <link href="{{ site.baseurl }}/css/post.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/toc.css" rel="stylesheet">
+
+    <script src="{{ site.baseurl }}/js/md5.js"></script>
+    <script src="{{ site.baseurl }}/js/post.js"></script>
+    <script src="{{ site.baseurl }}/js/jquery.toc.js"></script>
 
     <style type="text/css">
     #renderIn {
