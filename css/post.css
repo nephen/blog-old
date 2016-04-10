@@ -197,18 +197,6 @@ transform: translateX(0); }
 }
 
 /*锚点跳转位置下移问题*/
-.post h4{
-  line-height: 33px;
-  color: #090;
-  text-shadow: 2px 2px 2px #E6E6E6;
-  clear: both;
-  border-bottom: 1px solid #CCC;
-  position: relative;
-  cursor: pointer;
-  padding-top: 53px;
-  margin-top: -53px;
-}
-
 .post h1,h2{
   line-height: 33px;
   color: #069;

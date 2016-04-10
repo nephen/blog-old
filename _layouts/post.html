@@ -43,9 +43,8 @@
 
             <center>
                 <small><p class="post-lavender">
-                    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-                        {{ page.date | date: "%b %-d, %Y" }}
-                    </time>
+                        最后修改于{{ page.last_modified_at | date: '%Y/%b/%-d,%d:%S' }}
+                    • {{ page.content | number_of_words }}字 
                     {% if page.author %} • 
                     <span itemprop="author" itemscope itemtype="http://schema.org/Person">
                         <span itemprop="name">{{ page.author }}
@@ -66,7 +65,7 @@
                         })();
                         </script>
                         <!-- 多说js加载结束，一个页面只需要加载一次 -->
-                    <a class="author" href="#disqus_thread" >Comments</a>
+                    <a class="author" href="#disqus_thread" >条评论</a>
                     {% endif %}
 
                     {% endif %}

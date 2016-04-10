@@ -34,7 +34,9 @@ paginate: 5
 # 引言
 excerpt_separator: <!--more-->
 
-gems: [jekyll-paginate]
+gems:
+  - jekyll-paginate
+  - jekyll-last-modified-at
 
 highlighter: rouge
 markdown: redcarpet
