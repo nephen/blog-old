@@ -6,7 +6,7 @@ author: 吴兴章
 tags: 工作生活
 donate: true
 comments: true
-update: 
+update: 2016-04-12 01:59:43
 ---
 在学习px4的时候，了解到了ardupilot，如apm无操作系统，入门简单些，且看到它的资料比较多，易懂，故做如下学习记录，为px4打下基础。
 

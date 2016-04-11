@@ -4,7 +4,7 @@ title:  "Jekyll博客建站囧程"
 categories: "thinking_lifes"
 comments: true
 author: nephne
-update: 
+update: 2016-04-12 01:59:43
 ---
 关于[导航条][导航条]，我只是初步的学习了一下前端的东西，在搭建这个博客的过程中导航条应该属于难点了吧。
 
