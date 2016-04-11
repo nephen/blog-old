@@ -4,7 +4,7 @@ title:  "Jekyll博客建站囧程"
 categories: "thinking_lifes"
 comments: true
 author: nephne
-update: 2016-04-12 01:59:43
+update: 2016-04-12 02:06:41
 ---
 关于[导航条][导航条]，我只是初步的学习了一下前端的东西，在搭建这个博客的过程中导航条应该属于难点了吧。
 
@@ -46,7 +46,24 @@ qq群：<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=0a920a30fe
 17. toc[[文章1]](http://t.hengwei.me/post/%E4%B8%BAjekyll%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%9B%AE%E5%BD%95%E4%B8%8Escrollspy%E6%95%88%E6%9E%9C/)[[toc源代码](https://github.com/ghiculescu/jekyll-table-of-contents)]    
 18. 嵌入豆瓣PM：`<iframe name="iframe_canvas" src="http://douban.fm/partner/baidu/doubanradio" scrolling="no" frameborder="0" width="420" height="190"></iframe>`
 19. 修改目录：https://github.com/nephen/tocmd-generator
-20. 增加最后修改时间：https://github.com/gjtorikian/jekyll-last-modified-at
+20. 增加最后修改时间脚本到.git/hooks/pre-commit：   
+
+	```sh
+	#!/bin/sh
+	# Contents of .git/hooks/pre-commit
+
+	#set -e
+	#set -x
+
+	#sed -i "s/^date:.*$/date: $(TZ=Utk-8 date "+%Y-%m-%d %H:%M:%S %Z")/" _config.yml
+	#git add _config.yml
+
+	git diff --cached --name-status | grep "^M" | while read a b; do
+	  cat $b | sed "/---.*/,/---.*/s/^update:.*$/update: $(TZ=Utk-8 date "+%Y-%m-%d %T")/" > tmp
+	  mv tmp $b
+	  git add $b
+	done
+	```
 
 <!--more-->
 分页与归档整理正在琢磨中...
