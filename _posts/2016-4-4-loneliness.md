@@ -5,6 +5,7 @@ categories: thinking_lifes
 author: nephne
 comments: true
 passwd: true
+update: 
 ---
 
 #序

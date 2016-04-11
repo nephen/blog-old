@@ -15,8 +15,6 @@ url: http://www.nephen.com
 #     run it like so: jekyll serve --baseurl=''
 baseurl:
 
-date: 2016-04-11 22:29:27 Utk
-
 # This can be '' to hide the Github nav button
 github: 'scotte/jekyll-clean'
 
@@ -37,7 +35,7 @@ paginate: 5
 excerpt_separator: <!--more-->
 
 
-gems: [jekyll-paginate, jekyll-last-modified-at]
+gems: [jekyll-paginate]
 
 highlighter: rouge
 markdown: redcarpet

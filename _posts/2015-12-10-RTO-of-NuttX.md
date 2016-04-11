@@ -6,6 +6,7 @@ author: 吴兴章
 tags: 工作生活
 donate: true
 comments: true
+update: 
 ---
 这篇文章主要记录学习NuttX的过程以及对NuttX的理解，并结合apm里的px4-v2例程设置进行说明。
 

@@ -6,6 +6,7 @@ author: 吴兴章
 tags: 工作生活
 donate: true
 comments: true
+update: 
 ---
 本文将一个新手学习px4入门，装机，PID调节过程，以及试飞注意事项陈述如下：
 

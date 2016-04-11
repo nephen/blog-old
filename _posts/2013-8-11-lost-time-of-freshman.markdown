@@ -5,6 +5,7 @@ categories: "thinking_lifes"
 author: nephne
 tags: 大学
 comments: true
+update: 
 ---
 要想真正的有所成就，就必须学会付出，忍受失去，必须去投入大量的时间，有失必有得。
 
