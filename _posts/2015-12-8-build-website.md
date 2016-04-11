@@ -4,7 +4,7 @@ title:  "Jekyll博客建站囧程"
 categories: "thinking_lifes"
 comments: true
 author: nephne
-update: 2016-04-12 02:06:41
+update: 2016-04-12 02:13:56 Utk
 ---
 关于[导航条][导航条]，我只是初步的学习了一下前端的东西，在搭建这个博客的过程中导航条应该属于难点了吧。
 
@@ -59,7 +59,7 @@ qq群：<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=0a920a30fe
 	#git add _config.yml
 
 	git diff --cached --name-status | grep "^M" | while read a b; do
-	  cat $b | sed "/---.*/,/---.*/s/^update:.*$/update: $(TZ=Utk-8 date "+%Y-%m-%d %T")/" > tmp
+	  cat $b | sed "/---.*/,/---.*/s/^update:.*$/update: $(TZ=Utk-8 date "+%Y-%m-%d %T %Z")/" > tmp
 	  mv tmp $b
 	  git add $b
 	done
