@@ -24,7 +24,7 @@ More personal information please look up the [contact](/contact) page
 
 ```bash
 # => Use Git and public article in folder _post
-$ git clone git@gitcafe.com:nephen/nephen.git
+$ git clone git@github.com:nephen/nephen.github.io
 ```
 
 ```bash
@@ -62,11 +62,11 @@ $ git init
 $ touch README.md
 $ git add README.md
 $ git commit -m 'first commit'
-$ git remote add origin 'git@gitcafe.com:nephen/nephen.git'
+$ git remote add origin 'git@github.com:nephen/nephen.github.io'
 $ git push -u origin master
 # => 或者提交在本地已有 Git 仓库
 $ cd existing_git_repo
-$ git remote add origin 'git@gitcafe.com:nephen/nephen.git'
+$ git remote add origin 'git@github.com:nephen/nephen.github.io'
 $ git push -u origin master
 
 # => 你可以使用 git tag 命令来添加新标签
