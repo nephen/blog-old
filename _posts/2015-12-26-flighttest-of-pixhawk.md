@@ -6,7 +6,7 @@ author: 吴兴章
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-12 01:59:43
+update: 2016-04-12 09:17:15 Utk
 ---
 本文将一个新手学习px4入门，装机，PID调节过程，以及试飞注意事项陈述如下：
 
@@ -299,6 +299,9 @@ apm数据分析：http://ardupilot.org/dev/docs/using-mavexplorer-for-log-analys
 官方测试：
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RF0wnQv3aAc" frameborder="0" allowfullscreen></iframe>
+
+##防炸机经验总结
+1. 当使用gps进行留待模式loiter飞行时，注意方向档响应慢，随时准备打到自稳自救。
 
 <hr>
 参考文献：[用户文档](https://pixhawk.org/users/start)/[用户教程](https://pixhawk.org/users/tutorials)/[快速学习](https://pixhawk.org/users/first_steps)/[多轴飞行器教程](https://pixhawk.org/platforms/multicopters/start)/[F450安装](https://pixhawk.org/platforms/multicopters/dji_flamewheel_450)/[PID调试](https://pixhawk.org/users/multirotor_pid_tuning)

@@ -43,11 +43,10 @@
 
             <center>
                 <small><p class="post-lavender">
-                        最后修改于{{ page.update }}
-                    • {{ page.content | number_of_words }}字 
+                        最后修改于{% if page.update !=  %}{{ page.update }}{% else %}{{ page.date | date: "%b %-d, %Y" }}{% endif %}
                     {% if page.author %} • 
                     <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-                        <span itemprop="name">{{ page.author }}
+                        <span itemprop="name">{{ page.author }} 作
                         </span>
                     </span>
 
