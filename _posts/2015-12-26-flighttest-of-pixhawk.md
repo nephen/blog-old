@@ -6,8 +6,10 @@ author: 吴兴章
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-12 09:17:15 Utk
+update: 2016-04-13 16:55:16 Utk
 ---
+>`通知`：**如果你对本站飞行器文章不熟悉，建议查看[飞行器学习概览](/arrange/drones)！！！**
+
 本文将一个新手学习px4入门，装机，PID调节过程，以及试飞注意事项陈述如下：
 
 <br>

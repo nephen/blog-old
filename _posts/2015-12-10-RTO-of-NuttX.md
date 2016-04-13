@@ -6,8 +6,10 @@ author: 吴兴章
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-12 01:59:43
+update: 2016-04-13 16:55:15 Utk
 ---
+>`通知`：**如果你对本站飞行器文章不熟悉，建议查看[飞行器学习概览](/arrange/drones)！！！**
+
 这篇文章主要记录学习NuttX的过程以及对NuttX的理解，并结合apm里的px4-v2例程设置进行说明。
 
 <br>

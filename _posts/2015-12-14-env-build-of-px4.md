@@ -6,8 +6,9 @@ author: nephne
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-12 01:59:43
+update: 2016-04-13 16:55:15 Utk
 ---
+>`通知`：**如果你对本站飞行器文章不熟悉，建议查看[飞行器学习概览](/arrange/drones)！！！**   
 >[消息](http://px4.io/px4-website-relaunched-online/)：pixhawk网站搬迁至[px4.io](http://px4.io) !!!     
 >[资源分享](http://blog.exbot.net/archives/1169)：按照基础程度进行推荐，尽量推荐人人皆可阅读的一般性文章，最后附上网盘链接。
 
