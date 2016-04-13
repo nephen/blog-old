@@ -5,7 +5,7 @@ categories: "drons_lifes"
 author: 吴兴章
 tags: 工作生活
 comments: true
-update: 2016-04-13 17:14:43 Utk
+update: 2016-04-13 18:54:29 Utk
 ---
 
 下面是对我自己写过的有关飞行器的文章做一个简单的概述，让大家摸清学习的线索。
@@ -29,7 +29,7 @@ pixhawk为px4开发团队的第二代硬件版本，同样ardupilot也是一个�
 `所以`，pixhawk的硬件可以跑两套固件代码，一套px4的原生firmware固件，一套是ardupilot的APM固件。
 
 1. 如果你暂时只想了解怎么装机试飞，可查看[pixhawk试飞报告](/2015/12/flighttest-of-pixhawk)。
-2. 如果想研究源码初学者，从[初学PX4之环境搭建](/2015/12/flighttest-of-pixhawk)开始，完成编译、下载、地面站安装等过程。然后熟悉[px4大体框架](/2015/12/general-structure-of-px4)，了解代码的大体构架。
+2. 如果想研究源码初学者，从[初学PX4之环境搭建](/2015/12/env-build-of-px4)开始，完成编译、下载、地面站安装等过程。然后熟悉[px4大体框架](/2015/12/general-structure-of-px4)，了解代码的大体构架。
 3. 无论是APM还是px4，都需要了解一下[Nuttx操作系统](/2015/12/RTO-of-NuttX)以及在pixhawk上的[定制](/2015/12/RTOS-of-px4)，进而去理解操作系统的启动过程，及内置应用程序的实现等等。
 4. 后面接触到的就是APM的了，考虑到APM只是对应用层做了修改，所以开发难度相对小一点，后期就是对APM代码的梳理了。可见[ArduPilot之代码概述](/2016/01/code-overview-of-ArduPilot(Copter))、[ArduPilot开发入门学习](/2016/01/introduction-to-start-ArduPilot)。
 5. 如果你跟我一样对飞控的算法学习感兴趣，建议查看[px4飞控算法](/2016/01/flight-control-algorithm-of-px4)，这里针对APM和px4的姿态控制算法部分都做了些许的分析。
