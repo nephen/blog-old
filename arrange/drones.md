@@ -5,7 +5,7 @@ categories: "drons_lifes"
 author: 吴兴章
 tags: 工作生活
 comments: true
-update: 2016-04-12 09:17:15 Utk
+update: 2016-04-13 17:10:03 Utk
 ---
 
 下面是对我自己写过的有关飞行器的文章做一个简单的概述，让大家摸清学习的线索。
@@ -17,7 +17,8 @@ IDE：[sublime text 2](http://www.nephen.com/2016/01/sublime-text2-in-linux) （
 
 #学习交流
 Gitter: [![Gitter](https://badges.gitter.im/nephen/YuningFly.svg)](https://gitter.im/nephen/YuningFly?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)   
-QQ洽谈: <i>995168694</i>   
+QQ talk: <i>995168694</i>   
+说明一下，gitter是一个开放的交流平台，可以使用网页、电脑客户端、手机APP，并且Linux下也可以使用，在这里全世界的开发人员聚集交流，欢迎大家加入这个平台。
 
 #文章梳理
 在此之前，请务必分清楚**APM，pixhawk，px4，ardupilot这些词之间的关系**。   
