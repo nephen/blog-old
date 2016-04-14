@@ -6,7 +6,7 @@ author: nephne
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-13 16:55:15 Utk
+update: 2016-04-14 12:03:19 Utk
 ---
 >`通知`：**如果你对本站飞行器文章不熟悉，建议查看[飞行器学习概览](/arrange/drones)！！！**   
 >[消息](http://px4.io/px4-website-relaunched-online/)：pixhawk网站搬迁至[px4.io](http://px4.io) !!!     
@@ -329,7 +329,7 @@ Ubuntu用户只要导入主文件夹里的CMakeLists.txt文件就可以了，打
 配置页面见下图，详细配置见原文视频
 <img src="/images/qt_set.png">
 
-如果你比较喜欢使用Sublime Text，请按照[linux下sublime text 2使用技巧](/2016/01/linux下sublime text 2使用技巧/)安装使用，然后进入工程目录，执行命令即可。
+如果你比较喜欢使用Sublime Text，请按照[linux下sublime text 2使用技巧](/2016/01/sublime-text2-in-linux)安装使用，然后进入工程目录，执行命令即可。
 
 ```sh
 $ cscope -Rbkq

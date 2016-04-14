@@ -276,7 +276,20 @@ argc和argv是用来传递命令行参数到NSH命令。命令行参数是在一
 
 		{ "mycmd", cmd_mycmd, 1, 1, NULL },
 
-这项特别简单因为mycmd是如此简单。在g_cmdmap [ ]看看其他的命令更为复杂的例子。
+这项特别简单因为mycmd是如此简单。在g_cmdmap [ ]看看其他的命令更为复杂的例子。如：
+
+```c++
+# ifndef CONFIG_NSH_DISABLE_CD
+  { "cd",       cmd_cd,       1, 2, "[<dir-path>|-|~|..]" },
+# endif
+#endif
+# ifndef CONFIG_NSH_DISABLE_CP
+  { "cp",       cmd_cp,       3, 3, "<source-path> <dest-path>" },
+# endif
+# ifndef CONFIG_NSH_DISABLE_CMP
+  { "cmp",      cmd_cmp,      3, 3, "<path1> <path2>" },
+# endif
+```
 
 ##3.3 NSH“内置”的应用
 
@@ -286,6 +299,11 @@ argc和argv是用来传递命令行参数到NSH命令。命令行参数是在一
 
 + CONFIG_BUILTIN：使能NuttX支持内置应用。
 + CONFIG_NSH_BUILTIN_APPS：使能NSH支持内置应用。
+
+```c++
+#define CONFIG_BUILTIN 
+#define CONFIG_NSH_BUILTIN_APPS 1
+```
 
 当设置完这些配置选项，输入"nsh> help"可以看到这些内置应用。它们将出现在NSH命令列表的底部：
 
@@ -315,7 +333,7 @@ argc和argv是用来传递命令行参数到NSH命令。命令行参数是在一
 
 在apps/examples/hello目录可以一个内置应用程序的例子。让我们一起通过这个具体的原因来说明内置的应用程序创建和如何他们自己注册的一般方式，以至于他们可以从NSH使用。
 
-*apps/examples/hello. *apps/examples/hello主要例程可以在apps/examples/hello/main.c发现。主要的例程是：
+`apps/examples/hello. `apps/examples/hello主要例程可以在apps/examples/hello/main.c发现。主要的例程是：
 
 		int hello_main(int argc, char *argv[])
 		{
