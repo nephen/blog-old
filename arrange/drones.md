@@ -7,7 +7,8 @@ tags: 工作生活
 comments: true
 permalink: /arrange/drones
 donate: true
-update: 2016-04-14 12:03:19 Utk
+id: 712e39e67bb1073341c6d0d408d742e3 
+update: 2016-04-14 12:34:04 Utk
 ---
 
 下面是对我自己写过的有关飞行器的文章做一个简单的概述，让大家摸清学习的线索。
