@@ -6,7 +6,7 @@ author: 吴兴章
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-13 16:55:16 Utk
+update: 2016-04-14 22:38:07 Utk
 ---
 >`通知`：**如果你对本站飞行器文章不熟悉，建议查看[飞行器学习概览](/arrange/drones)！！！**   
 >`注意`：基于参考原因，本文参杂了APM的算法分析。
@@ -159,7 +159,7 @@ land_detector start multicopter
 >该部分算法源码参考：https://github.com/nephen/picquadcontroller/blob/master/imu.h   
 >这部分可作为下部分DCM理论介绍的基础哦，所以建议先将这部分看完再往下看～
 
-DCM矩阵：
+**DCM矩阵**：
 
 - 设机体坐标系为Oxyz，与机体坐标系同x,y,z方向的单位向量为i, j, k。地理坐标系为OXYZ，同理地理坐标系的单位向量为 I, J, K。共同原点为O。如图
 
@@ -226,7 +226,7 @@ rz\\(^G\\) = rx\\(^B\\) K.i + ry\\(^B\\) K.j + rz\\(^B\\) K.k
 	也可以这样证明：   
 	DCM\\(^B\\) r\\(^G\\) = DCM\\(^B\\) DCM\\(^G\\) r\\(^B\\) = DCM\\(^{GT}\\) DCM\\(^G\\) r\\(^B\\) = I\\(\_3\\) r\\(^B\\) = r\\(^B\\)
 
-角速度：
+**角速度**：
 
 - 如下图所示，r为任意的旋转向量，t时刻的坐标为r(t)。时间间隔dt后：r = r (t) , r’= r (t+dt) and dr = r’ – r。   
 
@@ -255,7 +255,7 @@ w = r x v / |r|\\(^2\\)
 w x r = (r x v / |r|\\(^2\\)­) x r = (r x v) x r / |r|\\(^2\\)­ = ((r.r) v + (v.r)r) / |r|\\(^2\\)­ = ( |r|\\(^2\\)­ v + 0) |r|\\(^2\\) = v   
 得证。
 
-陀螺仪及角速度向量
+**陀螺仪及角速度向量**
 
 - 如果我们定期获取陀螺仪的值，时间间隔为dt，那么陀螺仪将会告诉我们在这段时间，地球绕陀螺仪各轴旋转的度数。   
 dθ\\(\_x\\) = w\\(\_x\\)dt，dθ\\(\_y\\) = w\\(\_y\\)dt，dθ\\(\_z\\) = w\\(\_z\\)dt   
@@ -404,6 +404,8 @@ v = dr/dt = (w\\(\_x\\) + w\\(\_y\\) + w\\(\_z\\)) x r = w x r
 >`注意`：这部分属于APM里px4姿态结算部分。    
 >`资料解读`:[DMCDraft2.pdf](http://pan.baidu.com/wap/shareview?&shareid=523287088&uk=1395271735&dir=%2F%E5%A7%BF%E6%80%81%E8%A7%A3%E7%AE%97%E8%B5%84%E6%96%99&page=2&num=20&fsid=676179599906396&third=0)
 
+**前言**
+
 - 使用矩阵来控制和导航，元素包括陀螺仪，加速度计和gps信息。
 - 总的来说，DCM工作如下：
  - 陀螺仪作为主要的方向信息来源，通过整合一个非线性微分运动方程，表明飞机方向的变化率与旋转速率及它当前的方向之间的关系。
@@ -425,6 +427,9 @@ v = dr/dt = (w\\(\_x\\) + w\\(\_y\\) + w\\(\_z\\)) x r = w x r
 	 // Perform drift correction
 	 drift_correction(delta_t);
 	 ```
+
+**方向余弦矩阵介绍**
+
 - 所有这一切都与旋转有关。
 - 有几种方法可以做到，比如旋转矩阵和四元数。这两种方法在实现上具有相似的地方，都是尽量准确的表示旋转。四元数只需要4个值，而旋转矩阵需要9个，在这方面四元数具有优势。而旋转矩阵很适合用来导航和控制。
 - 旋转矩阵用来描述一个坐标系相对于另一个坐标系的方向。在一个系统中的向量可以通过乘以旋转矩阵转变到另一个系统中，如果是相反方向旋转则乘以旋转矩阵的逆矩阵，也是它的转置（交换行和列）。单位向量在控制和导航运算中将非常有用，因为它们的长度为1。因此他们能被用于交积和叉积中来获得各种正弦或余弦角。
@@ -616,6 +621,9 @@ xb、yb、zb 为机体坐标系。
 	<img src="/images/eqn11.png">
 
 	所以叉乘是反对称的，A \\(\times\\) B = - B \\(\times\\) A
+
+**方向余弦矩阵的更新**
+
 - 下面到了DCM算法的核心部分——由陀螺仪计算方向余弦矩阵。
 - 核心概念：非线性微分方程——方向余弦的变化速率与陀螺仪之间的关系。我们的目标是计算方向余弦而不是任何违反方程非线性的近似解。目前，我们假设陀螺仪信号没有错误。稍后我们将解决陀螺仪漂移问题。   
 不像机械陀螺，我们不能通过简单地积分陀螺仪信号得到角度。一个有名的运动学公式，关于旋转向量的变化率和它的旋转之间的关系：
@@ -679,6 +687,156 @@ xb、yb、zb 为机体坐标系。
 	<img src="/images/eqn16.png">
 
 	基本上，我们的GPS和加速度计的参考向量被用来计算旋转误差，并通过反馈控制器输入计算，然后更新原有计算。
+
+- 我们可以把方程15转化为矩阵的形式。如下：
+
+	<img src="/images/eqn17.png">
+
+	方程17就是从陀螺仪信号更新方向余弦矩阵，其对角线上的1就为方程15的第一个条目，其余的为第二个条目，这种方法是用矩阵的乘法实现的，它包含27个乘法和18个加法。正好适合dsPIC30F4011，因为它支持矩阵乘法运算，如果芯片不支持，也可以用方程15的积分形式实现。故在apm里采用的是积分形式累加的。矩阵更新的源码体现如下：   
+
+	```c++
+	// update the DCM matrix using only the gyros
+	void
+	AP_AHRS_DCM::matrix_update(float _G_Dt)
+	{
+	    // note that we do not include the P terms in _omega. This is
+	    // because the spin_rate is calculated from _omega.length(),
+	    // and including the P terms would give positive feedback into
+	    // the _P_gain() calculation, which can lead to a very large P
+	    // value
+	    _omega.zero();
+
+	    // average across first two healthy gyros. This reduces noise on
+	    // systems with more than one gyro. We don't use the 3rd gyro
+	    // unless another is unhealthy as 3rd gyro on PH2 has a lot more
+	    // noise
+	    uint8_t healthy_count = 0;
+	    Vector3f delta_angle;
+	    for (uint8_t i=0; i<_ins.get_gyro_count(); i++) {
+	        if (_ins.get_gyro_health(i) && healthy_count < 2) {
+	            Vector3f dangle;
+	            if (_ins.get_delta_angle(i, dangle)) {
+	                healthy_count++;
+	                delta_angle += dangle;
+	            }
+	        }
+	    }
+	    if (healthy_count > 1) {
+	        delta_angle /= healthy_count; //获取角度变化量
+	    }
+	    if (_G_Dt > 0) {
+	        _omega = delta_angle / _G_Dt;
+	        _omega += _omega_I;
+	        _dcm_matrix.rotate((_omega + _omega_P + _omega_yaw_P) * _G_Dt); //将角度变化量与旋转向量进行叉乘，然后累加
+	    }
+	}
+	```
+
+**再归一化重整**
+
+- 由于上述的公式是在dt非常小的情况下才误差比较小，这种数字误差将驱使方程4的正交条件逐渐不满足，导致坐标系的两个轴不再能描述刚体。值得幸运的是，数字误差累加的很慢，我们完全可以提前采取办法解决它。   
+我们将这种解决办法称为归一化，我们设计了几种方法，模拟实现都可行，最后选择了一种最优的方法。   
+- 首先计算矩阵列向量X、Y的点乘，理论上应该等于0，所以它的结果可以看出向量偏了多少。
+
+	<img src="/images/eqn18.png">
+
+	将这个误差平分到X、Y向量：   
+
+	<img src="/images/eqn19.png">
+
+	可以将方程19代人方程18中，验证正交性误差大大减少了。记住R矩阵的行与列的范数为1，将误差平分给两个轴比只分个一个产生较低的残余误差。    
+- 下一步就是调整Z列向量正交于X和Y。这个很简单，只要进行叉乘就可以了：   
+
+	<img src="/images/eqn20.png">
+
+- 最后一步为，确保R矩阵的各列向量的模为1，一种方法可以通过平方根来求，但是这里有一种更加简单的办法，考虑到这个模不会与1有太大差别，这里可以使用泰勒展开。   
+
+	<img src="/images/eqn21.png">
+
+	方程21做的事情就是调整各列向量的模为1。展开为3减去向量模的平方，乘以1/2，再乘以这个向量。所以计算更加简单。   
+	源码实现如下：   
+
+	```c++
+	/*************************************************
+ 	-  Direction Cosine Matrix IMU: Theory
+ 	-  William Premerlani and Paul Bizard
+	 *
+ 	-  Numerical errors will gradually reduce the orthogonality conditions expressed by equation 5
+ 	-  to approximations rather than identities. In effect, the axes in the two frames of reference no
+ 	-  longer describe a rigid body. Fortunately, numerical error accumulates very slowly, so it is a
+ 	-  simple matter to stay ahead of it.
+ 	-  We call the process of enforcing the orthogonality conditions ÒrenormalizationÓ.
+	 */
+	void
+	AP_AHRS_DCM::normalize(void)
+	{
+	    float error;
+	    Vector3f t0, t1, t2;
+
+	    error = _dcm_matrix.a * _dcm_matrix.b;                                              // eq.18
+
+	    t0 = _dcm_matrix.a - (_dcm_matrix.b * (0.5f * error));              // eq.19
+	    t1 = _dcm_matrix.b - (_dcm_matrix.a * (0.5f * error));              // eq.19
+	    t2 = t0 % t1;                                                       // c= a x b // eq.20
+
+	    if (!renorm(t0, _dcm_matrix.a) ||
+	            !renorm(t1, _dcm_matrix.b) ||
+	            !renorm(t2, _dcm_matrix.c)) {
+	        // Our solution is blowing up and we will force back
+	        // to last euler angles
+	        _last_failure_ms = AP_HAL::millis();
+	        AP_AHRS_DCM::reset(true);
+	    }
+	}
+
+	// renormalise one vector component of the DCM matrix
+	// this will return false if renormalization fails
+	bool
+	AP_AHRS_DCM::renorm(Vector3f const &a, Vector3f &result)
+	{
+	    float renorm_val;
+
+	    // numerical errors will slowly build up over time in DCM,
+	    // causing inaccuracies. We can keep ahead of those errors
+	    // using the renormalization technique from the DCM IMU paper
+	    // (see equations 18 to 21).
+
+	    // For APM we don't bother with the taylor expansion
+	    // optimisation from the paper as on our 2560 CPU the cost of
+	    // the sqrt() is 44 microseconds, and the small time saving of
+	    // the taylor expansion is not worth the potential of
+	    // additional error buildup.
+
+	    // Note that we can get significant renormalisation values
+	    // when we have a larger delta_t due to a glitch eleswhere in
+	    // APM, such as a I2c timeout or a set of EEPROM writes. While
+	    // we would like to avoid these if possible, if it does happen
+	    // we don't want to compound the error by making DCM less
+	    // accurate.
+
+	    renorm_val = 1.0f / a.length(); //这里并没有使用泰勒展开，考虑的节省的时间不多
+
+	    // keep the average for reporting
+	    _renorm_val_sum += renorm_val;
+	    _renorm_val_count++;
+
+	    if (!(renorm_val < 2.0f && renorm_val > 0.5f)) {
+	        // this is larger than it should get - log it as a warning
+	        if (!(renorm_val < 1.0e6f && renorm_val > 1.0e-6f)) {
+	            // we are getting values which are way out of
+	            // range, we will reset the matrix and hope we
+	            // can recover our attitude using drift
+	            // correction before we hit the ground!
+	            //Serial.printf("ERROR: DCM renormalisation error. renorm_val=%f\n",
+	            //	   renorm_val);
+	            return false;
+	        }
+	    }
+
+	    result = a * renorm_val;
+	    return true;
+	}
+	```
 
 ##EKF设计与实现
 

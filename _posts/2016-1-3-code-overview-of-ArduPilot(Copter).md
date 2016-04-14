@@ -6,7 +6,7 @@ author: 吴兴章
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-13 16:55:16 Utk
+update: 2016-04-14 22:38:07 Utk
 ---
 >`通知`：**如果你对本站飞行器文章不熟悉，建议查看[飞行器学习概览](/arrange/drones)！！！**
 
@@ -432,110 +432,6 @@ SRCROOT			:=	$(realpath $(dir $(firstword $(MAKEFILE_LIST))))通过判断是否�
 - px4原生代码编译   
 想要了解更详细的px4原生代码编译，还的看看`$(PX4_ROOT)/Makefile.make`，这个makefile是由cmake产生的；     
 大概的框架可以查看根目录下makefiles文件夹里的README.txt文件。
-
-<br>
-#PX4原生代码CMAKE剖析
->`参考文献：`[cmake.org](https://cmake.org/cmake/help/v3.0/index.html)     
->`预定义变量：`http://blog.csdn.net/wzzfeitian/article/details/40963457/
-
-主目录下的CMakeList.txt：
-
-- 通用的函数都在px\_base.cmake里，板级和系统相关的函数在px\_impl\_${OS}.cmake or px4\_impl\_${OS}_${BOARD}.cmake。
-- 格式要求：
- - 所有的函数或脚本参数都是大写。
- - 局部变量都为小写。
- - cmake函数都为小写。
-
-知识点总结：
-
-- sudo apt-get install cmake-curses-gui，ccmake .用于配置变量。
-- add_subdirectory(src/firmware/${OS})，用于编译文件子目录，这些子目录里嵌套有CMakefilelists.txt。
-- set(CMAKE_INSTALL_PREFIX）：设置程序的安装目录，优先级比cmake命令参数设置高。
-- add_subdirectory(编译文件子目录)
-- cmake_minimum_required(VERSION 2.8 FATAL_ERROR)为设置一个工程所需要的最低CMake版本。
-- CMAKE_BUILD_TYPE:：build 类型(Debug, Release, ...)，CMAKE_BUILD_TYPE=Debug。
-- 该cmake_policy命令用于设置策略来旧的或新的行为。
-
-	```sh
-	cmake_policy(SET CMP<NNNN> NEW)
-	cmake_policy(SET CMP<NNNN> OLD)
-	```
-- set 将一个CMAKE变量设置为给定值。
-
-	```sh
-	set(<variable> <value> [[CACHE <type> <docstring> [FORCE]] | PARENT_SCOPE])
-	```
-将变量\<variable\>的值设置为\<value\>。在\<variable\>被设置之前，\<value\>会被展开。如果有CACHE选项，那么\<variable\>就会添加到cache中；这时\<type\>和\<docstring\>是必需的。\<type\>被CMake GUI用来选择一个窗口，让用户设置值。\<type>可以是下述值中的一个：
-
- - FILEPATH = 文件选择对话框。
- - PATH     = 路径选择对话框。
- - STRING   = 任意的字符串。
- - BOOL     = 布尔值选择复选框。
- - INTERNAL = 不需要GUI输入端。(适用于永久保存的变量)。
-- set_property  在给定的作用域内设置一个命名的属性。
-
-	```sh
-	 set_property(<GLOBAL                            |
-	                DIRECTORY [dir]                   |
-	                TARGET    [target1 [target2 ...]] |
-	                SOURCE    [src1 [src2 ...]]       |
-	                TEST      [test1 [test2 ...]]     |
-	                CACHE     [entry1 [entry2 ...]]>
-	               [APPEND]
-	               PROPERTY <name> [value1 [value2 ...]])
-	```
-为作用域里的0个或多个对象设置一种属性。第一个参数决定了属性可以影响到的作用域。他必须是下述值之一：GLOBAL，全局作用域，唯一，并且不接受名字。DIRECTORY，路径作用域，默认为当前路径，但是也可以用全路径或相对路径指定其他值。TARGET，目标作用域，可以命名0个或多个已有的目标。SOURCE，源作用域，可以命名0个或多个源文件。注意，源文件属性只对加到相同路径（CMakeLists.txt）中的目标是可见的。TEST 测试作用域可以命名0个或多个已有的测试。CACHE作用域必须指定0个或多个cache中已有的条目。    
-PROPERTY选项是必须的，并且要紧跟在待设置的属性的后面。剩余的参数用来组成属性值，该属性值是一个以分号分隔的list。如果指定了APPEND选项，该list将会附加在已有的属性值之后。
-- file(GLOB variable [RELATIVE path] [globbingexpressions]...)    
-GLOB 会产生一个由所有匹配globbing表达式的文件组成的列表，并将其保存到变量中。Globbing 表达式与正则表达式类似，但更简单。如果指定了RELATIVE 标记，返回的结果将是与指定的路径相对的路径构成的列表。 (通常不推荐使用GLOB命令来从源码树中收集源文件列表。原因是：如果CMakeLists.txt文件没有改变，即便在该源码树中添加或删除文件，产生的构建系统也不会知道何时该要求CMake重新产生构建文件。globbing 表达式包括：
- - *.cxx     - match all files with extension cxx
- - *.vt?      - match all files with extension vta,...,vtz
- - f[3-5].txt - match files f3.txt,f4.txt, f5.txt
-
-	GLOB_RECURSE 与GLOB类似，区别在于它会遍历匹配目录的所有文件以及子目录下面的文件。对于属于符号链接的子目录，只有FOLLOW_SYMLINKS指定一或者cmake策略CMP0009没有设置为NEW时，才会遍历这些目录。
-- REPLACE : 将输入字符串内所有出现match_string的地方都用replace_string代替，然后将结果存储到输出变量中。
-
-	```sh
-	string(REPLACE <match_string> <replace_string> <output variable> <input> [<input>...])
-	```
-- LENGTH返回列表的长度，GET返回列表中指定下标的元素，APPEND添加新元素到列表中，INSERT 将新元素插入到列表中指定的位置，REMOVE_ITEM从列表中删除某个元素，REMOVE_AT从列表中删除指定下标的元素，REMOVE_DUPLICATES从列表中删除重复的元素，REVERSE 将列表的内容实地反转，改变的是列表本身，而不是其副本，SORT 将列表按字母顺序实地排序，改变的是列表本身，而不是其副本。
-
-	```sh
-	list(LENGTH <list><output variable>)
-	list(GET <list> <elementindex> [<element index> ...]
-	       <output variable>)
-	list(APPEND <list><element> [<element> ...])
-	list(FIND <list> <value><output variable>)
-	list(INSERT <list><element_index> <element> [<element> ...])
-	list(REMOVE_ITEM <list> <value>[<value> ...])
-	list(REMOVE_AT <list><index> [<index> ...])
-	list(REMOVE_DUPLICATES <list>)
-	list(REVERSE <list>)
-	list(SORT <list>)
-	```
-- message(SEND_ERROR|STATUS|FATAL_ERROR “message to display”)   
-SEND_ERROR，产生错误，生成过程被跳过。SATUS，输出前缀为 -- 的信息。FATAL_ERROR，立即终止所有 cmake 过程。
-- ExternalProject：创建自定义的目标，以建立外部树项目。
-- if(COMMAND command-name)   
-为真的前提是存在 command-name 命令、宏或函数且能够被调用。
-- IF (DEFINED var) 如果变量被定义，为真。
-- 设置一个名称，版本，并启用为整个项目的语言。
-
-	```sh
-	project(<PROJECT-NAME>
-	        [VERSION <major>[.<minor>[.<patch>[.<tweak>]]]]
-	        [LANGUAGES <language-name>...])
-	```
-- 外部加载项目设置。
-
-	```sh
-	find_package(<package> [version] [EXACT] [QUIET] [MODULE]
-	             [REQUIRED] [[COMPONENTS] [components...]]
-	             [OPTIONAL_COMPONENTS components...]
-	             [NO_POLICY_SCOPE])
-	```
-- enable_testing()——启用当前目录及其下的测试。
-- add_custom_target: 增加一个没有输出的目标，使得它总是被构建。该目标没有输出文件，总是被认为是过期的，即使是在试图用目标的名字创建一个文件。
 
 <br>
 #程序入口主函数

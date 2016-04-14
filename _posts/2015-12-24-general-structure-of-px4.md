@@ -6,7 +6,7 @@ author: nephne
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-13 16:55:15 Utk
+update: 2016-04-14 22:38:07 Utk
 ---
 >`通知`：**如果你对本站飞行器文章不熟悉，建议查看[飞行器学习概览](/arrange/drones)！！！**
 
@@ -60,9 +60,9 @@ PX4飞行栈和中间件可以在微控制器Nuttx小型操作系统上执行，
 
 <br>
 #代码运行分析
->关于系统的启动过程请查看我之前文章里的[系统启动](http://www.nephen.com/2015/12/初学PX4之操作系统/#系统启动)。   
+>关于系统的启动过程请查看我之前文章里的[系统启动](/2015/12/RTOS-of-px4#1-3)。   
 
-知道了系统的启动过程，那么就知道代码运行的思路基本上就是脚本[rcS](https://github.com/PX4/Firmware/blob/master/ROMFS/px4fmu_common/init.d/rcS)的写法了，如果你想深入了解NSH启动脚本的自定义，可以参考[定制NSH初始化](http://www.nephen.com/2015/12/初识NuttX操作系统/#3-4-定制nsh初始化)，所以下面就从脚本开始看起。
+知道了系统的启动过程，那么就知道代码运行的思路基本上就是脚本[rcS](https://github.com/PX4/Firmware/blob/master/ROMFS/px4fmu_common/init.d/rcS)的写法了，如果你想深入了解NSH启动脚本的自定义，可以参考[定制NSH初始化](/2015/12/RTOS-of-NuttX#1-5-4)，所以下面就从脚本开始看起。
 
 首先通过sercon开启串口驱动CDC/ACM，这样才能打印出下面echo出的串口信息。
 
@@ -120,6 +120,9 @@ set TUNE_ERR ML<<CP4CP4CP4CP4CP4
 
 总个程序运行的框架如下：
 <center><a href="http://dev.px4.io/concept-flight-stack.html#estimation-and-control-architecture"><img src="/images/app_run.png"></a></center>
+
+下面给出一个大神的图：   
+<img src="/images/dshen.png">
 
 <hr>
 参考文件：[PX4 Source Code](https://pixhawk.org/firmware/source_code)/[Nuttx系统启动](http://blog.chinaunix.net/uid-29786319-id-4393303.html)/[NuttX 编译系统](http://blog.csdn.net/zhumaill/article/details/24400441)
