@@ -8,7 +8,7 @@ comments: true
 permalink: /arrange/drones
 donate: true
 id: 712e39e67bb1073341c6d0d408d742e3 
-update: 2016-04-14 12:34:04 Utk
+update: 2016-04-14 13:04:37 Utk
 ---
 
 下面是对我自己写过的有关飞行器的文章做一个简单的概述，让大家摸清学习的线索。
@@ -38,3 +38,6 @@ pixhawk为px4开发团队的第二代硬件版本，同样ardupilot也是一个�
 5. 如果你跟我一样对飞控的算法学习感兴趣，建议查看[px4飞控算法](/2016/01/flight-control-algorithm-of-px4)，这里针对APM和px4的姿态控制算法部分都做了些许的分析。
 6. 如果还要写的话，我想就是基于飞控的应用开发了，再看吧，长路漫漫，一步一个脚印。
 
+#后序
+本链接（**www.nephen.com/arrange/drones**）长期有效，并保持定期更新说明，也可以进入nephen(`来风`)网站，点击“`多轴`”栏目即可进入。   
+<img src="/images/nephen.png">
