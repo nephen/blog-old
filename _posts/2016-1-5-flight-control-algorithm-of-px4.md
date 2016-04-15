@@ -6,7 +6,7 @@ author: 吴兴章
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-14 22:38:07 Utk
+update: 2016-04-15 16:08:25 Utk
 ---
 >`通知`：**如果你对本站飞行器文章不熟悉，建议查看[飞行器学习概览](/arrange/drones)！！！**   
 >`注意`：基于参考原因，本文参杂了APM的算法分析。
@@ -154,7 +154,6 @@ land_detector start multicopter
 >imu\_guide：http://www.starlino.com/imu_guide.html   
 >imu\_guide中文翻译：http://www.itdadao.com/2016/03/19/629990/   
 >dcm\_tutorial：http://www.starlino.com/dcm_tutorial.html   
->源码：https://github.com/nephen/picquadcontroller/blob/master/imu.h   
 >资料查询：https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5   
 >该部分算法源码参考：https://github.com/nephen/picquadcontroller/blob/master/imu.h   
 >这部分可作为下部分DCM理论介绍的基础哦，所以建议先将这部分看完再往下看～
@@ -268,7 +267,7 @@ dr = dr\\(\_1\\) + dr\\(\_2\\) + dr\\(\_3\\) = dt (w\\(\_x\\) x r + w\\(\_y\\) x
 v = dr/dt = (w\\(\_x\\) + w\\(\_y\\) + w\\(\_z\\)) x r = w x r   
 这里的条件是dt很小才能这么推理，也就是说，dt越大误差也就越大。
 
-基于6DOF或者9DOF的IMU传感器DCM互补滤波算法
+**基于6DOF或者9DOF的IMU传感器DCM互补滤波算法**
 
 - 科普：6DOF由三轴陀螺仪和三轴加速度计组成，9DOF由三轴磁力计、三轴陀螺仪和三轴加速度计组成。   
 定义右手地理坐标系：I指向北方，K指向顶部，J指向西方。   
@@ -688,7 +687,7 @@ xb、yb、zb 为机体坐标系。
 
 	基本上，我们的GPS和加速度计的参考向量被用来计算旋转误差，并通过反馈控制器输入计算，然后更新原有计算。
 
-- 我们可以把方程15转化为矩阵的形式。如下：
+- 我们可以把方程15转化为矩阵的形式，这里推导有点复杂，可以了解下矢量阵或者[summer的文章](http://blog.csdn.net/qq_21842557/article/details/50993809)，如下：
 
 	<img src="/images/eqn17.png">
 
