@@ -6,9 +6,9 @@ author: 吴兴章
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-14 22:38:07 Utk
+update: 2016-04-16 11:34:29 Utk
 ---
->`通知`：**如果你对本站飞行器文章不熟悉，建议查看[飞行器学习概览](/arrange/drones)！！！**
+>`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
 代码调用关系可使用[doxygen](http://www.stack.nl/~dimitri/doxygen/manual/starting.html)工具，cmake中使用[doxygen](http://blog.csdn.net/shyanyang/article/details/42715297)，总体的代码结果图如下：
 <img src="/images/AC_CodeOverview_AutoFlightModes.png">

@@ -6,9 +6,9 @@ author: nephne
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-14 22:38:07 Utk
+update: 2016-04-16 11:34:29 Utk
 ---
->`通知`：**如果你对本站飞行器文章不熟悉，建议查看[飞行器学习概览](/arrange/drones)！！！**
+>`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
 #PX4源代码
 PX4项目建立在这些主要软件模块:

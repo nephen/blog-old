@@ -6,9 +6,9 @@ author: 吴兴章
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-13 16:55:15 Utk
+update: 2016-04-16 11:34:28 Utk
 ---
->`通知`：**如果你对本站飞行器文章不熟悉，建议查看[飞行器学习概览](/arrange/drones)！！！**
+>`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
 这篇文章主要记录学习NuttX的过程以及对NuttX的理解，并结合apm里的px4-v2例程设置进行说明。
 
@@ -25,7 +25,7 @@ update: 2016-04-13 16:55:15 Utk
 >Tip: 源码中apps/nshlib/README.txt即为说明书。
 
 ##NSH 启动脚本。
-NSH支持选项来为NSH提供一个启动脚本。一般来说这种能力是用CONFIG_NSH_ROMFSETC启用，但有几个相关的描述NSH特定配置设置的配置选项。这种能力还取决于：
+NSH支持选项来为NSH提供一个启动脚本。一般来说这种能力是使能CONFIG_NSH_ROMFSETC启用，但是还有几个其他相关的[配置选项](http://nuttx.org/Documentation/NuttShell.html#nshconfiguration)，见这个链接里的描述。这种能力还取决于：
 
 * CONFIG_DISABLE_MOUNTPOINT 未设置
 * CONFIG_NFILE_DESCRIPTORS > 4
@@ -42,18 +42,18 @@ NSH支持选项来为NSH提供一个启动脚本。一般来说这种能力是�
 ```
 
 ##默认启动行为。
-所提供的实施旨在为启动文件的使用提供极大的灵活性。本段将讨论所有配置选项设置为默认值时的一般行为。
+所提供的这些做法目的是在为启动文件的使用提供极大的灵活性。本段将讨论所有配置选项设置为默认值时的一般行为。
 
 <!--more-->
 在默认情况下，使能CONFIG_NSH_ROMFSETC将导致NSH在启动时表现如下：
 
-* NSH将创建一个只读的内存盘（ROM盘），含有一个微小的romfs文件系统包含以下：
+* NSH将创建一个只读的RAM盘（ROM盘），它含有一个包含以下内容的微小的ROMFS文件系统：
 
 				`--init.d/
 				     `-- rcS
-rcS是NSH启动脚本。
+其中rcS是NSH的启动脚本。
 
-* NSH将装入romfs文件系统到/etc，导致：
+* NSH然后将挂载ROMFS文件系统到/etc，如下：
 
 				|--dev/
 				|   `-- ram0
@@ -69,7 +69,7 @@ rcS是NSH启动脚本。
 				mkfatfs /dev/ram1
 				mount -t vfat /dev/ram1 /tmp
 
-* NSH将在/etc/init.d/rcS启动时执行脚本(在第一个NSH提示前)。脚本执行后，根文件将看起来像：
+* NSH将在启动时执行脚本/etc/init.d/rcS(在第一个NSH提示出现前)。脚本执行后，根文件系统目录为：
 
 				|--dev/
 				|   |-- ram0
@@ -95,7 +95,7 @@ rcS是NSH启动脚本。
 2. **tools/mkromfsing.sh脚本**。脚本tools/mkromfsing.sh创建nsh_romfsing.h。不自动执行。如果你想改变创建和安装/tmp目录相关的配置设置，则必须使用tools/mkromfsimg.sh脚本重新生成该头文件。    
 这个脚本的行为依赖三点：
 	+ 已经安装的NuttX配置是怎么设置的。
-	+ genromfs工具，可从[http://romfs.sourceforge.net](http://romfs.sourceforge.net)下载。
+	+ genromfs工具，可从[http://romfs.sourceforge.net](http://romfs.sourceforge.net)下载，或者[这里](https://pixhawk.org/dev/nuttx/genromfs)。
 	+ 文件apps/nshlib/rcS.template，或者如果定义了CONFIG_NSH_ARCHROMFS，则include/arch/board/rcs.template。
 
 3. **rcS.template**。 apps/nshlib/rcS.template文件包含一般形式的rcS文件，配置的值插入到该模板文件来产生最终的rcS文件。
@@ -406,11 +406,21 @@ argc和argv是用来传递命令行参数到NSH命令。命令行参数是在一
 
 **3.4.1 NuttShell 启动脚本**
 
+这一部分大部分的内容能在2.0部分找到，这里只是做适当的补充。   
 `NSH启动脚本`。NSH支持选项来为NSH提供一个启动脚本。启动脚本包含任何支持NSH的命令（即，当你进入“NSH >帮助”看到的）。一般来说这种能力是用CONFIG_NSH_ROMFSETC启用，但有几个相关的描述NSH特定配置设置的配置选项。这种能力还取决于：
 
 - CONFIG_DISABLE_MOUNTPOINT=n。如果安装点支持被禁用，则不能安装任何文件系统。
 - CONFIG_NFILE_DESCRIPTORS > 4。当然，您必须在文件系统中使用任何文件有文件说明。
 - CONFIG_FS_ROMFS enabled。此选项使能ROMFS文件系统支持。
+
+例程演示：
+
+```c
+#define CONFIG_NSH_ROMFSETC 1
+//CONFIG_DISABLE_MOUNTPOINT未定义
+#define CONFIG_NFILE_DESCRIPTORS 50
+#define CONFIG_FS_ROMFS 1
+```
 
 `默认启动行为`。所提供的实施旨在为启动文件的使用提供极大的灵活性。本段将讨论所有配置选项设置为默认值时的一般行为。
 
@@ -461,7 +471,7 @@ rcS是NSH启动脚本。
 
 在大多数情况下，配置设置默认的/etc/init.d/rcS脚本。默认的脚本是在这里：apps/nshlib/rcS.template（在模板里像XXXMKRDMINORXXX样的值在构建时通过sed替换）。默认的配置创建一个虚拟磁盘，安装在/tmp如上。
 
-如果默认的行为是不是你想要的，那么你可以通过定义CONFIG_NSH_ARCHROMFS=y 在配置文件中提供您自己的自定义RCS脚本。在NuttX代码树中使用自定义/etc/init.d/rcS文件唯一的例子是这个：configs/vsn/nsh。configs/vsn/nsh/defconfig文件也有这样的定义：
+如果默认的行为是不是你想要的，那么你可以通过定义CONFIG_NSH_ARCHROMFS=y 在配置文件中提供您自己的自定义rcS脚本。例如，CONFIG_NSH_ARCHROMFS就可以在$(PX4_BASE)nuttx-configs/$(BOARD)/nsh/defconfig中找到，在NuttX代码树中使用自定义/etc/init.d/rcS文件唯一的例子是这个：configs/vsn/nsh。configs/vsn/nsh/defconfig文件也有这样的定义：
 
 		CONFIG_NSH_ARCHROMFS=y -- 支持一个特定结构的ROMFS文件。
 

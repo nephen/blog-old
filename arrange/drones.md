@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "飞行器学习概览"
+title:  "无人机学习概览"
 categories: "drons_lifes"
 author: 吴兴章
 tags: 工作生活
@@ -8,10 +8,10 @@ comments: true
 permalink: /arrange/drones
 donate: true
 id: 712e39e67bb1073341c6d0d408d742e3 
-update: 2016-04-14 13:04:37 Utk
+update: 2016-04-16 11:34:29 Utk
 ---
 
-下面是对我自己写过的有关飞行器的文章做一个简单的概述，让大家摸清学习的线索。
+下面是对我自己写过的有关无人机的文章做一个简单的概述，让大家摸清学习的线索。
 
 #平台说明
 Software Version：[ardupilot](https://github.com/ArduPilot/ardupilot)/[PX4](https://github.com/PX4/Firmware)   
