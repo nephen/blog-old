@@ -6,7 +6,7 @@ author: 吴兴章
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-16 11:34:28 Utk
+update: 2016-04-18 00:19:54 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
@@ -79,7 +79,7 @@ NSH支持选项来为NSH提供一个启动脚本。一般来说这种能力是�
 				|       `-- rcS
 				`--tmp/
 
-**修改ROMFS镜像。**/etc目录的内容保留在文件apps/nshlib/nsh_romfsimg.h里，或者如果定义了CONFIG_NSH_ARCHROMFS则会包含在arch/board/nsh_romfsimg.h里。
+**修改ROMFS镜像。**/etc目录的内容保留在文件apps/nshlib/nsh_romfsimg.h里，或者如果定义了CONFIG_NSH_ARCHROMFS则会包含在include/arch/board/nsh_romfsimg.h里。这里注意，原官方文档有误，参考[这里](http://nuttx.yahoogroups.narkive.com/TYBoMQgI/auto-start-applications)进行改写。
 
 ```c++
 #ifdef CONFIG_NSH_ARCHROMFS
@@ -90,19 +90,19 @@ NSH支持选项来为NSH提供一个启动脚本。一般来说这种能力是�
 ```
 为了修改启动行为，有三件事情要学习：
 
-1. **配置选项**。其他CONFIG_NSH_ROMFSETC配置选项将在后面讨论。
+1. **配置选项**。额外的CONFIG_NSH_ROMFSETC配置选项将与其他的[NSH-specific configuration settings](http://nuttx.org/Documentation/NuttShell.html#nshconfiguration)一起讨论。
 
-2. **tools/mkromfsing.sh脚本**。脚本tools/mkromfsing.sh创建nsh_romfsing.h。不自动执行。如果你想改变创建和安装/tmp目录相关的配置设置，则必须使用tools/mkromfsimg.sh脚本重新生成该头文件。    
+2. **[tools/mkromfsing.sh脚本](https://github.com/PX4/NuttX/blob/master/nuttx/tools/mkromfsimg.sh)**。脚本tools/mkromfsing.sh创建nsh_romfsing.h，不自动执行。如果你想改变创建和安装/tmp目录相关的配置设置，则必须使用tools/mkromfsimg.sh脚本重新生成该头文件。    
 这个脚本的行为依赖三点：
 	+ 已经安装的NuttX配置是怎么设置的。
 	+ genromfs工具，可从[http://romfs.sourceforge.net](http://romfs.sourceforge.net)下载，或者[这里](https://pixhawk.org/dev/nuttx/genromfs)。
-	+ 文件apps/nshlib/rcS.template，或者如果定义了CONFIG_NSH_ARCHROMFS，则include/arch/board/rcs.template。
+	+ 文件apps/nshlib/rcS.template。
 
 3. **rcS.template**。 apps/nshlib/rcS.template文件包含一般形式的rcS文件，配置的值插入到该模板文件来产生最终的rcS文件。
 
-**注意**：apps/nshlib/rcs.template生成标准的默认nsh_romfsimg.h文件，如果CONFIG_NSH_ARCHROMFS在NuttX配置文件中定义，那么一个自定义、板级相关的驻留在configs/\<board>/include里的nsh_romfsimg.h文件将被使用。注意：当操作系统配置完成，include/arch/board将被链接到configs/\<board>/include。
-
-所有的启动行为都包含在rcS.template。mkromfsimg.sh的作用是将特定的配置来设置rcS.template创建最终的rcS，以及生成包含ROMFS系统映像的头文件nsh_romfsimg.h。
+**总结**：   
+1.为了生成一个自定义的rcS文件，rcS.template的副本需要放到toos/，根据需要的启动行为改变。运行tools/mkromfsimg.sh创建nsh_romfsimg.h文件，这个头文件需要复制到apps/nhslib，或者如果CONFIG_NSH_ARCHROMFS在NuttX配置文件中定义，那么一个自定义的板级相关的nsh_romfsimg.h文件将被复制到configs/\<board>/include里使用。注意：当操作系统配置完成，include/arch/board将被链接到configs/\<board>/include。   
+2. 所有的启动行为都包含在rcS.template。mkromfsimg.sh的作用是将特定的配置来设置rcS.template创建最终的rcS，以及生成包含ROMFS系统映像的头文件nsh_romfsimg.h。
 
 <br>
 3.0 定制NuttShell------<i>翻译自[NuttX文档4.0节](http://nuttx.org/doku.php?id=documentation:nuttshell)，欢迎提出宝贵意见</i>
@@ -406,99 +406,9 @@ argc和argv是用来传递命令行参数到NSH命令。命令行参数是在一
 
 **3.4.1 NuttShell 启动脚本**
 
-这一部分大部分的内容能在2.0部分找到，这里只是做适当的补充。   
-`NSH启动脚本`。NSH支持选项来为NSH提供一个启动脚本。启动脚本包含任何支持NSH的命令（即，当你进入“NSH >帮助”看到的）。一般来说这种能力是用CONFIG_NSH_ROMFSETC启用，但有几个相关的描述NSH特定配置设置的配置选项。这种能力还取决于：
+这一部分大部分的内容能在[2.0部分](/2015/12/RTOS-of-NuttX#1-2-1)找到，这里只是做适当的补充。   
 
-- CONFIG_DISABLE_MOUNTPOINT=n。如果安装点支持被禁用，则不能安装任何文件系统。
-- CONFIG_NFILE_DESCRIPTORS > 4。当然，您必须在文件系统中使用任何文件有文件说明。
-- CONFIG_FS_ROMFS enabled。此选项使能ROMFS文件系统支持。
-
-例程演示：
-
-```c
-#define CONFIG_NSH_ROMFSETC 1
-//CONFIG_DISABLE_MOUNTPOINT未定义
-#define CONFIG_NFILE_DESCRIPTORS 50
-#define CONFIG_FS_ROMFS 1
-```
-
-`默认启动行为`。所提供的实施旨在为启动文件的使用提供极大的灵活性。本段将讨论所有配置选项设置为默认值时的一般行为。
-
-在默认情况下，使能CONFIG_NSH_ROMFSETC将使NSH在NSH启动时表现如下：
-
-- NSH将创建一个只读的内存盘（ROM盘），含有一个微小的ROMFS文件系统包含以下：
-
-						`--init.d/
-						    `-- rcS
-
-rcS是NSH启动脚本。
-- NSH将装入ROMFS文件系统到/etc，导致：
-
-						|--dev/
-						|   `-- ram0
-						`--etc/
-						    `--init.d/
-						        `-- rcS
-
-- 默认rcS脚本的内容是：
-
-				# Create a RAMDISK and mount it at /tmp
-
-				mkrd -m 1 -s 512 1024
-				mkfatfs /dev/ram1
-				mount -t vfat /dev/ram1 /tmp
-
-- NSH将在/etc/init.d/rcS启动时执行脚本(在第一个NSH提示前)。脚本执行后，根文件将看起来像：
-
-						|--dev/
-						|   |-- ram0
-						|   `-- ram1
-						|--etc/
-						|   `--init.d/
-						|       `-- rcS
-						`--tmp/
-
-`实例配置`。这里有一些配置，在这些配置文件里CONFIG_NSH_ROMFSETC=y。他们可以提供有用的例子：
-
-				configs/hymini-stm32v/nsh2
-				configs/ntosd-dm320/nsh
-				configs/sim/nsh
-				configs/sim/nsh2
-				configs/sim/nx
-				configs/sim/nx11
-				configs/sim/touchscreen
-				configs/vsn/nsh
-
-在大多数情况下，配置设置默认的/etc/init.d/rcS脚本。默认的脚本是在这里：apps/nshlib/rcS.template（在模板里像XXXMKRDMINORXXX样的值在构建时通过sed替换）。默认的配置创建一个虚拟磁盘，安装在/tmp如上。
-
-如果默认的行为是不是你想要的，那么你可以通过定义CONFIG_NSH_ARCHROMFS=y 在配置文件中提供您自己的自定义rcS脚本。例如，CONFIG_NSH_ARCHROMFS就可以在$(PX4_BASE)nuttx-configs/$(BOARD)/nsh/defconfig中找到，在NuttX代码树中使用自定义/etc/init.d/rcS文件唯一的例子是这个：configs/vsn/nsh。configs/vsn/nsh/defconfig文件也有这样的定义：
-
-		CONFIG_NSH_ARCHROMFS=y -- 支持一个特定结构的ROMFS文件。
-
-`修改ROMFS镜像`/etc目录的内容包含在文件apps/nshlib/nsh_romfsimg.h里，或如果CONFIG_NSH_ARCHROMFS 被定义，包含/arch/board/nsh_romfsimg.h。
-
-为了修改启动行为，有三件事情要学习：
-
-1、配置选项。
-
-2、tools/mkromfsimg.sh脚本。tools/mkromfsimg.sh脚本创建nsh_romfsimg.h。它不自动执行。如果你想改变创建和安装/tmp目录相关的配置设置，则必须使用tools/ mkromfsimg.sh脚本重新生成该头文件。 
-
-这个脚本的行为取决于几件事：
-
-1. 配置设置然后安装配置。
-2. genromfs工具（可以从[http://romfs.sourceforge.net](http://romfs.sourceforge.net)下载），在NuttX工具库[这里](https://bitbucket.org/nuttx/tools/src/master/genromfs-0.5.2.tar.gz)还有一个可用快照。
-3. 用来产生C 头文件的xxd工具（xxd是一个完整的Linux或Cygwin安装正常的一部分，通常是vi包的一部分）。
-4. 文件 apps/nshlib/rcS.template（或如果CONFIG_NSH_ARCHROMFS 定义，包括/arch/board/rcs.template）。
-
-3、rcS.template。文件apps/nshlib/rcS.template包含rcS文件的一般形式；配置的值插入到该模板文件来产生最终的RCS文件。
-
-为了生成一个自定义的rcS文件，rcS.template的副本需要放到toos/，根据需要的启动行为改变。运行tools/mkromfsimg.sh创建nsh_romfsimg.h，这个头文件需要复制到apps/nhslib或者如果configs/\<board\>/include中CONFIG_NSH_ARCHROMFS定义。
-
-`rcS.template`。默认的rcS.template, apps/nshlib/rcS.template生成标准的、默认的apps/nshlib/nsh_romfsimg.h文件。
-
-如果CONFIG_NSH_ARCHROMFS在NuttX配置文件中定义，然后驻留在configs/\<board>/include中的自定义、板级相关的nsh_romfsimg.h将被使用。注意，当操作系统配置完成， include/arch/board将被链接到configs/\<board\>/include。
-
-如上面提到的，在NuttX代码树中使用自定义/etc/init.d/rcS文件的唯一的例子是：configs/vsn/nsh。configs/vsn的自定义脚本是位于configs/vsn/include/rcS.template。
+如上面提到的，在NuttX代码树中使用自定义/etc/init.d/rcS文件的唯一的例子是：configs/vsn/nsh。configs/vsn的自定义脚本是位于configs/vsn/include/rcS.template。   
 
 所有的自定义行为都包含在rcS.template。mkromfsimg.sh脚本的作用是（1）将特定的配置设置rcS.template来创建最终的RCS，和（2）生成包含romfs文件系统映像的头文件nsh_romfsimg.h。要做到这一点，mkromfsimg.sh使用必须安装在您的系统的两个工具：
 

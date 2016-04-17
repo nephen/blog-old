@@ -8,7 +8,7 @@ comments: true
 permalink: /arrange/drones
 donate: true
 id: 712e39e67bb1073341c6d0d408d742e3 
-update: 2016-04-17 12:57:36 Utk
+update: 2016-04-18 00:19:54 Utk
 ---
 
 下面是对我自己写过的有关无人机的文章做一个简单的概述，让大家摸清学习的线索。
@@ -16,7 +16,7 @@ update: 2016-04-17 12:57:36 Utk
 #平台说明
 Software Version：[ardupilot](https://github.com/ArduPilot/ardupilot)/[PX4](https://github.com/PX4/Firmware)   
 Hardware Version：[pixhawk 2.4.6](https://pixhawk.org/modules/pixhawk)   
-IDE：[sublime text 2](http://www.nephen.com/2016/01/sublime-text2-in-linux) （Ubuntu）   
+Code Editor：[sublime text 2](http://www.nephen.com/2016/01/sublime-text2-in-linux) （Ubuntu）   
 说明一下，本站介绍的文章包含了两个软件平台，到底使用哪个具体文章里会有声明，另外，推荐使用sublime text 2编辑查看代码, 已经给出帮助链接。
 
 #学习交流

@@ -6,7 +6,7 @@ author: 吴兴章
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-16 11:34:29 Utk
+update: 2016-04-18 00:19:54 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
@@ -38,11 +38,13 @@ Ubuntu用户可以参考[链接](http://dev.ardupilot.com/wiki/building-the-code
 知识点：  
 
 1. [创建分支并改变一些代码](http://dev.ardupilot.com/wiki/where-to-get-the-code/#making_a_branch_and_changing_some_code)：fork源仓库，克隆到本地，更改后推送到fork仓库。
-2. [保持代码更新](http://dev.ardupilot.com/wiki/where-to-get-the-code/#rebase-based_workflow_keeping_your_code_up_to_date)：添加upstream远程官方库；更新`git fetch upstream`；重置当前的分支`git rebase upstream/master`，这里可能有冲突需要解决；更新子模块；
+2. [保持代码更新](http://dev.ardupilot.com/wiki/where-to-get-the-code/#rebase-based_workflow_keeping_your_code_up_to_date)：添加upstream远程官方库；更新`git fetch upstream`，[fetch与pull的区别](http://blog.csdn.net/hudashi/article/details/7664457)；重置当前的分支`git rebase upstream/master`，这里可能有冲突需要解决；更新子模块；
 
 	```sh
 	~ $ git submodule init
 	~ $ git submodule update --recursive
+	#或者
+	~ $ git submodule update --init --recursive
 	```
 推送的fork库`git push origin master`
 3. [提交分支到master](http://dev.ardupilot.com/wiki/submitting-patches-back-to-master/)：确保每次提交只是做了一件事情；简洁易懂的注释；[清理本地提交历史](http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html)；推送到本地分支`git push -f origin master`；[创建上拉请求](https://help.github.com/articles/using-pull-requests)；在`Pull Request`页面选择`New pull request`按钮；选择需要提交的分支然后点击`Click to create pull request for this comparison`（base branch 是远程官方分支, head branch 是自己要提交的分支，这样做可以在任意时间段进行提交）；每个参与者都会收到新请求消息；管理`pull requests`；查看`proposed changes`；`Pull request`谈论；一段时间后可以查看` long-running pull requests`    
@@ -50,6 +52,13 @@ Ubuntu用户可以参考[链接](http://dev.ardupilot.com/wiki/building-the-code
 补充知识点：   
 
 1. [Git在子模块](http://dev.ardupilot.com/wiki/git-submodules/)：所有的子模块都放在modules/目录；[常见错误](http://dev.ardupilot.com/wiki/git-submodules/#common_errors)；
+2. 如果子模块更新的时候出现如下错误：   
+
+	```
+	fatal: 目标路径 'src/lib/ecl' 已经存在，并且不是一个空目录。
+	无法克隆 'https://github.com/PX4/ecl.git' 到子模组路径 'src/lib/ecl'
+	```
+	直接删除src/lib/ecl即可。
 
 <br>
 #代码库
