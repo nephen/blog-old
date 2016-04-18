@@ -6,7 +6,7 @@ author: 吴兴章
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-16 11:34:29 Utk
+update: 2016-04-18 13:50:52 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
@@ -504,6 +504,114 @@ PX4_MAKE = $(v)+ GIT_SUBMODULES_ARE_EVIL=1 ARDUPILOT_BUILD=1 $(MAKE) -C $(SKETCH
 其中-f $(PX4_ROOT)/Makefile.make显示了makefile使用了PX4项目根目录的Makefile.make文件，拜读这里即可查出真相，真相在根目录下makefiles文件夹里的[firmware.mk](https://github.com/diydrones/PX4Firmware/blob/5a52d3eec8eca7e72eb8dde7956140e111914c96/makefiles/firmware.mk#L383)里。其实px4的代码使用的是Cmake，所以通过查看根目录下的CMakeLists.txt可知，真正产生builtin_commands.c的是px4_impl_nuttx.cmake里的px4_nuttx_generate_builtin_commands函数。同理，nuttx操作系统的ROMFS是由px4_nuttx_add_romfs函数产生的。    
 
 接着继续分析main函数里的一些特征及其所做的事情。    
+由上面分析可知，main函数及为：   
+
+```c++
+int __EXPORT ArduPilot_main(int argc, char* const argv[]) {
+        hal.run(argc, argv, &copter);
+        return 0;
+    }
+```
+其中hal定义为const AP_HAL::HAL& hal = AP_HAL::get_HAL();，而：   
+
+```c++
+const AP_HAL::HAL& AP_HAL::get_HAL() {
+    static const HAL_PX4 hal_px4;
+    return hal_px4;
+}
+
+class HAL_PX4 : public AP_HAL::HAL {
+public:
+    HAL_PX4();
+    void run(int argc, char* const argv[], Callbacks* callbacks) const override;
+};
+```
+故hal.run函数即为HAL_PX4里面的run方法，这个main函数主要运行的是这个方法。这个方法能在HAL_PX4_Class.cpp中找到。在这个方法中有：   
+
+```c++
+            daemon_task = px4_task_spawn_cmd(SKETCHNAME,
+                                             SCHED_FIFO,
+                                             APM_MAIN_PRIORITY,
+                                             APM_MAIN_THREAD_STACK_SIZE,
+                                             main_loop,
+                                             NULL);
+```
+所以这里又调用了main_loop函数，在main_loop函数中，主要分析两点：   
+
+```c++
+g_callbacks->setup();
+while (!_px4_thread_should_exit) {
+g_callbacks->loop();
+}
+```
+setup()函数在板子启动的时候被调用一次，它实际的调用来自每块板子的HAL，所有main函数是在HAL里的，其后就是loop()函数的调用，sketch的主要工作体现在loop()函数里，注意这两个函数只是冰山一角。这段话摘自[理解example sketch代码](/2016/01/introduction-to-start-ArduPilot#1-3)。    
+setup、loop函数可以在ArduCopter.cpp中分别找到，其中setup函数里有scheduler.init(&scheduler_tasks[0], ARRAY_SIZE(scheduler_tasks));，这样在这个应用函数里又启动了调度任务:   
+
+```c++
+const AP_Scheduler::Task Copter::scheduler_tasks[] = {
+    SCHED_TASK(rc_loop,              100,    130),
+    SCHED_TASK(throttle_loop,         50,     75),
+    SCHED_TASK(update_GPS,            50,    200),
+#if OPTFLOW == ENABLED
+    SCHED_TASK(update_optical_flow,  200,    160),
+#endif
+    SCHED_TASK(update_batt_compass,   10,    120),
+    SCHED_TASK(read_aux_switches,     10,     50),
+    SCHED_TASK(arm_motors_check,      10,     50),
+    SCHED_TASK(auto_disarm_check,     10,     50),
+    SCHED_TASK(auto_trim,             10,     75),
+    SCHED_TASK(update_altitude,       10,    140),
+    SCHED_TASK(run_nav_updates,       50,    100),
+```
+所以apm的源码就是在px4的原生代码上以一个应用的接口加入了自己的调度任务，总的来说就是在px4上加了自己的应用。而在loop函数里开展了主要的循环fast_loop函数，如下：   
+
+```c++
+// Main loop - 400hz
+void Copter::fast_loop()
+{
+
+    // IMU DCM Algorithm
+    // --------------------
+    read_AHRS();
+
+    // run low level rate controllers that only require IMU data
+    attitude_control.rate_controller_run();
+    
+#if FRAME_CONFIG == HELI_FRAME
+    update_heli_control_dynamics();
+#endif //HELI_FRAME
+
+    // send outputs to the motors library
+    motors_output();
+
+    // Inertial Nav
+    // --------------------
+    read_inertia();
+
+    // check if ekf has reset target heading
+    check_ekf_yaw_reset();
+
+    // run the attitude controllers
+    update_flight_mode();
+
+    // update home from EKF if necessary
+    update_home_from_EKF();
+
+    // check if we've landed or crashed
+    update_land_and_crash_detectors();
+
+#if MOUNT == ENABLED
+    // camera mount's fast update
+    camera_mount.update_fast();
+#endif
+
+    // log sensor health
+    if (should_log(MASK_LOG_ANY)) {
+        Log_Sensor_Health();
+    }
+}
+```
+在这里边进行姿态解算，PID控制等等，那么分析到这里我想完过飞行器的同学就大致清楚了。   
 在这个工程里有一个重要的类叫Copter，大部分函数都是该类的方法，如`void Copter::arm_motors_check()`，以后用的一些全局变量基本上都属于这个类里面的。   
 
 下面看一下一些简单的应用，以电机解锁为例子，玩过飞行器的同胞就知道，油门拉杆按右下角几秒就可以解锁，一般都是这样设置的，看看代码都是怎么实现的：   
