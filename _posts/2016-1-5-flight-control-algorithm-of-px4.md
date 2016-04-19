@@ -6,7 +6,7 @@ author: 吴兴章
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-16 11:34:29 Utk
+update: 2016-04-20 00:21:01 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 >`注意`：基于参考原因，本文参杂了APM的算法分析。
@@ -151,11 +151,8 @@ land_detector start multicopter
 <br>
 #姿态估算
 ##DCM_tutorial
->imu\_guide：http://www.starlino.com/imu_guide.html   
->imu\_guide中文翻译：http://www.itdadao.com/2016/03/19/629990/   
->dcm\_tutorial：http://www.starlino.com/dcm_tutorial.html   
->资料查询：https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5   
->该部分算法源码参考：https://github.com/nephen/picquadcontroller/blob/master/imu.h   
+>[imu\_guide](http://www.starlino.com/imu_guide.html)/[imu\_guide中文翻译](http://www.itdadao.com/2016/03/19/629990/)/[dcm\_tutorial](http://www.starlino.com/dcm_tutorial.html)/[wiki资料查询](https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5)/[该部分算法源码参考](https://github.com/nephen/picquadcontroller/blob/master/imu.h)   
+>将该算法转换为了matlab实现，想了解的可以查看我的github里的[DCM工程](https://github.com/nephen/DCM)，能够更好的理解算法   
 >这部分可作为下部分DCM理论介绍的基础哦，所以建议先将这部分看完再往下看～
 
 **DCM矩阵**：

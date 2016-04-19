@@ -6,7 +6,7 @@ author: 吴兴章
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-18 16:57:29 Utk
+update: 2016-04-20 00:21:01 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
@@ -127,7 +127,21 @@ NSH启动顺序很简单。作为一个例子，apps/examples/nsh/nsh_main.c的�
 	  up_cxxinitialize();
 	#endif
 	```
-2. 这个函数，然后调用nsh_initialize()，它将初始化NSH库，nsh_initialize()将具体描述如下节。
+2. 注册BINFS文件系统。
+
+	```c++
+	  /* Register the BINFS file system */
+
+	#if defined(CONFIG_FS_BINFS) && (CONFIG_BUILTIN)
+	  ret = builtin_initialize();
+	  if (ret < 0)
+	    {
+	     fprintf(stderr, "ERROR: builtin_initialize failed: %d\n", ret);
+	     exitval = 1;
+	   }
+	#endif
+	```
+2. 然后调用nsh_initialize()，它将初始化NSH库，nsh_initialize()将具体描述如下节。
 3. 如果Telnetconsole启用，它调用驻留在NSH库里的nsh_telnetstart()。nsh_telnetstart()将启动telnet守护进程来监听Telnet连接和启动远程NSH会话。
 
 	```c++
@@ -183,9 +197,34 @@ void nsh_initialize(void)
 ```
 它也只有三件事：
 
-1.*nsh_romfsetc()*:如果是这样的配置，它执行一个NSH启动脚本，这个脚本可以在目标文件系统/etc/init.d/rcS中发现。nsh_romfsetc()函数可以在apps/nshlib/nsh_romfsetc.c中发现。这个函数将一个ROMFS文件系统登记，然后安装ROMFS文件系统。/etc是只读、ROMFS文件系统通过nsh_romfsetc()安装的默认位置。   
+1.*nsh_romfsetc()*:如果是这样的配置，它执行一个NSH启动脚本，这个脚本可以在目标文件系统/etc/init.d/rcS中发现。nsh_romfsetc()函数可以在apps/nshlib/nsh_romfsetc.c中发现。这个函数将一个ROMFS文件系统登记注册，然后挂载这个只读的ROMFS文件系统到默认位置/etc。   
 
-ROMFS镜像本身，也简称固件。默认情况下，该RCS启动脚本中包含以下逻辑：
+```c++
+  /* Create a ROM disk for the /etc filesystem */
+
+  ret = romdisk_register(CONFIG_NSH_ROMFSDEVNO, romfs_img,
+                         NSECTORS(romfs_img_len), CONFIG_NSH_ROMFSSECTSIZE);
+  if (ret < 0)
+    {
+      dbg("nsh: romdisk_register failed: %d\n", -ret);
+      return ERROR;
+    }
+
+  /* Mount the file system */
+
+  vdbg("Mounting ROMFS filesystem at target=%s with source=%s\n",
+       CONFIG_NSH_ROMFSMOUNTPT, MOUNT_DEVNAME);
+
+  ret = mount(MOUNT_DEVNAME, CONFIG_NSH_ROMFSMOUNTPT, "romfs", MS_RDONLY, NULL);
+  if (ret < 0)
+    {
+      dbg("nsh: mount(%s,%s,romfs) failed: %d\n",
+          MOUNT_DEVNAME, CONFIG_NSH_ROMFSMOUNTPT, errno);
+      return ERROR;
+    }
+```
+
+ROMFS镜像本身编译成固件。默认情况下，该rcS启动脚本中包含以下逻辑：
 
 	# Create a RAMDISK and mount it at XXXRDMOUNTPOINTXXX
 
@@ -276,7 +315,7 @@ argc和argv是用来传递命令行参数到NSH命令。命令行参数是在一
 
 		{ "mycmd", cmd_mycmd, 1, 1, NULL },
 
-这项特别简单因为mycmd是如此简单。在g_cmdmap [ ]看看其他的命令更为复杂的例子。如：
+这项特别简单，因为mycmd是如此简单。在g_cmdmap [ ]看看其他的命令更为复杂的例子。如：
 
 ```c++
 # ifndef CONFIG_NSH_DISABLE_CD
@@ -315,25 +354,25 @@ argc和argv是用来传递命令行参数到NSH命令。命令行参数是在一
 
 `概要`。基本逻辑就是支持NSH内置的应用程序称为“内置程序”。内置的应用程序方法可以在apps/builtin发现。这些方法简单实现如下：
 
-1. 它支持注册机制，内置的应用程序可以动态注册自己的构建时间，和
-2. 查找，列表，并执行内置的应用实用函数。
+1. 它支持注册机制，内置的应用程序可以在构建的时候动态注册自己，和
+2. 查找，列表，并执行内置应用的实用函数。
 
 `内置应用实用函数`。内置应用程序方法导出的实用函数原型在nuttx/include/nuttx/binfmt/builtin.h和apps/include/builtin.h。这些实用函数包括：
 
-- int builtin_isavail(FAR const char *appname); 检查应用程序构建时间注册为应用程式的可用性。
+- int builtin_isavail(FAR const char *appname); 检查应用程序在构建时间注册为appname的可用性。
 - const char *builtin_getname(int index);通过索引返回一个指向内置应用程序名称的指针。这是NSH使用的实用函数，为了输入“nsh> help"时列出可用的内置应用程序。
-- int exec_builtin(FAR const char *appname, FAR const char **argv); 在编译时间执行内置式应用程序注册。这是NSH使用在执行内置应用时的实用函数。
+- int exec_builtin(FAR const char *appname, FAR const char **argv); 在编译时间执行内置式应用程序注册。这是NSH使用于执行内置应用的实用函数。
 
 `自动生成的头文件`。当NuttX第一次建立时带有需求的应用程序入口点都聚集在两个文件：
 
 1. apps/builtin/builtin_proto.h: 应用程序任务入口点的原型。
 2. apps/builtin/builtin_list.h:应用程序特定信息和启动要求。
 
-`内置应用程序的注册`。由于不同的构造目标被执行，NuttX构建发生在几个不同的阶段。（1）建立配置，（2）产生目标依赖性，（3）默认的（所有）当正常编译链接操作完成。内置应用程序信息在构建阶段收集。
+`内置应用程序的注册`。NuttX编译有几个不同的阶段，因为不同的编译目标被执行。（1）context目标，当配置建立时，（2）depend目标，当目标依赖性产生时，（3）default（all）目标，当正常编译链接操作完成时。内置应用程序信息是在make context目标阶段收集。
 
-在apps/examples/hello目录可以一个内置应用程序的例子。让我们一起通过这个具体的原因来说明内置的应用程序创建和如何他们自己注册的一般方式，以至于他们可以从NSH使用。
+在apps/examples/hello目录是一个内置应用程序的例子。让我们一起通过这个具体的例子来说明内置的应用程序创建和如何他们自己注册的一般方式，最后它们可以在NSH使用。
 
-`apps/examples/hello. `apps/examples/hello主要例程可以在apps/examples/hello/main.c发现。主要的例程是：
+`apps/examples/hello. `apps/examples/hello主程序可以在apps/examples/hello/main.c发现。主程序是：
 
 		int hello_main(int argc, char *argv[])
 		{
@@ -341,21 +380,21 @@ argc和argv是用来传递命令行参数到NSH命令。命令行参数是在一
 		  return 0;
 		}
 
-这是一个内置的函数，它将在NuttX构造的上下文构建阶段被注册。注册是由apps/examples/hello/Makefile方法实现。但是，构建系统通过一个相当曲折的路径到达这个方法：
+这是一个内置的函数，它将在NuttX编译阶段注册。注册是由apps/examples/hello/Makefile方法实现。但是，编译系统通过一个相当曲折的路径到达这个方法：
 
-1. 顶层的make目标在nuttx/Makefile。所有的构建目标取决于context构建目标。对于apps/目录，这个构建目标将执行apps/Makefile里的context目标。
+1. 顶层的make目标context在nuttx/Makefile。所有的编译目标依赖于context编译目标。对于apps/目录，这个编译目标将执行apps/Makefile里的context目标。`注`：context编译目标可以在makefile里面找到。
 2. apps/Makefile将轮流执行所有配置的子目录context目标，在我们的情况下，将包括apps/examples里的Makefile。
 3. 最后，apps/examples/Makefile将执行所有配置了的example子文件夹的context目标，最后到apps/examples/Makefile，如下。
 
-**注意：**由于此上下文构建阶段只能执行一次，任何随后您将作出的配置更改，然后，不反映在构建序列。这是一个常见的混乱地区。在你可以实例化新的配置，你首先要摆脱旧的配置。最激烈的方式是：
+**注意：**由于此context，编译阶段只能执行一次，任何随后您将作出的配置更改，然后将不反映在编译序列。这是一个常见的混乱地区。在你可以实例化新的配置，你首先要摆脱旧的配置。最激烈的方式是：
 
 		make distclean
 
-但你将不得不从头开始重新配置NuttX。但是，如果你只想在apps/sub-directory重新构建配置，那么很少的工作量就可以实现。以下nuttx命令将只从apps/目录删除配置，将让你无需重新配置一切来继续：
+但你将不得不从头开始重新配置NuttX。但是，如果你只想在apps/sub-directory重新编译配置，那么很少的工作量就可以实现。以下nuttx命令将只从apps/目录删除配置，将让你无需重新配置一切来继续：
 
 		make apps_distclean
 
-在apps/examples/hello/Makefile里的上下文目标方法注册builtin's builtin_proto.hand builtin_list.h文件里的hello_main()应用。这样的方法在apps/examples/hello/Makefiles里，摘录如下：
+在apps/examples/hello/Makefile里的context目标方法来注册builtin's builtin_proto.h 和 builtin_list.h文件里的hello_main()应用。这样的方法在apps/examples/hello/Makefile里，摘录如下：
 
 1、首先，Makefile 包括apps/Make.defs:
 
@@ -369,9 +408,9 @@ argc和argv是用来传递命令行参数到NSH命令。命令行参数是在一
 		    @echo "EXTERN int $4(int argc, char *argv[]);" >> "$(APPDIR)/builtin/builtin_proto.h"
 		endef
 
-当这个宏运行时，你会看到”Register:hello“的输出，这是注册成功的肯定迹象。
+当这个宏运行时，你会看到”Register:hello“的输出，这现象代表注册成功。
 
-2、make文件然后定义应用程序名字（hello），任务的优先级（默认），和将被分配到的任务运行的栈的大小（2K）。
+2、make文件然后定义应用程序名字（hello），任务的优先级（default），和将被分配到的任务运行的栈的大小（2K）。
 
 		APPNAME         = hello
 		PRIORITY        = SCHED_PRIORITY_DEFAULT
@@ -384,7 +423,7 @@ argc和argv是用来传递命令行参数到NSH命令。命令行参数是在一
 
 `内置应用程序的其他用途`。内置应用程序的主要目的是支持应用程序从NSH命令行执行。然而，有内置的应用程序应该提到的另一个用途。
 
-1. *binfs*。binfs是一个位于apps/builtin/binfs.c的很小的文件系统。这提供另外一种可视化安装内置应用。没有binfs，你能用NSH帮助命令看到已经安装的内置应用。binfs将创建一个小的伪文件系统安装在/bin。使用binfs，你可以通过列出/bin目录的内容来看到可用的内置应用程序。这给一些肤浅的Unix兼容，但是没有添加任何新的功能。
+1. *binfs*。binfs是一个位于apps/builtin/binfs.c的很小的文件系统。这提供一种替代可视化安装内置应用的方法。没有binfs，你能用NSH帮助命令看到已经安装的内置应用。binfs将创建一个小的伪文件系统安装在/bin。使用binfs，你可以通过列出/bin目录的内容来看到可用的内置应用程序。这肤浅兼容Unix，但是没有添加任何新的功能。
 
 **3.3.2 同步构建的应用程序**
 
@@ -392,7 +431,7 @@ argc和argv是用来传递命令行参数到NSH命令。命令行参数是在一
 
 		CONFIG_SCHED_WAITPID=y
 
-此配置选项可以为标准waitpid() RTOS接口支持，当接口启用，NSH将用它来等待，睡眠到内置的应用程序执行完成。
+此配置选项可以为标准的waitpid() RTOS接口提供支持。当接口启用，NSH将用它来等待，睡眠到内置的应用程序执行完成。
 
 当然，即使CONFIG_SCHED_WAITPID=y定义，具体的应用程序仍然可以在NSH命令后添加符号（&）强制异步运行。
 
