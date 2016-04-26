@@ -2,11 +2,11 @@
 layout: post
 title:  "ArduPilot之代码概述"
 categories: "drons_lifes"
-author: 吴兴章
+author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-18 16:57:29 Utk
+update: 2016-04-27 01:42:47 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 

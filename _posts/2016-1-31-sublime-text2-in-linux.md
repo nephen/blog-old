@@ -2,11 +2,11 @@
 layout: post
 title:  "linux下sublime text 2使用技巧"
 categories: "work_lifes"
-author: 吴兴章
+author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-12 01:59:43
+update: 2016-04-27 01:42:47 Utk
 ---
 由于sublime的多平台性，以及也有很多强悍的插件可供使用，是我不得不将兴趣移植这个编辑器上面来。将查看代码而言，在linux下也可以通过wine安装sourceinsight，但是对于安装跟使用来说不是很方便，特别是有git项目的时候。
 

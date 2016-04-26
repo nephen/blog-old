@@ -2,10 +2,10 @@
 layout: post
 title:  "祭奠即将逝去的大一"
 categories: "thinking_lifes"
-author: nephne
+author: nephen
 tags: 大学
 comments: true
-update: 2016-04-12 01:59:43
+update: 2016-04-27 01:42:47 Utk
 ---
 要想真正的有所成就，就必须学会付出，忍受失去，必须去投入大量的时间，有失必有得。
 

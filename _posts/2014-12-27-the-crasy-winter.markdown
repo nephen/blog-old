@@ -2,10 +2,10 @@
 layout: post
 title:  "疯狂后的冬天"
 categories: thinking_lifes
-author: nephne
+author: nephen
 comments: true
 passwd: true
-update: 2016-04-12 01:52:38
+update: 2016-04-27 01:42:47 Utk
 ---
 开心的片段里，恨不得马上告诉全世界，看到的东西都是欢乐的色彩，烦闷的时候，有些事，宁愿烂在心里，也不愿意向别人透露半句，所以我更加喜欢上了这个平台，既满足了发泄，或许还会留下点点回忆。
 

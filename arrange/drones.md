@@ -2,13 +2,13 @@
 layout: post
 title:  "无人机学习概览"
 categories: "drons_lifes"
-author: 吴兴章
+author: nephen
 tags: 工作生活
 comments: true
 permalink: /arrange/drones
 donate: true
 id: 712e39e67bb1073341c6d0d408d742e3 
-update: 2016-04-18 00:19:54 Utk
+update: 2016-04-27 01:42:47 Utk
 ---
 
 下面是对我自己写过的有关无人机的文章做一个简单的概述，让大家摸清学习的线索。

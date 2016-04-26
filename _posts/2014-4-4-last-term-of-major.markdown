@@ -2,9 +2,9 @@
 layout: post
 title:  "我的大二上学期"
 categories: thinking_lifes
-author: nephne
+author: nephen
 comments: true
-update: 2016-04-12 01:59:43
+update: 2016-04-27 01:42:47 Utk
 ---
 这个学期已经结束了，回过头来想好好理清一下思绪，也不枉我即将逝去的青春年华，不管它是平淡无奇还是充满激情，未来的日子还很长，我知道它总是充满希望的，也许生命的快乐源于创造，不断去反省总结自己的过去，美好的未来掌控在自己的手中。
 

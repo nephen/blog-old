@@ -10,8 +10,6 @@ You can find out more info about customizing your Jekyll theme, as well as basic
 
 You can find the source code for the Jekyll new theme at [jekyll-new](https://github.com/jglovier/jekyll-new),the source code for Jekyll at [jekyll](https://github.com/jekyll/jekyll)
 
-More personal information please look up the [contact](/contact) page
-
 <hr>
 ##动态
 - 2016.2.2    

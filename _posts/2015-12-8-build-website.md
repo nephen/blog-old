@@ -3,8 +3,8 @@ layout: post
 title:  "Jekyll博客建站囧程"
 categories: "thinking_lifes"
 comments: true
-author: nephne
-update: 2016-04-13 14:20:31 Utk
+author: nephen
+update: 2016-04-27 01:42:47 Utk
 ---
 关于[导航条][导航条]，我只是初步的学习了一下前端的东西，在搭建这个博客的过程中导航条应该属于难点了吧。
 
@@ -13,6 +13,8 @@ update: 2016-04-13 14:20:31 Utk
 1. 在博客标题中插入图标的方式为：`<link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico"/>`，该方法与通常网站有点不一样。
 2. 导航按钮上有图片、链接及标题的做法：`<a class="navbar-brand" href="/"><img width="30" width="30" src="/assets/wbsite.jpg"/> 标题 </a>`
 3. 字体颜色的设置如：`<font color="#9D9D9D">我的大学</font>`，具体颜色见[颜色代码表](http://www.qqai.net/tool/yansedaima/)。
+
+	<!--more-->
 4. 在喜欢别人博客风格的时候，可以去查看网页的源码立即获取帮助。
 5. 多说评论出现问题的时候，注意data-content里：`post.excerpt | remove: '<p>' | remove: '</p>'`
 6. 制作留言板可以参考：[http://formspree.io](http://formspree.io)，不过邮箱好像要谷歌的，国内的反应比较慢。

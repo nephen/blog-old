@@ -2,11 +2,11 @@
 layout: post
 title:  "初识NuttX操作系统之NSH"
 categories: "drons_lifes"
-author: 吴兴章
+author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-20 00:21:01 Utk
+update: 2016-04-27 01:42:47 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
