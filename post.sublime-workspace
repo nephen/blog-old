@@ -35,31 +35,39 @@
 			"file": "arrange/drones.md",
 			"settings":
 			{
-				"buffer_size": 2033,
+				"buffer_size": 2036,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "_posts/2015-12-10-RTOS-of-NuttX.md",
+			"file": "_posts/2016-1-5-flight-control-algorithm-of-px4.md",
 			"settings":
 			{
-				"buffer_size": 14384,
+				"buffer_size": 59997,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "_posts/2016-1-1-introduction-to-start-ArduPilot.md",
+			"file": "_includes/sidebar.html",
 			"settings":
 			{
-				"buffer_size": 16257,
+				"buffer_size": 1217,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "_posts/2016-1-3-code-overview-of-ArduPilot(Copter).md",
+			"file": "_includes/header.html",
 			"settings":
 			{
-				"buffer_size": 26480,
+				"buffer_size": 3485,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "arrange/about.md",
+			"settings":
+			{
+				"buffer_size": 5010,
 				"line_ending": "Unix"
 			}
 		},
@@ -72,10 +80,26 @@
 			}
 		},
 		{
-			"file": "_posts/2016-1-5-flight-control-algorithm-of-px4.md",
+			"file": "_posts/2015-12-8-build-website.md",
 			"settings":
 			{
-				"buffer_size": 60092,
+				"buffer_size": 3777,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_posts/2015-11-24-job-summary.markdown",
+			"settings":
+			{
+				"buffer_size": 4209,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_config.yml",
+			"settings":
+			{
+				"buffer_size": 1198,
 				"line_ending": "Unix"
 			}
 		}
@@ -288,17 +312,29 @@
 	},
 	"file_history":
 	[
-		"/home/nephne/jekyll-clean/_posts/2015-12-14-env-build-of-px4.md",
+		"/home/nephne/jekyll-clean/_config.yml",
+		"/home/nephne/jekyll-clean/_posts/2016-4-4-loneliness.md",
+		"/home/nephne/jekyll-clean/_posts/2016-2-4-study-C++.md",
+		"/home/nephne/jekyll-clean/_posts/2016-1-9-BLE-FS-QN9021.md",
+		"/home/nephne/jekyll-clean/_posts/2016-1-5-flight-control-algorithm-of-px4.md",
+		"/home/nephne/jekyll-clean/_posts/2016-1-31-sublime-text2-in-linux.md",
+		"/home/nephne/jekyll-clean/_posts/2016-1-3-code-overview-of-ArduPilot(Copter).md",
 		"/home/nephne/jekyll-clean/_posts/2016-1-1-introduction-to-start-ArduPilot.md",
+		"/home/nephne/jekyll-clean/_posts/2015-12-8-build-website.md",
 		"/home/nephne/jekyll-clean/_posts/2015-12-26-flighttest-of-pixhawk.md",
+		"/home/nephne/jekyll-clean/_posts/2015-12-24-general-structure-of-px4.md",
 		"/home/nephne/jekyll-clean/_posts/2015-12-23-mixer-of-px4.md",
 		"/home/nephne/jekyll-clean/_posts/2015-12-20-pxflow-of-px4.md",
-		"/home/nephne/jekyll-clean/arrange/drones.md",
-		"/home/nephne/jekyll-clean/_posts/2015-12-24-general-structure-of-px4.md",
-		"/home/nephne/jekyll-clean/_posts/2016-1-3-code-overview-of-ArduPilot(Copter).md",
-		"/home/nephne/jekyll-clean/_posts/2015-12-10-RTOS-of-NuttX.md",
 		"/home/nephne/jekyll-clean/_posts/2015-12-18-RTOS-of-px4.md",
-		"/home/nephne/jekyll-clean/_posts/2016-1-5-flight-control-algorithm-of-px4.md",
+		"/home/nephne/jekyll-clean/_posts/2015-12-14-env-build-of-px4.md",
+		"/home/nephne/jekyll-clean/_posts/2015-12-10-RTOS-of-NuttX.md",
+		"/home/nephne/jekyll-clean/_posts/2015-11-24-job-summary.markdown",
+		"/home/nephne/jekyll-clean/_posts/2014-4-4-last-term-of-major.markdown",
+		"/home/nephne/jekyll-clean/_posts/2014-12-27-the-crasy-winter.markdown",
+		"/home/nephne/jekyll-clean/_posts/2013-8-30-the-long-goals.markdown",
+		"/home/nephne/jekyll-clean/_posts/2013-8-30-talk-freshman.markdown",
+		"/home/nephne/jekyll-clean/_posts/2013-8-11-lost-time-of-freshman.markdown",
+		"/home/nephne/jekyll-clean/arrange/drones.md",
 		"/home/nephne/jekyll-clean/css/highlight.css",
 		"/home/nephne/jekyll-clean/_layouts/post.html",
 		"/home/nephne/jekyll-clean/_includes/header.html",
@@ -306,25 +342,13 @@
 		"/home/nephne/jekyll-clean/_includes/duoshuo_disqus.html",
 		"/home/nephne/jekyll-clean/arrange/reprint.md",
 		"/home/nephne/jekyll-clean/_site/2015/12/RTOS-of-px4.html",
-		"/home/nephne/jekyll-clean/_config.yml",
 		"/home/nephne/jekyll-clean/_posts/2015-12-10-RTO-of-NuttX.md",
-		"/home/nephne/jekyll-clean/_posts/2015-12-8-build-website.md",
-		"/home/nephne/jekyll-clean/_posts/2016-4-4-loneliness.md",
 		"/home/nephne/jekyll-clean/index.html",
 		"/home/nephne/jekyll-clean/arrange/about.md",
 		"/home/nephne/jekyll-clean/_includes/links-list.html",
 		"/home/nephne/jekyll-clean/urls.txt",
 		"/home/nephne/jekyll-clean/css/post.css",
 		"/home/nephne/jekyll-clean/_includes/sidebar.html",
-		"/home/nephne/jekyll-clean/_posts/2013-8-11-lost-time-of-freshman.markdown",
-		"/home/nephne/jekyll-clean/_posts/2013-8-30-talk-freshman.markdown",
-		"/home/nephne/jekyll-clean/_posts/2013-8-30-the-long-goals.markdown",
-		"/home/nephne/jekyll-clean/_posts/2014-4-4-last-term-of-major.markdown",
-		"/home/nephne/jekyll-clean/_posts/2015-11-24-job-summary.markdown",
-		"/home/nephne/jekyll-clean/_posts/2016-1-31-sublime-text2-in-linux.md",
-		"/home/nephne/jekyll-clean/_posts/2016-1-9-BLE-FS-QN9021.md",
-		"/home/nephne/jekyll-clean/_posts/2016-2-4-study-C++.md",
-		"/home/nephne/jekyll-clean/_posts/2014-12-27-the-crasy-winter.markdown",
 		"/home/nephne/jekyll-clean/_posts/2015-12-10-初识NuttX操作系统.md",
 		"/home/nephne/jekyll-clean/_posts/2016-1-5-初学PX4之飞控算法.md",
 		"/home/nephne/jekyll-clean/_posts/2015-12-8-建站囧程.md",
@@ -560,7 +584,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 8,
 			"sheets":
 			[
 				{
@@ -568,15 +592,15 @@
 					"file": "arrange/drones.md",
 					"settings":
 					{
-						"buffer_size": 2033,
+						"buffer_size": 2036,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								444,
-								444
+								232,
+								232
 							]
 						],
 						"settings":
@@ -723,25 +747,25 @@
 							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 150.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "_posts/2015-12-10-RTOS-of-NuttX.md",
+					"file": "_posts/2016-1-5-flight-control-algorithm-of-px4.md",
 					"settings":
 					{
-						"buffer_size": 14384,
+						"buffer_size": 59997,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								14320,
-								14320
+								290,
+								290
 							]
 						],
 						"settings":
@@ -889,25 +913,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 17.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "_posts/2016-1-1-introduction-to-start-ArduPilot.md",
+					"file": "_includes/sidebar.html",
 					"settings":
 					{
-						"buffer_size": 16257,
+						"buffer_size": 1217,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2770,
-								2770
+								1053,
+								1053
 							]
 						],
 						"settings":
@@ -1051,29 +1075,30 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 158.0,
+						"translation.y": 528.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "_posts/2016-1-3-code-overview-of-ArduPilot(Copter).md",
+					"file": "_includes/header.html",
 					"settings":
 					{
-						"buffer_size": 26480,
+						"buffer_size": 3485,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								21848,
-								21848
+								3210,
+								3210
 							]
 						],
 						"settings":
@@ -1217,17 +1242,183 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3559.0,
+						"translation.y": 1185.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
+					"file": "arrange/about.md",
+					"settings":
+					{
+						"buffer_size": 5010,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								875,
+								875
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "_posts/2015-12-18-RTOS-of-px4.md",
 					"settings":
 					{
@@ -1238,8 +1429,8 @@
 						"selection":
 						[
 							[
-								1388,
-								1388
+								638,
+								638
 							]
 						],
 						"settings":
@@ -1387,25 +1578,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1144.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "_posts/2016-1-5-flight-control-algorithm-of-px4.md",
+					"buffer": 6,
+					"file": "_posts/2015-12-8-build-website.md",
 					"settings":
 					{
-						"buffer_size": 60092,
+						"buffer_size": 3777,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4443,
-								4443
+								529,
+								529
 							]
 						],
 						"settings":
@@ -1553,7 +1744,336 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3234.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "_posts/2015-11-24-job-summary.markdown",
+					"settings":
+					{
+						"buffer_size": 4209,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								147,
+								147
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "_config.yml",
+					"settings":
+					{
+						"buffer_size": 1198,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								526,
+								526
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/YAML/YAML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 396.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1615,6 +2135,18 @@
 		"selected_items":
 		[
 			[
+				"co",
+				"_config.yml"
+			],
+			[
+				"ab",
+				"arrange/about.md"
+			],
+			[
+				"conf",
+				"_config.yml"
+			],
+			[
 				"dro",
 				"arrange/drones.md"
 			],
@@ -1667,10 +2199,6 @@
 				"_includes/sidebar.html"
 			],
 			[
-				"ab",
-				"arrange/about.md"
-			],
-			[
 				"ind",
 				"index.html"
 			],
@@ -1705,14 +2233,6 @@
 			[
 				"pri",
 				"arrange/reprint.md"
-			],
-			[
-				"co",
-				"_config.yml"
-			],
-			[
-				"conf",
-				"_config.yml"
 			],
 			[
 				"deb",
@@ -1808,7 +2328,7 @@
 		[
 			[
 				"",
-				"/home/nephne/picquadcontroller/dcm.sublime-project"
+				"/home/nephne/src/Firmware/Firmware.sublime-project"
 			]
 		],
 		"width": 380.0
