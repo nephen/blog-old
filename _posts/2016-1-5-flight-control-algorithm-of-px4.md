@@ -11,137 +11,69 @@ update: 2016-04-27 01:42:47 Utk
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 >`注意`：基于参考原因，本文参杂了APM的算法分析。
 
-学习应用程序就回到主线程上来了，这也是我研究px4的初衷，学习姿态估计与控制算法。   
-
-本篇文章首先简述了下px4调用姿态相关应用程序的脚本，概括了px4如何编写一个内置的应用程序，然后对APM的DCM姿态解算算法参考的英文文档进行了翻译与概括，并结合源代码予以分析，在此之前，分析了starlino的DCM，因为它更加利于理解。后段时间会对px4的四元数姿态解算进行分析。姿态控制部分描述了串级PID在APM里的实现流程，同样后期会完善对px4的分析。最后针对自己平时使用的一些调试技巧进行了总结。    
-
-<br>
-#脚本分析
-下面看下重要的一个[脚本](https://github.com/PX4/Firmware/blob/master/ROMFS/px4fmu_common/init.d/rc.mc_apps)`/etc/init.d/rc.mc_apps`，可以知道姿态估计用的是attitude_estimator_q和position_estimator_inav，用户也可以选择local_position_estimator、ekf2，而姿态控制应用为mc_att_control和mc_pos_control。
+本篇文章首先简述了下px4和apm调用姿态相关应用程序出处，然后对APM的DCM姿态解算算法参考的英文文档进行了翻译与概括，并结合源代码予以分析，在此之前，分析了starlino的DCM，并進行了matlab的實現，因为它更加利于理解。后段时间会对px4的四元数姿态解算进行分析。姿态控制部分描述了串级PID在APM里的实现流程，同样后期会完善对px4的分析。最后针对自己平时使用的一些调试技巧进行了总结。    
 
 <!--more-->
 
-```sh
-#!nsh
-#
-# Standard apps for multirotors:
-# att & pos estimator, att & pos control.
-#
+<br>
+#姿态出处分析
+1. 下面看下重要的一个[脚本](https://github.com/PX4/Firmware/blob/master/ROMFS/px4fmu_common/init.d/rc.mc_apps)`/etc/init.d/rc.mc_apps`，可以知道姿态估计用的是attitude_estimator_q和position_estimator_inav，用户也可以选择local_position_estimator、ekf2，而姿态控制应用为mc_att_control和mc_pos_control。
 
-# The system is defaulting to INAV_ENABLED = 1
-# but users can alternatively try the EKF-based
-# filter by setting INAV_ENABLED = 0
-if param compare INAV_ENABLED 1
-then
-	attitude_estimator_q start
-	position_estimator_inav start
-else
-	if param compare LPE_ENABLED 1
+
+	```sh
+	#!nsh
+	if param compare INAV_ENABLED 1
 	then
 		attitude_estimator_q start
-		local_position_estimator start
+		position_estimator_inav start
 	else
-		ekf2 start
+		if param compare LPE_ENABLED 1
+		then
+			attitude_estimator_q start
+			local_position_estimator start
+		else
+			ekf2 start
+		fi
 	fi
-fi
 
-if mc_att_control start
-then
-else
-	# try the multiplatform version
-	mc_att_control_m start
-fi
+	if mc_att_control start
+	then
+	else
+		# try the multiplatform version
+		mc_att_control_m start
+	fi
 
-if mc_pos_control start
-then
-else
-	# try the multiplatform version
-	mc_pos_control_m start
-fi
-
-#
-# Start Land Detector
-#
-land_detector start multicopter
-
-```
-<br>
-#学写应用程序
-在这之前，我们需要对在NuttX操作系统里怎么写应用程序做一个了解，这样好为下面的算法部分应用分析打好基础。    
-
-下面我将参考下面这个[官方教程](http://dev.px4.io/tutorial-hello-sky.html)做一个大体的概括。    
-
-1. 首先编写简单的应用[示例程序](https://github.com/PX4/Firmware/tree/master/src/examples/px4_simple_app)。主要有三个部分：头文件、外部声明、主函数。
-2. 注册应用程序到NSH并编译。添加新的一行`examples/px4_simple_app`到[Firmware/cmake/configs/nuttx_px4fmu-v2_default.cmake](https://github.com/PX4/Firmware/blob/master/cmake/configs/nuttx_px4fmu-v2_default.cmake)，编译运行。
-3. 连接到控制台。输入px4_simple_app
-
-	```sh
-	nsh > px4_simple_app
-	Hello Sky!
+	if mc_pos_control start
+	then
+	else
+		# try the multiplatform version
+		mc_pos_control_m start
+	fi
+	...
 	```
-为了做一些有意义的事情，应用程序需要订阅输入和发布输出。两个应用程序之间独立的消息通道叫做*topics*。
-4. 订阅传感器数据。伪代码如下：
+2. 而在ardupilot中，姿态解算与控制算法在ArduCopter.cpp的main_loop任务中以400Hz的频率运行。
 
-	```c
-	#include <poll.h>
-	#include <uORB/topics/sensor_combined.h>
-	..
-	int sensor_sub_fd = orb_subscribe(ORB_ID(sensor_combined));
+	```c++
+	// Main loop - 400hz
+	void Copter::fast_loop()
+	{
 
-	/* one could wait for multiple topics with this technique, just using one here */
-	px4_pollfd_struct_t fds[] = {
-	    { .fd = sensor_sub_fd,   .events = POLLIN },
-	};
+	    // IMU DCM Algorithm
+	    // --------------------
+	    read_AHRS();
+	    ...
+	}
 
-	while (true) {
-	    /* wait for sensor update of 1 file descriptor for 1000 ms (1 second) */
-	    int poll_ret = px4_poll(fds, 1, 1000);
-	..
-	    if (fds[0].revents & POLLIN) {
-	        /* obtained data for the first file descriptor */
-	        struct sensor_combined_s raw;
-	        /* copy sensors raw data into local buffer */
-	        orb_copy(ORB_ID(sensor_combined), sensor_sub_fd, &raw);
-	        printf("[px4_simple_app] Accelerometer:\t%8.4f\t%8.4f\t%8.4f\n",
-	                    (double)raw.accelerometer_m_s2[0],
-	                    (double)raw.accelerometer_m_s2[1],
-	                    (double)raw.accelerometer_m_s2[2]);
-	    }
+	void Copter::read_AHRS(void)
+	{
+		...
+
+	    ahrs.update();
 	}
 	```
-编译后运行如下：
-
-	```sh
-	nsh > px4_simple_app &
-	[px4_simple_app] Accelerometer:   0.0483          0.0821          0.0332
-	[px4_simple_app] Accelerometer:   0.0486          0.0820          0.0336
-	[px4_simple_app] Accelerometer:   0.0487          0.0819          0.0327
-	[px4_simple_app] Accelerometer:   0.0482          0.0818          0.0323
-	[px4_simple_app] Accelerometer:   0.0482          0.0827          0.0331
-	[px4_simple_app] Accelerometer:   0.0489          0.0804          0.0328
-	```
-5. 发布数据。为了使用计算后的输出，下一步就是发布结果。    
-初始化将要发布的话题的结构，宣传话题：
-
-	```c
-	#include <uORB/topics/vehicle_attitude.h>
-	..
-	/* advertise attitude topic */
-	struct vehicle_attitude_s att;
-	memset(&att, 0, sizeof(att));
-	orb_advert_t att_pub_fd = orb_advertise(ORB_ID(vehicle_attitude), &att);
-	```
-主循环中需要的时候发布信息：
-
-	```c
-	orb_publish(ORB_ID(vehicle_attitude), att_pub_fd, &att);
-	```
-最后编译运行程序` px4_simple_app`。
 
 
->注意：由`px4_task_spawn()`来产生守护进程daemon。
-
-了解了上面的基础后，下面将分应用进行分析。   
+了解了上面的源码出处后，下面将分具体应用进行分析。   
 
 <br>
 #姿态估算
