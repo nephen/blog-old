@@ -91,7 +91,7 @@
 			"file": "_posts/2015-11-24-job-summary.markdown",
 			"settings":
 			{
-				"buffer_size": 4209,
+				"buffer_size": 4213,
 				"line_ending": "Unix"
 			}
 		},
@@ -1754,15 +1754,15 @@
 					"file": "_posts/2015-11-24-job-summary.markdown",
 					"settings":
 					{
-						"buffer_size": 4209,
+						"buffer_size": 4213,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								147,
-								147
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1926,8 +1926,8 @@
 						"selection":
 						[
 							[
-								526,
-								526
+								131,
+								131
 							]
 						],
 						"settings":
@@ -2073,7 +2073,7 @@
 							"syntax": "Packages/YAML/YAML.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 396.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

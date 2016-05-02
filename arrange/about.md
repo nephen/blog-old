@@ -115,7 +115,7 @@ The more info about [Blogging with Jekyll](https://help.github.com/articles/usin
 2. 非商业性使用 — 您不得将本作品用于商业目的。 
 3. 相同方式共享 — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original. 
 
-即，任何人可以自由阅读、复制、发行，或通过信息网络传播本作品，或创作演绎作品。但必须 **保留作者署名**（吴兴章），以及指向该原文（www.nephen.com）的**链接** ，并不可用于商业用途 ；若在该作品基础上进行演绎，则必须使用**相同的协议** （署名-非商业性使用-相同方式共享 3.0）进行发布。
+即，任何人可以自由阅读、复制、发行，或通过信息网络传播本作品，或创作演绎作品。但必须 **保留作者署名**（来风），以及指向该原文（www.nephen.com）的**链接** ，并不可用于商业用途 ；若在该作品基础上进行演绎，则必须使用**相同的协议** （署名-非商业性使用-相同方式共享 3.0）进行发布。
 
 详情请见[署名-非商业性使用-相同方式共享（CC BY-NC-SA）3.0 ](http://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh)
 
