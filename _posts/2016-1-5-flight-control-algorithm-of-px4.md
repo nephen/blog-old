@@ -6,7 +6,7 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-27 01:42:47 Utk
+update: 2016-05-06 23:51:32 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 >`注意`：基于参考原因，本文参杂了APM的算法分析。
@@ -51,7 +51,7 @@ update: 2016-04-27 01:42:47 Utk
 	fi
 	...
 	```
-2. 而在ardupilot中，姿态解算与控制算法在ArduCopter.cpp的main_loop任务中以400Hz的频率运行。
+2. 而在ardupilot中，姿态解算与控制算法在ArduCopter.cpp的fast_loop任务中以400Hz的频率运行。
 
 	```c++
 	// Main loop - 400hz
@@ -168,7 +168,7 @@ rz\\(^G\\) = rx\\(^B\\) K.i + ry\\(^B\\) K.j + rz\\(^B\\) K.k
 - 下面分析w和v之间的关系：   
 w = (dθ/dt ) u = (dθ/dt ) (r x r’) / (|r|\\(^2\\) sin(dθ))   
 当dt → 0时，dθ → 0，因此sin(dθ) ≈ dθ。化简得：   
-w = (r x r’) / (|r|2 dt)   
+w = (r x r’) / (|r|\\(^2\\) dt)   
 现在由于 r’ = r + dr , dr/dt = v , r x r = 0，利用叉乘的加法分配率可得：   
 w = (r x (r + dr)) / (|r|\\(^2\\) dt) = (r x r + r x dr)) / (|r|\\(^2\\) dt) = r x (dr/dt) / |r|\\(^2\\)   
 最后得出：   
@@ -238,7 +238,7 @@ v = dr/dt = (w\\(\_x\\) + w\\(\_y\\) + w\\(\_z\\)) x r = w x r
 		}
 	```
 
-	很显然，还可以通过另外的方式估算K\\(^B\\)。如加速度估算值K\\(^B\\)\\(\_1A\\)，如下推理：   
+	很显然，还可以通过另外的方式估算K\\(^B\\)。如加速度估算值K\\(^B\\)\\(\_{1A}\\)，如下推理：   
 	w­\\(\_a\\) = K\\(^B\\)\\(\_0\\) x v\\(\_a\\) / | K\\(^B\\)\\(\_0\\)|2­   这个在上面的角速度部分得到了证实。   
 	其中 v\\(\_a\\) = (K\\(^B\\)\\(\_{1A}\\)­ – K\\(^B\\)\\(\_0\\)) / dt，v\\(\_a\\)为K\\(^B\\)\\(\_0\\)的线速度，且| K\\(^B\\)\\(\_0\\)|\\(^2\\)­­ = 1 ，故可以这么计算：   
 	dθ\\(\_a\\) ­= dt w\\(\_a\\) = K\\(^B\\)\\(\_0\\) x (K\\(^B\\)\\(\_{1A}­\\) – K\\(^B\\)\\(\_0\\)) = K\\(^B\\)\\(\_0\\) x K\\(^B\\)\\(\_{1A}­\\) – K\\(^B\\)\\(\_0\\) x K\\(^B\\)\\(\_0\\) = K\\(^B\\)\\(\_0\\) x K\\(^B\\)\\(\_{1A}­\\) - 0 = K\\(^B\\)\\(\_0\\) x K\\(^B\\)\\(\_{1A}­\\)   
@@ -1078,7 +1078,7 @@ update_trig();
 
 <br>
 #姿态控制
->预习材料：[PID参数调节](www.nephen.com/2015/12/pixhawk试飞报告#pid调节)/[串级PID](http://www.anotc.com/Articles/Browse/3)/[串级PID1](http://bbs.loveuav.com/thread-229-1-1.html)
+>预习材料：[PID参数调节](www.nephen.com/2015/12/pixhawk试飞报告#pid调节)/[串级PID](http://www.anotc.com/Articles/Browse/3)/[串级PID1](http://blog.csdn.net/nemol1990/article/details/45131603)
 
 下面将先进行APM源码自稳模式的PID数据流分析：   
 在AC_AttitudeControl.cpp里   

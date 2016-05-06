@@ -43,7 +43,7 @@
 			"file": "_posts/2016-1-5-flight-control-algorithm-of-px4.md",
 			"settings":
 			{
-				"buffer_size": 59997,
+				"buffer_size": 57535,
 				"line_ending": "Unix"
 			}
 		},
@@ -67,7 +67,7 @@
 			"file": "arrange/about.md",
 			"settings":
 			{
-				"buffer_size": 5010,
+				"buffer_size": 5009,
 				"line_ending": "Unix"
 			}
 		},
@@ -75,7 +75,7 @@
 			"file": "_posts/2015-12-18-RTOS-of-px4.md",
 			"settings":
 			{
-				"buffer_size": 16429,
+				"buffer_size": 18862,
 				"line_ending": "Unix"
 			}
 		},
@@ -757,15 +757,15 @@
 					"file": "_posts/2016-1-5-flight-control-algorithm-of-px4.md",
 					"settings":
 					{
-						"buffer_size": 59997,
+						"buffer_size": 57535,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								290,
-								290
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1257,15 +1257,15 @@
 					"file": "arrange/about.md",
 					"settings":
 					{
-						"buffer_size": 5010,
+						"buffer_size": 5009,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								875,
-								875
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1422,15 +1422,15 @@
 					"file": "_posts/2015-12-18-RTOS-of-px4.md",
 					"settings":
 					{
-						"buffer_size": 16429,
+						"buffer_size": 18862,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								638,
-								638
+								0,
+								0
 							]
 						],
 						"settings":
