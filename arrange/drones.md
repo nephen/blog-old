@@ -2,7 +2,7 @@
 layout: post
 title:  "无人机学习概览"
 categories: "drons_lifes"
-author: nephen
+author: Lever
 tags: 工作生活
 comments: true
 permalink: /arrange/drones
