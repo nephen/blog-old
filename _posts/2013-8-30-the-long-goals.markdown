@@ -2,7 +2,7 @@
 layout: post
 title:  "长期目标"
 categories: "thinking_lifes"
-author: nephen
+author: Lever
 comments: true
 update: 2016-04-27 01:42:47 Utk
 ---

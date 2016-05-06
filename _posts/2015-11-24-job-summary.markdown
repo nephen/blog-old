@@ -2,7 +2,7 @@
 layout: post
 title:  "汇顶科技求职感悟"
 categories: "drons_lifes"
-author: nephen
+author: Lever
 donate: true
 tags: 工作生活
 comments: true

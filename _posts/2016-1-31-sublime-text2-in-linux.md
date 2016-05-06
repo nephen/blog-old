@@ -2,7 +2,7 @@
 layout: post
 title:  "linux下sublime text 2使用技巧"
 categories: "work_lifes"
-author: nephen
+author: Lever
 tags: 工作生活
 donate: true
 comments: true

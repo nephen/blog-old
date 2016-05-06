@@ -2,7 +2,7 @@
 layout: post
 title:  "初识NuttX操作系统之NSH"
 categories: "drons_lifes"
-author: nephen
+author: Lever
 tags: 工作生活
 donate: true
 comments: true

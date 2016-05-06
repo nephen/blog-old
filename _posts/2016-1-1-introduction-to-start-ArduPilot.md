@@ -2,7 +2,7 @@
 layout: post
 title:  "ArduPilot开发入门学习"
 categories: "drons_lifes"
-author: nephen
+author: Lever
 tags: 工作生活
 donate: true
 comments: true

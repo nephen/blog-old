@@ -2,7 +2,7 @@
 layout: post
 title:  "初学PX4之环境搭建"
 categories: "drons_lifes"
-author: nephen
+author: Lever
 tags: 工作生活
 donate: true
 comments: true

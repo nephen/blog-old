@@ -2,7 +2,7 @@
 layout: post
 title:  "祭奠即将逝去的大一"
 categories: "thinking_lifes"
-author: nephen
+author: Lever
 tags: 大学
 comments: true
 update: 2016-04-27 01:42:47 Utk
