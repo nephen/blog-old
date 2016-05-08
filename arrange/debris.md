@@ -9,7 +9,7 @@ comments: true
 
 <hr style="height:10px;border:none;border-top:10px groove skyblue;" />
 
-- 2016.5.8
+- 2016.5.8    
 做灰机有段日子了，虽然只把它当做个兴趣爱好来看待，为大伙尽可能的提供一点资源，但是突然感觉，希望越大，责任越大，静下心来扎实摸索吧，加油！
 
 - 2016.4.4   

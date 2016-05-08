@@ -11,7 +11,7 @@ update: 2016-05-06 23:51:32 Utk
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 >`注意`：基于参考原因，本文参杂了APM的算法分析。
 
-本篇文章首先简述了下px4和apm调用姿态相关应用程序出处，然后对APM的DCM姿态解算算法参考的英文文档进行了翻译与概括，并结合源代码予以分析，在此之前，分析了starlino的DCM，并進行了matlab的實現，因为它更加利于理解。后段时间会对px4的四元数姿态解算进行分析。姿态控制部分描述了串级PID在APM里的实现流程，同样后期会完善对px4的分析。最后针对自己平时使用的一些调试技巧进行了总结。    
+本篇文章首先简述了下px4和apm调用姿态相关应用程序出处，然后对APM的DCM姿态解算算法参考的英文文档进行了翻译与概括，并结合源代码予以分析，在此之前，分析了starlino的DCM，并进行了matlab的实现，因为它更加利于理解。后段时间会对px4的四元数姿态解算进行分析。姿态控制部分描述了串级PID在APM里的实现流程，同样后期会完善对px4的分析。最后针对自己平时使用的一些调试技巧进行了总结。    
 
 <!--more-->
 
@@ -79,8 +79,8 @@ update: 2016-05-06 23:51:32 Utk
 #姿态估算
 ##DCM_tutorial
 >[imu\_guide](http://www.starlino.com/imu_guide.html)/[imu\_guide中文翻译](http://www.itdadao.com/2016/03/19/629990/)/[dcm\_tutorial](http://www.starlino.com/dcm_tutorial.html)/[wiki资料查询](https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5)/[该部分算法源码参考](https://github.com/nephen/picquadcontroller/blob/master/imu.h)   
->将该算法转换为了matlab实现，想了解的可以查看我的github里的[DCM工程](https://github.com/nephen/DCM)，能够更好的理解算法   
->这部分可作为下部分DCM理论介绍的基础哦，所以建议先将这部分看完再往下看～
+>将该算法转换为了matlab实现，想了解的可以查看我的github里的[DCM工程](https://github.com/nephen/DCM)，能够更好的理解算法，另外，该matlab实现还有一定的bug，希望各位大神的pull request~   
+>这部分翻译自[dcm\_tutorial](http://www.starlino.com/dcm_tutorial.html)，并结合源码进行分析，可作为下部分DCM理论介绍的基础哦，所以建议先将这部分看完再往下看～
 
 **DCM矩阵**：
 
@@ -276,7 +276,7 @@ v = dr/dt = (w\\(\_x\\) + w\\(\_y\\) + w\\(\_z\\)) x r = w x r
 	更新DCM矩阵：   
 	I\\(^B\\)\\(\_1\\) ≈ I\\(^B\\)\\(\_0\\) + ( dθ x I\\(^B\\)\\(\_0\\)) , K\\(^B\\)\\(\_1\\) ≈ K\\(^B\\)\\(\_0\\) + ( dθ x K\\(^B\\)\\(\_0\\)) 和 J\\(^B\\)\\(\_1\\) ≈ J\\(^B\\)\\(\_0\\) + ( dθ x J\\(^B\\)\\(\_0\\))   
 	下面通过计算J\\(^B\\)\\(\_1\\) = K\\(^B\\)\\(\_1\\) x I\\(^B\\)\\(\_1\\)，判断估算后的值K\\(^B\\)\\(\_1\\)是否垂直I\\(^B\\)\\(\_1\\)。
-- 为了确保估算后的值是否还是正交的，如下图，假设向量a，b是几乎垂直的，但不是90°，我们可以找到一个向量b’ 与a垂直，这个b’向量可以通过求 c = a x b，再求 b’ = c x a 得到，可以看出b'是正交于a和c的，因此b'是校正后的向量。
+- 了确保估算后的值是否还是正交的，如下图，假设向量a，b是几乎垂直的，但不是90°，我们可以找到一个向量b’ 与a垂直，这个b’向量可以通过求 c = a x b，再求 b’ = c x a 得到，可以看出b'是正交于a和c的，因此b'是校正后的向量。
 
 	<img src="http://www.starlino.com/wp-content/uploads/2011/11/clip_image0224.jpg">
 
@@ -324,8 +324,8 @@ v = dr/dt = (w\\(\_x\\) + w\\(\_y\\) + w\\(\_z\\)) x r = w x r
 
 
 ##DCM理论
->`注意`：这部分属于APM里px4姿态结算部分。    
->`资料解读`:[DMCDraft2.pdf](http://pan.baidu.com/wap/shareview?&shareid=523287088&uk=1395271735&dir=%2F%E5%A7%BF%E6%80%81%E8%A7%A3%E7%AE%97%E8%B5%84%E6%96%99&page=2&num=20&fsid=676179599906396&third=0)
+>`注意`：这部分属于APM源码里px4姿态解算部分。    
+>资料翻译解读自[DMCDraft2.pdf](http://pan.baidu.com/wap/shareview?&shareid=523287088&uk=1395271735&dir=%2F%E5%A7%BF%E6%80%81%E8%A7%A3%E7%AE%97%E8%B5%84%E6%96%99&page=2&num=20&fsid=676179599906396&third=0)（翻译不妥请谅解，欢迎提意见），并结合文档分析了APM的姿态源码部分，目前还有`drift_correction`函数未进行整理！
 
 **前言**
 

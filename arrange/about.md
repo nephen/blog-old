@@ -152,3 +152,5 @@ var duoshuoQuery = {short_name:"nephen"};
 })();
 </script>
 <!--多说js加载结束，一个页面只需要加载一次 -->
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257349358'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1257349358%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
