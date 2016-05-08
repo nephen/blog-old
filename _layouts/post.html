@@ -1,5 +1,8 @@
 {% include header.html %}
 
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
 <div class="container container-left">
     <div class="row">
         <div class="col-md-3 hidden-xs">
@@ -48,6 +51,9 @@
                     <span itemprop="author" itemscope itemtype="http://schema.org/Person">
                         <span itemprop="name">{{ page.author }} 作
                         </span>
+                    </span> •
+                    <span id="busuanzi_container_page_pv">
+                      总阅读量<span id="busuanzi_value_page_pv"></span>次
                     </span>
 
                     • {% if site.comments == true and page.comments == true and site.disqus != '' %}              
