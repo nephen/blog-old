@@ -7,11 +7,12 @@ tags: 工作生活
 comments: true
 permalink: /arrange/drones
 donate: true
+editpage: true
 id: 712e39e67bb1073341c6d0d408d742e3 
 update: 2016-04-27 01:42:47 Utk
 ---
 
-下面是对我自己写过的有关无人机的文章做一个简单的概述，让大家摸清学习的线索。
+下面是对我自己写过的有关无人机的文章做一个简单的概述，让大家摸清学习的线索。观点难免有错误，欢迎在线编辑并提出意见。
 
 #平台说明
 Software Version：[ardupilot](https://github.com/ArduPilot/ardupilot)/[PX4](https://github.com/PX4/Firmware)   

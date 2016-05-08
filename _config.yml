@@ -46,3 +46,5 @@ exclude: ['README.md', 'LICENSE']
 
 # 北京时间
 timezone: Etc/GMT-8
+
+editpage: false

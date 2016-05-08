@@ -6,6 +6,7 @@ author: Lever
 tags: 工作生活
 donate: true
 comments: true
+editpage: true
 update: 2016-05-06 23:51:32 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   

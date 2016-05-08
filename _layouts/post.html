@@ -127,14 +127,17 @@
 })();
 </script>
 
+
+{% if page.editpage == true %}
 <!-- 代码部分begin -->
 <div class="QQ_S fix">
   <div class="Q_botm">
     <div class="Q_anser">
-      <div class="Q_anser_hide"> <a target="blank_" href="https://github.com/nephen/nephen.github.io/blob/master/{{ page.path }}" title="编辑本页"><span class="hide_pic1"></span>编辑本页 </a> </div>
+      <div class="Q_anser_hide"> <a target="blank_" href="https://github.com/nephen/nephen.github.io/edit/master/{{ page.path }}" title="编辑本页"><span class="hide_pic1"></span>编辑本页 </a> </div>
     </div>
   </div>
 </div>
 <!-- 代码部分end -->
+{% endif %}
 
 {% include footer.html %}
