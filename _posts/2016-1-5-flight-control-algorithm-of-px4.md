@@ -326,7 +326,7 @@ v = dr/dt = (w\\(\_x\\) + w\\(\_y\\) + w\\(\_z\\)) x r = w x r
 
 ##DCM理论
 >`注意`：这部分属于APM源码里px4姿态解算部分。    
->资料翻译解读自[DMCDraft2.pdf](http://pan.baidu.com/wap/shareview?&shareid=523287088&uk=1395271735&dir=%2F%E5%A7%BF%E6%80%81%E8%A7%A3%E7%AE%97%E8%B5%84%E6%96%99&page=2&num=20&fsid=676179599906396&third=0)（翻译不妥请谅解，欢迎提意见），并结合文档分析了APM的姿态源码部分，目前还有`drift_correction`函数未进行整理！
+>资料翻译解读自[DMCDraft2.pdf](http://pan.baidu.com/wap/shareview?&shareid=523287088&uk=1395271735&dir=%2F%E5%A7%BF%E6%80%81%E8%A7%A3%E7%AE%97%E8%B5%84%E6%96%99&page=2&num=20&fsid=676179599906396&third=0)（翻译不妥请谅解，欢迎提意见，另外该理论文档已启动翻译，如果你想参与请点击[这里](https://nephen.gitbooks.io/direction-cosine-matrix-imu-theory/content/index.html)），并结合文档分析了APM的姿态源码部分，目前还有`drift_correction`函数未进行整理！
 
 **前言**
 
