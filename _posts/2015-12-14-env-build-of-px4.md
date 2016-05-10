@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-04-27 01:42:47 Utk
+update: 2016-05-10 13:44:42 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 >[消息](http://px4.io/px4-website-relaunched-online/)：pixhawk网站搬迁至[px4.io](http://px4.io) !!!     
@@ -80,80 +80,63 @@ $ xclip -sel clip < ~/.ssh/id_rsa.pub
 --------------
 <center><h4>`--------------ubuntu15.10 issues!!!--------------`</h4></center>
 
-1. gcc的版本过高，需要进行[降级](http://blog.sina.com.cn/s/blog_6cee149d010129bl.html)，这是我自己做的记录，大家不需要做。
+如果你跟我一样用的是ubuntu 15.10，需要进行arm-none-eabi重新安装，默认是最新版，换成4.8版本，首先了解见[博文](http://www.veryarm.com/296.html)，然后去GNU官方下载地址：[https://launchpad.net/gcc-arm-embedded/+download](https://launchpad.net/gcc-arm-embedded/+download)下载`gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2`，然后进入下载文件夹，进行如下操作：
 
-	```sh
-	~ $ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 40
-	# => 这里“40” 是优先级，值越大优先级越高
-	~ $ sudo update-alternatives --config gcc
-	有 2 个候选项可用于替换 gcc (提供 /usr/bin/gcc)。
+```sh
+# => 卸载新版的gcc-arm-none-eabi
+~ $ sudo apt-get remove gcc-arm-none-eabi
+# => 安装下载好的gcc-arm-none-eabi
+~ $ tar xjvf gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2
+~ $ sudo mv gcc-arm-none-eabi-4_8-2014q3 /opt
+~ $ exportline="export PATH=/opt/gcc-arm-none-eabi-4_8-2014q3/bin:$PATH"
+~ $ echo $exportline >> ~/.profile
+~ $ sudo ln -s /opt/gcc-arm-none-eabi-4_8-2014q3/bin/arm-none-eabi-gcc /usr/bin
+~ $ sudo ln -s /opt/gcc-arm-none-eabi-4_8-2014q3/bin/arm-none-eabi-g++ /usr/bin
+```
 
-	  选择       路径            优先级  状态
-	------------------------------------------------------------
-	  0            /usr/bin/gcc-5     60        自动模式
-	- 1            /usr/bin/gcc-4.8   40        手动模式
-	  2            /usr/bin/gcc-5     60        手动模式
+如果PC是ubuntu 64位系统，arm-none-eabi是直接下载人家编译好的32位的话，还需要一个东东：
 
-	要维持当前值[*]请按<回车键>，或者键入选择的编号：2
-	update-alternatives: 使用 /usr/bin/gcc-5 来在手动模式中提供 /usr/bin/gcc (gcc)
-	```
-2. 如果你跟我一样用的是ubuntu 15.10，需要进行arm-none-eabi重新安装，默认是最新版，换成4.8版本，首先了解见[博文](http://www.veryarm.com/296.html)，然后去GNU官方下载地址：[https://launchpad.net/gcc-arm-embedded/+download](https://launchpad.net/gcc-arm-embedded/+download)下载`gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2`，然后进入下载文件夹，进行如下操作：
+```sh
+sudo apt-get install lsb-core
+```
+测试如下：
 
-	```sh
-	# => 卸载新版的gcc-arm-none-eabi
-	~ $ sudo apt-get remove gcc-arm-none-eabi
-	# => 安装下载好的gcc-arm-none-eabi
-	~ $ tar xjvf gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2
-	~ $ sudo mv gcc-arm-none-eabi-4_8-2014q3 /opt
-	~ $ exportline="export PATH=/opt/gcc-arm-none-eabi-4_8-2014q3/bin:$PATH"
-	~ $ echo $exportline >> ~/.profile
-	~ $ sudo ln -s /opt/gcc-arm-none-eabi-4_8-2014q3/bin/arm-none-eabi-gcc /usr/bin
-	~ $ sudo ln -s /opt/gcc-arm-none-eabi-4_8-2014q3/bin/arm-none-eabi-g++ /usr/bin
-	```
+```sh
+~/src/Firmware$ arm-none-eabi-g++ -v
+Using built-in specs.
+COLLECT_GCC=arm-none-eabi-g++
+COLLECT_LTO_WRAPPER=/opt/gcc-arm-none-eabi-4_8-2014q3/bin/../lib/gcc/arm-none-eabi/4.8.4/lto-wrapper
+Target: arm-none-eabi
+Configured with: /home/build/work/GCC-4-8-build/src/gcc/configure --target=arm-none-eabi --prefix=/home/build/work/GCC-4-8-build/install-native --libexecdir=/home/build/work/GCC-4-8-build/install-native/lib --infodir=/home/build/work/GCC-4-8-build/install-native/share/doc/gcc-arm-none-eabi/info --mandir=/home/build/work/GCC-4-8-build/install-native/share/doc/gcc-arm-none-eabi/man --htmldir=/home/build/work/GCC-4-8-build/install-native/share/doc/gcc-arm-none-eabi/html --pdfdir=/home/build/work/GCC-4-8-build/install-native/share/doc/gcc-arm-none-eabi/pdf --enable-languages=c,c++ --enable-plugins --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --disable-tls --with-gnu-as --with-gnu-ld --with-newlib --with-headers=yes --with-python-dir=share/gcc-arm-none-eabi --with-sysroot=/home/build/work/GCC-4-8-build/install-native/arm-none-eabi --build=i686-linux-gnu --host=i686-linux-gnu --with-gmp=/home/build/work/GCC-4-8-build/build-native/host-libs/usr --with-mpfr=/home/build/work/GCC-4-8-build/build-native/host-libs/usr --with-mpc=/home/build/work/GCC-4-8-build/build-native/host-libs/usr --with-isl=/home/build/work/GCC-4-8-build/build-native/host-libs/usr --with-cloog=/home/build/work/GCC-4-8-build/build-native/host-libs/usr --with-libelf=/home/build/work/GCC-4-8-build/build-native/host-libs/usr --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --with-pkgversion='GNU Tools for ARM Embedded Processors' --with-multilib-list=armv6-m,armv7-m,armv7e-m,armv7-r
+Thread model: single
+gcc version 4.8.4 20140725 (release) [ARM/embedded-4_8-branch revision 213147] (GNU Tools for ARM Embedded Processors) 
+```
+>`Tip`:如果之前编译是可以的，更新后不能编译，试着删除build_*文件夹，然后重新编译。
 
-	如果PC是ubuntu 64位系统，arm-none-eabi是直接下载人家编译好的32位的话，还需要一个东东：
+make成功后如下：
 
-	```sh
-	sudo apt-get install lsb-core
-	```
-	测试如下：
+<img src="/images/makeokay.png" style="max-width:100%;"/>
 
-	```sh
-	~/src/Firmware$ arm-none-eabi-g++ -v
-	Using built-in specs.
-	COLLECT_GCC=arm-none-eabi-g++
-	COLLECT_LTO_WRAPPER=/opt/gcc-arm-none-eabi-4_8-2014q3/bin/../lib/gcc/arm-none-eabi/4.8.4/lto-wrapper
-	Target: arm-none-eabi
-	Configured with: /home/build/work/GCC-4-8-build/src/gcc/configure --target=arm-none-eabi --prefix=/home/build/work/GCC-4-8-build/install-native --libexecdir=/home/build/work/GCC-4-8-build/install-native/lib --infodir=/home/build/work/GCC-4-8-build/install-native/share/doc/gcc-arm-none-eabi/info --mandir=/home/build/work/GCC-4-8-build/install-native/share/doc/gcc-arm-none-eabi/man --htmldir=/home/build/work/GCC-4-8-build/install-native/share/doc/gcc-arm-none-eabi/html --pdfdir=/home/build/work/GCC-4-8-build/install-native/share/doc/gcc-arm-none-eabi/pdf --enable-languages=c,c++ --enable-plugins --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --disable-tls --with-gnu-as --with-gnu-ld --with-newlib --with-headers=yes --with-python-dir=share/gcc-arm-none-eabi --with-sysroot=/home/build/work/GCC-4-8-build/install-native/arm-none-eabi --build=i686-linux-gnu --host=i686-linux-gnu --with-gmp=/home/build/work/GCC-4-8-build/build-native/host-libs/usr --with-mpfr=/home/build/work/GCC-4-8-build/build-native/host-libs/usr --with-mpc=/home/build/work/GCC-4-8-build/build-native/host-libs/usr --with-isl=/home/build/work/GCC-4-8-build/build-native/host-libs/usr --with-cloog=/home/build/work/GCC-4-8-build/build-native/host-libs/usr --with-libelf=/home/build/work/GCC-4-8-build/build-native/host-libs/usr --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --with-pkgversion='GNU Tools for ARM Embedded Processors' --with-multilib-list=armv6-m,armv7-m,armv7e-m,armv7-r
-	Thread model: single
-	gcc version 4.8.4 20140725 (release) [ARM/embedded-4_8-branch revision 213147] (GNU Tools for ARM Embedded Processors) 
-	```
-	>`Tip`:如果之前编译是可以的，更新后不能编译，试着删除build_*文件夹，然后重新编译。
+官网里的[Toolchain Installation](http://dev.px4.io/starting-installing-linux-boutique.html)有类似的安装方法。
 
-	make成功后如下：
+>`注意`：更新Git子模块的方法如下
+>
+>```sh
+>~ $ git submodule init
+>~ $ git submodule update --recursive
+>#或者
+>~ $ git submodule update --init --recursive
+>```
+>如果连接不上，可以试试这个
+>
+>```sh
+>~ $ ssh -T git@github.com
+>```
+>关于参与贡献，更多请参考[这里](http://www.nephen.com/2016/01/ArduPilot开发入门学习/#参与贡献)。
 
-	<img src="/images/makeokay.png" style="max-width:100%;"/>
+上传完成如下：
 
-	官网里的[Toolchain Installation](http://dev.px4.io/starting-installing-linux-boutique.html)有类似的安装方法。
-
-	>`注意`：更新Git子模块的方法如下
-	>
-	>```sh
-	>~ $ git submodule init
-	>~ $ git submodule update --recursive
-	>#或者
-	>~ $ git submodule update --init --recursive
-	>```
-	>如果连接不上，可以试试这个
-	>
-	>```sh
-	>~ $ ssh -T git@github.com
-	>```
-	>关于参与贡献，更多请参考[这里](http://www.nephen.com/2016/01/ArduPilot开发入门学习/#参与贡献)。
-
-	上传完成如下：
-
-	<img src="/images/upload.png" style="max-width:100%;"/>
+<img src="/images/upload.png" style="max-width:100%;"/>
 
 <center><h4>`--------------ubuntu15.10 issues!!!--------------`</h4></center>
 
