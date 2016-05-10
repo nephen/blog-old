@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-05-10 13:44:42 Utk
+update: 2016-05-10 13:53:21 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 >[消息](http://px4.io/px4-website-relaunched-online/)：pixhawk网站搬迁至[px4.io](http://px4.io) !!!     
@@ -111,6 +111,9 @@ Configured with: /home/build/work/GCC-4-8-build/src/gcc/configure --target=arm-n
 Thread model: single
 gcc version 4.8.4 20140725 (release) [ARM/embedded-4_8-branch revision 213147] (GNU Tools for ARM Embedded Processors) 
 ```
+
+<center><h4>`--------------ubuntu15.10 issues!!!--------------`</h4></center>
+
 >`Tip`:如果之前编译是可以的，更新后不能编译，试着删除build_*文件夹，然后重新编译。
 
 make成功后如下：
@@ -137,8 +140,6 @@ make成功后如下：
 上传完成如下：
 
 <img src="/images/upload.png" style="max-width:100%;"/>
-
-<center><h4>`--------------ubuntu15.10 issues!!!--------------`</h4></center>
 
 这里要做的事情主要是：
 
