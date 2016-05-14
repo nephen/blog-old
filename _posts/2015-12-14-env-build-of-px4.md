@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-05-10 13:53:21 Utk
+update: 2016-05-14 21:17:15 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 >[消息](http://px4.io/px4-website-relaunched-online/)：pixhawk网站搬迁至[px4.io](http://px4.io) !!!     
@@ -83,15 +83,16 @@ $ xclip -sel clip < ~/.ssh/id_rsa.pub
 如果你跟我一样用的是ubuntu 15.10，需要进行arm-none-eabi重新安装，默认是最新版，换成4.8版本，首先了解见[博文](http://www.veryarm.com/296.html)，然后去GNU官方下载地址：[https://launchpad.net/gcc-arm-embedded/+download](https://launchpad.net/gcc-arm-embedded/+download)下载`gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2`，然后进入下载文件夹，进行如下操作：
 
 ```sh
+pushd .
 # => 卸载新版的gcc-arm-none-eabi
 ~ $ sudo apt-get remove gcc-arm-none-eabi
 # => 安装下载好的gcc-arm-none-eabi
 ~ $ tar xjvf gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2
 ~ $ sudo mv gcc-arm-none-eabi-4_8-2014q3 /opt
-~ $ exportline="export PATH=/opt/gcc-arm-none-eabi-4_8-2014q3/bin:$PATH"
-~ $ echo $exportline >> ~/.profile
-~ $ sudo ln -s /opt/gcc-arm-none-eabi-4_8-2014q3/bin/arm-none-eabi-gcc /usr/bin
-~ $ sudo ln -s /opt/gcc-arm-none-eabi-4_8-2014q3/bin/arm-none-eabi-g++ /usr/bin
+~ $ exportline="export PATH=/opt/gcc-arm-none-eabi-4_8-2014q3/bin:\$PATH"
+~ $ if grep -Fxq "$exportline" ~/.profile; then echo nothing to do ; else echo $exportline >> ~/.profile; fi
+~ $ . ~/.profile
+popd
 ```
 
 如果PC是ubuntu 64位系统，arm-none-eabi是直接下载人家编译好的32位的话，还需要一个东东：
@@ -99,7 +100,7 @@ $ xclip -sel clip < ~/.ssh/id_rsa.pub
 ```sh
 sudo apt-get install lsb-core
 ```
-测试如下：
+测试安装如下，如果出现如下信息，证明交叉编译环境搭建没有什么问题
 
 ```sh
 ~/src/Firmware$ arm-none-eabi-g++ -v
