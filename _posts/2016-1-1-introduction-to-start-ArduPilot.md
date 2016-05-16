@@ -7,12 +7,12 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-05-16 08:49:41 Utk
+update: 2016-05-16 09:03:38 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
 <br>
-#编译
+#编译px4
 
 Ubuntu用户可以参考[链接](http://dev.ardupilot.com/wiki/building-the-code-onlinux/#advanced)进行操作，可以从`Advanced`标签开始，注意安装`sudo apt-get install gawk make git arduino-core g++`，然后在相应的文件夹下(如：ArduCopter，参看[APM2.x](http://dev.ardupilot.com/wiki/supported-autopilot-controller-boards/#apm2x)，Copter 3.3或更新固件不再支持APM板)make即可(主目录下默认make所有)。同时还可以编译成在[pixhawk](http://dev.ardupilot.com/wiki/supported-autopilot-controller-boards/#pixhawk)上运行的目标文件，参看这篇[文章](http://dev.ardupilot.com/wiki/building-px4-for-linux-with-make/)，编译`make px4-v2`，上传`make px4-v2-upload`，git更新后清除`make px4-clean`。有几个地方需要注意的:
 
