@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-05-16 09:03:38 Utk
+update: 2016-05-16 11:01:58 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 >[消息](http://px4.io/px4-website-relaunched-online/)：pixhawk网站搬迁至[px4.io](http://px4.io) !!!     
@@ -150,7 +150,7 @@ make成功后如下：
 >```
 >`注意`：如果你想跟进项目，但不知道怎么参与贡献，建议参考APM的[文档](http://dev.ardupilot.com/wiki/where-to-get-the-code/)，更多请参考[这里](http://www.nephen.com/2016/01/introduction-to-start-ArduPilot#1-2)。
 
-上传完成如下：
+使用`make px4fmu-v2_default upload`即可将固件上传到pixhawk，这个过程可能需要重新插拔USB线，上传完成如下：
 
 <img src="/images/upload.png" style="max-width:100%;"/>
 
@@ -333,7 +333,7 @@ Ubuntu用户只要导入主文件夹里的CMakeLists.txt文件就可以了，打
 配置完成后，点击左下角的运行，编译输出如下
 <img src="/images/buildout.png">
 
-连接USB到pixhawk，点击`应用程序输出`栏的绿色按钮`重新执行此运行配置`即可进行下载，输出如下
+连接USB到pixhawk，点击`应用程序输出`栏的绿色按钮`重新执行此运行配置`即可进行上传，输出如下
 <img src="/images/binout.png">
 
 如果你比较喜欢使用Sublime Text，请按照[linux下sublime text 2使用技巧](/2016/01/sublime-text2-in-linux)安装使用，然后进入工程目录，执行命令即可。
