@@ -7,11 +7,10 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-05-18 19:44:27 Utk
+update: 2016-05-18 19:48:33 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 >[消息](http://px4.io/px4-website-relaunched-online/)：pixhawk网站搬迁至[px4.io](http://px4.io) !!!     
->[资源分享](http://blog.exbot.net/archives/1169)：按照基础程度进行推荐，尽量推荐人人皆可阅读的一般性文章，最后附上网盘链接。
 
 <br>
 #前言
@@ -40,11 +39,13 @@ update: 2016-05-18 19:44:27 Utk
 	~ $ sudo usermod -a -G dialout $USER
 	```
 
->`Tip`:如果你是windows用户，可以点击[视频教程](https://www.youtube.com/watch?v=MBJhVrvWomY)
+>`Tip`:如果你是Windows用户，可以点击[视频教程](https://www.youtube.com/watch?v=MBJhVrvWomY)，但是不推荐使用Windows进行开发。
 
 <br>
 #代码编译
-然后就到了编译代码的阶段，那么首先得弄到代码，按照[这个](http://dev.px4.io/starting-building.html)里面的步骤去做就好了，经测试ubuntu 14.04编译没有出现问题，建议安装[ninja](http://dev.px4.io/starting-installing-linux-boutique.html#ninja-build-system)，它编译的速度比make要快，想必有不懂Git是个啥的童鞋，那就看看这个[Git教程-廖雪峰的官方网站](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)/[git BOOK](https://git-scm.com/book/zh/v2)吧，保证有帮助。比如我自己的项目可以这么做：
+然后就到了编译代码的阶段，那么首先得弄到代码，按照[这个](http://dev.px4.io/starting-building.html)里面的步骤去做就好了，经测试ubuntu 14.04编译没有出现问题，建议安装[ninja](http://dev.px4.io/starting-installing-linux-boutique.html#ninja-build-system)，它编译的速度比make要快。   
+
+想必有不懂Git是个啥的童鞋，那就看看这个[Git教程-廖雪峰的官方网站](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)/[git BOOK](https://git-scm.com/book/zh/v2)吧，保证有帮助。比如我们的项目可以这么做：
 
 ```sh
 # => 本地创建文件夹，并关联远程仓库
@@ -58,40 +59,36 @@ update: 2016-05-18 19:44:27 Utk
 ~/YuningFly $ git push -u origin master
 ```
 
-通过ssh支持的原生git协议速度最快，但是要先生成SSH keys，更多见[教程](https://help.github.com/articles/generating-ssh-keys/)
-
-```sh
-$ sudo apt-get install xclip
-# Downloads and installs xclip. If you don't have `apt-get`, you might need to use another installer (like `yum`)
-
-$ xclip -sel clip < ~/.ssh/id_rsa.pub
-# Copies the contents of the id_rsa.pub file to your clipboard
-```
-
-克隆开源代码可以用
+关于下载代码这块，通过ssh支持的原生git协议下载速度最快，但是要先生成SSH keys，更多见[教程](https://help.github.com/articles/generating-ssh-keys/)，例如如采用原生git协议下载开源代码可以用
 
 ```sh
 ~ $ git clone git@github.com:PX4/Firmware.git
 ```
 
-`注意`：如果你想跟进项目，但不知道怎么参与贡献，建议参考APM的[文档](http://dev.ardupilot.com/wiki/where-to-get-the-code/)    
-    
-
 --------------
 <center><h4>`--------------ubuntu15.10 issues!!!--------------`</h4></center>
 
-如果你跟我一样用的是ubuntu 15.10，需要进行arm-none-eabi重新安装，默认是最新版，换成4.8版本，首先了解见[博文](http://www.veryarm.com/296.html)，然后去GNU官方下载地址：[https://launchpad.net/gcc-arm-embedded/+download](https://launchpad.net/gcc-arm-embedded/+download)下载`gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2`，然后进入下载文件夹，进行如下操作：
+如果你跟我一样用的是ubuntu 15.10，需要进行arm-none-eabi重新安装，默认是最新版，换成4.8版本，官网上的解决办法见[地址](http://dev.px4.io/starting-installing-linux-boutique.html#toolchain-installation)，当然你也可以采用我下面的办法。    
+
+首先了解见[博文](http://www.veryarm.com/296.html)，然后去GNU官方下载地址：[https://launchpad.net/gcc-arm-embedded/+download](https://launchpad.net/gcc-arm-embedded/+download)下载`gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2`，或者直接使用命令
 
 ```sh
+wget https://launchpadlibrarian.net/186124160/gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2
+```
+然后进入下载文件夹，进行如下操作：
+
+```sh
+pushd .
 # => 卸载新版的gcc-arm-none-eabi
 ~ $ sudo apt-get remove gcc-arm-none-eabi
 # => 安装下载好的gcc-arm-none-eabi
 ~ $ tar xjvf gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2
 ~ $ sudo mv gcc-arm-none-eabi-4_8-2014q3 /opt
-~ $ exportline="export PATH=/opt/gcc-arm-none-eabi-4_8-2014q3/bin:$PATH"
-~ $ echo $exportline >> ~/.profile
-~ $ sudo ln -s /opt/gcc-arm-none-eabi-4_8-2014q3/bin/arm-none-eabi-gcc /usr/bin
-~ $ sudo ln -s /opt/gcc-arm-none-eabi-4_8-2014q3/bin/arm-none-eabi-g++ /usr/bin
+~ $ exportline="export PATH=/opt/gcc-arm-none-eabi-4_8-2014q3/bin:\$PATH"
+~ $ if grep -Fxq "$exportline" ~/.profile; then echo nothing to do ; else echo $exportline >> ~/.profile; fi
+# => 使路径生效
+~ $ . ~/.profile
+popd
 ```
 
 如果PC是ubuntu 64位系统，arm-none-eabi是直接下载人家编译好的32位的话，还需要一个东东：
@@ -99,7 +96,7 @@ $ xclip -sel clip < ~/.ssh/id_rsa.pub
 ```sh
 sudo apt-get install lsb-core
 ```
-测试如下：
+测试安装如下，如果出现如下信息，交叉编译环境搭建就没有什么问题了
 
 ```sh
 ~/src/Firmware$ arm-none-eabi-g++ -v
@@ -114,30 +111,46 @@ gcc version 4.8.4 20140725 (release) [ARM/embedded-4_8-branch revision 213147] (
 
 <center><h4>`--------------ubuntu15.10 issues!!!--------------`</h4></center>
 
->`Tip`:如果之前编译是可以的，更新后不能编译，试着删除build_*文件夹，然后重新编译。
-
 make成功后如下：
 
 <img src="/images/makeokay.png" style="max-width:100%;"/>
 
-官网里的[Toolchain Installation](http://dev.px4.io/starting-installing-linux-boutique.html)有类似的安装方法。
 
->`注意`：更新Git子模块的方法如下
->
->```sh
->~ $ git submodule init
->~ $ git submodule update --recursive
->#或者
->~ $ git submodule update --init --recursive
->```
->如果连接不上，可以试试这个
+一般情况下，make出现**主要问题**有：
+
+- arm-none-eabi路径不对   
+	按如上arm-none-eabi重新安装设置即可。
+- arm-none-eabi-g++命令存在但报错找不到文件   
+	安装32位的运行库。
+	
+	```sh
+	sudo apt-get install libc6:i386 libgcc1:i386 libstdc++5:i386 libstdc++6:i386 lib32z1 lib32ncurses5
+	```
+- 没有更新Git子模块
+	
+	```sh
+	~ $ git submodule init
+	~ $ git submodule update --recursive
+	#或者只要一行命令
+	~ $ git submodule update --init --recursive
+	```
+- 需要重新编译   
+	如果之前编译是可以的，更新后不能编译，试着删除根目录build_*文件夹，然后重新编译。 
+- 找不到/usr/bin/arm-none-eabi-objcopy，或者其它的也可以用类似的方法   
+
+	```sh
+	sudo ln -s /opt/gcc-arm-none-eabi-4_8-2014q3/bin/arm-none-eabi-objcopy /usr/bin/
+	```
+
+
+>如果连接不上github，可以先试试这个连通站点
 >
 >```sh
 >~ $ ssh -T git@github.com
 >```
->关于参与贡献，更多请参考[这里](http://www.nephen.com/2016/01/ArduPilot开发入门学习/#参与贡献)。
+>`注意`：如果你想跟进项目，但不知道怎么参与贡献，建议参考APM的[文档](http://dev.ardupilot.com/wiki/where-to-get-the-code/)，更多请参考[这里](http://www.nephen.com/2016/01/introduction-to-start-ArduPilot#1-2)。
 
-上传完成如下：
+使用`make px4fmu-v2_default upload`即可将固件上传到pixhawk，这个过程可能需要重新插拔USB线，上传完成如下：
 
 <img src="/images/upload.png" style="max-width:100%;"/>
 
@@ -313,8 +326,15 @@ $ cmake ../Firmware -G "CodeBlocks - Unix Makefiles"
 
 Ubuntu用户只要导入主文件夹里的CMakeLists.txt文件就可以了，打开qtcreator，通过`File -> Open File or Project -> 选择CMakeLists.txt`
 
-配置页面见下图，详细配置见原文视频
+点击项目进入配置，配置页面见下图，详细配置见原文视频
+<img src="/images/qtbuild.png">
 <img src="/images/qt_set.png">
+
+配置完成后，点击左下角的运行，编译输出如下
+<img src="/images/buildout.png">
+
+连接USB到pixhawk，点击`应用程序输出`栏的绿色按钮`重新执行此运行配置`即可进行上传，输出如下
+<img src="/images/binout.png">
 
 如果你比较喜欢使用Sublime Text，请按照[linux下sublime text 2使用技巧](/2016/01/sublime-text2-in-linux)安装使用，然后进入工程目录，执行命令即可。
 
@@ -339,3 +359,4 @@ $ sublime_text Firmware.sublime-project
 - [planner.ardupilot.com](http://planner.ardupilot.com/)
 - [copter.ardupilot.com](http://copter.ardupilot.com/)
 - [travis-ci.org](https://travis-ci.org/)
+- [exbot资源分享](http://blog.exbot.net/archives/1169)

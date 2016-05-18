@@ -6,7 +6,7 @@ author: Lever
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-27 01:42:47 Utk
+update: 2016-05-18 19:48:37 Utk
 ---
 由于sublime的多平台性，以及也有很多强悍的插件可供使用，是我不得不将兴趣移植这个编辑器上面来。将查看代码而言，在linux下也可以通过wine安装sourceinsight，但是对于安装跟使用来说不是很方便，特别是有git项目的时候。
 
@@ -330,6 +330,10 @@ Sublime Text对于一些常见的扩展名的文件都能够识别并选择Subli
 	效果如下
 
 	<img src="/images/screencast.gif" alt="">
+23. [Translate翻译插件](https://github.com/standfast/Translate)   
+	直接通过Package Control搜索Translate下载安装。快捷键为"ctrl+1" 和 "ctrl+2"。
+
+	![trans](https://github.com/standfast/Translate/raw/master/pics/screenshot.png)
 
 <br>
 #工程设置

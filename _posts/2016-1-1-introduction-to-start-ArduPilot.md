@@ -7,22 +7,52 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-04-27 01:42:47 Utk
+update: 2016-05-18 19:48:35 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
-在学习px4的时候，了解到了ardupilot，如apm无操作系统，入门简单些，且看到它的资料比较多，易懂，故做如下学习记录，为px4打下基础。
-
 <br>
-#编译
+#编译pixhawk环境搭建
+参考[原网页](http://ardupilot.org/dev/docs/building-px4-for-linux-with-make.html)进行说明，有两种搭建环境的方式。   
 
-Ubuntu用户可以参考[链接](http://dev.ardupilot.com/wiki/building-the-code-onlinux/#advanced)进行操作，可以从`Advanced`标签开始，注意安装`sudo apt-get install gawk make git arduino-core g++`，然后在相应的文件夹下(如：ArduCopter，参看[APM2.x](http://dev.ardupilot.com/wiki/supported-autopilot-controller-boards/#apm2x)，Copter 3.3或更新固件不再支持APM板)make即可(主目录下默认make所有)。同时还可以编译成在[pixhawk](http://dev.ardupilot.com/wiki/supported-autopilot-controller-boards/#pixhawk)上运行的目标文件，参看这篇[文章](http://dev.ardupilot.com/wiki/building-px4-for-linux-with-make/)，编译`make px4-v2`，上传`make px4-v2-upload`，git更新后清除`make px4-clean`。有几个地方需要注意的:
+第一种为自动执行脚本(推荐)，较为方便，但有问题需解决。   
 
-<!--more-->
-- 需要特定的[编译器](http://firmware.diydrones.com/Tools/PX4-tools/)，下载后解压`tar -xjvf gcc-arm-none-eabi-4_6-2012q2-20120614.tar.bz2`，然后编辑$HOME/.bashrc文件，加入`export PATH=$PATH:/home/your_username/bin/gcc-arm-none-eabi-4_6-2012q2/bin`，或者参考我之前写的[文章](http://www.nephen.com/2015/12/%E5%88%9D%E5%AD%A6PX4%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/#%E4%BB%A3%E7%A0%81%E7%BC%96%E8%AF%91)。
-> `Tip`：如果以前编译正确，更新后出现问题，考虑更新子模块和重新编译。
+由于使用apt-get update时部分文件无法下载，导致脚本执行不完整，故可将ardupilot/Tools/scripts/install-prereqs-ubuntu.sh文件里的$APT_GET update行用#注释掉。   
 
-- 权限：`sudo usermod -a -G dialout $USER`。
+然后操作如下：
+
+```sh
+~ $ sudo apt-get -qq -y install git
+~ $ cd ~/src
+#下载源代码
+~ $ git clone https://github.com/ArduPilot/ardupilot.git
+#修改脚本后运行
+~ $ ardupilot/Tools/scripts/install-prereqs-ubuntu.sh -y
+~ $ . ~/.profile
+#编译Copter
+~ $ cd ardupilot/ArduCopter
+~ $ make px4-v2
+#上传
+~ $ make px4-v2 upload
+```
+第二种为手动搭建环境，这里只提出一些主要的注意事项。
+
+- 需要特定的交叉编译器，更多参考搭建px4原生开发环境的[文章](/2015/12/env-build-of-px4#1-4)。
+
+	```sh
+	pushd .
+	# => 卸载新版的gcc-arm-none-eabi
+	~ $ sudo apt-get remove gcc-arm-none-eabi
+	~ $ wget https://launchpadlibrarian.net/186124160/gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2
+	# => 安装下载好的gcc-arm-none-eabi
+	~ $ tar xjvf gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2
+	~ $ sudo mv gcc-arm-none-eabi-4_8-2014q3 /opt
+	~ $ exportline="export PATH=/opt/gcc-arm-none-eabi-4_8-2014q3/bin:\$PATH"
+	~ $ if grep -Fxq "$exportline" ~/.profile; then echo nothing to do ; else echo $exportline >> ~/.profile; fi
+	# => 使路径生效
+	~ $ . ~/.profile
+	popd
+	```
 - 安装ccache加快编译速度。    
 
 	```sh
@@ -31,7 +61,32 @@ Ubuntu用户可以参考[链接](http://dev.ardupilot.com/wiki/building-the-code
 	~ $ sudo ln -s /usr/bin/ccache arm-none-eabi-g++
 	~ $ sudo ln -s /usr/bin/ccache arm-none-eabi-gcc
 	```    
-然后将`export PATH=/usr/lib/ccache:$PATH`加入到~/.profile中。
+	然后将`export PATH=/usr/lib/ccache:$PATH`加入到~/.profile中。
+- 安装make, gawk，genromfs等linux开发工具。
+- 权限：`sudo usermod -a -G dialout $USER`。
+
+<!--more-->
+
+> `Tip`：编译过程中主要问题：   
+>1、考虑更新子模块，所有的子模块都放在modules/目录
+> 
+> 	```sh
+>	git submodule init
+>	git submodule update --recursive
+>	#或者一行就行
+>	git submodule update --init --recursive
+> 	```
+> 2、如果以前编译正确，更新子模块后出现问题，`make px4-clean`后重新编译   
+>
+> 3、如果子模块更新的时候出现如下错误：   
+>
+>	```
+>	fatal: 目标路径 'src/lib/ecl' 已经存在，并且不是一个空目录。
+>	无法克隆 'https://github.com/PX4/ecl.git' 到子模组路径 'src/lib/ecl'
+>	```
+>直接删除src/lib/ecl即可。
+
+
 
 <br>
 #参与贡献
@@ -39,27 +94,8 @@ Ubuntu用户可以参考[链接](http://dev.ardupilot.com/wiki/building-the-code
 知识点：  
 
 1. [创建分支并改变一些代码](http://dev.ardupilot.com/wiki/where-to-get-the-code/#making_a_branch_and_changing_some_code)：fork源仓库，克隆到本地，更改后推送到fork仓库。
-2. [保持代码更新](http://dev.ardupilot.com/wiki/where-to-get-the-code/#rebase-based_workflow_keeping_your_code_up_to_date)：添加upstream远程官方库；更新`git fetch upstream`，[fetch与pull的区别](http://blog.csdn.net/hudashi/article/details/7664457)；重置当前的分支`git rebase upstream/master`，这里可能有冲突需要解决；更新子模块；
-
-	```sh
-	~ $ git submodule init
-	~ $ git submodule update --recursive
-	#或者
-	~ $ git submodule update --init --recursive
-	```
-推送的fork库`git push origin master`
+2. [保持代码更新](http://dev.ardupilot.com/wiki/where-to-get-the-code/#rebase-based_workflow_keeping_your_code_up_to_date)：添加upstream远程官方库；更新`git fetch upstream`，[fetch与pull的区别](http://blog.csdn.net/hudashi/article/details/7664457)；重置当前的分支`git rebase upstream/master`，这里可能有冲突需要解决；更新子模块；推送的fork库`git push origin master`
 3. [提交分支到master](http://dev.ardupilot.com/wiki/submitting-patches-back-to-master/)：确保每次提交只是做了一件事情；简洁易懂的注释；[清理本地提交历史](http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html)；推送到本地分支`git push -f origin master`；[创建上拉请求](https://help.github.com/articles/using-pull-requests)；在`Pull Request`页面选择`New pull request`按钮；选择需要提交的分支然后点击`Click to create pull request for this comparison`（base branch 是远程官方分支, head branch 是自己要提交的分支，这样做可以在任意时间段进行提交）；每个参与者都会收到新请求消息；管理`pull requests`；查看`proposed changes`；`Pull request`谈论；一段时间后可以查看` long-running pull requests`    
-
-补充知识点：   
-
-1. [Git在子模块](http://dev.ardupilot.com/wiki/git-submodules/)：所有的子模块都放在modules/目录；[常见错误](http://dev.ardupilot.com/wiki/git-submodules/#common_errors)；
-2. 如果子模块更新的时候出现如下错误：   
-
-	```
-	fatal: 目标路径 'src/lib/ecl' 已经存在，并且不是一个空目录。
-	无法克隆 'https://github.com/PX4/ecl.git' 到子模组路径 'src/lib/ecl'
-	```
-	直接删除src/lib/ecl即可。
 
 <br>
 #代码库
