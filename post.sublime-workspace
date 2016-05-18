@@ -35,7 +35,7 @@
 			"file": "arrange/drones.md",
 			"settings":
 			{
-				"buffer_size": 2036,
+				"buffer_size": 2070,
 				"line_ending": "Unix"
 			}
 		},
@@ -43,7 +43,7 @@
 			"file": "_posts/2016-1-5-flight-control-algorithm-of-px4.md",
 			"settings":
 			{
-				"buffer_size": 57535,
+				"buffer_size": 57802,
 				"line_ending": "Unix"
 			}
 		},
@@ -67,7 +67,7 @@
 			"file": "arrange/about.md",
 			"settings":
 			{
-				"buffer_size": 5009,
+				"buffer_size": 5367,
 				"line_ending": "Unix"
 			}
 		},
@@ -75,7 +75,7 @@
 			"file": "_posts/2015-12-18-RTOS-of-px4.md",
 			"settings":
 			{
-				"buffer_size": 18862,
+				"buffer_size": 18876,
 				"line_ending": "Unix"
 			}
 		},
@@ -83,7 +83,7 @@
 			"file": "_posts/2015-12-8-build-website.md",
 			"settings":
 			{
-				"buffer_size": 3777,
+				"buffer_size": 3776,
 				"line_ending": "Unix"
 			}
 		},
@@ -91,7 +91,7 @@
 			"file": "_posts/2015-11-24-job-summary.markdown",
 			"settings":
 			{
-				"buffer_size": 4213,
+				"buffer_size": 4212,
 				"line_ending": "Unix"
 			}
 		},
@@ -99,7 +99,7 @@
 			"file": "_config.yml",
 			"settings":
 			{
-				"buffer_size": 1198,
+				"buffer_size": 1214,
 				"line_ending": "Unix"
 			}
 		}
@@ -592,15 +592,15 @@
 					"file": "arrange/drones.md",
 					"settings":
 					{
-						"buffer_size": 2036,
+						"buffer_size": 2070,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								232,
-								232
+								0,
+								0
 							]
 						],
 						"settings":
@@ -757,7 +757,7 @@
 					"file": "_posts/2016-1-5-flight-control-algorithm-of-px4.md",
 					"settings":
 					{
-						"buffer_size": 57535,
+						"buffer_size": 57802,
 						"regions":
 						{
 						},
@@ -1257,7 +1257,7 @@
 					"file": "arrange/about.md",
 					"settings":
 					{
-						"buffer_size": 5009,
+						"buffer_size": 5367,
 						"regions":
 						{
 						},
@@ -1422,7 +1422,7 @@
 					"file": "_posts/2015-12-18-RTOS-of-px4.md",
 					"settings":
 					{
-						"buffer_size": 18862,
+						"buffer_size": 18876,
 						"regions":
 						{
 						},
@@ -1588,15 +1588,15 @@
 					"file": "_posts/2015-12-8-build-website.md",
 					"settings":
 					{
-						"buffer_size": 3777,
+						"buffer_size": 3776,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								529,
-								529
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1754,7 +1754,7 @@
 					"file": "_posts/2015-11-24-job-summary.markdown",
 					"settings":
 					{
-						"buffer_size": 4213,
+						"buffer_size": 4212,
 						"regions":
 						{
 						},
@@ -1919,15 +1919,15 @@
 					"file": "_config.yml",
 					"settings":
 					{
-						"buffer_size": 1198,
+						"buffer_size": 1214,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								131,
-								131
+								0,
+								0
 							]
 						],
 						"settings":

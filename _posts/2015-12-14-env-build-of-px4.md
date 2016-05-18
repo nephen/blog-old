@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-05-10 13:53:21 Utk
+update: 2016-05-18 19:44:27 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 >[消息](http://px4.io/px4-website-relaunched-online/)：pixhawk网站搬迁至[px4.io](http://px4.io) !!!     
@@ -44,7 +44,7 @@ update: 2016-05-10 13:53:21 Utk
 
 <br>
 #代码编译
-然后就到了编译代码的阶段，那么首先得弄到代码，按照[这个](http://dev.px4.io/starting-building.html)里面的步骤去做就好了，经测试ubuntu 14.04编译没有出现问题，建议安装[ninja](http://dev.px4.io/starting-installing-linux-boutique.html#ninja-build-system)，它编译的速度比make要快，想必有不懂Git是个啥的童鞋，那就看看这个[Git教程-廖雪峰的官方网站](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)/[git BOOK](https://git-scm.com/book/zh/v2)吧，保证有帮助。比如我们的项目可以这么做：
+然后就到了编译代码的阶段，那么首先得弄到代码，按照[这个](http://dev.px4.io/starting-building.html)里面的步骤去做就好了，经测试ubuntu 14.04编译没有出现问题，建议安装[ninja](http://dev.px4.io/starting-installing-linux-boutique.html#ninja-build-system)，它编译的速度比make要快，想必有不懂Git是个啥的童鞋，那就看看这个[Git教程-廖雪峰的官方网站](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)/[git BOOK](https://git-scm.com/book/zh/v2)吧，保证有帮助。比如我自己的项目可以这么做：
 
 ```sh
 # => 本地创建文件夹，并关联远程仓库
@@ -58,7 +58,7 @@ update: 2016-05-10 13:53:21 Utk
 ~/YuningFly $ git push -u origin master
 ```
 
-通过ssh支持的原生git协议速度最快，但是要先生成SSH keys
+通过ssh支持的原生git协议速度最快，但是要先生成SSH keys，更多见[教程](https://help.github.com/articles/generating-ssh-keys/)
 
 ```sh
 $ sudo apt-get install xclip
@@ -68,7 +68,7 @@ $ xclip -sel clip < ~/.ssh/id_rsa.pub
 # Copies the contents of the id_rsa.pub file to your clipboard
 ```
 
-更多见[教程](https://help.github.com/articles/generating-ssh-keys/)，克隆开源代码可以用
+克隆开源代码可以用
 
 ```sh
 ~ $ git clone git@github.com:PX4/Firmware.git
