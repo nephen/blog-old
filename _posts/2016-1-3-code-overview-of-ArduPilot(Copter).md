@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-05-17 18:13:17 Utk
+update: 2016-05-18 12:11:13 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
@@ -653,7 +653,7 @@ void Copter::fast_loop()
 	fi
 	```
 
-多次调试发现，hal.console->println或者hal.console->printf函数为usb串口输出，printf函数为串口5输出。
+多次调试发现，hal.console->println或者hal.console->printf及cliSerial->printf函数为usb串口输出，即hal.console为控制台输出，cliSerial为hal.console的别名，而单独的printf函数为串口5输出。
 
 <hr>
 参看文章：[官网](http://dev.ardupilot.com/wiki/apmcopter-code-overview/)/[串级pid](http://bbs.loveuav.com/thread-229-1-1.html)
