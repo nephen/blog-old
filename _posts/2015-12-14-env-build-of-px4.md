@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-05-18 19:48:33 Utk
+update: 2016-05-20 19:15:42 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 >[消息](http://px4.io/px4-website-relaunched-online/)：pixhawk网站搬迁至[px4.io](http://px4.io) !!!     
@@ -324,10 +324,14 @@ $ cd ../Firmware-build
 $ cmake ../Firmware -G "CodeBlocks - Unix Makefiles"
 ```
 
-Ubuntu用户只要导入主文件夹里的CMakeLists.txt文件就可以了，打开qtcreator，通过`File -> Open File or Project -> 选择CMakeLists.txt`
+Ubuntu用户只要导入主文件夹里的CMakeLists.txt文件就可以了，打开qtcreator，通过`File -> Open File or Project -> 选择CMakeLists.txt`，出现如下现象时点击完成即可
+
+<img src="/images/qtcmake.png">
 
 点击项目进入配置，配置页面见下图，详细配置见原文视频
+
 <img src="/images/qtbuild.png">
+
 <img src="/images/qt_set.png">
 
 配置完成后，点击左下角的运行，编译输出如下
