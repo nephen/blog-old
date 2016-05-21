@@ -9,7 +9,7 @@ permalink: /arrange/drones
 donate: true
 editpage: true
 id: 712e39e67bb1073341c6d0d408d742e3 
-update: 2016-04-27 01:42:47 Utk
+update: 2016-05-21 13:22:01 Utk
 ---
 
 下面是对我自己写过的有关无人机的文章做一个简单的概述，让大家摸清学习的线索。观点难免有错误，欢迎在线编辑并提出意见。
@@ -26,18 +26,18 @@ QQ talk: <i>995168694</i>
 这里也说明一下，gitter是一个开放的交流平台，可以使用网页、电脑客户端、手机APP，并且Linux下也可以使用，在这里全世界的开发人员聚集交流，欢迎大家加入这个平台。
 
 #文章梳理
-在此之前，请务必分清楚**APM，pixhawk，px4，ardupilot这些词之间的关系**。   
+在此之前，请务必分清楚**pixhawk，px4，ardupilot这些词之间的关系**。   
 
-pixhawk为px4开发团队的第二代硬件版本，同样ardupilot也是一个开发团队，它的源码总称为APM，早在之前，ardupilot使用的是avr的硬件，但由于硬件跟不上软件的速度，故现在的硬件也采用px4团队的pixhawk，底层驱动及操作系统都是用的px4的，ardupilot团队只是在其基础上做了应用层的开发，从而成了今天的APM。   
+pixhawk为px4开发团队的第二代硬件版本，同样ardupilot也是一个开发团队，早在之前，ardupilot使用的是arduino的开源硬件，但由于硬件跟不上软件的速度，故现在的硬件采用px4团队的pixhawk硬件，底层驱动及nuttx操作系统定制也都是用的px4团队的，ardupilot团队只是在其基础上做了应用层的开发，从而成了今天的ardupilot，我们习惯叫做apm。   
 
-`所以`，pixhawk的硬件可以跑两套固件代码，一套px4的原生firmware固件，一套是ardupilot的APM固件。
+`所以`，pixhawk的硬件可以跑两套固件代码，一套px4的原生firmware固件，一套是ardupilot的固件。
 
 1. 如果你暂时只想了解怎么装机试飞，可查看[pixhawk试飞报告](/2015/12/flighttest-of-pixhawk)。
-2. 如果你是研究px4源码的初学者，从[初学PX4之环境搭建](/2015/12/env-build-of-px4)开始，完成编译、下载、地面站安装等过程。然后熟悉[px4大体框架](/2015/12/general-structure-of-px4)，了解代码的大体构架。
-3. 或者，如果你看的是APM的源码，环境搭建这块可以看[ArduPilot开发入门学习](/2016/01/introduction-to-start-ArduPilot)。
-3. 无论是APM还是px4，都需要了解一下[Nuttx操作系统](/2015/12/RTOS-of-NuttX)以及在pixhawk上的[定制实现](/2015/12/RTOS-of-px4)，进而去理解操作系统的启动过程，及内置应用程序的实现等等。
-4. 后面接触到的就是APM的了，考虑到APM只是对应用层做了修改，所以开发难度相对小一点，后期就是对APM代码的梳理了。可见[ArduPilot之代码概述](/2016/01/code-overview-of-ArduPilot(Copter))。
-5. 如果你跟我一样对飞控的算法学习感兴趣，建议查看[px4飞控算法](/2016/01/flight-control-algorithm-of-px4)，这里针对APM和px4的姿态控制算法部分都做了些许的分析。
+2. 如果你是研究px4源码的初学者，从[初学PX4之环境搭建](/2015/12/env-build-of-px4)开始，完成编译、下载、地面站安装、qt搭建等过程。然后熟悉[px4大体框架](/2015/12/general-structure-of-px4)，了解代码的大体构架。
+3. 或者，如果你看的是ardupilot的源码，环境搭建这块可以看[ArduPilot开发入门学习](/2016/01/introduction-to-start-ArduPilot)。
+3. 无论是ardupilot还是px4，都需要了解一下[Nuttx操作系统](/2015/12/RTOS-of-NuttX)以及在pixhawk上的[定制实现](/2015/12/RTOS-of-px4)，进而去理解操作系统的启动过程，及内置应用程序的实现等等。
+4. 后面接触到的就是ardupilot的了，考虑到ardupilot只是对应用层做了修改，所以开发难度相对小一点，后期就是对ardupilot代码的梳理了。可见[ArduPilot之代码概述](/2016/01/code-overview-of-ArduPilot(Copter))。
+5. 如果你跟我一样对飞控的算法学习感兴趣，建议查看[px4飞控算法](/2016/01/flight-control-algorithm-of-px4)，这里针对ardupilot和px4的姿态控制算法部分都做了些许的分析。
 6. 如果还要写的话，我想就是基于飞控的应用开发了，再看吧，长路漫漫，一步一个脚印。
 
 #后序
