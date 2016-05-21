@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-05-20 19:15:42 Utk
+update: 2016-05-21 12:48:56 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
@@ -653,7 +653,8 @@ void Copter::fast_loop()
 	fi
 	```
 
-多次调试发现，hal.console->println或者hal.console->printf及cliSerial->printf函数为usb串口输出，即hal.console为控制台输出，cliSerial为hal.console的别名，而单独的printf函数为串口5输出。
+多次调试发现，hal.console->println或者hal.console->printf及cliSerial->printf函数为usb串口输出，即hal.console为控制台输出，而单独的printf函数为串口5输出。   
+由Copter::setup()函数的cliSerial = hal.console;可知，cliSerial为hal.console的别名。
 
 >编译library例程的时候出现如下类似问题：
 >

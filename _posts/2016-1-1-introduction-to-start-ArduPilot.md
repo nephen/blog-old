@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-05-18 19:48:35 Utk
+update: 2016-05-21 12:48:56 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
@@ -94,7 +94,7 @@ update: 2016-05-18 19:48:35 Utk
 知识点：  
 
 1. [创建分支并改变一些代码](http://dev.ardupilot.com/wiki/where-to-get-the-code/#making_a_branch_and_changing_some_code)：fork源仓库，克隆到本地，更改后推送到fork仓库。
-2. [保持代码更新](http://dev.ardupilot.com/wiki/where-to-get-the-code/#rebase-based_workflow_keeping_your_code_up_to_date)：添加upstream远程官方库；更新`git fetch upstream`，[fetch与pull的区别](http://blog.csdn.net/hudashi/article/details/7664457)；重置当前的分支`git rebase upstream/master`，这里可能有冲突需要解决；更新子模块；推送的fork库`git push origin master`
+2. [保持代码更新](http://dev.ardupilot.com/wiki/where-to-get-the-code/#rebase-based_workflow_keeping_your_code_up_to_date)：添加upstream远程官方库；更新`git fetch upstream`，[fetch与pull的区别](http://blog.csdn.net/hudashi/article/details/7664457)；重置当前的分支`git rebase upstream/master`，这里可能有冲突需要解决；更新[子模块](https://git.kaarsemaker.net/git/blob/a9ce45430b380b982de6f6cf24a96849e4d2feed/po/zh_CN.po)；推送的fork库`git push origin master`
 3. [提交分支到master](http://dev.ardupilot.com/wiki/submitting-patches-back-to-master/)：确保每次提交只是做了一件事情；简洁易懂的注释；[清理本地提交历史](http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html)；推送到本地分支`git push -f origin master`；[创建上拉请求](https://help.github.com/articles/using-pull-requests)；在`Pull Request`页面选择`New pull request`按钮；选择需要提交的分支然后点击`Click to create pull request for this comparison`（base branch 是远程官方分支, head branch 是自己要提交的分支，这样做可以在任意时间段进行提交）；每个参与者都会收到新请求消息；管理`pull requests`；查看`proposed changes`；`Pull request`谈论；一段时间后可以查看` long-running pull requests`    
 
 <br>
