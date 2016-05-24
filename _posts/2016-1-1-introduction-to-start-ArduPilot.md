@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-05-21 12:48:56 Utk
+update: 2016-05-24 21:11:41 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
@@ -91,11 +91,60 @@ update: 2016-05-21 12:48:56 Utk
 <br>
 #参与贡献
 
-知识点：  
+wiki知识点：  
 
 1. [创建分支并改变一些代码](http://dev.ardupilot.com/wiki/where-to-get-the-code/#making_a_branch_and_changing_some_code)：fork源仓库，克隆到本地，更改后推送到fork仓库。
 2. [保持代码更新](http://dev.ardupilot.com/wiki/where-to-get-the-code/#rebase-based_workflow_keeping_your_code_up_to_date)：添加upstream远程官方库；更新`git fetch upstream`，[fetch与pull的区别](http://blog.csdn.net/hudashi/article/details/7664457)；重置当前的分支`git rebase upstream/master`，这里可能有冲突需要解决；更新[子模块](https://git.kaarsemaker.net/git/blob/a9ce45430b380b982de6f6cf24a96849e4d2feed/po/zh_CN.po)；推送的fork库`git push origin master`
-3. [提交分支到master](http://dev.ardupilot.com/wiki/submitting-patches-back-to-master/)：确保每次提交只是做了一件事情；简洁易懂的注释；[清理本地提交历史](http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html)；推送到本地分支`git push -f origin master`；[创建上拉请求](https://help.github.com/articles/using-pull-requests)；在`Pull Request`页面选择`New pull request`按钮；选择需要提交的分支然后点击`Click to create pull request for this comparison`（base branch 是远程官方分支, head branch 是自己要提交的分支，这样做可以在任意时间段进行提交）；每个参与者都会收到新请求消息；管理`pull requests`；查看`proposed changes`；`Pull request`谈论；一段时间后可以查看` long-running pull requests`    
+3. [提交分支到master](http://dev.ardupilot.com/wiki/submitting-patches-back-to-master/)：确保每次提交只是做了一件事情；简洁易懂的注释；[清理本地提交历史](http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html)；推送到本地分支`git push -f origin master`；[创建上拉请求](https://help.github.com/articles/using-pull-requests)；在`Pull Request`页面选择`New pull request`按钮；选择需要提交的分支然后点击`Click to create pull request for this comparison`（base branch 是远程官方分支, head branch 是自己要提交的分支，这样做可以在任意时间段进行提交）；每个参与者都会收到新请求消息；管理`pull requests`；查看`proposed changes`；`Pull request`谈论；一段时间后可以查看` long-running pull requests`   
+
+下面我以ardupilot这个开源项目为例子做一个实际的演示：
+
+1. 下载源码并设置源，这一步只需进行一次就可以了。
+
+	```sh
+	#首先进入https://github.com/ArduPilot/ardupilot进行fork
+	#然后如下下载源码
+	~ $ git clone git@github.com:your_github_name/ardupilot.git
+	#设置官方更新源，一般origin 默认已经设置
+	~ $ git remote add upstream git@github.com:ArduPilot/ardupilot.git
+	#查看设置源效果
+	~ $ git remote -v
+	#正常显示如下
+	origin  git@github.com:your_github_name/ardupilot.git (fetch)
+	origin  git@github.com:your_github_name/ardupilot.git (push)
+	upstream        https://github.com/diydrones/ardupilot.git (fetch)
+	upstream        https://github.com/diydrones/ardupilot.git (push)
+	```
+
+2. 更改代码并推送到fork库。
+
+	```sh
+	#首先添加更改的文件， .代表添加所有更改的文件
+	~ $ git add .
+	#查看添加状况
+	~ $ git status
+	#添加更改注释
+	~ $ git commit -m "your comment"
+	#推送到fork库
+	~ $ git push origin master
+	```
+
+3. 保持与官方源代码同步，这一步一般与步骤2结合，保证推送到fork库时是在最新的代码上进行的更改。
+
+	```sh
+	~ $ git fetch upstream master
+	#重置当前的分支
+	~ $ git rebase upstream/master
+	#一般这里都需要更新子模块
+	~ $ git submodule update --init --recursive
+	#查看更新结果
+	~ $ git status
+	#如果更新后产生了冲突，先解决冲突再按照步骤2进行add/commit
+	```
+
+4. 在`Pull Request`页面选择`New pull request`按钮；选择需要提交的分支然后点击`Click to create pull request for this comparison`（base branch 是远程官方分支, head branch 是自己要提交的分支，这样做可以在任意时间段进行提交）
+
+	<img src="/images/newpull.png">
 
 <br>
 #代码库
