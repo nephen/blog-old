@@ -9,22 +9,25 @@ permalink: /arrange/drones
 donate: true
 editpage: true
 id: 712e39e67bb1073341c6d0d408d742e3 
-update: 2016-05-24 21:13:18 Utk
+update: 2016-05-24 21:20:27 Utk
 ---
 
 下面是对我自己写过的有关无人机的文章做一个简单的概述，让大家摸清学习的线索。观点难免有错误，欢迎在线编辑并提出意见。
 
+<br>
 #平台说明
 Software Version：[ardupilot](https://github.com/ArduPilot/ardupilot)/[PX4](https://github.com/PX4/Firmware)   
 Hardware Version：[pixhawk 2.4.6](https://pixhawk.org/modules/pixhawk)   
 Code Editor：[sublime text 2](http://www.nephen.com/2016/01/sublime-text2-in-linux) （Ubuntu）   
 说明一下，本站介绍的文章包含了两个软件平台，到底使用哪个具体文章里会有声明，另外，推荐使用sublime text 2编辑查看代码, 已经给出帮助链接。
 
+<br>
 #学习交流
 Gitter: [![Gitter](https://badges.gitter.im/nephen/YuningFly.svg)](https://gitter.im/nephen/YuningFly?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)   
 QQ talk: <i>995168694</i>   
 这里也说明一下，gitter是一个开放的交流平台，可以使用网页、电脑客户端、手机APP，并且Linux下也可以使用，在这里全世界的开发人员聚集交流，欢迎大家加入这个平台。
 
+<br>
 #文章梳理
 在此之前，请务必分清楚**pixhawk，px4，ardupilot这些词之间的关系**。   
 
@@ -38,9 +41,10 @@ pixhawk为px4开发团队的第二代硬件版本，同样ardupilot也是一个�
 3. 无论是ardupilot还是px4，都需要了解一下[Nuttx操作系统](/2015/12/RTOS-of-NuttX)以及在pixhawk上的[定制实现](/2015/12/RTOS-of-px4)，进而去理解操作系统的启动过程，及内置应用程序的实现等等。
 4. 后面接触到的就是ardupilot的了，考虑到ardupilot只是对应用层做了修改，所以开发难度相对小一点，后期就是对ardupilot代码的梳理了。可见[ArduPilot之代码概述](/2016/01/code-overview-of-ArduPilot(Copter))。
 5. 如果你跟我一样对飞控的算法学习感兴趣，建议查看[px4飞控算法](/2016/01/flight-control-algorithm-of-px4)，这里针对ardupilot和px4的姿态控制算法部分都做了些许的分析。
-6. 如果还要写的话，我想就是基于飞控的应用开发了，再看吧，长路漫漫，一步一个脚印。   
-#. 有索取就应当学会付出，发现了某些丑陋的bug或者有些新功能等时，就多为开源做点贡献吧[大笑]，什么？不会？有[教程](/2016/01/introduction-to-start-ArduPilot#1-2)[龇牙]。
+6. 如果还要写的话，我想就是基于飞控的应用开发了，再看吧，长路漫漫，一步一个脚印。
+7. 有索取就应当学会付出，发现了某些丑陋的bug或者有些新功能等时，就多为开源做点贡献吧[大笑]，什么？不会？有[教程](/2016/01/introduction-to-start-ArduPilot#1-2)[龇牙]。
 
+<br>
 #后序
 本链接（**www.nephen.com/arrange/drones**）长期有效，并保持定期更新说明，也可以进入nephen(`来风`)网站，点击“`多轴`”栏目即可进入。   
 <img src="/images/nephen.png">

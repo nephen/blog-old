@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-05-24 21:11:41 Utk
+update: 2016-05-24 21:20:25 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
@@ -145,6 +145,8 @@ wiki知识点：
 4. 在`Pull Request`页面选择`New pull request`按钮；选择需要提交的分支然后点击`Click to create pull request for this comparison`（base branch 是远程官方分支, head branch 是自己要提交的分支，这样做可以在任意时间段进行提交）
 
 	<img src="/images/newpull.png">
+
+	<img src="/images/creatpull.png">
 
 <br>
 #代码库
