@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-04-27 01:42:47 Utk
+update: 2016-05-24 16:50:43 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
@@ -141,6 +141,13 @@ QGroundControl地面站简称QGC，通过[官网](http://qgroundcontrol.org/down
 - 将遥控器的油门杆打到右下角
 - 你能听得px4代表armed的声音警报
 - 移动油门杆可以看到电机转动
+
+<br>
+#飞行模式
+
+就飞行练习来说，主要是要熟悉飞控的各种飞行模式及其切换，在这里首先要做的是设置遥控器5通道，以达到能使用遥控器切换多种飞行模式的效果，具体可参考自己购买的遥控器说明。   
+
+另外对于各个飞行模式的特点及其需要注意的地方建议查看[官网](http://ardupilot.org/copter/docs/flight-modes.html#recommended-flight-modes)或者[中文网](http://copter.ardupilot.cn/wiki/flight-modes/)wiki，较熟悉后可以大大程度减少炸机的几率。
 
 <br>
 #手机控制(可选)
@@ -294,17 +301,22 @@ PX4 multirotor_att_control应用程序执行一个外循环的方向控制器，
 
 ![taoff](/images/taoff.jpg) 
 
-飞行log分析：http://logs.uaventure.com/view/dgz379gyc72broL4k6TQHL    
-apm数据分析：http://ardupilot.org/dev/docs/using-mavexplorer-for-log-analysis.html    
-简单来说命令就是：MAVExplorer.py *.BIN    
-或者使用FlightPlot：https://github.com/DrTon/FlightPlot   
+<center><p>定高阶段</p></center>
 
-官方测试：
+![high](/images/high.jpg)
+
+官方测试视频：
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RF0wnQv3aAc" frameborder="0" allowfullscreen></iframe>
 
 ##防炸机经验总结
 1. 当使用gps进行留待模式loiter飞行时，注意方向档响应慢，随时准备打到自稳自救。
+
+##飞行记录分析    
+飞行log分析：http://logs.uaventure.com/view/dgz379gyc72broL4k6TQHL    
+apm数据分析：http://ardupilot.org/dev/docs/using-mavexplorer-for-log-analysis.html    
+简单来说命令就是：MAVExplorer.py *.BIN    
+或者使用FlightPlot：https://github.com/DrTon/FlightPlot   
 
 <hr>
 参考文献：[用户文档](https://pixhawk.org/users/start)/[用户教程](https://pixhawk.org/users/tutorials)/[快速学习](https://pixhawk.org/users/first_steps)/[多轴飞行器教程](https://pixhawk.org/platforms/multicopters/start)/[F450安装](https://pixhawk.org/platforms/multicopters/dji_flamewheel_450)/[PID调试](https://pixhawk.org/users/multirotor_pid_tuning)

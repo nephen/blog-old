@@ -62,3 +62,10 @@ fotowall折腾半天，看看可爱的小公举～
 过几个小时就是情人节了，我就想看看我们快乐的样子。
 
 	<img src="/images/love.png">
+
+- 2016.5.22   
+很快，你就毕业了。
+
+	<img src="/images/biye.jpg">
+
+	<img src="/images/biye2.jpg">
