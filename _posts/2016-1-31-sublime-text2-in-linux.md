@@ -6,7 +6,7 @@ author: Lever
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-05-18 19:48:37 Utk
+update: 2016-05-30 13:44:44 Utk
 ---
 由于sublime的多平台性，以及也有很多强悍的插件可供使用，是我不得不将兴趣移植这个编辑器上面来。将查看代码而言，在linux下也可以通过wine安装sourceinsight，但是对于安装跟使用来说不是很方便，特别是有git项目的时候。
 
@@ -49,7 +49,7 @@ void gtk_im_context_set_client_window (GtkIMContext *context,
 
 ```sh
 $ cd ~
-$ gcc -shared -o libsublime-imfix.so sublime_imfix.c  `pkg-config --libs --cflags gtk+-2.0` -fPIC
+$ gcc -shared -o libsublime-imfix.so sublime_imfix.c  pkg-config --libs --cflags gtk+-2.0 -fPIC
 $ sudo mv libsublime-imfix.so /usr/lib
 ```
 创建/usr/bin/sublcn，输入
@@ -57,6 +57,12 @@ $ sudo mv libsublime-imfix.so /usr/lib
 ```sh
 #!/bin/sh
 LD_PRELOAD=/usr/lib/libsublime-imfix.so exec sublime_text "$@"
+```
+之后打开权限
+
+```sh
+cd /usr/bin
+sudo chmod 777 ./sublcn
 ```
 下面通过sublcn命令打开sublime text 2就可以输入中文了。
 
@@ -119,7 +125,7 @@ Sublime Text对于一些常见的扩展名的文件都能够识别并选择Subli
 1. 下载[Package Control.sublime-package](http://sublime.wbond.net/Package%20Control.sublime-package)放入/home/username/.config/sublime-text-2/Installed Packages中，可以用如下命令行实现
 
 	```sh
-	$ cd /home/username/.config/sublime-text-2/Installed Packages
+	$ cd /home/username/.config/sublime-text-2/Installed\ Packages/
 	$ wget http://sublime.wbond.net/Package%20Control.sublime-package
 	```
 2. 在sublime下快捷键Ctrl+Shift+P，输入install，选择Package Control: Install Package回车，可以点击Ctrl + `查看安装状态。如果要卸载插件， Ctrl+Shift+P 输入 remove， 选择Package Control: Remove Package 然后再选择已安装的插件， 回车即可卸载。
@@ -334,6 +340,9 @@ Sublime Text对于一些常见的扩展名的文件都能够识别并选择Subli
 	直接通过Package Control搜索Translate下载安装。快捷键为"ctrl+1" 和 "ctrl+2"。
 
 	![trans](https://github.com/standfast/Translate/raw/master/pics/screenshot.png)
+23. [ChineseTranslator](https://packagecontrol.io/packages/ChineseTranslator)(sublime text 3)    
+	插件快捷键为Ctrl+shift+c，启动插件后，若此时有文本被选中，则会出现一个面板显示翻译结果。
+
 
 <br>
 #工程设置
@@ -402,3 +411,15 @@ Sublime Text对于一些常见的扩展名的文件都能够识别并选择Subli
 	]
 }
 ```
+
+<br>
+#版本升级
+尝试使用新版本[sublime text 3](http://www.sublimetext.com/3)，安装方式如下
+
+```sh
+#首先下载安装文件
+~ $ wget https://download.sublimetext.com/sublime-text_build-3114_amd64.deb
+#安装
+~ $ sudo dpkg -i sublime-text_build-3114_amd64.deb
+```
+最后程序可以通过subl命令打开，同样解决输入中文问题参考第一节。

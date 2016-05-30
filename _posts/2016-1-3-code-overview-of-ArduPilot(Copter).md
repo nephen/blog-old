@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-05-21 12:48:56 Utk
+update: 2016-05-30 13:44:44 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
 
@@ -110,7 +110,7 @@ update: 2016-05-21 12:48:56 Utk
 
 <br>
 #添加一个新的飞行模式
-当自己想用新的机架时，或者创建新的飞行模式是，可以添加一个新的飞行模式，步骤可见[原文](http://dev.ardupilot.com/wiki/apmcopter-adding-a-new-flight-mode/)。
+当自己想用新的机架时，或者创建新的飞行模式时，可以添加一个新的飞行模式，步骤可见[原文](http://dev.ardupilot.com/wiki/apmcopter-adding-a-new-flight-mode/)。
 
 - 在defines.h为新的飞行模式宏定义，并将NUM_MODES加1。
 
