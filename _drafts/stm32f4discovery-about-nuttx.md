@@ -6,7 +6,7 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-05-31 16:29:55 Utk
+update: 2016-06-01 00:22:44 Utk
 ---
 由于在学习开源飞控的时候接触到了nuttx操作系统，这款实时操作系统与之前接触的uCOSII和FreeRTOS不一样，它是类unix的，故想深入的了解下，这对理解飞控甚至对嵌入式系统的理解都会相当有帮助。而stm32f4discovery可以作为它的学习板，而且官方网站也提供了相应如学习资料，所以选择它作为一个学习的切入点。下面是我个人学习过程的一个小记录。
 
@@ -37,3 +37,7 @@ jtag上面如接口图如下, 仿真器上没有缺口的那端为GND
 
 板子swd接线如下, 板子上有CN2的那端为VDD_TARGET
 ![](/images/swd.png)
+
+<br>
+#参考资料
+https://pixhawk.org/modules/stm32f4discovery
