@@ -6,7 +6,7 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-05-31 16:29:55 Utk
+update: 2016-06-01 02:22:16 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 
@@ -17,7 +17,7 @@ update: 2016-05-31 16:29:55 Utk
 [mpu9250](https://www.1688.com/chanpin/-6D70752D39323530.html)/[LP5907-Q1](https://detail.tmall.com/item.htm?id=521474279154&cm_id=140105335569ed55e27b&abbucket=20)
 
 #bootloader下载
-从官网下载源码并进行编译上传，上传方法可以参考[pix方法](https://pixhawk.org/dev/bootloader_update)。
+安装jlink[驱动](https://www.segger.com/jlink-software.html)，从官网下载源码并进行编译上传，上传方法可以参考[pix方法](https://pixhawk.org/dev/bootloader_update)。
 
 ```sh
 ~ $ git clone https://github.com/PX4/Bootloader.git
@@ -25,6 +25,21 @@ update: 2016-05-31 16:29:55 Utk
 ~ $ make px4fmuv4_bl
 ~ $ st-flash write px4fmuv4_bl.bin 0x8000000
 ```
+
+##windows下载方式
+
+下载[STM32 ST-LINK utility](http://www.st.com/content/st_com/en/products/embedded-software/development-tool-software/stsw-link004.html?#)，安装完成后，查看设备管理器显示驱动如下。
+
+<img src="/images/stlink.png">
+
+打开STM32 ST-LINK Utility，点击 Target»Connect，如下
+
+<img src="/images/stlink-con.png">
+
+推荐下载固件之前进行清除，Target»Erase Chip    
+然后下载固件Target»Program & Verify，导入编译好的px4fmuv4_bl.bin文件，点击start开始下载。
+
+<img src="/images/fmuv4.png">
 
 ##dfu下载
 
