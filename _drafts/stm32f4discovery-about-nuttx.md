@@ -6,15 +6,19 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-04-27 01:42:47 Utk
+update: 2016-05-31 16:29:55 Utk
 ---
 由于在学习开源飞控的时候接触到了nuttx操作系统，这款实时操作系统与之前接触的uCOSII和FreeRTOS不一样，它是类unix的，故想深入的了解下，这对理解飞控甚至对嵌入式系统的理解都会相当有帮助。而stm32f4discovery可以作为它的学习板，而且官方网站也提供了相应如学习资料，所以选择它作为一个学习的切入点。下面是我个人学习过程的一个小记录。
 
+<br>
 #资料查找
 首先查找有关stm32f4discovery的资料，在意法半导体找到了[地址1](http://www.stmcu.org/search/?q=stm32f4discovery)/[地址2](http://www2.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/stm32f4discovery.html)。
 
+<br>
 #nuttx下载
 将nuttx进行编译，然后下载至stm32f4discovery中。
+
+<!--more-->
 ##st-link安装
 首先下载[源代码](https://github.com/texane/stlink/releases)，然后进行如下的编译
 
