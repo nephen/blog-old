@@ -6,7 +6,7 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-06-01 20:42:52 Utk
+update: 2016-06-02 13:55:38 Utk
 ---
 由于在学习开源飞控的时候接触到了nuttx操作系统，这款实时操作系统与之前接触的uCOSII和FreeRTOS不一样，它是类unix的，故想深入的了解下，这对理解飞控甚至对嵌入式系统的理解都会相当有帮助。而stm32f4discovery可以作为它的学习板，而且官方网站也提供了相应如学习资料，所以选择它作为一个学习的切入点。下面是我个人学习过程的一个小记录。
 
@@ -16,26 +16,47 @@ update: 2016-06-01 20:42:52 Utk
 
 <br>
 #nuttx下载
-将nuttx进行编译，然后下载至stm32f4discovery中。
+将nuttx进行编译，然后下载至stm32f4discovery中，注意这块板子只能通过st-link下载，不要试图通过J-link下载！！！。
+
+<img src="/images/stlink2.png">
+
+文档上已经说明，可以通过板载的st-link下载该mcu程序，同时板载的st-link下载其他板子的mcu程序(需要拔掉跳线帽cn3)。
 
 <!--more-->
-##st-link安装
-首先下载[源代码](https://github.com/texane/stlink/releases)，然后进行如下的编译
+##st-link安装下载
+下载[源代码](https://github.com/texane/stlink/releases)，然后进行如下的编译
 
 ```sh
-$ mkdir build && cd build
-$ cmake -DCMAKE_BUILD_TYPE=Debug ..
+#依赖项安装
+$ sudo apt-get install build-essential pkg-config intltool cmake libusb-1.0 libusb-1.0.0-dev libgtk-3-dev
+#编译
+$ cd stlink-1.2.0/
+$ ./autogen.sh
+$ ./configure --with-gtk-gui
 $ make
+#install udev rules
+$ cp 49-stlinkv*.rules /etc/udev/rules.d
+#生效rules
+$ udevadm control --reload-rules
+$ udevadm trigger
 ```
-最后生成的命令有st-flash, st-term, st-util, st-info，并添加命令路径到~/.profile: export PATH=/home/nephne/stlink-1.2.0/build:$PATH。
+最后生成的命令有st-flash, st-term, st-util, st-info，并添加命令路径到~/.profile: export PATH=/home/user_name/stlink-1.2.0/build:$PATH。
 
-jtag上面如接口图如下, 仿真器上没有缺口的那端为GND
+```sh
+$ st-flash write px4fmuv4_bl.bin 0x8000000
+```
+如果上面方式失效，可以试下这种方式。
 
-![](http://img.my.csdn.net/uploads/201211/27/1354020256_4862.png)
-
-板子swd接线如下, 板子上有CN2的那端为VDD_TARGET
-![](/images/swd.png)
+```sh
+#首先打开gdb server
+$ st-util
+#然后打开另外的终端
+$ arm-none-eabi-gdb -q px4discovery_bl.elf
+( gdb ) target extended-remote localhost:4242
+( gdb ) load px4discovery_bl.elf 0x8000000
+```
 
 <br>
 #参考资料
-https://pixhawk.org/modules/stm32f4discovery
+https://pixhawk.org/modules/stm32f4discovery     
+http://idsearch2011www.mobile.howtomoneyguide.com/MZpAJCashh21XKH/Getting-started-ARM-cortex-M4-STM32-with-Eclipse-in-Linux-(1-4).html
