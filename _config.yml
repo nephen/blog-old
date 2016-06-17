@@ -35,7 +35,7 @@ paginate: 5
 excerpt_separator: <!--more-->
 
 
-gems: [jekyll-paginate]
+gems: [jekyll-paginate, jemoji]
 
 highlighter: rouge
 markdown: redcarpet
