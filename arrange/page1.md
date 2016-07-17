@@ -7,7 +7,8 @@ permalink: /page1/
 全景图：hugin /图片masaic：<a href="http://www.misterhowto.com/index.php?category=Computers&subcategory=Graphics&article=make_mosaic_with_metapixel">metapixel</a>（<a href="http://www.linuxdiyf.com/bbs/thread-193632-1-1.html">参考</a>）/图片集合器：<a href="http://www.enricoros.com/opensource/fotowall/">Fotowall</a>(<a href="http://www.enricoros.com/oldblog/tag/fotowall/">教程</a>)/拼图：<a href="http://www.shapecollage.com/">SHAPE COLLAGE</a>     
 Shutter是一款功能丰富的截图软件。你可以对特定区域、窗口、整个屏幕甚至是网站截图 - 并为其应用不同的效果，比如用高亮的点在上面绘图，然后上传至一个图片托管网站，一切尽在这个小窗口内。     
 Scrot是一个命令行下使用的截图工具，支持全屏、窗口、选取、多设备、缩略图、延时，甚至可以截图完毕之后指定某程序打开截好的图片。如scrot -cd 20  ~/abc.png   
-gcc的版本过高，需要进行[降级](http://blog.sina.com.cn/s/blog_6cee149d010129bl.html)。
+gcc的版本过高，需要进行[降级](http://blog.sina.com.cn/s/blog_6cee149d010129bl.html)。   
+微信安装见[地址](https://github.com/geeeeeeeeek/electronic-wechat/releases)，下载解压即可运行。
 
 ```sh
 ~ $ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 40
