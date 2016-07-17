@@ -6,7 +6,7 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-06-02 13:55:38 Utk
+update: 2016-07-17 22:56:03 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 
@@ -29,6 +29,7 @@ update: 2016-06-02 13:55:38 Utk
 ```
 对下载方案做一些总结，对应如下。
 
+<!--more-->
 ##jlink下载
 jtag上面如接口图如下, 仿真器上没有缺口的那端为GND
 

@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-05-09 12:40:33 Utk
+update: 2016-07-17 22:56:03 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 >`注意`：基于参考原因，本文参杂了APM的算法分析。
@@ -75,6 +75,56 @@ update: 2016-05-09 12:40:33 Utk
 
 
 了解了上面的源码出处后，下面将分具体应用进行分析。   
+
+<br>
+#姿态传感器数据采集
+首先进行传感器的初始化，主要步骤为：关闭软件低频滤波器、设置传感器量程、关闭硬件低频滤波器、设置采样频率、设置队列深度，具体实现如下：   
+
+```c++
+// software LPF off
+ioctl(fd, ACCELIOCSLOWPASS, 0);
+// 16g range
+ioctl(fd, ACCELIOCSRANGE, 16);
+switch(devid) {
+    case DRV_ACC_DEVTYPE_MPU6000:
+    case DRV_ACC_DEVTYPE_MPU9250:
+        // hardware LPF off
+        ioctl(fd, ACCELIOCSHWLOWPASS, 256);
+        // khz sampling
+        ioctl(fd, ACCELIOCSSAMPLERATE, 1000);
+        // 10ms queue depth
+        ioctl(fd, SENSORIOCSQUEUEDEPTH, _queue_depth(1000));
+        break;
+    case DRV_ACC_DEVTYPE_LSM303D:
+        // hardware LPF to ~1/10th sample rate for antialiasing
+        ioctl(fd, ACCELIOCSHWLOWPASS, 194);
+        // ~khz sampling
+        ioctl(fd, ACCELIOCSSAMPLERATE, 1600);
+        ioctl(fd,SENSORIOCSPOLLRATE, 1600);
+        // 10ms queue depth
+        ioctl(fd, SENSORIOCSQUEUEDEPTH, _queue_depth(1600));
+        break;
+    default:
+        break;
+}
+```
+然后以400HZ频率的循环任务通过SPI通信来采集传感器数据，并将采集到的数据进行纠错处理，如减去静态偏差量。此时，将采集到的这些数据同步写入SD卡，以便于飞行测试后期进行数据分析。这个过程的数据是以结构体的形式存放于全局变量imu中，后面进行姿态解算时直接读取该变量的值即可。同步写入SD卡实现如下：   
+
+```c++
+DataFlash_Class *dataflash = get_dataflash();
+if (dataflash != NULL) {
+    uint64_t now = AP_HAL::micros64();
+    struct log_GYRO pkt = {
+       LOG_PACKET_HEADER_INIT((uint8_t)(LOG_GYR1_MSG+instance)),
+        time_us   : now,
+        sample_us : sample_us?sample_us:now,
+        GyrX      : gyro.x,
+        GyrY      : gyro.y,
+        GyrZ      : gyro.z
+    };
+    dataflash->WriteBlock(&pkt, sizeof(pkt));
+}
+```
 
 <br>
 #姿态估算
