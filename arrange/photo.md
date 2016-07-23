@@ -69,3 +69,10 @@ fotowall折腾半天，看看可爱的小公举～
 	<img src="/images/biye.jpg">
 
 	<img src="/images/biye2.jpg">
+
+- 2016.7.24   
+现在，开始怀念我们年轻的时候。
+
+	<img src="/images/young1.jpg">
+
+	<img src="/images/young2.jpg">
