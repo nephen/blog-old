@@ -6,7 +6,7 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-06-02 13:55:38 Utk
+update: 2016-09-16 17:15:16 Utk
 ---
 由于在学习开源飞控的时候接触到了nuttx操作系统，这款实时操作系统与之前接触的uCOSII和FreeRTOS不一样，它是类unix的，故想深入的了解下，这对理解飞控甚至对嵌入式系统的理解都会相当有帮助。而stm32f4discovery可以作为它的学习板，而且官方网站也提供了相应如学习资料，所以选择它作为一个学习的切入点。下面是我个人学习过程的一个小记录。
 
@@ -53,7 +53,11 @@ $ st-util
 #然后打开另外的终端
 $ arm-none-eabi-gdb -q px4discovery_bl.elf
 ( gdb ) target extended-remote localhost:4242
-( gdb ) load px4discovery_bl.elf 0x8000000
+(gdb) load crazyflie_bl.elf 0x8000000
+Loading section .text, size 0x2204 lma 0x10000000
+Loading section .data, size 0x54 lma 0x10002204
+Start address 0x8000000, load size 8792
+Transfer rate: 38 KB/sec, 2930 bytes/write.
 ```
 
 <br>
