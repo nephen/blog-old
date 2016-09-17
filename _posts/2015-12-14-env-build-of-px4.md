@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-09-16 17:15:16 Utk
+update: 2016-09-17 13:39:38 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 >[消息](http://px4.io/px4-website-relaunched-online/)：pixhawk网站搬迁至[px4.io](http://px4.io) !!!     
@@ -135,7 +135,7 @@ make成功后如下：
 	~ $ git submodule update --init --recursive
 	```
 - 子模组问题    
-	无法在子模组路径 'mavlink/include/mavlink/v2.0' 中检出 '914eafd83851c499302aeb6f702da9069006f8f0'，一般删掉mavlink目录重新update就好 了。
+	无法在子模组路径 'mavlink/include/mavlink/v2.0' 中检出 '914eafd83851c499302aeb6f702da9069006f8f0'，一般删掉mavlink目录重新update就好了。
 
 - 需要重新编译   
 	如果之前编译是可以的，更新后不能编译，试着删除根目录build_*文件夹，然后重新编译。 
