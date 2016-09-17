@@ -5,7 +5,7 @@ comments: true
 ---
 
 <!--音乐台-->
- <p><center><iframe name="iframe_canvas" src="http://douban.fm/partner/baidu/doubanradio" scrolling="no" frameborder="0" width="420" height="190"></iframe></center></p>
+ <p><center><iframe scrolling="no" name="radio_frame_2" id="radio_frame_2" frameborder="0" width="420" height="190" src="http://music.sina.com.cn/radio/play/index_frame.php"></iframe ></center></p>
 
 <hr style="height:10px;border:none;border-top:10px groove skyblue;" />
 
