@@ -6,7 +6,7 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-09-28 23:52:14 Utk
+update: 2016-09-29 01:33:16 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 
@@ -171,7 +171,7 @@ index 4b25c99..289e655 100644
 ```sh
 make crazyflie_default upload
 ```
-但我的板子连接不上串口，改写源代码Firmware/Tools/px_uploader.py如下，其中/dev/serial/by-id/pci-Bitcraze_AB_Crazyflie_BL_0-if00为串口id。
+但我的板子连接不上串口，改写源代码Firmware/Tools/px_uploader.py如下。
 
 ```sh
 @@ -450,10 +450,10 @@ class uploader(object):
@@ -205,6 +205,21 @@ make crazyflie_default upload
  
                      # create an uploader attached to the port
                      try:
+```
+其中/dev/serial/by-id/pci-Bitcraze_AB_Crazyflie_BL_0-if00为串口id，是在 usb_cinit(void) 函数里被设定的，如下，具体见usb_strings的定义，有# define USBMFGSTRING "Bitcraze AB"。
+
+```c
+usbd_dev = usbd_init(&otgfs_usb_driver, &dev, &config, usb_strings, NUM_USB_STRINGS,
+                              usbd_control_buffer, sizeof(usbd_control_buffer));
+
+static const char *usb_strings[] = { 
+        USBMFGSTRING, /* Maps to Index 1 Index */
+        USBDEVICESTRING,
+        "0",
+};
+
+# define USBMFGSTRING                   "Bitcraze AB"
+# define USBDEVICESTRING                "Crazyflie BL"
 ```
 
 最后更新固件成功后为：
