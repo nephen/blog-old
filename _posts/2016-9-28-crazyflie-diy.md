@@ -1,0 +1,190 @@
+---
+layout: post
+title:  "初学crazyflie2.0之diy硬件"
+categories: "drons_lifes"
+author: nephen
+tags: 工作生活
+donate: true
+comments: true
+update: 2016-09-17 22:56:03 Utk
+---
+>`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
+
+<br>
+#JLinkGDBServer调试
+添加JLink到STM32F405RG，确保Vsupply接口存在电压。打开服务器端，这是arm-none-eabi-gdb调试的后台，如下。
+
+```sh
+JLinkGDBServer -if SWD -device STM32F405RG
+
+SEGGER J-Link GDB Server V5.12g Command Line Version
+
+JLinkARM.dll V5.12g (DLL compiled May 27 2016 17:03:38)
+
+-----GDB Server start settings-----
+GDBInit file:                  none
+GDB Server Listening port:     2331
+SWO raw output listening port: 2332
+Terminal I/O port:             2333
+Accept remote connection:      yes
+Generate logfile:              off
+Verify download:               off
+Init regs on start:            off
+Silent mode:                   off
+Single run mode:               off
+Target connection timeout:     0 ms
+------J-Link related settings------
+J-Link Host interface:         USB
+J-Link script:                 none
+J-Link settings file:          none
+------Target related settings------
+Target device:                 STM32F405RG
+Target interface:              SWD
+Target interface speed:        1000kHz
+Target endian:                 little
+
+Connecting to J-Link...
+J-Link is connected.
+Firmware: J-Link ARM V8 compiled Nov 28 2014 13:44:46
+Hardware: V8.00
+S/N: 20121126
+Feature(s): RDI,FlashDL,FlashBP,JFlash
+Checking target voltage...
+Target voltage: 3.31 V
+Listening on TCP/IP port 2331
+Connecting to target...Connected to target
+Waiting for GDB connection...
+```
+
+<br>
+#开始GDB调试
+注意如下，在用户目录下面创建.gdbinit文件。   
+To enable execution of this file add
+	add-auto-load-safe-path /home/nephne/src/Bootloader/.gdbinit
+line to your configuration file "/home/nephne/.gdbinit".
+
+编写工程目录下面的.gdbinit文件。
+
+```sh
+target remote :2331
+set mem inaccessible-by-default off 
+monitor speed auto
+monitor endian little
+monitor reset
+monitor flash device = STM32F405RG
+monitor flash breakpoints = 1 
+monitor flash download = 1 
+load
+monitor reg sp = (0x08000000)
+monitor reg pc = (0x08000004)
+break main
+layout src
+```
+
+运行命令如下，即可运行gdb的相关命令，如next，step，continue等等，其中layout src为显示源代码窗口。
+
+```sh
+arm-none-eabi-gdb crazyflie_bl.elf
+```
+
+<br>
+#下载代码
+更新bootloader除了使用JLink也可以使用dfu-util工具。
+
+```sh
+sudo dfu-util -d 0483:df11 -a 0 -s 0x08000000 -D crazyflie_bl.bin
+
+GNU gdb (GNU Tools for ARM Embedded Processors) 7.6.0.20140731-cvs
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "--host=i686-linux-gnu --target=arm-none-eabi".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /home/nephne/src/Bootloader/crazyflie_bl.elf...done.
+reset_handler () at ../../cm3/vector.c:67
+67		for (src = &_data_loadaddr, dest = &_data;
+Select auto target interface speed (2000 kHz)
+Target endianess set to "little endian"
+Resetting target
+Selecting device: STM32F405RG
+Flash breakpoints enabled
+Flash download enabled
+Loading section .text, size 0x2204 lma 0x8000000
+Loading section .data, size 0x54 lma 0x8002204
+Start address 0x8000000, load size 8792
+Transfer rate: 8585 KB/sec, 4396 bytes/write.
+Writing register (SP = 0x20020000)
+Writing register (PC = 0x080018BD)
+Breakpoint 1 at 0x8000b40: file main_f4.c, line 687.
+(gdb) 
+```
+
+<br>
+#更新固件
+更新固件，官网的方式为：
+
+```sh
+make crazyflie_default upload
+```
+但我的板子连接不上串口，改写源代码Firmware/Tools/px_uploader.py如下，其中/dev/serial/by-id/pci-Bitcraze_AB_Crazyflie_BL_0-if00为串口id。
+
+```sh
+@@ -450,10 +450,10 @@ class uploader(object):
+                         msg = "Firmware not suitable for this board (board_type=%u board_id=%u)" % (
+                                 self.board_type, fw.property('board_id'))
+                         print("WARNING: %s" % msg)
+-                        if args.force:
+-                                print("FORCED WRITE, FLASHING ANYWAY!")
+-                        else:
+-                                raise IOError(msg)
++                        #if args.force:
++                        print("FORCED WRITE, FLASHING ANYWAY!")
++                        #else:
++                        #        raise IOError(msg)
+                 if self.fw_maxsize < fw.property('image_size'):
+                         raise RuntimeError("Firmware image is too large for this board")
+ # Spin waiting for a device to show up
+ try:
+@@ -563,10 +564,12 @@ try:
+                             portlist += glob.glob(pattern)
+             else:
+                     portlist = patterns
+ 
+-            for port in portlist:
+-
+-                    #print("Trying %s" % port)
++       
++            for port in patterns:
++                   port = "/dev/serial/by-id/pci-Bitcraze_AB_Crazyflie_BL_0-if00"
++                    print("Trying %s" % port)
+ 
+                     # create an uploader attached to the port
+                     try:
+```
+
+最后更新固件成功后为：
+
+```sh
+Found board c,0 bootloader rev 5 on /dev/serial/by-id/pci-Bitcraze_AB_Crazyflie_BL_0-if00
+WARNING: Firmware not suitable for this board (board_type=12 board_id=5)
+FORCED WRITE, FLASHING ANYWAY!
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff type: ÿÿÿÿ
+idtype: =FF
+vid: ffffffff
+pid: ffffffff
+coa: //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8=
+
+sn: 002a00343432470d33363638
+chip: 10016413
+family: STM32F40x
+revision: Z
+flash 1032192
+
+Erase  : [====================] 100.0%
+Program: [====================] 100.0%
+Verify : [====================] 100.0%
+Rebooting.
+```
