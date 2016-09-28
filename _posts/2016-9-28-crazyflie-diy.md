@@ -6,7 +6,7 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-09-28 22:59:49 Utk
+update: 2016-09-28 23:52:14 Utk
 ---
 >`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 
@@ -123,6 +123,46 @@ Writing register (PC = 0x080018BD)
 Breakpoint 1 at 0x8000b40: file main_f4.c, line 687.
 (gdb) 
 ```
+如果想在下载时看到灯闪烁，需要修改bootloader源码，因为买的开发板与原版crazyflie原理图还是有差异的。
+
+```c
+ #
+ # Submodule management
+ #
+diff --git a/hw_config.h b/hw_config.h
+index dd271d3..234f7d0 100644
+--- a/hw_config.h
++++ b/hw_config.h
+@@ -511,8 +511,8 @@
+ 
+ # define OSC_FREQ                       8
+-# define BOARD_PIN_LED_ACTIVITY         GPIO0
+-# define BOARD_PIN_LED_BOOTLOADER       GPIO2
++# define BOARD_PIN_LED_ACTIVITY         GPIO5
++# define BOARD_PIN_LED_BOOTLOADER       GPIO5
+diff --git a/main_f4.c b/main_f4.c
+index 4b25c99..289e655 100644
+--- a/main_f4.c
++++ b/main_f4.c
+@@ -636,7 +636,7 @@ flash_func_read_sn(uint32_t address)
+ }
+ void
+-led_on(unsigned led)
++led_off(unsigned led)
+ {
+        switch (led) {
+        case LED_ACTIVITY:
+@@ -650,7 +650,7 @@ led_on(unsigned led)
+ }
+ 
+ void
+-led_off(unsigned led)
++led_on(unsigned led)
+ {
+        switch (led) {
+        case LED_ACTIVITY:
+@@ -709,6 +709,9 @@ main(void)
+```
 
 <br>
 #更新固件
@@ -189,4 +229,28 @@ Erase  : [====================] 100.0%
 Program: [====================] 100.0%
 Verify : [====================] 100.0%
 Rebooting.
+```
+
+<br>
+#串口调试
+串口连接为PC10:E_TX1, PC11:E_RX1，连接usb转串口设备如下，当然我的外围设备都失败了。
+
+```sh
+sercon: Registering CDC/ACM serial driver
+sercon: Successfully registered the CDC/ACM serial driver
+nsh: mount: mount failed: No such file or directory
+nsh: mkfatfs: mkfatfs failed: No such file or directory
+ERROR [mtd] failed to initialize EEPROM driver
+WARN  [param] selected parameter default file /fs/microsd/params
+WARN  [param] open failed '/fs/microsd/params'
+WARN  [modules__systemlib] failed to open param file: /fs/microsd/params
+WARN  [param] Param export failed.
+nsh: rgbled: command not found
+nsh: blinkm: command not found
+  BAT_N_CELLS: curr: 0 -> new: 3
+WARN  [modules__systemlib] failed to open param file: /fs/microsd/params
+WARN  [param] Param export failed.
+
+NuttShell (NSH)
+nsh> \0x1b
 ```
