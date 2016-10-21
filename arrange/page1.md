@@ -26,6 +26,35 @@ gcc的版本过高，需要进行[降级](http://blog.sina.com.cn/s/blog_6cee149
 update-alternatives: 使用 /usr/bin/gcc-5 来在手动模式中提供 /usr/bin/gcc (gcc)
 ```
 
+<p>vim设置</p>
+
+```sh
+set number
+set hlsearch
+syntax on
+if has("cscope")
+        set csprg=/usr/bin/cscope
+        set csto=0
+        set cst 
+        set nocsverb
+        " add any database in current directory
+        if filereadable("cscope.out")
+                cs add cscope.out
+        " else add database pointed to by environment
+                elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+        endif
+        set csverb
+endif
+
+nmap <F5> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
+
+"https://github.com/airblade/vim-gitgutter/
+let g:gitgutter_avoid_cmd_prompt_on_windows = 1 
+set tags=./tags,./TAGS,tags,TAG,~/src/Firmware,~/src/Marlin/Marlin
+set noet ft=cmake fenc=utf-8 ff=unix
+```
+
 <p>邮件收发</p>
 我要发邮件，可是不知道怎么发了，于是做了这些东西
 
