@@ -13,7 +13,7 @@ permalink: /photo/
 
 深圳小归宿：    
 
-1. 上下铺的床、小狗、一个可以逃避的帐篷、健身器械、自制安防设备。
+1. 大于一室的房间：上下铺的床、小狗、一个可以逃避的帐篷、健身器械、自制安防监控设备、复式的电脑桌、打印机、服务器。
 2. 参考链接：[一个93年应届毕业生花了不到600元就将一间20平米的出租屋变成了温馨的家](http://mp.weixin.qq.com/s?__biz=MzA5NTAyNzQyNQ==&mid=404668268&idx=1&sn=3b08554a2295e5d5fd8e96c5bdebcf4d&mpshare=1&scene=1&srcid=1009DVrBduaU68diSdE2UDqJ#rd)、[ 90后大学生毕业装修婚房 39平秒杀别墅 ](http://mp.weixin.qq.com/s?__biz=MzA4MzQ2NjYzOQ==&mid=2650693951&idx=2&sn=9aa2a3668a9e7f2798b53f602ccd76ed&mpshare=1&scene=1&srcid=1009YSekz6NOj8zQUpazOZy3#rd)、[DIY创新参考](http://home.163.com/special/zfdiy/)
 
 下面为我们在一起的故事：

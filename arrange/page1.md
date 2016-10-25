@@ -26,6 +26,10 @@ gcc的版本过高，需要进行[降级](http://blog.sina.com.cn/s/blog_6cee149
 update-alternatives: 使用 /usr/bin/gcc-5 来在手动模式中提供 /usr/bin/gcc (gcc)
 ```
 
+<p>vps</p>
+服务器地址/密码：ssh 23.106.149.209 -l root -p 22/bwh181224
+git 密码：git1024
+
 <p>vim设置</p>
 
 ```sh
