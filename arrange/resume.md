@@ -24,6 +24,7 @@ layout: default
 	<li>2014.12-2015.07   第十届全国大学生“飞思卡尔杯”智能汽车竞赛，线性CCD两轮直立组</li>
 	<li>2015.04-2015.06   湖南省物联网大赛，基于RFID的仓库管理系统</li>
 	<li>2015.07-2015.08   2015年全国大学生电子设计竞赛，多旋翼自主飞行器</li>
+	<li>2016.10-至今   RobotAnno桌面级六轴机械臂固件开发</li>
 	<li>2015.11-至今   PX4开源无人机开发</li>
 </ul>
 <hr style="height:5px;border:none;border-top:5px ridge green;" />
