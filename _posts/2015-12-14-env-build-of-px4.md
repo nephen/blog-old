@@ -7,9 +7,8 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-09-17 13:39:38 Utk
+update: 2016-12-06 00:58:04 Utk
 ---
->`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**   
 >[消息](http://px4.io/px4-website-relaunched-online/)：pixhawk网站搬迁至[px4.io](http://px4.io) !!!     
 
 <br>

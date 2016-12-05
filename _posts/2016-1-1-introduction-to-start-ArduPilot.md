@@ -7,10 +7,8 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-05-24 21:20:25 Utk
+update: 2016-12-06 00:58:04 Utk
 ---
->`通知`：**如果你对本站无人机文章不熟悉，建议查看[无人机学习概览](/arrange/drones)！！！**
-
 <br>
 #编译pixhawk环境搭建
 参考[原网页](http://ardupilot.org/dev/docs/building-px4-for-linux-with-make.html)进行说明，有两种搭建环境的方式。   
