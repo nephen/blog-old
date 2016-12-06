@@ -30,7 +30,11 @@ layout: default
 <hr style="height:5px;border:none;border-top:5px ridge green;" />
 <h4 id="Work">工作经历</h4>
 <ul>
-	<li>深圳市汇顶科技股份有限公司      现场应用工程师      2016.7-
+	<dl>
+		<dt>深圳市汇顶科技股份有限公司</dt>
+		<dd>1. 现场应用工程师      2016.7-</dd>
+		<dd>2. 软件开发工程师      2016.11-</dd>
+	</dl>
 		<dl>
 		            <dt>工作职责：</dt>
 		            <dd>1. 为电容触控芯片、指纹识别芯片的应用提供技术支持，指导客户完成产品设计及应用；</dd>
@@ -41,6 +45,5 @@ layout: default
 	</li>
 </ul>
 <hr style="height:5px;border:none;border-top:5px ridge green;" />
-<h4 id="Work">论文发表</h4>
 <ul>
 </ul>
