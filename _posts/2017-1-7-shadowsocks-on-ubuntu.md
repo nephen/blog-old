@@ -6,7 +6,7 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2017-01-08 01:31:43 Utk
+update: 2017-01-08 01:34:26 Utk
 ---
 <br>
 #shadowsocks服务器搭建
@@ -22,7 +22,6 @@ Windows的版本就不多说了，很多例子，上面的链接中也给出了�
     ```sh
     sudo apt-get install qrencode libbotan1.10-dev libqrencode-dev libzbar0 libappindicator1 libzbar-dev appindicator-0.1 libappindicator-dev
     ``` 
-
 <!--more-->
 2. 下载[libQtShadowsocks源码](https://github.com/shadowsocks/libQtShadowsocks/releases)，完成库的[编译](https://github.com/shadowsocks/libQtShadowsocks/wiki/Compiling)，因为后面的GUI会用到。
 3. 下载[界面应用](https://github.com/shadowsocks/shadowsocks-qt5/releases)，然后进行编译，但是需要安装依赖项，第一步已经进行。然后进行安装即可。
