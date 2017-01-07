@@ -2,9 +2,9 @@
 
 name: 来风的官方网站
 description: 来风，英文ID：Lever，生于1993，嵌入式工程师，无人机爱好者。
-plan1: 学习开源飞控，实现无人机室内定点定高飞行。
-plan2: 研究算法基础。
-plan3: 看几本文学相关的书。
+plan1: 研究Marlin、IK、TP等相关。
+plan2: 读想历史人文《曾国藩》。
+plan3: 跑步、锻炼、出游。
 
 # url is currently only used only for the RSS feed in feed.xml
 url: http://www.nephen.com
