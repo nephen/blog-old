@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-12-06 00:58:04 Utk
+update: 2017-01-07 22:57:58 Utk
 ---
 >[消息](http://px4.io/px4-website-relaunched-online/)：pixhawk网站搬迁至[px4.io](http://px4.io) !!!     
 
@@ -134,7 +134,7 @@ make成功后如下：
 	~ $ git submodule update --init --recursive
 	```
 - 子模组问题    
-	无法在子模组路径 'mavlink/include/mavlink/v2.0' 中检出 '914eafd83851c499302aeb6f702da9069006f8f0'，一般删掉mavlink目录重新update就好了。
+	无法在子模组路径 'mavlink/include/mavlink/v2.0' 中检出 '914eafd83851c499302aeb6f702da9069006f8f0'，一般删掉mavlink目录重新update就好了。或者先git submodule sync --recursive同步，再git submodule update --init --recursive更新。
 
 - 需要重新编译   
 	如果之前编译是可以的，更新后不能编译，试着删除根目录build_*文件夹，然后重新编译。 
