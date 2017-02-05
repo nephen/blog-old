@@ -104,3 +104,8 @@ fotowall折腾半天，看看可爱的小公举～
 终于回家见到它了，简直爱不释手呀。
 
 	<img src="/images/udog.jpg">
+
+- 2017.2.1   
+深夜检讨。
+
+	<img src="/images/syjt.jpg">
