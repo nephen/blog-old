@@ -5,7 +5,7 @@ categories: "work_lifes"
 author: Lever
 tags: 大学
 comments: true
-update: 2016-04-27 01:42:47 Utk
+update: 2017-02-20 21:43:42 Utk
 ---
 <br>
 #环境搭建
@@ -24,6 +24,7 @@ source ~/.bashrc
 sudo apt-get install python-rosinstall
 ```
 
+<!--more-->
 #操作教程
 开始[基本操作](http://wiki.ros.org/ROS/Tutorials)。   
 
@@ -442,9 +443,9 @@ source ~/ws_moveit/devel/setup.bash # or .zsh, depending on your shell
 - [moveit_kinematics_tests](https://github.com/ros-planning/moveit_kinematics_tests) - 带测试的实验性repo
 
 ##RViz
-基于GUI的界面可通过使用MoveIt! Rviz(ROS Visualizer)插件,该插件允许您设置机器人的工作场景，生成计划，可视化输出和直接与可视化的机器人交互。
+基于GUI的界面可通过使用MoveIt! Rviz(ROS Visualizer)插件,该插件允许您设置机器人的工作场景，生成计划，可视化输出和直接与可视化的机器人交互。   
 
-你应该已经完成​​了MoveIt！安装助手教程，如果没有，安装如下，Setup Assistant是一个图形用户界面，用于配置与MoveIt一起使用的任何机器人！
+你应该已经完成​​了MoveIt！安装助手教程，如果没有，安装如下，Setup Assistant是一个图形用户界面，用于配置与MoveIt一起使用的任何机器人！   
 
 ```sh
 roslaunch moveit_setup_assistant setup_assistant.launch
