@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "ROS学习进度简报"
+title:  "Moveit在ROS Kinetic上的搭建与调试"
 categories: "work_lifes"
 author: Lever
 tags: 大学
 comments: true
-update: 2017-02-20 21:43:42 Utk
+update: 2017-02-20 21:48:04 Utk
 ---
 <br>
 #环境搭建
