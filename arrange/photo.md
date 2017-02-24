@@ -3,7 +3,7 @@ layout: default
 permalink: /photo/
 ---
 
-<center><h3>时光记忆站<i><small>---这是我们恋爱<span id=result2></span>天纪念日</small></i></h3></center>
+<center><h3>༺ 时光记忆站 ༻<i><small>---这是我们恋爱<span id=result2></span>天纪念日</small></i></h3></center>
 
 我们梦想着：   
 

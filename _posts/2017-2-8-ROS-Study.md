@@ -5,7 +5,7 @@ categories: "work_lifes"
 author: Lever
 tags: 大学
 comments: true
-update: 2017-02-20 21:48:04 Utk
+update: 2017-02-24 22:49:35 Utk
 ---
 <br>
 #环境搭建
@@ -445,7 +445,7 @@ source ~/ws_moveit/devel/setup.bash # or .zsh, depending on your shell
 ##RViz
 基于GUI的界面可通过使用MoveIt! Rviz(ROS Visualizer)插件,该插件允许您设置机器人的工作场景，生成计划，可视化输出和直接与可视化的机器人交互。   
 
-你应该已经完成​​了MoveIt！安装助手教程，如果没有，安装如下，Setup Assistant是一个图形用户界面，用于配置与MoveIt一起使用的任何机器人！   
+你应该已经完成​​了MoveIt！安装助手教程，如果没有，安装如下，Setup [Assistant](http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html)是一个图形用户界面，用于配置与MoveIt一起使用的任何机器人！   
 
 ```sh
 roslaunch moveit_setup_assistant setup_assistant.launch
@@ -469,3 +469,5 @@ Setup Assistant允许您将某些固定姿势添加到配置中。例如，如�
 单击Configuration Files 窗格。为要生成的ROS包选择一个包含新配置文件集的位置和名称（例如，点击浏览，选择一个好的位置（例如您的家庭目录）。
 
 Setup Assistant现在将生成并将一组启动和配置文件写入您选择的目录中。
+
+继续进行[RViz Plugin](http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/ros_visualization/visualization_tutorial.html)。
