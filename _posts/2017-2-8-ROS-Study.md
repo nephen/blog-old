@@ -5,7 +5,7 @@ categories: "work_lifes"
 author: Lever
 tags: 大学
 comments: true
-update: 2017-02-24 22:49:35 Utk
+update: 2017-03-02 01:25:51 Utk
 ---
 <br>
 #环境搭建
@@ -25,7 +25,7 @@ sudo apt-get install python-rosinstall
 ```
 
 <!--more-->
-#操作教程
+#基础ROS操作教程
 开始[基本操作](http://wiki.ros.org/ROS/Tutorials)。   
 
 ##基础环境
@@ -407,7 +407,76 @@ export EDITOR='emacs -nw'
 ##创建ROS msg和srv
 这部分将介绍如何创建和构建msg和srv文件以及rosmsg，rossrv和roscp命令行工具。
 
-##URDF
+##初学URDF
+从这里开始学习[URDF](http://wiki.ros.org/urdf/Tutorials)，首先构建一个模糊地看起来像R2D2的机器人的[视觉模型](http://wiki.ros.org/urdf/Tutorials/Building%20a%20Visual%20Robot%20Model%20with%20URDF%20from%20Scratch)。
+
+```sh
+#前提条件
+sudo apt-get install ros-kinetic-urdf-tutorial
+#会安装到/opt/ros/kinetic/share/urdf_tutorial
+```
+
+第一个简单的URDF例子，这是一个名为myfirst的机器人，它只包含一个关节（a.k.a. part），其视觉分量只是一个圆柱体.6米长，半径为.2米，视觉元素（圆柱）的原点在其几何的中心作为默认值。因此，一半的气缸在网格之下。运行如下
+
+```sh
+roscd urdf
+roslaunch urdf_tutorial display.launch model:=urdf/01-myfirst.urdf
+#或者直接在任意路径运行
+roslaunch urdf_tutorial display.launch model:='$(find urdf_tutorial)/urdf/01-myfirst.urdf'
+#请注意参数值周围的单引号
+```
+
+现在让我们来看看如何添加多个形状/关节，关节是根据父母和孩子来定义的。 URDF最终是一个具有一个根链路的树结构。这意味着腿的位置取决于base_link的位置。
+
+```sh
+roslaunch urdf_tutorial display.launch model:=urdf/02-multipleshapes.urdf 
+#树状结果如下：
+ <joint name="base_to_right_leg" type="fixed">
+    <parent link="base_link"/>
+    <child link="right_leg"/>
+  </joint>
+```
+
+如果要更改原点坐标呢？
+
+关节点Joint的原点是根据父节点的参考帧定义的，分析的时候其余的坐标都是相对关节点而言的。
+
+```sh
+roslaunch urdf_tutorial display.launch model:=urdf/03-origins.urdf 
+```
+
+怎么给自己的零件着色呢？
+
+身体现在是蓝色的。通过添加第一个材质标签，我们定义了一种名为“蓝色”的新材料，红色，绿色，蓝色和alpha通道分别定义为0,0，.8和1。所有值可以在范围[0,1]内。对于第二条腿，我们可以通过名称来引用材料，因为它以前已经定义。没有人会抱怨，如果你重新定义它。您还可以使用纹理来指定用于对对象着色的图像文件。
+
+如下：
+
+```sh
+roslaunch urdf_tutorial display.launch model:=urdf/04-materials.urdf 
+```
+
+更多：网格可以以多种不同的格式导入。 STL是相当普遍的，但引擎还支持DAE，它可以有自己的颜色数据，这意味着你不必指定颜色数据。网格也可以使用相对缩放参数或边界框大小来确定大小。
+
+##使用URDF构建可移动机器人模型
+
+这部分了解如何在URDF中定义[活动关节](http://wiki.ros.org/urdf/Tutorials/Building%20a%20Movable%20Robot%20Model%20with%20URDF)，关节三种其他重要类型的连接：固定，连续，旋转和棱柱。
+
+```sh
+roslaunch urdf_tutorial display.launch model:=urdf/06-flexible.urdf gui:=True
+```
+
+右和左夹爪接头被建模为旋转接头。这意味着它们以与连续关节相同的方式旋转，但是它们具有严格的限制。夹持臂是不同类型的接头...即棱柱形接头。这意味着它沿着一个轴移动，而不是围绕一个轴移动。这种平移运动允许我们的机器人模型延伸和缩回其夹持臂。此外，浮动接头不受约束，并且可以在三个维度中的任一个中移动。
+
+当您在GUI中移动滑块时，模型在Rviz中移动。这是怎么做的？
+
+首先GUI解析URDF并找到所有非固定关节及其限制，然后，它使用滑块的值来发布sensor_msgs / JointState消息。
+
+##Anno URDF
+
+```sh
+rosrun tf static_transform_publisher 0.0 0.0 0.0 0.0 0.0 0.0 map my_frame 100
+#note: in most cases, Linux runs on top of a case-sensitive file system, which means that file.STL is not the same as file.stl. Make sure base_3.stl is not actually base_3.STL. This is a common problem with urdfs and meshes created under Windows, and then copied to your Linux installation.
+```
 
 #Moveit
 ##安装
@@ -449,25 +518,107 @@ source ~/ws_moveit/devel/setup.bash # or .zsh, depending on your shell
 
 ```sh
 roslaunch moveit_setup_assistant setup_assistant.launch
+#当出现问题：ERROR: cannot launch node of type [moveit_ros_move_group/move_group]: can't locate node [move_group] in package [moveit_ros_move_group]时，重新source一下setup.sh文件
 #点击Create New MoveIt! Configuration Package
 #browse选择/opt/ros/kinetic/share/pr2_description/robots/pr2.urdf.xacro
 #load files
 ```
 
-默认自碰撞矩阵生成器在机器人上搜索可以安全地禁用碰撞检查的链接对，从而减少运动计划处理时间。点击Self-Collisions面板，然后Regenerate Default Collision Matrix。
+注意：配置anno机械臂时，将package包文件夹robot_anno_v6移动到/opt/ros/kinetic/share，然后加载/opt/ros/kinetic/share/robot_anno_v6/urdf/RobotAnnoV6.urdf文件进行配置。
 
-虚拟关节表示机器人的基部在平面中的运动。点击Virtual Joints面板，Add Virtual Joint，命名为virtual_joint，child link为base_footprint，parent frame为odom_combined，关节类型为planar，最后点击保存。
+在添加arm的时候，不要把forearm_cam_frame_joint加进去了！
 
-规划组用于语义描述机器人的不同部分，例如定义手臂是什么，或末端执行器。点击Planning Groups面板进行设置，选择的时候右边会有颜色提示。
+安装配置完成后，继续进行[RViz Plugin](http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/ros_visualization/visualization_tutorial.html)。
 
-Setup Assistant允许您将某些固定姿势添加到配置中。例如，如果您想将机器人的某个位置定义为初始位置，这将有所帮助。注意姿态如何与特定组相关联。您可以为每个组保存单独的姿势。尝试移动所有关节。如果你的URDF的联合限制有问题，你应该可以立即看到它。
+```sh
+mv ~/pr2_moveit_generated ~/kinetic_workspace/sandbox
+#或者修改~/.bashrc文件，注意加在最末尾
+export ROS_PACKAGE_PATH=$HOME/ws_moveit/src:$ROS_PACKAGE_PATH
+#然后启动包
+roslaunch pr2_moveit_generated demo.launch
+#如有错误
+sudo apt-get install ros-kinetic-moveit-ros-visualization
+sudo apt-get install ros-kinetic-moveit-fake-controller-manager
+sudo apt-get install ros-kinetic-moveit-planners-ompl
+```
 
-我们已经添加了PR2的左右夹子。现在，我们将这两个组指定为特殊组：末端效应器。将这些组指定为末端执行器允许在内部发生某些特殊操作。
+在上面这个界面的使用过程中，可以移动手臂，并能追踪移动的整个轨迹过程。
 
-被动接头突出部旨在允许指定可能存在于机器人中的任何被动接头。这告诉规划者他们不能（运动学）计划这些关节。被动关节的示例包括被动脚轮。
+您现在可以开始使用MoveIt！[在Gazebo中模拟机器人](http://picknik.io/moveit_wiki/index.php?title=PR2/Gazebo/Quick_Start)。
 
-单击Configuration Files 窗格。为要生成的ROS包选择一个包含新配置文件集的位置和名称（例如，点击浏览，选择一个好的位置（例如您的家庭目录）。
+MoveIt! 设计用于真实和模拟机器人。这部分了解如何配置MoveIt！用于PR2上的控制器，还将学习如何将传感器集成到PR2上与MoveIt！
 
-Setup Assistant现在将生成并将一组启动和配置文件写入您选择的目录中。
+```sh
+#前提条件
+sudo apt-get install ros-kinetic-pr2-common
+#以下编辑的内容见原网页记载
+vi controllers.yaml
+vi pr2_moveit_controller_manager.launch.xml
+vi moveit_planning_execution.launch
+roslaunch pr2_moveit_generated moveit_planning_execution.launch
+```
 
-继续进行[RViz Plugin](http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/ros_visualization/visualization_tutorial.html)。
+上面的gazo包过时了，有些操作不一定可用，更多参考[gazebo_ros_pkgs](http://wiki.ros.org/gazebo_ros_pkgs)。
+
+gazebo_ros_pkgs是一组ROS包，它们提供必要的接口来在机器人的Gazebo 3D刚体模拟器中模拟机器人。它使用ROS消息，服务和动态重新配置与ROS集成。
+
+##Move Group Interface
+
+首先看一个[轨迹视频](https://www.youtube.com/watch?v=4FSmZRQh37Q&feature=youtu.be)，下面仔细分析是怎么做到的？参考[Move Group Interface Tutorial](http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/pr2_tutorials/planning/src/doc/move_group_interface_tutorial.html)。
+
+```sh
+cd ~/ws_moveit/src
+git clone https://github.com/ros-planning/moveit_tutorials.git
+git clone https://github.com/PR2/pr2_common.git -b kinetic-devel
+git clone https://github.com/davetcoleman/pr2_moveit_config.git
+rosdep install --from-paths . --ignore-src --rosdistro kinetic
+roslaunch pr2_moveit_config demo.launch
+#如果出现节点问题，记得source
+roslaunch moveit_tutorials move_group_interface_tutorial.launch
+```
+
+具体程序源码分析见[原文](http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/pr2_tutorials/planning/src/doc/move_group_interface_tutorial.html)，主要为Setup、Visualization、获取基本信息、Planning to a Pose goal、可视化计划、移动到姿势目标、规划联合空间目标、规划与路径约束、笛卡尔路径、添加/删除对象和附加/分离对象、双臂姿势目标。
+
+##Move Group Python Interface
+
+主用户是通过RobotCommander类进行交互，它为用户可能想要执行的大多数操作提供功能，特别是设置关节或姿势目标，创建运动计划，移动机器人，将对象添加到环境中以及从机器人附加/分离对象。
+
+例程分析见如下，源码里面也有响应的代码解读。
+
+```sh
+cd ~/ws_moveit/src/moveit_tutorials
+vi doc/pr2_tutorials/planning/scripts/move_group_python_interface_tutorial.py +43
+```
+
+这一部分跟上一部分的源码分析差不多，可以参考着进行分析，只是整个定义了一个python函数move_group_python_interface_tutorial，最后运行main函数即可，其中launch文件见~/ws_moveit/src/moveit_tutorials/doc/pr2_tutorials/planning/launch/move_group_python_interface_tutorial.launch。
+
+```sh
+chmod +x ~/ws_moveit/src/moveit_tutorials/doc/pr2_tutorials/planning/scripts/move_group_python_interface_tutorial.py
+roslaunch pr2_moveit_config demo.launch
+rosrun moveit_tutorials move_group_python_interface_tutorial.py
+#需要安装commander相关的软件包，通过apt-cache search moveit可以查看到应该安装如下
+sudo apt-get install ros-kinetic-moveit-commander
+```
+
+在Rviz中，可以看到如程序中安排的输出情况。
+
+##Kinematic Model Tutorial
+
+在本节中，将介绍通过C ++ API使用运动学。RobotModel和RobotState类是允许访问运动学的核心类。具体内容见[原网页](http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/pr2_tutorials/kinematics/src/doc/kinematic_model_tutorial.html)，这部分介绍到了IK和FK。
+
+```sh
+#例程原函数
+vi ~/ws_moveit/src/moveit_tutorials/doc/pr2_tutorials/kinematics/src/kinematic_model_tutorial.cpp
+```
+
+对该CPP文件的编译参考[源码编译](http://moveit.ros.org/install/source/)，如果要运行该段程序，需要launch做的事情：
+
+    - 将PR2 URDF和SRDF上传到param服务器。
+    - 将kinematics_solver配置上传到ROS param服务器。
+
+最后运行如下：
+
+```sh
+roslaunch moveit_tutorials kinematic_model_tutorial.launch
+```
+
