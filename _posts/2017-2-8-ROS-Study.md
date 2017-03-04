@@ -5,7 +5,7 @@ categories: "work_lifes"
 author: Lever
 tags: 大学
 comments: true
-update: 2017-03-02 01:25:51 Utk
+update: 2017-03-05 00:57:15 Utk
 ---
 <br>
 #环境搭建
@@ -524,7 +524,7 @@ roslaunch moveit_setup_assistant setup_assistant.launch
 #load files
 ```
 
-注意：配置anno机械臂时，将package包文件夹robot_anno_v6移动到/opt/ros/kinetic/share，然后加载/opt/ros/kinetic/share/robot_anno_v6/urdf/RobotAnnoV6.urdf文件进行配置。
+注意：配置anno机械臂时，将package包文件夹robot_anno_v6移动到/opt/ros/kinetic/share，然后加载/opt/ros/kinetic/share/robot_anno_v6/urdf/RobotAnnoV6.urdf文件进行配置。或者建立自己的catkin_ws，里面放自己的package。
 
 在添加arm的时候，不要把forearm_cam_frame_joint加进去了！
 
@@ -622,3 +622,44 @@ vi ~/ws_moveit/src/moveit_tutorials/doc/pr2_tutorials/kinematics/src/kinematic_m
 roslaunch moveit_tutorials kinematic_model_tutorial.launch
 ```
 
+#rosserial_arduino
+
+本部分介绍如何设置Arduino IDE来使用rosserial。rosserial提供了一个ROS通信协议，使用你的Arduino的UART工作。它允许您的Arduino成为一个完整的ROS节点，可以直接发布和订阅ROS消息，发布TF变换，并获得ROS系统时间。
+
+我们的ROS绑定​​实现为Arduino库。像所有的Arduino库一样，ros_lib的工作原理是把它的库实现放到你的素描本的libraries文件夹中。
+
+为了在你自己的代码中使用rosserial库，你必须先放
+
+```sh
+#include <ros.h>
+#include <std_msgs/String.h>
+```
+
+##安装
+
+```sh
+sudo apt-get install ros-kinetic-rosserial-arduino
+sudo apt-get install ros-kinetic-rosserial
+```
+前面的安装步骤创建ros_lib，它必须复制到Arduino构建环境中，以使Arduino程序与ROS交互。现在你已经从源代码或debs安装，所有你需要做的是将rosserial_arduino / libraries目录复制到你的Arduino sketchbook。
+
+```sh
+ cd /opt/arduino-1.6.7/libraries
+rm -rf ros_lib
+rosrun rosserial_arduino make_libraries.py .
+```
+
+重新启动IDE后，您应该看到ros_lib列在示例下：
+
+<img src="http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup?action=AttachFile&do=get&target=arduino_ide_examples_screenshot.png">
+
+##hello world
+
+我们将开始探索rosserial，为我们的Arduino创建一个“hello world”程序。选择示例-ros_lib-HelloWorld，进行编译上传，如果编译不通过，检查roslib创建的是否有问题。然后分别在各个窗口输入：
+
+```sh
+roscore
+rosrun rosserial_python serial_node.py /dev/ttyACM0
+rostopic echo chatter
+#如果Arduino与ros通信想使用Arduino硬件的其它的Uart端口，可以更改vi /opt/arduino-1.6.7/libraries/ros_lib/ArduinoHardware.h +72为其他数字，默认为Uart0
+```

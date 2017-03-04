@@ -87,6 +87,7 @@ set noet ft=cmake fenc=utf-8 ff=unix
 4. shitf + ctrl + 箭头移动终端屏幕
 5. gedit中按ctrl + shift + L 保存所有并自动匹配语言类型，atl + 上下箭头移动一行，shift + home选中一行，ctrl + end至文章末尾，首选项里可以更改制表符大小
 6. sudo apt-get install tree，使用tree .查看文件结构。
+7. sudo rmmod intel_powerclamp ，耗内存的解决办法。
 
 新发现
 --------
