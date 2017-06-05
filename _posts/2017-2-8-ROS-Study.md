@@ -5,7 +5,7 @@ categories: "work_lifes"
 author: Lever
 tags: 大学
 comments: true
-update: 2017-03-05 00:57:15 Utk
+update: 2017-06-06 07:23:34 Utk
 ---
 <br>
 #环境搭建
@@ -341,6 +341,14 @@ rosparam load params.yaml copy
 rosparam get /copy/background_b
 ```
 
+##手工创建一个ROS包
+你的包有一个清单，ROS可以找到它。尝试执行命令:
+
+```sh
+rospack find foobar
+```
+另外是要创建CMakeLists，才能进行编译。
+
 ##使用rqt_console和roslaunch
 这部分介绍使用rqt_console和rqt_logger_level进行调试的ROS，以及一次性启动多个节点的roslaunch。
 
@@ -478,6 +486,93 @@ rosrun tf static_transform_publisher 0.0 0.0 0.0 0.0 0.0 0.0 map my_frame 100
 #note: in most cases, Linux runs on top of a case-sensitive file system, which means that file.STL is not the same as file.stl. Make sure base_3.stl is not actually base_3.STL. This is a common problem with urdfs and meshes created under Windows, and then copied to your Linux installation.
 ```
 
+##关于Xacro
+
+学习一些技巧，使用Xacro URDF以减少文件中的代码量。主要从三个方面入手：常量、简单数学、宏。在本教程中，我们将查看所有这些快捷方式，以帮助减少URDF文件的整体大小，并使其更易于阅读和维护。语法如下：
+
+```sh
+ rosrun xacro xacro model.xacro > model.urdf 
+ ```
+
+ 您还可以在启动文件中自动生成urdf。这是方便的，因为它保持最新，不占用硬盘空间。但是，生成需要时间，因此请注意，启动文件可能需要较长时间才能启动。
+
+ ```sh
+<param name="robot_description"
+  command="$(find xacro)/xacro '$(find pr2_description)/robots/pr2.urdf.xacro'" />
+ ```
+
+ 在URDF文件的顶部，您必须指定一个命名空间，以便正确解析该文件。例如，这些是有效xacro文件的前两行：
+
+ ```sh
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="firefighter">
+ ```
+
+ 常量定义：它们可以在任何地方（假设有效的XML），任何级别，使用之前或之后定义。通常他们在顶部。我们使用美元符号和大括号来表示值，而不是在geometry元素中指定实际半径。
+
+ ```sh
+<xacro:property name="width" value=".2" />
+<xacro:property name="bodylen" value=".6" />
+ ```
+
+您可以使用四个基本操作（+， - ，*，/），一元减号和括号在$ {}构造中构建任意复杂的表达式。不支持指数和模量。
+
+```sh
+<cylinder radius="${wheeldiam/2}" length=".1"/>
+<origin xyz="${reflect*(width+.02)} 0 .25" />
+```
+
+宏定义部分：
+
+```sh
+<xacro:macro name="default_origin">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+</xacro:macro>
+#使用：<xacro：$ NAME />的每个实例都将替换为xacro：macro标记的内容。
+#注意，即使它不完全相同（两个属性已切换顺序），生成的XML是等效的。
+#如果找不到具有指定名称的xacro，它将不会被展开，也不会产生错误。
+<xacro:default_origin />
+```
+
+参数化宏：
+
+```sh
+<xacro:macro name="default_inertial" params="mass">
+        <inertial>
+                <mass value="${mass}" />
+                <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                     iyy="1.0" iyz="0.0"
+                     izz="1.0" />
+        </inertial>
+</xacro:macro>
+#调用的时候如下，参数化宏，以使它们不会每次都生成相同的确切文本，mass表示给其参数传递实参
+<xacro:default_inertial mass="10"/>
+#也可以使用整个块作为参数
+<xacro:insert_block name="shape" />
+```
+
+要查看由xacro文件生成的模型，请运行以下命令：roslaunch urdf_tutorial xacrodisplay.launch model:=urdf/08-macroed.urdf.xacro
+
+##解析PR2 Robot URDF
+
+本教程解释了复杂机器人（如PR2）的顶级URDF Xacro文件的布局。完整的PR2 URDF宏文件可以在文件robots / pr2.urdf.xacro中的pr2_description包中找到。
+
+包括用于单个机器人组件的包含xacro宏的文件。这就像在C中包含一个头文件：它设置了一堆定义，但实际上不调用它们。
+
+##建立自己的Robot URDF
+
+```sh
+vi my_robot.urdf
+check_urdf my_robot.urdf
+```
+
+现在我们有了基本的树结构，让我们添加适当的维度。包括关节的定位与旋转轴的设定。最后转换成PDF进行查看。
+
+```sh
+urdf_to_graphiz my_robot.urdf
+evince test_robot.pdf
+```
+
 #Moveit
 ##安装
 安装ROS Indigo，Jade或Kinetic。请确保您已遵循所有步骤并安装了最新版本的软件包。
@@ -524,7 +619,7 @@ roslaunch moveit_setup_assistant setup_assistant.launch
 #load files
 ```
 
-注意：配置anno机械臂时，将package包文件夹robot_anno_v6移动到/opt/ros/kinetic/share，然后加载/opt/ros/kinetic/share/robot_anno_v6/urdf/RobotAnnoV6.urdf文件进行配置。或者建立自己的catkin_ws，里面放自己的package。
+注意：配置anno机械臂时，将package包文件夹robot_anno_v6移动到/opt/ros/kinetic/share或ws_moveit，然后加载/opt/ros/kinetic/share/robot_anno_v6/urdf/RobotAnnoV6.urdf文件进行配置。或者建立自己的catkin_ws，里面放自己的package。
 
 在添加arm的时候，不要把forearm_cam_frame_joint加进去了！
 
@@ -540,6 +635,8 @@ roslaunch pr2_moveit_generated demo.launch
 sudo apt-get install ros-kinetic-moveit-ros-visualization
 sudo apt-get install ros-kinetic-moveit-fake-controller-manager
 sudo apt-get install ros-kinetic-moveit-planners-ompl
+#重新更改配置
+roslaunch abb_moveit_config setup_assistant.launch
 ```
 
 在上面这个界面的使用过程中，可以移动手臂，并能追踪移动的整个轨迹过程。
@@ -663,3 +760,6 @@ rosrun rosserial_python serial_node.py /dev/ttyACM0
 rostopic echo chatter
 #如果Arduino与ros通信想使用Arduino硬件的其它的Uart端口，可以更改vi /opt/arduino-1.6.7/libraries/ros_lib/ArduinoHardware.h +72为其他数字，默认为Uart0
 ```
+
+#工业机器人
+资料地址：[abb](http://wiki.ros.org/abb/Tutorials)/[首页](http://wiki.ros.org/Industrial/Tutorials)/[ABBgithub](https://github.com/ros-industrial/abb)/[roswiki](http://www.roswiki.com/index.php?c=thread&fid=9)
