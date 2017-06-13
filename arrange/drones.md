@@ -24,7 +24,7 @@ Code Editor：[sublime text 2](http://www.nephen.com/2016/01/sublime-text2-in-li
 <br>
 #学习交流
 Gitter: [![Gitter](https://badges.gitter.im/nephen/YuningFly.svg)](https://gitter.im/nephen/YuningFly?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)   
-QQ talk: <i>995168694</i>   
+QQ/Wechat talk: <i>995168694/18682441907</i>   
 这里也说明一下，gitter是一个开放的交流平台，可以使用网页、电脑客户端、手机APP，并且Linux下也可以使用，在这里全世界的开发人员聚集交流，欢迎大家加入这个平台。
 
 <br>
