@@ -6,10 +6,10 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-12-06 00:58:04 Utk
+update: 2017-06-16 07:43:37 Utk
 ---
 <br>
-#JLinkGDBServer调试
+# JLinkGDBServer调试
 添加JLink到STM32F405RG，确保Vsupply接口存在电压。打开服务器端，这是arm-none-eabi-gdb调试的后台，如下。
 
 <!--more-->
@@ -57,7 +57,7 @@ Waiting for GDB connection...
 ```
 
 <br>
-#开始GDB调试
+# 开始GDB调试
 注意如下，在用户目录下面创建.gdbinit文件。   
 To enable execution of this file add
 	add-auto-load-safe-path /home/nephne/src/Bootloader/.gdbinit
@@ -88,7 +88,7 @@ arm-none-eabi-gdb crazyflie_bl.elf
 ```
 
 <br>
-#下载代码
+# 下载代码
 更新bootloader除了使用JLink也可以使用dfu-util工具。
 
 ```sh
@@ -163,7 +163,7 @@ index 4b25c99..289e655 100644
 ```
 
 <br>
-#更新固件
+# 更新固件
 更新固件，官网的方式为：
 
 ```sh
@@ -245,7 +245,7 @@ Rebooting.
 ```
 
 <br>
-#串口调试
+# 串口调试
 串口连接为PC10:E_TX1, PC11:E_RX1，连接usb转串口设备如下，当然我的外围设备都失败了。
 
 ```sh

@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-12-06 00:58:04 Utk
+update: 2017-06-16 07:43:37 Utk
 ---
 这篇文章主要记录学习NuttX的过程以及对NuttX的理解，并结合apm里的px4-v2例程设置进行说明。
 
@@ -23,7 +23,7 @@ update: 2016-12-06 00:58:04 Utk
 
 >Tip: 源码中apps/nshlib/README.txt即为说明书。
 
-##NSH 启动脚本。
+## NSH 启动脚本。
 NSH支持选项来为NSH提供一个启动脚本。一般来说这种能力是使能CONFIG_NSH_ROMFSETC启用，但是还有几个其他相关的[配置选项](http://nuttx.org/Documentation/NuttShell.html#nshconfiguration)，见这个链接里的描述。这种能力还取决于：
 
 * CONFIG_DISABLE_MOUNTPOINT 未设置
@@ -40,7 +40,7 @@ NSH支持选项来为NSH提供一个启动脚本。一般来说这种能力是�
 #define CONFIG_FS_ROMFS 1
 ```
 
-##默认启动行为。
+## 默认启动行为。
 所提供的这些做法目的是在为启动文件的使用提供极大的灵活性。本段将讨论所有配置选项设置为默认值时的一般行为。
 
 <!--more-->
@@ -109,7 +109,7 @@ NSH支持选项来为NSH提供一个启动脚本。一般来说这种能力是�
 
 `概要`。NuttShell (NSH)是一个简单的可用于NuttX的shell程序。它支持多种命令，是（非常）松散基于bash shell和用于unix shell编程的常用工具。本附录的段落将专注于定制NSH：添加新命令，改变初始化序列，等等。
 
-##3.1 NSH 库和NSH 初始化
+## 3.1 NSH 库和NSH 初始化
 
 `概要`。NSH是一个库，可以在apps/nshlib发现实现。作为一个库，它可以定制成任何遵循以下描述的NSH初始化序列中的应用。作为一个例子，在 apps/examples/nsh/nsh_main.c在的代码说明如何启动NSH，逻辑也适用于您自己的自定义代码。虽然代码生成简单的作为一个例子，在大多数人只是用这个例子的代码作为应用main()功能。在下面的段落中讨论了这个例子的初始化。
 
@@ -258,7 +258,7 @@ rcS模板文件能在apps/nshlib/rcS.template找到。由此产生的ROMFS文件
 
 3.*nsh_netinit()*：nsh_netinit()函数可以在apps/nshlib/nsh_netinit.c中发现。
 
-##3.2 NSH命令
+## 3.2 NSH命令
 
 `概要`。NSH支持多种命令，是NSH程序的一部分。所有的NSH命令都列在上面的NSH文档里。然而，并不是所有这些命令都可以在任何时候使用。许多命令取决于某些NuttX配置选项。你可以输入命令help在NSH提示后看到实际可用的命令：
 
@@ -329,7 +329,7 @@ argc和argv是用来传递命令行参数到NSH命令。命令行参数是在一
 # endif
 ```
 
-##3.3 NSH“内置”的应用
+## 3.3 NSH“内置”的应用
 
 `概要`。除了属于NSH一部分的命令之外，外部程序也可以作为NSH执行的命令。由于历史的原因这些外部程序被称之为“内置”应用。这个术语有点混乱，因为如上所述的实际的NSH命令是真正内置到NSH的，而这些应用是外接到NuttX的。
 
@@ -434,7 +434,7 @@ argc和argv是用来传递命令行参数到NSH命令。命令行参数是在一
 
 当然，即使CONFIG_SCHED_WAITPID=y定义，具体的应用程序仍然可以在NSH命令后添加符号（&）强制异步运行。
 
-##3.4 定制NSH初始化
+## 3.4 定制NSH初始化
 
 `定制NSH初始化的方法`。这里有三种方法来定制NSH启动行为。依照难易程度呈现如下：
 

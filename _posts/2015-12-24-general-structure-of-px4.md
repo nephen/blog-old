@@ -7,9 +7,9 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-12-06 00:58:04 Utk
+update: 2017-06-16 07:43:37 Utk
 ---
-#PX4源代码
+# PX4源代码
 PX4项目建立在这些主要软件模块:
 
 - PX4 Flight Stack (estimation and control, cross-platform)
@@ -58,7 +58,7 @@ PX4飞行栈和中间件可以在微控制器Nuttx小型操作系统上执行，
 ![cmake](http://static.oschina.net/uploads/space/2012/1102/210924_Gx9w_191887.jpg)
 
 <br>
-#代码运行分析
+# 代码运行分析
 >关于系统的启动过程请查看我之前文章里的[系统启动](/2015/12/RTOS-of-px4#1-3)。   
 
 知道了系统的启动过程，那么就知道代码运行的思路基本上就是脚本[rcS](https://github.com/PX4/Firmware/blob/master/ROMFS/px4fmu_common/init.d/rcS)的写法了，如果你想深入了解NSH启动脚本的自定义，可以参考[定制NSH初始化](/2015/12/RTOS-of-NuttX#1-5-4)，所以下面就从脚本开始看起。

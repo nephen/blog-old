@@ -6,12 +6,12 @@ author: Lever
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-05-30 13:44:44 Utk
+update: 2017-06-16 07:43:37 Utk
 ---
 由于sublime的多平台性，以及也有很多强悍的插件可供使用，是我不得不将兴趣移植这个编辑器上面来。将查看代码而言，在linux下也可以通过wine安装sourceinsight，但是对于安装跟使用来说不是很方便，特别是有git项目的时候。
 
 <br>
-#安装
+# 安装
 首先下载安装[文件](http://www.sublimetext.com/2)。将下载好的文件解压至/opt，然后创建链接文件。
 
 ```sh
@@ -67,8 +67,8 @@ sudo chmod 777 ./sublcn
 下面通过sublcn命令打开sublime text 2就可以输入中文了。
 
 <br>
-#查看代码
-##sublime快捷键    
+# 查看代码
+## sublime快捷键    
 参考文章：[木木木](https://immmmm.com/all-about-sublime-text-2.html)
 
 - 多行编辑： ctrl+左键 , Ctrl+Shift+L
@@ -113,12 +113,12 @@ sudo chmod 777 ./sublcn
 	{ "keys": ["ctrl+alt+o"], "command": "prompt_select_project" }
 	```
 
-##高亮设置
+## 高亮设置
 Sublime Text对于一些常见的扩展名的文件都能够识别并选择Sublime Text内置对应的高亮语法，但是对于一些使用频率比较少的扩展名文件就无法识别，Sublime Text打开此类文件后默认显示成普通文本，没有语法高亮。
 
 - 打开文件后点击右下角的Plain Text，在出现的文件格式中选择open all with current extension as…  ->"需要显示的语法类型"。这样以后打开这个类型的文件就会自动进行语法高亮了。
 
-##ctags与cscope
+## ctags与cscope
 下面就想通过sublime实现类似SI的功能，毕竟这个编辑器是比较强大的。具体方案为采用ctags和cscope插件。    
 下面参考[sublime添加ctags实现代码跳转](http://www.cnblogs.com/cchun/p/3794018.html)进行安装。具体为：  
 
@@ -208,7 +208,7 @@ Sublime Text对于一些常见的扩展名的文件都能够识别并选择Subli
 
 	进入cscope查找结果后，按回车即可进入结果相应页面。
 
-##sublime部分插件
+## sublime部分插件
 下面安装的这些插件可有可无，但是安装他们并熟练运用将成为你得力的助手。      
 参考文章：[实用的sublime插件集合 – sublime推荐必备插件](http://www.xuanfengge.com/practical-collection-of-sublime-plug-in.html)/[Sublime插件：C语言篇](http://www.jianshu.com/p/595975a2a5f3)
 
@@ -345,7 +345,7 @@ Sublime Text对于一些常见的扩展名的文件都能够识别并选择Subli
 
 
 <br>
-#工程设置
+# 工程设置
 建议参考[译:Sublime Text 2 项目设置](http://blog.jenux.me/?p=49)
 
 ```
@@ -413,7 +413,7 @@ Sublime Text对于一些常见的扩展名的文件都能够识别并选择Subli
 ```
 
 <br>
-#版本升级
+# 版本升级
 尝试使用新版本[sublime text 3](http://www.sublimetext.com/3)，安装方式如下
 
 ```sh

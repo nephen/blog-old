@@ -3,7 +3,7 @@ layout: default_index
 permalink: /about/
 ---
 
-##Blog platform
+## Blog platform
 This is my website <a href="http://indexed.webmasterhome.cn/?domain=www.nephen.com" target="_blank"><img src="http://images.webmasterhome.cn/images/indexed_cn.gif" width="80" height="15" border="0" align="absmiddle" alt="收录查询"></a>/[站长之家](http://zhanzhang.baidu.com/linksubmit/index?site=http://www.nephen.com/) based Jekyll theme,handsome theme like [[jekyllthemes]](http://jekyllthemes.org/)[[hexo.io/themes]](https://hexo.io/themes/)
 
 You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/) or [jekyllcn.com](http://jekyllcn.com/)
@@ -11,7 +11,7 @@ You can find out more info about customizing your Jekyll theme, as well as basic
 You can find the source code for the Jekyll new theme at [jekyll-new](https://github.com/jglovier/jekyll-new),the source code for Jekyll at [jekyll](https://github.com/jekyll/jekyll)
 
 <hr>
-##动态
+## 动态
 - 2016.2.2    
 	由于部分原因，本网站暂时由github迁移至gitcafe。
 - 2016.3.13    
@@ -82,7 +82,7 @@ $ echo gem 'pygments.rb' >> Gemfile
 The more info about [Blogging with Jekyll](https://help.github.com/articles/using-jekyll-with-pages/)/[GitCafe 官方帮助文档](https://gitcafe.com/GitCafe/Help/wiki/Pages-%E7%9B%B8%E5%85%B3%E5%B8%AE%E5%8A%A9#wiki)
 
 <hr>
-##Contributing
+## Contributing
 1. Fork it (http://www.github.com/nephen/nephen.github.io)
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
@@ -93,14 +93,14 @@ The more info about [Blogging with Jekyll](https://help.github.com/articles/usin
 如果你对GIT不太熟悉，请参考[Git教程-廖雪峰的官方网站](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)/[git BOOK](https://git-scm.com/book/zh/v2)
 
 <hr>
-##TODO
+## TODO
 
 - 归档应该增加分类功能。
 - 段落边框覆盖了文中链接。
 - Kramdown被设为默认的Markdown 处理器。
 
 <hr>
-##Notices
+## Notices
 `您可以自由地：`
 
 分享 — 在任何媒介以任何形式复制、发行本作品 
@@ -121,7 +121,7 @@ The more info about [Blogging with Jekyll](https://help.github.com/articles/usin
 
 <hr>
 <div id="donate" class="target">
-##Donate
+## Donate
 
 如果您认为本网站的文章质量不错，读后觉得收获很大，预期工资涨幅能超过30%，不妨小额赞助我一下，让我有动力继续写出高质量的文章。
 
@@ -132,13 +132,13 @@ The more info about [Blogging with Jekyll](https://help.github.com/articles/usin
 </div>
 
 <hr>
-##Wechat
+## Wechat
 My lab's WeChat Subscription, welcome attention~
 
 <center><img src="/assets/wechat.png"/></center>
 
 <hr>
-##Visitor
+## Visitor
 <ul class="ds-recent-visitors"></ul>
 <!--多说js(最近访客)加载开始，一个页面只需要加载一次 -->
 <script type="text/javascript">

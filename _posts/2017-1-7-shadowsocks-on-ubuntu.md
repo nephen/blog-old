@@ -6,15 +6,15 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2017-01-08 01:34:26 Utk
+update: 2017-06-16 07:43:37 Utk
 ---
 <br>
-#shadowsocks服务器搭建
+# shadowsocks服务器搭建
 具体搭建过程参考[Centos搭建Shadowsocks的教程，并用浏览器成功访问Google](http://www.xxkwz.cn/1495.html)，    
 其中服务器可以使用帮瓦工的服务器，这个服务器除了做shadowsocks服务器外，还可以做GIT、APPACHE等，其实就是一个Centos系统，所以性价比还是蛮高的。
 
 <br>
-#shadowsocks客户端设置
+# shadowsocks客户端设置
 Windows的版本就不多说了，很多例子，上面的链接中也给出了，说明一下linux的系统，如Ubuntu。
 
 1. 安装依赖选项，否则下面编译会出错。

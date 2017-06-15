@@ -7,10 +7,10 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-12-06 00:58:04 Utk
+update: 2017-06-16 07:43:37 Utk
 ---
 <br>
-#编译pixhawk环境搭建
+# 编译pixhawk环境搭建
 参考[原网页](http://ardupilot.org/dev/docs/building-px4-for-linux-with-make.html)进行说明，有两种搭建环境的方式。   
 
 第一种为自动执行脚本(推荐)，较为方便，但有问题需解决。   
@@ -87,7 +87,7 @@ update: 2016-12-06 00:58:04 Utk
 
 
 <br>
-#参与贡献
+# 参与贡献
 
 wiki知识点：  
 
@@ -147,7 +147,7 @@ wiki知识点：
 	<img src="/images/creatpull.png">
 
 <br>
-#代码库
+# 代码库
 
 原文参考[这里](http://dev.ardupilot.com/wiki/learning-the-ardupilot-codebase/)!!!   
 
@@ -328,7 +328,7 @@ RC输出是ArduPilot控制伺服系统和电机，RC输出默认为50 hz PWM值�
 	一个很好的例子是AP_Terrain库,其中包含地形数据；是否支持可以从 [AP_HAL_Boards.h](https://github.com/diydrones/ardupilot/blob/master/libraries/AP_HAL/AP_HAL_Boards.h)查看HAVE_OS_POSIX_IO macro，还可以定义数据的存储位置；这个操作比较耗时，特别在飞行过程中不宜使用；可以看这个例子 [libraries/AP_Terrain/TerrainIO.cpp](https://github.com/diydrones/ardupilot/blob/master/libraries/AP_Terrain/TerrainIO.cpp)学会怎么使用Posix IO。
 
 <hr>
-#上位机安装
+# 上位机安装
 由于我使用的是Ubuntu, 所以我会想办法使Mission Planner上位机能在linux平台上运行，在pixhawk的官网上也发现了这样的[文章](https://pixhawk.org/users/ground_control_stations/start#apm_mission_planner)以及谷歌搜到的[文章](http://www.rcgroups.com/forums/showthread.php?t=2179591)。
 
 这里[mono](https://github.com/diydrones/MissionPlanner/blob/master/README.md)[版本](http://download.mono-project.com/sources/mono/)下载，参考[Install Mono on Linux](http://www.mono-project.com/docs/getting-started/install/linux/)安装mono
@@ -377,6 +377,6 @@ Program -> .NET (Framework) -> WINE -> System
 ```
 
 <hr>
-#参考文章
+# 参考文章
 User Manual: http://copter.ardupilot.com/    
 Developer Manual: http://dev.ardupilot.com/

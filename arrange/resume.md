@@ -30,6 +30,7 @@ layout: default
 <hr style="height:5px;border:none;border-top:5px ridge green;" />
 <h4 id="Work">工作经历</h4>
 <ul>
+	<li>
 	<dl>
 		<dt>深圳市汇顶科技股份有限公司</dt>
 		<dd>1. 现场应用工程师      2016.7-</dd>

@@ -5,10 +5,10 @@ categories: "work_lifes"
 author: Lever
 tags: 大学
 comments: true
-update: 2017-06-06 07:23:34 Utk
+update: 2017-06-16 07:43:37 Utk
 ---
 <br>
-#环境搭建
+# 环境搭建
 参考[官网](http://wiki.ros.org/kinetic/Installation/Ubuntu)，注意这里需要采用Ubuntu15.10或者16.04。   
 具体命令简写如下：
 
@@ -25,10 +25,10 @@ sudo apt-get install python-rosinstall
 ```
 
 <!--more-->
-#基础ROS操作教程
+# 基础ROS操作教程
 开始[基本操作](http://wiki.ros.org/ROS/Tutorials)。   
 
-##基础环境
+## 基础环境
 首先是配置ROS的[工作环境](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment)，创建新的工作空间。
 
 ```sh
@@ -56,7 +56,7 @@ echo $ROS_PACKAGE_PATH
 /home/your_user_name/fuerte_workspace/sandbox:/opt/ros/fuerte/share:/opt/ros/fuerte/stacks
 ```
 
-##ROS文件系统
+## ROS文件系统
 下一步为[ROS文件系统](http://wiki.ros.org/ROS/Tutorials/NavigatingTheFilesystem)。
 
 首先确保安装了ros-tutorials包。
@@ -100,7 +100,7 @@ rosls [locationname[/subdir]]
 
 注意：这些命令是支持Tab键补全的。
 
-##创建ROS Package
+## 创建ROS Package
 这部分涵盖使用roscreate-pkg或catkin创建新软件包，以及使用rospack列出软件包依赖关系。
 
 roscreate的用法：
@@ -127,7 +127,7 @@ rospack depends1 beginner_tutorials
 
 rospy是Python的客户端库， roscpp是C ++的客户端库。
 
-##编译ROS Package
+## 编译ROS Package
 这部分涵盖了构建包的工具链。
 
 一旦安装了所有的系统依赖关系，我们就可以构建我们刚刚创建的包。
@@ -138,7 +138,7 @@ rosmake可以编译一个也可以同时编译多个Package，用法如下：
 rosmake [package1] [package2] [package3]
 ```
 
-##理解ROS节点
+## 理解ROS节点
 这部分介绍ROS图形概念，并讨论使用roscore，rosnode和rosrun命令行工具。
 
 ROS节点可以使用客户端库与其他的节点进行沟通，节点可以发布或订阅主题，也可以提供或使用服务。
@@ -182,7 +182,7 @@ rosnode cleanup
 
 我们可以通过另外一个rosnode ping工具检验该节点是否跑起来了。
 
-##理解ROS Topics
+## 理解ROS Topics
 这部分介绍ROS主题以及使用rostopic和rqt_plot命令行工具。
 
 简单的例子，在两个Termenal分别运行node，然后可以通过方向按键控制海龟的前进方向。
@@ -264,7 +264,7 @@ rosrun rqt_plot rqt_plot
 #添加 /turtle1/pose/x   /turtle1/pose/y
 ```
 
-##理解ROS服务和参数
+## 理解ROS服务和参数
 服务是节点可以彼此通信的另一种方式。服务允许节点发送请求并接收响应。
 
 ```sh
@@ -341,7 +341,7 @@ rosparam load params.yaml copy
 rosparam get /copy/background_b
 ```
 
-##手工创建一个ROS包
+## 手工创建一个ROS包
 你的包有一个清单，ROS可以找到它。尝试执行命令:
 
 ```sh
@@ -349,7 +349,7 @@ rospack find foobar
 ```
 另外是要创建CMakeLists，才能进行编译。
 
-##使用rqt_console和roslaunch
+## 使用rqt_console和roslaunch
 这部分介绍使用rqt_console和rqt_logger_level进行调试的ROS，以及一次性启动多个节点的roslaunch。
 
 rqt_console附加到ROS的日志框架以显示节点的输出。rqt_logger_level允许我们在节点运行时更改节点的详细级别（DEBUG，WARN，INFO和ERROR）。
@@ -395,7 +395,7 @@ rostopic pub /turtlesim1/turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0,
 rqt_graph
 ```
 
-##使用rosed在ROS中编辑文件
+## 使用rosed在ROS中编辑文件
 rosed是rosbash套装的一部分。它允许您使用软件包名称直接编辑软件包中的文件，而不必键入软件包的整个路径。
 
 ```sh
@@ -412,10 +412,10 @@ export EDITOR='nano -w'
 export EDITOR='emacs -nw'
 ```
 
-##创建ROS msg和srv
+## 创建ROS msg和srv
 这部分将介绍如何创建和构建msg和srv文件以及rosmsg，rossrv和roscp命令行工具。
 
-##初学URDF
+## 初学URDF
 从这里开始学习[URDF](http://wiki.ros.org/urdf/Tutorials)，首先构建一个模糊地看起来像R2D2的机器人的[视觉模型](http://wiki.ros.org/urdf/Tutorials/Building%20a%20Visual%20Robot%20Model%20with%20URDF%20from%20Scratch)。
 
 ```sh
@@ -465,7 +465,7 @@ roslaunch urdf_tutorial display.launch model:=urdf/04-materials.urdf
 
 更多：网格可以以多种不同的格式导入。 STL是相当普遍的，但引擎还支持DAE，它可以有自己的颜色数据，这意味着你不必指定颜色数据。网格也可以使用相对缩放参数或边界框大小来确定大小。
 
-##使用URDF构建可移动机器人模型
+## 使用URDF构建可移动机器人模型
 
 这部分了解如何在URDF中定义[活动关节](http://wiki.ros.org/urdf/Tutorials/Building%20a%20Movable%20Robot%20Model%20with%20URDF)，关节三种其他重要类型的连接：固定，连续，旋转和棱柱。
 
@@ -479,14 +479,14 @@ roslaunch urdf_tutorial display.launch model:=urdf/06-flexible.urdf gui:=True
 
 首先GUI解析URDF并找到所有非固定关节及其限制，然后，它使用滑块的值来发布sensor_msgs / JointState消息。
 
-##Anno URDF
+## Anno URDF
 
 ```sh
 rosrun tf static_transform_publisher 0.0 0.0 0.0 0.0 0.0 0.0 map my_frame 100
 #note: in most cases, Linux runs on top of a case-sensitive file system, which means that file.STL is not the same as file.stl. Make sure base_3.stl is not actually base_3.STL. This is a common problem with urdfs and meshes created under Windows, and then copied to your Linux installation.
 ```
 
-##关于Xacro
+## 关于Xacro
 
 学习一些技巧，使用Xacro URDF以减少文件中的代码量。主要从三个方面入手：常量、简单数学、宏。在本教程中，我们将查看所有这些快捷方式，以帮助减少URDF文件的整体大小，并使其更易于阅读和维护。语法如下：
 
@@ -553,13 +553,13 @@ rosrun tf static_transform_publisher 0.0 0.0 0.0 0.0 0.0 0.0 map my_frame 100
 
 要查看由xacro文件生成的模型，请运行以下命令：roslaunch urdf_tutorial xacrodisplay.launch model:=urdf/08-macroed.urdf.xacro
 
-##解析PR2 Robot URDF
+## 解析PR2 Robot URDF
 
 本教程解释了复杂机器人（如PR2）的顶级URDF Xacro文件的布局。完整的PR2 URDF宏文件可以在文件robots / pr2.urdf.xacro中的pr2_description包中找到。
 
 包括用于单个机器人组件的包含xacro宏的文件。这就像在C中包含一个头文件：它设置了一堆定义，但实际上不调用它们。
 
-##建立自己的Robot URDF
+## 建立自己的Robot URDF
 
 ```sh
 vi my_robot.urdf
@@ -573,8 +573,8 @@ urdf_to_graphiz my_robot.urdf
 evince test_robot.pdf
 ```
 
-#Moveit
-##安装
+# Moveit
+## 安装
 安装ROS Indigo，Jade或Kinetic。请确保您已遵循所有步骤并安装了最新版本的软件包。
 
 ```sh
@@ -606,7 +606,7 @@ source ~/ws_moveit/devel/setup.bash # or .zsh, depending on your shell
 - [moveit_tutorials](https://github.com/ros-planning/moveit_tutorials) - 一步一步学习MoveIt的例子！
 - [moveit_kinematics_tests](https://github.com/ros-planning/moveit_kinematics_tests) - 带测试的实验性repo
 
-##RViz
+## RViz
 基于GUI的界面可通过使用MoveIt! Rviz(ROS Visualizer)插件,该插件允许您设置机器人的工作场景，生成计划，可视化输出和直接与可视化的机器人交互。   
 
 你应该已经完成​​了MoveIt！安装助手教程，如果没有，安装如下，Setup [Assistant](http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html)是一个图形用户界面，用于配置与MoveIt一起使用的任何机器人！   
@@ -659,7 +659,7 @@ roslaunch pr2_moveit_generated moveit_planning_execution.launch
 
 gazebo_ros_pkgs是一组ROS包，它们提供必要的接口来在机器人的Gazebo 3D刚体模拟器中模拟机器人。它使用ROS消息，服务和动态重新配置与ROS集成。
 
-##Move Group Interface
+## Move Group Interface
 
 首先看一个[轨迹视频](https://www.youtube.com/watch?v=4FSmZRQh37Q&feature=youtu.be)，下面仔细分析是怎么做到的？参考[Move Group Interface Tutorial](http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/pr2_tutorials/planning/src/doc/move_group_interface_tutorial.html)。
 
@@ -676,7 +676,7 @@ roslaunch moveit_tutorials move_group_interface_tutorial.launch
 
 具体程序源码分析见[原文](http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/pr2_tutorials/planning/src/doc/move_group_interface_tutorial.html)，主要为Setup、Visualization、获取基本信息、Planning to a Pose goal、可视化计划、移动到姿势目标、规划联合空间目标、规划与路径约束、笛卡尔路径、添加/删除对象和附加/分离对象、双臂姿势目标。
 
-##Move Group Python Interface
+## Move Group Python Interface
 
 主用户是通过RobotCommander类进行交互，它为用户可能想要执行的大多数操作提供功能，特别是设置关节或姿势目标，创建运动计划，移动机器人，将对象添加到环境中以及从机器人附加/分离对象。
 
@@ -699,7 +699,7 @@ sudo apt-get install ros-kinetic-moveit-commander
 
 在Rviz中，可以看到如程序中安排的输出情况。
 
-##Kinematic Model Tutorial
+## Kinematic Model Tutorial
 
 在本节中，将介绍通过C ++ API使用运动学。RobotModel和RobotState类是允许访问运动学的核心类。具体内容见[原网页](http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/pr2_tutorials/kinematics/src/doc/kinematic_model_tutorial.html)，这部分介绍到了IK和FK。
 
@@ -719,7 +719,7 @@ vi ~/ws_moveit/src/moveit_tutorials/doc/pr2_tutorials/kinematics/src/kinematic_m
 roslaunch moveit_tutorials kinematic_model_tutorial.launch
 ```
 
-#rosserial_arduino
+# rosserial_arduino
 
 本部分介绍如何设置Arduino IDE来使用rosserial。rosserial提供了一个ROS通信协议，使用你的Arduino的UART工作。它允许您的Arduino成为一个完整的ROS节点，可以直接发布和订阅ROS消息，发布TF变换，并获得ROS系统时间。
 
@@ -732,7 +732,7 @@ roslaunch moveit_tutorials kinematic_model_tutorial.launch
 #include <std_msgs/String.h>
 ```
 
-##安装
+## 安装
 
 ```sh
 sudo apt-get install ros-kinetic-rosserial-arduino
@@ -750,7 +750,7 @@ rosrun rosserial_arduino make_libraries.py .
 
 <img src="http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup?action=AttachFile&do=get&target=arduino_ide_examples_screenshot.png">
 
-##hello world
+## hello world
 
 我们将开始探索rosserial，为我们的Arduino创建一个“hello world”程序。选择示例-ros_lib-HelloWorld，进行编译上传，如果编译不通过，检查roslib创建的是否有问题。然后分别在各个窗口输入：
 
@@ -761,5 +761,5 @@ rostopic echo chatter
 #如果Arduino与ros通信想使用Arduino硬件的其它的Uart端口，可以更改vi /opt/arduino-1.6.7/libraries/ros_lib/ArduinoHardware.h +72为其他数字，默认为Uart0
 ```
 
-#工业机器人
+# 工业机器人
 资料地址：[abb](http://wiki.ros.org/abb/Tutorials)/[首页](http://wiki.ros.org/Industrial/Tutorials)/[ABBgithub](https://github.com/ros-industrial/abb)/[roswiki](http://www.roswiki.com/index.php?c=thread&fid=9)

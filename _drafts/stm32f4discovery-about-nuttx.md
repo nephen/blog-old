@@ -6,16 +6,16 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2016-09-17 13:39:38 Utk
+update: 2017-06-16 07:43:37 Utk
 ---
 由于在学习开源飞控的时候接触到了nuttx操作系统，这款实时操作系统与之前接触的uCOSII和FreeRTOS不一样，它是类unix的，故想深入的了解下，这对理解飞控甚至对嵌入式系统的理解都会相当有帮助。而stm32f4discovery可以作为它的学习板，而且官方网站也提供了相应如学习资料，所以选择它作为一个学习的切入点。下面是我个人学习过程的一个小记录。
 
 <br>
-#资料查找
+# 资料查找
 首先查找有关stm32f4discovery的资料，在意法半导体找到了[地址1](http://www.stmcu.org/search/?q=stm32f4discovery)/[地址2](http://www2.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/stm32f4discovery.html)。
 
 <br>
-#nuttx下载
+# nuttx下载
 将nuttx进行编译，然后下载至stm32f4discovery中，注意这块板子只能通过st-link下载，不要试图通过J-link下载！！！。
 
 <img src="/images/stlink2.png">
@@ -23,7 +23,7 @@ update: 2016-09-17 13:39:38 Utk
 文档上已经说明，可以通过板载的st-link下载该mcu程序，同时板载的st-link下载其他板子的mcu程序(需要拔掉跳线帽cn3)。
 
 <!--more-->
-##st-link安装下载
+## st-link安装下载
 下载[源代码](https://github.com/texane/stlink/releases)，然后进行如下的编译
 
 ```sh
@@ -61,6 +61,6 @@ Transfer rate: 38 KB/sec, 2930 bytes/write.
 ```
 
 <br>
-#参考资料
+# 参考资料
 https://pixhawk.org/modules/stm32f4discovery     
 http://idsearch2011www.mobile.howtomoneyguide.com/MZpAJCashh21XKH/Getting-started-ARM-cortex-M4-STM32-with-Eclipse-in-Linux-(1-4).html

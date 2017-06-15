@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2016-12-06 00:58:04 Utk
+update: 2017-06-16 07:43:37 Utk
 ---
 >`注意`：基于参考原因，本文参杂了APM的算法分析。
 
@@ -16,7 +16,7 @@ update: 2016-12-06 00:58:04 Utk
 <!--more-->
 
 <br>
-#姿态出处分析
+# 姿态出处分析
 1. 下面看下重要的一个[脚本](https://github.com/PX4/Firmware/blob/master/ROMFS/px4fmu_common/init.d/rc.mc_apps)`/etc/init.d/rc.mc_apps`，可以知道姿态估计用的是attitude_estimator_q和position_estimator_inav，用户也可以选择local_position_estimator、ekf2，而姿态控制应用为mc_att_control和mc_pos_control。
 
 
@@ -76,7 +76,7 @@ update: 2016-12-06 00:58:04 Utk
 了解了上面的源码出处后，下面将分具体应用进行分析。   
 
 <br>
-#姿态传感器数据采集
+# 姿态传感器数据采集
 首先进行传感器的初始化，主要步骤为：关闭软件低频滤波器、设置传感器量程、关闭硬件低频滤波器、设置采样频率、设置队列深度，具体实现如下：   
 
 ```c++
@@ -126,8 +126,8 @@ if (dataflash != NULL) {
 ```
 
 <br>
-#姿态估算
-##DCM_tutorial
+# 姿态估算
+## DCM_tutorial
 >[imu\_guide](http://www.starlino.com/imu_guide.html)/[imu\_guide中文翻译](http://www.itdadao.com/2016/03/19/629990/)/[dcm\_tutorial](http://www.starlino.com/dcm_tutorial.html)/[wiki资料查询](https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5)/[该部分算法源码参考](https://github.com/nephen/picquadcontroller/blob/master/imu.h)   
 >将该算法转换为了matlab实现，想了解的可以查看我的github里的[DCM工程](https://github.com/nephen/DCM)，能够更好的理解算法，另外，该matlab实现还有一定的bug，希望各位大神的pull request~   
 >这部分翻译自[dcm\_tutorial](http://www.starlino.com/dcm_tutorial.html)，并结合源码进行分析，可作为下部分DCM理论介绍的基础哦，所以建议先将这部分看完再往下看～
@@ -373,7 +373,7 @@ v = dr/dt = (w\\(\_x\\) + w\\(\_y\\) + w\\(\_z\\)) x r = w x r
 	```
 
 
-##DCM理论
+## DCM理论
 >`注意`：这部分属于APM源码里px4姿态解算部分。    
 >资料翻译解读自[DMCDraft2.pdf](http://api.ning.com/files/BhCgAMpEVgsY6Ag26S3qH9M-vAfI5HDYJWywCrNw5DC5iVUJ8EZMlcymLZ-6A6EaRCl82BVEl-7lwLa8E-z8QedqzNfL-ji1/DCMDraft2.pdf)（翻译不妥请谅解，欢迎提意见，另外该理论文档已启动翻译，如果你想参与请点击[这里](https://nephen.gitbooks.io/direction-cosine-matrix-imu-theory/content/index.html)），并结合文档分析了APM的姿态源码部分，目前还有`drift_correction`函数未进行整理！
 
@@ -811,7 +811,7 @@ xb、yb、zb 为机体坐标系。
 	}
 	```
 
-##EKF设计与实现
+## EKF设计与实现
 
 资料搜集
 
@@ -1127,7 +1127,7 @@ update_trig();
 如AP_MotorsMulticopter.cpp中的AP_GROUPINFO("CURR_MAX", 12, AP_MotorsMulticopter, _batt_current_max, AP_MOTORS_CURR_MAX_DEFAULT),设置解锁时电机的转速。
 
 <br>
-#姿态控制
+# 姿态控制
 >预习材料：[PID参数调节](www.nephen.com/2015/12/pixhawk试飞报告#pid调节)/[串级PID](http://www.anotc.com/Articles/Browse/3)/[串级PID1](http://blog.csdn.net/nemol1990/article/details/45131603)
 
 下面将先进行APM源码自稳模式的PID数据流分析：   
@@ -1294,7 +1294,7 @@ float AC_AttitudeControl::rate_bf_to_motor_roll(float rate_target_rads)
 }
 ```
 
-#串口、GCS及LOG调试
+# 串口、GCS及LOG调试
 由于我们在姿态算法测试的过程当中需要及时查看相关数据的变化情况或者波形图，在APM里主要有几种方法可以实现我们的目的。   
 第一种为串口：这种方式不仅在姿态算法测试而且在系统调试的过程当中都很起作用，假如你的Pixhawk突然启动出错，这个时候你就可以通过串口查看板子上电后rcS（输出信息都使用echo）的启动过程。另一方面，在APM的代码里，有独立的库文件可以进行编译学习，目的是可以让你单独快速的学习这个模块，如下，而这个里边的输出信息直接打印到了串口。
 
@@ -1668,5 +1668,5 @@ void Copter::fifty_hz_logging_loop()
 ```
 
 <br>
-#参考文献
+# 参考文献
 [陀螺仪加速度计MPU6050](http://www.crazepony.com/wiki/mpu6050.html)

@@ -7,18 +7,18 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2017-01-07 22:57:58 Utk
+update: 2017-06-16 07:43:37 Utk
 ---
 >[消息](http://px4.io/px4-website-relaunched-online/)：pixhawk网站搬迁至[px4.io](http://px4.io) !!!     
 
 <br>
-#前言
+# 前言
 前段时间linux崩溃了，桌面进去后只有背景，折腾好久没搞定，为了节省时间索性重装了系统，同时也借这个机会从头记载一下作为初学者的学习过程。主要是按PX4的官网初学者教程进行，把其中遇到的一些初学者容易遇到的问题罗列出来，由于对于国内这方面的资料相对缺乏，希望能给大家提供一些帮助，也算是自我学习的一个整理。
 
 如果你还不是很了解关于飞行器的这个项目PX4，建议迅速跳到PX4的[官网](https://pixhawk.org/start?id=start)一探究竟。简单来说，PX4是一个软、硬件开源项目（遵守BSD协议），目的在于为学术、爱好和工业团体提供一款低成本高性能的高端的自驾仪。这个项目源于 [ETH Zurich (苏黎世联邦理工大学)的计算机视觉与几何实验室](http://cvg.ethz.ch/)的[PIXHAWK项目](http://pixhawk.ethz.ch/)、并得到了[自主系统实验室](http://www.asl.ethz.ch/)和 [自动控制实验室](http://control.ee.ethz.ch/)的支持 ，以及一些出色的个人([Contact and Credits](https://pixhawk.org/credits))也参与其中，包括 [3D Robotics](http://store.diydrones.com/category_s/63.htm) 和 [international 3DR distributors](http://diydrones.com/profiles/blogs/list-of-all-diy-drones)的成员。
 
 <br>
-#前期准备
+# 前期准备
 为了让大家能与我的学习保持同步，先介绍一下在搭建这个PX4环境前我已经做好的工作：
 
 1. 硬件一套，包括DJI F450机架、Pixhawk 2.4.6 mini飞控、好盈乐天20A电调、1045正反桨、银燕电机2216、天地飞6通道遥控器。详情见淘宝链接里的[套餐方案](https://item.taobao.com/item.htm?spm=a1z10.5-c.w4002-8717792970.38.rv3aHa&id=41190426449)。
@@ -26,7 +26,7 @@ update: 2017-01-07 22:57:58 Utk
 
 <!--more-->
 <br>
-#工具链安装
+# 工具链安装
 在准备工作做好并对PX4有了一定的了解后，从[开发者快速入门教程](https://pixhawk.org/dev/quickstart)开始PX4的环境搭建，对于`Linux`这里直接跳到了[工具链](http://dev.px4.io/starting-installing-linux.html)的安装。按照教程说的命令去执行就可以了，只要你的网速够好，相信很快就能完成任务。说明一下这里做了哪些事情：
 
 1. 更新软件包列表并安装所有PX4构建目标的依赖。
@@ -41,7 +41,7 @@ update: 2017-01-07 22:57:58 Utk
 >`Tip`:如果你是Windows用户，可以点击[视频教程](https://www.youtube.com/watch?v=MBJhVrvWomY)，但是不推荐使用Windows进行开发。
 
 <br>
-#代码编译
+# 代码编译
 然后就到了编译代码的阶段，那么首先得弄到代码，按照[这个](http://dev.px4.io/starting-building.html)里面的步骤去做就好了，经测试ubuntu 14.04编译没有出现问题，建议安装[ninja](http://dev.px4.io/starting-installing-linux-boutique.html#ninja-build-system)，它编译的速度比make要快。   
 
 想必有不懂Git是个啥的童鞋，那就看看这个[Git教程-廖雪峰的官方网站](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)/[git BOOK](https://git-scm.com/book/zh/v2)吧，保证有帮助。比如我们的项目可以这么做：
@@ -163,7 +163,7 @@ make成功后如下：
 3. 连接USB到无人机硬件，上传固件
 
 <br>
-#软件在环测试（SITL）
+# 软件在环测试（SITL）
 在直接到硬件之前，建议将模拟运行作为下一步。这个东西看起来很高端，有点摸不着头脑，以前没接触过，也觉得很深奥。跳到[这里](http://dev.px4.io/simulation-sitl.html)，看看赋予它的概念：软件在环仿真运行的主机上的完整系统，并模拟自动驾驶仪。SITL还可以参考Ardupilot的[文档](http://dev.ardupilot.com/wiki/sitl-simulator-software-in-the-loop/)。它通过本地网络连接到模拟器。启动运行如下：
 
 <img src="/assets/sitl.png" style="max-width:100%;"/>
@@ -203,7 +203,7 @@ make成功后如下：
 	仿真时需要用到地面站QGroundControl( for short)，然后进行QGC 的[安装](https://github.com/mavlink/qgroundcontrol)，由于它的篇幅较大，可以给它开启新的一节。
 
 <br>
-#地面控制站QGC
+# 地面控制站QGC
 QGC的官网是[http://qgroundcontrol.org](http://qgroundcontrol.org)，可以从这里下载比较稳定的[安装包](https://github.com/mavlink/qgroundcontrol/releases/)解压，建议下载daily build的，里面有一些新的功能后面要用到，但是还是得安装Qt，如果不安装Qt，打开QGC会有缺少动态链接库的问题，从[这里](http://download.qt.io/official_releases/qt/5.5/5.5.1/qt-opensource-linux-x64-5.5.1.run.mirrorlist)可以看到中国地区下载镜像可以选择[这个](http://mirror.bit.edu.cn/qtproject/archive/qt/5.5/5.5.1/qt-opensource-linux-x64-5.5.1.run)或者[这个](http://mirrors.hust.edu.cn/qtproject/archive/qt/5.5/5.5.1/qt-opensource-linux-x64-5.5.1.run)，这样下载比较快一些，下载完成后进行如下操作。
 
 ```sh
@@ -253,7 +253,7 @@ Using Qt version 5.5.1 in /opt/Qt5.5.1/5.5/gcc_64/lib
 <img src="/images/sitl.png" style="max-width:100%;"/>
 
 <br>
-#Gazebo仿真
+# Gazebo仿真
 这是另外一种[软件仿真](http://dev.px4.io/simulation-gazebo.html)，是一个自主机器人3D仿真环境。它能够作为一个完整的机器人仿真套件或脱机用于机器人。其中Plugin是自行编译的，过程如下：
 
 <img src="/images/gazebo.png" style="max-width:100%;"/>
@@ -303,7 +303,7 @@ export SITL_GAZEBO_PATH=$HOME/src/sitl_gazebo
 ```
 
 <br>
-#QtCreator IDE建立工程
+# QtCreator IDE建立工程
 >参考文章：[旧版本](https://pixhawk.org/dev/project_setup)/[新版本](http://dev.px4.io/starting-building.html#qt-creator-on-linux)
 
 Qt Creator是最友好的变体，因此是官方唯一支持的IDE。除非你是Eclipse 或 Sublime方面的专家，否则不推荐使用！
@@ -358,11 +358,11 @@ $ sublime_text Firmware.sublime-project
 编译代码快捷键为：Ctrl + B
 
 <br>
-#总结
+# 总结
 教程到这里，基本的环境算是搭建好了，接下来应该就是各个模块的学习了，欢迎参考接下来的其它文章。
 
 <hr>
-#参考文献
+# 参考文献
 
 - [dev.px4.io](http://dev.px4.io/)
 - [px4.io](http://px4.io/)
