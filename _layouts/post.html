@@ -65,7 +65,7 @@
                     <span class="ds-thread-count author" data-thread-key="{{ page.id }}" data-count-type="comments"></span>
 
                     <!-- UYAN COUNT BEGIN -->
-                    <a href="{{ page.id }}" id="uyan_count_unit" du="" su="">0<a class="author" href="#disqus_thread" >条评论</a></a>
+                    <a href="{{ page.url | prepend: site.baseurl | prepend: site.url }}" id="uyan_count_unit">0<a class="author" href="#disqus_thread" >条评论</a></a>
                     <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2136546"></script> <!-- 如果已经过加载此行JS，即可不用重复加载 -->
                     <!-- UYAN COUNT END -->
 
