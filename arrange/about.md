@@ -121,16 +121,15 @@ The more info about [Blogging with Jekyll](https://help.github.com/articles/usin
 
 <hr>
 <div id="donate" class="target">
+</div>
 
 ## Donate
-
 如果您认为本网站的文章质量不错，读后觉得收获很大，预期工资涨幅能超过30%，不妨小额赞助我一下，让我有动力继续写出高质量的文章。
 
 支付宝：18682441907(at)163.com [记得将(at)改回@哦]
 
 如果你有手机支付宝，请打开支付宝App，使用“扫一扫”付款。</p>
 <center><img src="/images/alipay2.jpg"/></center>
-</div>
 
 <hr>
 ## Wechat
@@ -140,18 +139,5 @@ My lab's WeChat Subscription, welcome attention~
 
 <hr>
 ## Visitor
-<ul class="ds-recent-visitors"></ul>
-<!--多说js(最近访客)加载开始，一个页面只需要加载一次 -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"nephen"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
-</script>
-<!--多说js加载结束，一个页面只需要加载一次 -->
 
 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257349358'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1257349358%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
