@@ -9,7 +9,7 @@
         <div class="col-md-3 hidden-xs">
             {% include sidebar.html %}
         </div>
-     
+
         {% if page.passwd ==   true %}
         <script>
         function password() {
@@ -18,9 +18,9 @@
         var forMd5 = prompt('请输入该文章的访问密码:','');
 
         while (testV < 3) {
-        if (forMd5 == null) 
+        if (forMd5 == null)
         history.go(-1);
-       
+
         var pass1 = hex_md5(forMd5);
         if (pass1 == "30ba2a747566acbae8090c05ee5bd1fa") {
         alert('密码正确,点击回车进入...');
@@ -41,11 +41,11 @@
         {% endif %}
         <div class="col-md-9">
         <!-- j滚动字幕start -->
-        <div class="marquee">            
+        <div class="marquee">
             <marquee  scrollAmount="3" direction="left" onMouseOver="this.stop() " onMouseOut="this.start()" behavior="alternate">
             <span style="color:red;">通知：</span>如果你对本站无人机文章不熟悉，建议查看<a href="/arrange/drones">无人机学习概览</a>！！！
-            </marquee>    
-        </div>        
+            </marquee>
+        </div>
         <!-- j滚动字幕end -->
           <div class="article">
             <div class="well">
@@ -54,28 +54,21 @@
             <center>
                 <small><p class="post-lavender">
                         最后修改于{% if page.update !=  %}{{ page.update }}{% else %}{{ page.date | date: "%b %-d, %Y" }}{% endif %}
-                    {% if page.author %} • 
+                    {% if page.author %} •
                     <span itemprop="author" itemscope itemtype="http://schema.org/Person">
                         <span itemprop="name">{{ page.author }} 作
                         </span>
                     </span> •
                     <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Hits
 
-                    • {% if site.comments == true and page.comments == true and site.disqus != '' %}              
+                    • {% if site.comments == true and page.comments == true and site.disqus != '' %}
                     <span class="ds-thread-count author" data-thread-key="{{ page.id }}" data-count-type="comments"></span>
-                        <!-- 多说js(文章评论数)加载开始，一个页面只需要加载一次 -->
-                        <script type="text/javascript">
-                        var duoshuoQuery = {short_name:"nephen"};
-                        (function() {
-                            var ds = document.createElement('script');
-                            ds.type = 'text/javascript';ds.async = true;
-                            ds.src = 'http://static.duoshuo.com/embed.js';
-                            ds.charset = 'UTF-8';
-                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-                        })();
-                        </script>
-                        <!-- 多说js加载结束，一个页面只需要加载一次 -->
-                    <a class="author" href="#disqus_thread" >条评论</a>
+
+                    <!-- UYAN COUNT BEGIN -->
+                    <a href="{{ page.id }}" id="uyan_count_unit" du="" su="">0<a class="author" href="#disqus_thread" >条评论</a></a>
+                    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2136546"></script> <!-- 如果已经过加载此行JS，即可不用重复加载 -->
+                    <!-- UYAN COUNT END -->
+
                     {% endif %}
 
                     {% endif %}
