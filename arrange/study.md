@@ -136,5 +136,4 @@ permalink: /study/
 <a href="https://jekyllrb.com/docs/extras/#math-support">mathjax jekyll</a>
 
 <hr>
-{% include duoshuo_share.html %}
-{% include duoshuo_disqus.html %}
+{% include uyan_disqus.html %}

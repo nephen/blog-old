@@ -101,5 +101,4 @@ comments: true
 建站很高兴，可是有点头痛。
 
 <hr>
-{% include duoshuo_share.html %}
-{% include duoshuo_disqus.html %}
+{% include uyan_disqus.html %}
