@@ -16,6 +16,8 @@ You can find the source code for the Jekyll new theme at [jekyll-new](https://gi
 	由于部分原因，本网站暂时由github迁移至gitcafe。
 - 2016.3.13    
 	gitcafe改名coding.me，重新迁回github。
+- 2017.6.17   
+	多说失效，更改为友言评论系统。
 
 <hr>
 ## Simple development tutorial
@@ -96,7 +98,6 @@ The more info about [Blogging with Jekyll](https://help.github.com/articles/usin
 ## TODO
 
 - 归档应该增加分类功能。
-- 段落边框覆盖了文中链接。
 - Kramdown被设为默认的Markdown 处理器。
 
 <hr>
@@ -126,16 +127,7 @@ The more info about [Blogging with Jekyll](https://help.github.com/articles/usin
 ## Donate
 如果您认为本网站的文章质量不错，读后觉得收获很大，预期工资涨幅能超过30%，不妨小额赞助我一下，让我有动力继续写出高质量的文章。
 
-支付宝：18682441907(at)163.com [记得将(at)改回@哦]
-
-如果你有手机支付宝，请打开支付宝App，使用“扫一扫”付款。</p>
-<center><img src="/images/alipay2.jpg"/></center>
-
-<hr>
-## Wechat
-My lab's WeChat Subscription, welcome attention~
-
-<center><img src="/assets/wechat.png"/></center>
+<center><img src="/images/alipay2.png"/></center>
 
 <hr>
 ## Visitor
