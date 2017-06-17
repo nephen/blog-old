@@ -9,7 +9,7 @@ permalink: /arrange/drones
 donate: true
 editpage: true
 id: 712e39e67bb1073341c6d0d408d742e3 
-update: 2017-06-14 23:33:26 Utk
+update: 2017-06-17 18:41:04 Utk
 ---
 
 下面是对我自己写过的有关无人机的文章做一个简单的概述，让大家摸清学习的线索。观点难免有错误，欢迎在线编辑并提出意见。
@@ -26,7 +26,7 @@ Code Editor：
 说明一下，本站介绍的文章包含了两个软件平台，到底使用哪个具体文章里会有声明，另外，推荐使用vim编辑查看代码, 已经给出帮助链接。
 
 <br>
-# 学习交流
+# 交流合作
 Gitter: [![Gitter](https://badges.gitter.im/nephen/YuningFly.svg)](https://gitter.im/nephen/YuningFly?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)   
 QQ/Wechat talk: <i>995168694/18682441907</i>   
 这里也说明一下，gitter是一个开放的交流平台，可以使用网页、电脑客户端、手机APP，并且Linux下也可以使用，在这里全世界的开发人员聚集交流，欢迎大家加入这个平台。

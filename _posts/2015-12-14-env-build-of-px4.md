@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2017-06-16 07:43:37 Utk
+update: 2017-06-17 18:41:03 Utk
 ---
 >[消息](http://px4.io/px4-website-relaunched-online/)：pixhawk网站搬迁至[px4.io](http://px4.io) !!!     
 
@@ -204,7 +204,7 @@ make成功后如下：
 
 <br>
 # 地面控制站QGC
-QGC的官网是[http://qgroundcontrol.org](http://qgroundcontrol.org)，可以从这里下载比较稳定的[安装包](https://github.com/mavlink/qgroundcontrol/releases/)解压，建议下载daily build的，里面有一些新的功能后面要用到，但是还是得安装Qt，如果不安装Qt，打开QGC会有缺少动态链接库的问题，从[这里](http://download.qt.io/official_releases/qt/5.5/5.5.1/qt-opensource-linux-x64-5.5.1.run.mirrorlist)可以看到中国地区下载镜像可以选择[这个](http://mirror.bit.edu.cn/qtproject/archive/qt/5.5/5.5.1/qt-opensource-linux-x64-5.5.1.run)或者[这个](http://mirrors.hust.edu.cn/qtproject/archive/qt/5.5/5.5.1/qt-opensource-linux-x64-5.5.1.run)，这样下载比较快一些，下载完成后进行如下操作。
+QGC的官网是[http://qgroundcontrol.org](http://qgroundcontrol.org)，可以从这里下载比较稳定的[安装包](https://github.com/mavlink/qgroundcontrol/releases/)解压，建议下载daily build的，里面有一些新的功能后面要用到，但是还是得安装Qt，如果不安装Qt，打开QGC会有缺少动态链接库的问题，从[这里](http://download.qt.io/archive/qt/)可以看到后缀名为.run的文件，点击后面的details，选择一个区域比较近的地址进行下载，下载完成后进行如下操作。
 
 ```sh
 ~ $ chmod 777 qt-opensource-linux-x64-5.5.1.run
