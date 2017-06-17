@@ -6,7 +6,7 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2017-06-16 07:43:37 Utk
+update: 2017-06-17 10:27:26 Utk
 ---
 <br>
 # shadowsocks服务器搭建
@@ -35,3 +35,7 @@ Windows的版本就不多说了，很多例子，上面的链接中也给出了�
 
     <img src="/images/shadowsocks.png">
 5. 最后设置浏览器，跟Windows一样，这里就不多做介绍了，更多问题还是请访问[源网页](https://github.com/shadowsocks)。
+
+<br>
+# 购买
+如未购买服务器，但想以开发价入手一个帐号，请联系我！
