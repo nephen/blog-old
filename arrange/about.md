@@ -121,6 +121,7 @@ The more info about [Blogging with Jekyll](https://help.github.com/articles/usin
 
 <hr>
 <div id="donate" class="target">
+
 ## Donate
 
 如果您认为本网站的文章质量不错，读后觉得收获很大，预期工资涨幅能超过30%，不妨小额赞助我一下，让我有动力继续写出高质量的文章。
