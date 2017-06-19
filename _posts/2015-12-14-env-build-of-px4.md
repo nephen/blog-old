@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2017-06-17 18:41:03 Utk
+update: 2017-06-19 23:23:39 Utk
 ---
 >[消息](http://px4.io/px4-website-relaunched-online/)：pixhawk网站搬迁至[px4.io](http://px4.io) !!!     
 
@@ -207,8 +207,8 @@ make成功后如下：
 QGC的官网是[http://qgroundcontrol.org](http://qgroundcontrol.org)，可以从这里下载比较稳定的[安装包](https://github.com/mavlink/qgroundcontrol/releases/)解压，建议下载daily build的，里面有一些新的功能后面要用到，但是还是得安装Qt，如果不安装Qt，打开QGC会有缺少动态链接库的问题，从[这里](http://download.qt.io/archive/qt/)可以看到后缀名为.run的文件，点击后面的details，选择一个区域比较近的地址进行下载，下载完成后进行如下操作。
 
 ```sh
-~ $ chmod 777 qt-opensource-linux-x64-5.5.1.run
-~ $ ./qt-opensource-linux-x64-5.5.1.run
+~ $ chmod 777 qt-opensource-linux-x64-5.7.1.run
+~ $ ./qt-opensource-linux-x64-5.7.1.run
 # => 建议将目标文件夹选为$HOME/Qt($HOME为用户目录，替换为如/home/nephne)
 # => 相关依赖项的安装如下：
 ~ $ sudo apt-get install espeak libespeak-dev libudev-dev libsdl1.2-dev
@@ -216,22 +216,27 @@ QGC的官网是[http://qgroundcontrol.org](http://qgroundcontrol.org)，可以�
 # => 更换qt源，默认为qt4
 ~ $ export QT_SELECT=qt5
 ~ $ qtchooser -print-env
-QT_SELECT="qt5"
-QTTOOLDIR="/home/nephne/Qt/5.5/gcc_64/bin"
+QT_SELECT="default"
+QTTOOLDIR="/home/nephne/Qt5.7.1/5.7/gcc_64/bin"
 QTLIBDIR="/usr/lib/x86_64-linux-gnu"
 # => 更改文件/usr/lib/x86_64-linux-gnu/qtchooser/5.conf 第一行为：/home/$USER/Qt/5.5/gcc_64/bin(将$USER替换为用户名字)
 ~ $ sudo vi /usr/lib/x86_64-linux-gnu/qtchooser/5.conf 
 # => 我的如下：
 ~ $ cat /usr/lib/x86_64-linux-gnu/qtchooser/5.conf 
-/home/nephne/Qt/5.5/gcc_64/bin
+/home/nephne/Qt5.7.1/5.7/gcc_64/bin
 /usr/lib/x86_64-linux-gnu
 ~ $ qmake -v
 QMake version 3.0
-Using Qt version 5.5.1 in /opt/Qt5.5.1/5.5/gcc_64/lib
+Using Qt version 5.7.1 in /home/nephne/Qt5.7.1/5.7/gcc_64/lib
 # => 如果出现如上的结果就可以进入解压后的QGC目录运行了
 ~ $ cd ${QGC_dir}
 # => 运行如下的脚本文件，这个里边加载了动态库，如果你的Qt安装目录跟我的不一样，那样还得修改脚本
 ~ $ ./qgroundcontrol-start.sh
+
+# => 如何进行源码编译
+~ $ git clone https://github.com/mavlink/qgroundcontrol.git
+~ $ git submodule init && git submodule update
+# => 打开Qt Creator，选择qgroundcontrol根目录pro文件,工程设置到qt5.7.1版本进行编译即可
 ```
 
 界面如下：
