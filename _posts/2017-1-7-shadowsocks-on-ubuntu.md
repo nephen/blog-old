@@ -6,7 +6,7 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2017-06-17 10:27:26 Utk
+update: 2017-06-26 07:49:09 Utk
 ---
 <br>
 # shadowsocks服务器搭建
@@ -30,6 +30,8 @@ Windows的版本就不多说了，很多例子，上面的链接中也给出了�
     qmake INSTALL_PREFIX=/usr
     make
     sudo make install
+#最后应用名字为ss-qt5
+#注意：如有更新qmake，需要重新进行编译。
     ```
 4. 打开./ss-qt5，设置如下图所示。
 
