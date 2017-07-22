@@ -6,7 +6,7 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2017-06-16 07:43:37 Utk
+update: 2017-07-22 09:00:19 Utk
 ---
 <br>
 # JLinkGDBServer调试
@@ -63,7 +63,7 @@ To enable execution of this file add
 	add-auto-load-safe-path /home/nephne/src/Bootloader/.gdbinit
 line to your configuration file "/home/nephne/.gdbinit".
 
-编写工程目录下面的.gdbinit文件。
+编写`工程目录`下面的.gdbinit文件。
 
 ```sh
 target remote :2331
@@ -79,6 +79,7 @@ monitor reg sp = (0x08000000)
 monitor reg pc = (0x08000004)
 break main
 layout src
+# 可以使用next 1000运行到断点main处
 ```
 
 运行命令如下，即可运行gdb的相关命令，如next，step，continue等等，其中layout src为显示源代码窗口。
@@ -244,10 +245,25 @@ Verify : [====================] 100.0%
 Rebooting.
 ```
 
+启动过程，如果固件加载ok，会启动px4主流程，Bootloader里面见main_f4.c，可用JLink调试是否运行至此。
+
+```c
+        /* try to boot immediately */
+        jump_to_app();
+```
+
 <br>
 # 串口调试
 串口连接为PC10:E_TX1, PC11:E_RX1，连接usb转串口设备如下，当然我的外围设备都失败了。
+关于引脚定义查找px4 board.h里面的源码：
 
+```c
+/* E_TX1 / E_RX1 */
+#define GPIO_USART3_RX  GPIO_USART3_RX_2
+#define GPIO_USART3_TX  GPIO_USART3_TX_2
+```
+
+串口显示如下：
 ```sh
 sercon: Registering CDC/ACM serial driver
 sercon: Successfully registered the CDC/ACM serial driver
