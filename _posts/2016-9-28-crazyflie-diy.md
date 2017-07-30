@@ -6,7 +6,7 @@ author: nephen
 tags: 工作生活
 donate: true
 comments: true
-update: 2017-07-22 09:00:19 Utk
+update: 2017-07-30 10:15:11 Utk
 ---
 <br>
 # JLinkGDBServer调试
@@ -85,7 +85,7 @@ layout src
 运行命令如下，即可运行gdb的相关命令，如next，step，continue等等，其中layout src为显示源代码窗口。
 
 ```sh
-arm-none-eabi-gdb crazyflie_bl.elf
+arm-none-eabi-gdb build_crazyflie_bl/crazyflie_bl.elf
 ```
 
 <br>

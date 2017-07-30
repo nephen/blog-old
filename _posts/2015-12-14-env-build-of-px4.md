@@ -7,7 +7,7 @@ tags: 工作生活
 donate: true
 comments: true
 editpage: true
-update: 2017-06-19 23:23:39 Utk
+update: 2017-07-30 10:15:11 Utk
 ---
 >[消息](http://px4.io/px4-website-relaunched-online/)：pixhawk网站搬迁至[px4.io](http://px4.io) !!!     
 
@@ -72,7 +72,7 @@ update: 2017-06-19 23:23:39 Utk
 首先了解见[博文](http://www.veryarm.com/296.html)，然后去GNU官方下载地址：[https://launchpad.net/gcc-arm-embedded/+download](https://launchpad.net/gcc-arm-embedded/+download)下载`gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2`，或者直接使用命令
 
 ```sh
-wget https://launchpadlibrarian.net/186124160/gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2
+wget wget https://launchpad.net/gcc-arm-embedded/5.0/5-2016-q2-update/+download/gcc-arm-none-eabi-5_4-2016q2-20160622-linux.tar.bz2
 ```
 然后进入下载文件夹，进行如下操作：
 
@@ -81,13 +81,26 @@ pushd .
 # => 卸载新版的gcc-arm-none-eabi
 ~ $ sudo apt-get remove gcc-arm-none-eabi
 # => 安装下载好的gcc-arm-none-eabi
-~ $ tar xjvf gcc-arm-none-eabi-4_8-2014q3-20140805-linux.tar.bz2
-~ $ sudo mv gcc-arm-none-eabi-4_8-2014q3 /opt
-~ $ exportline="export PATH=/opt/gcc-arm-none-eabi-4_8-2014q3/bin:\$PATH"
+~ $ tar xjvf gcc-arm-none-eabi-5_4-2016q2-20160622-linux.tar.bz2
+~ $ sudo mv gcc-arm-none-eabi-5_4-2016q2 /opt
+~ $ exportline="export PATH=/opt/gcc-arm-none-eabi-5_4-2016q2/bin:\$PATH"
 ~ $ if grep -Fxq "$exportline" ~/.profile; then echo nothing to do ; else echo $exportline >> ~/.profile; fi
 # => 使路径生效
 ~ $ . ~/.profile
 popd
+```
+
+安装ccache，加快编译速度。
+
+```sh
+sudo apt-get install ccache
+which ccache
+#查看安装路径, /usr/bin/ccache
+cd /opt/gcc-arm-none-eabi-5_4-2016q2/bin/
+sudo ln -s /usr/bin/ccache *
+export PATH=/usr/lib/ccache:$PATH
+#进行确认
+which arm-none-eabi-gcc
 ```
 
 如果PC是ubuntu 64位系统，arm-none-eabi是直接下载人家编译好的32位的话，还需要一个东东：
