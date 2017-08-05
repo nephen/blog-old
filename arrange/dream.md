@@ -88,4 +88,4 @@ permalink: /dream/
 我的计划
 --------
 
-<Iframe src="/arrange/planning.html"; width="100%" height="502" frameborder="0"></Iframe>
+<Iframe src="/arrange/planning.html" width="100%" height="502" frameborder="0"></Iframe>
