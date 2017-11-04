@@ -5,6 +5,33 @@ permalink: /photo/
 
 <center><h3>༺ 时光记忆站 ༻<i><small>---这是我们恋爱<span id=result2></span>天纪念日</small></i></h3></center>
 
+<script>
+$(document).ready(function() {
+calb();
+});
+
+function calb()
+{
+//起始日期
+y2=2015;
+m2=9;
+d2=5;
+
+var myDate = new Date();
+y3=myDate.getFullYear();    //获取完整的年份(4位,1970-????)
+m3=myDate.getMonth()+1;       //获取当前月份(0-11,0代表1月)
+d3=myDate.getDate();        //获取当前日(1-31)
+
+day2=new Date(y2,m2-1,d2);
+day3=new Date(y3,m3-1,d3);
+
+document.getElementById("result2").innerHTML=(day3-day2)/86400000;
+document.getElementById("result3").innerHTML=(day3-day2)/86400000 - 147;
+document.getElementById("result4").innerHTML=202 - (day3-day2)/86400000;
+document.getElementById("result5").innerHTML=258 - (day3-day2)/86400000;
+}
+</script>
+
 我们梦想着：   
 
 1. 创造属于自己的美好归宿，你设计我装扮，里边有各式各样好玩的把戏，比如智能机关。
