@@ -7,7 +7,7 @@ plan2: 读想历史人文《红顶商人胡雪岩》。
 plan3: 跑步、锻炼、出游。
 
 # url is currently only used only for the RSS feed in feed.xml
-url: http://www.nephen.com
+url: http://www.nephen.cn
 
 # baseurl will often be '', but for a project page on gh-pages, it needs to
 # be the project name.

@@ -51,5 +51,5 @@ pixhawk为px4开发团队的第二代硬件版本，同样ardupilot也是一个�
 
 <br>
 # 后序
-本链接（**www.nephen.com/arrange/drones**）长期有效，并保持定期更新说明，也可以进入nephen(`来风`)网站，点击“`多轴`”栏目即可进入。   
+本链接（**www.nephen.cn/arrange/drones**）长期有效，并保持定期更新说明，也可以进入nephen(`来风`)网站，点击“`多轴`”栏目即可进入。   
 <img src="/images/nephen.png">
