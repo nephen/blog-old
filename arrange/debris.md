@@ -5,7 +5,7 @@ comments: true
 ---
 
 <!--音乐台-->
- <p><center><embed src="//music.163.com/style/swf/widget.swf?sid=2236353964&type=0&auto=1&width=310&height=90" width="330" height="110"  allowNetworking="all"></embed></center></p>
+<embed src="//music.163.com/style/swf/widget.swf?sid=2236353964&type=0&auto=1&width=310&height=90" width="330" height="110"  allowNetworking="all"></embed>
 
 <hr style="height:10px;border:none;border-top:10px groove skyblue;" />
 
