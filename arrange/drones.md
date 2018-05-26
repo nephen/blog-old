@@ -20,7 +20,7 @@ Software Version：[ardupilot](https://github.com/ArduPilot/ardupilot)/[PX4](htt
 Hardware Version：[pixhawk 2.4.6](https://pixhawk.org/modules/pixhawk)   
 Code Editor：
 
-1. [sublime text 2](http://www.nephen.com/2016/01/sublime-text2-in-linux) （Ubuntu）   
+1. [sublime text 2](http://www.nephen.cn/2016/01/sublime-text2-in-linux) （Ubuntu）   
 2. [vim](/2017/06/vim-for-px4) （推荐）
 
 说明一下，本站介绍的文章包含了两个软件平台，到底使用哪个具体文章里会有声明，另外，推荐使用vim编辑查看代码, 已经给出帮助链接。

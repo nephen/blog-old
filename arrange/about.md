@@ -18,6 +18,8 @@ You can find the source code for the Jekyll new theme at [jekyll-new](https://gi
 	gitcafe改名coding.me，重新迁回github。
 - 2017.6.17   
 	多说失效，更改为友言评论系统。
+- 2018.4.20
+	.com的网址无法申请，暂时使用.cn的域名代替。
 
 <hr>
 ## Simple development tutorial
